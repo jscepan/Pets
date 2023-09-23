@@ -23,6 +23,38 @@ public class Ad {
     @Column(name = "createdOn")
     private Timestamp createdOn;
 
+    public Ad() {
+    }
+
+    public Ad(long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Ad(long id, String title, String description, boolean isActive) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.isActive = isActive;
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Ad(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.isActive = true;
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Ad(String title, String description, boolean isActive) {
+        this.title = title;
+        this.description = description;
+        this.isActive = isActive;
+        this.createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
     public long getId() {
         return id;
     }
@@ -62,6 +94,5 @@ public class Ad {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
-    
-    
+
 }

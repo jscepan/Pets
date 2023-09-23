@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.pets.backend.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import java.security.Key;
 
 @Component
 public class JwtUtils {
@@ -23,6 +24,13 @@ public class JwtUtils {
     @Value("${pets.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
+    private Key key;
+
+    public JwtUtils() {
+        // Inicijalizujte ključ samo jednom, pri kreiranju bean-a
+        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    }
+
     public String generateJwtToken(Authentication authentication) {
 
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -31,18 +39,17 @@ public class JwtUtils {
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(Keys.secretKeyFor(SignatureAlgorithm.HS256))
+                .signWith(this.key)
                 .compact();
     }
 
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes()))
-                .build().parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parserBuilder().setSigningKey(this.key).build().parseClaimsJws(token).getBody().getSubject();
     }
 
     public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes()))
+            Jwts.parserBuilder().setSigningKey(this.key)
                     .build().parse(authToken);
             return true;
         } catch (MalformedJwtException e) {
