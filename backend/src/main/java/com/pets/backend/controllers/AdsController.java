@@ -1,6 +1,7 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.Ad;
+import com.pets.backend.models.SearchFilter;
 import com.pets.backend.repository.AdRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class AdsController {
     @GetMapping("/ads")
     public ResponseEntity<List<Ad>> getAllAds(@RequestParam(required = false) String title) {
         try {
-            List<Ad> tutorials = new ArrayList<Ad>();
+            List<Ad> tutorials = new ArrayList<>();
 
             if (title == null) {
                 adRepository.findAll().forEach(tutorials::add);
@@ -63,22 +64,48 @@ public class AdsController {
 
     @PutMapping("/ads/{id}")
     public ResponseEntity<Ad> updateAd(@PathVariable("id") long id, @RequestBody Ad ad) {
-        System.out.println("+++++++++++++++++");
-        return ResponseEntity.ok(null);
+        Optional<Ad> tutorialData = adRepository.findById(id);
+
+        if (tutorialData.isPresent()) {
+            Ad _tutorial = tutorialData.get();
+            _tutorial.setTitle(ad.getTitle());
+            _tutorial.setDescription(ad.getDescription());
+            return new ResponseEntity<>(adRepository.save(_tutorial), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/ads/{id}")
     public ResponseEntity<HttpStatus> deleteAd(@PathVariable("id") long id) {
-        return ResponseEntity.ok(null);
+        try {
+            adRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/ads")
     public ResponseEntity<HttpStatus> deleteAllAds() {
-        return ResponseEntity.ok(null);
+        try {
+            adRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/ads/search")
-    public ResponseEntity<List<Ad>> findByTitle() {
-        return ResponseEntity.ok(new ArrayList<>());
+    public ResponseEntity<List<Ad>> findByTitle(@RequestBody SearchFilter filter) {
+        try {
+            List<Ad> tutorials = adRepository.findByTitleContaining(filter.getQuickSearch());
+            if (tutorials.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

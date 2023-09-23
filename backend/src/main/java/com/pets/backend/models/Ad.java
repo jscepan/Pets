@@ -17,8 +17,8 @@ public class Ad {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "isActive")
-    private boolean isActive;
+    @Column(name = "active")
+    private boolean active;
 
     @Column(name = "createdOn")
     private Timestamp createdOn;
@@ -33,25 +33,25 @@ public class Ad {
         this.createdOn = new Timestamp(System.currentTimeMillis());
     }
 
-    public Ad(long id, String title, String description, boolean isActive) {
+    public Ad(long id, String title, String description, boolean active) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.isActive = isActive;
+        this.active = active;
         this.createdOn = new Timestamp(System.currentTimeMillis());
     }
 
     public Ad(String title, String description) {
         this.title = title;
         this.description = description;
-        this.isActive = true;
+        this.active = true;
         this.createdOn = new Timestamp(System.currentTimeMillis());
     }
 
-    public Ad(String title, String description, boolean isActive) {
+    public Ad(String title, String description, boolean active) {
         this.title = title;
         this.description = description;
-        this.isActive = isActive;
+        this.active = active;
         this.createdOn = new Timestamp(System.currentTimeMillis());
     }
 
@@ -79,12 +79,12 @@ public class Ad {
         this.description = description;
     }
 
-    public boolean isIsActive() {
-        return isActive;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Timestamp getCreatedOn() {
