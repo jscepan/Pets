@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { EntityBaseWebService } from '../core/services/entity-base.web-service';
-import { BaseWebService } from '../core/services/base.web-service';
-import { DOMAIN_DEFINITIONS } from '../shared/constants';
+import { BASE_API_URL, DOMAIN_DEFINITIONS } from '../shared/constants';
 import { DefinitionModel } from '../shared/models/definitions.model';
+import { Observable } from 'rxjs';
+import { BaseWebService } from '../core/services/base.web-service';
 
 @Injectable()
-export class CaseWebService extends EntityBaseWebService<DefinitionModel> {
-  constructor(public baseWebService: BaseWebService) {
-    super(baseWebService, DefinitionModel, DOMAIN_DEFINITIONS);
+export class DefinitionsWebService {
+  constructor(public baseWebService: BaseWebService) {}
+
+  getAllDefinitions(): Observable<DefinitionModel> {
+    return this.baseWebService.getRequest<DefinitionModel>(
+      `${BASE_API_URL + '/' + DOMAIN_DEFINITIONS}`
+      // this.ModelFromType
+    );
   }
 }

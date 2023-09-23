@@ -23,12 +23,7 @@ export class DefinitionsStoreService {
     this._dataLoaded.next(dataLoaded);
   }
 
-  // domains methods
-  get domains(): DefinitionModel | null {
-    return this._definitions.getValue();
-  }
-
-  set domains(domains: DefinitionModel | null) {
-    this._definitions.next(domains);
+  setDefinitions(definitions: DefinitionModel): void {
+    this._definitions.next(definitions);
   }
 }

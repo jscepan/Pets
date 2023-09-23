@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8082")
 @RestController
 @RequestMapping("/api")
 public class DefinitionsController {
@@ -24,7 +24,6 @@ public class DefinitionsController {
             Definitions def = definitionsRepository.getAllDefinitions();
             return new ResponseEntity<>(def, HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println("catch");
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
