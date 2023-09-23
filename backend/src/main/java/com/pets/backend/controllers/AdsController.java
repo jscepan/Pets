@@ -53,10 +53,8 @@ public class AdsController {
     @PostMapping("/ads")
     public ResponseEntity<Ad> createAd(@RequestBody Ad ad) {
         try {
-            System.out.println("11111111");
             Ad _ad = adRepository
                     .save(new Ad(ad.getTitle(), ad.getDescription()));
-            System.out.println("222222222222");
             return new ResponseEntity<>(_ad, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -65,6 +63,7 @@ public class AdsController {
 
     @PutMapping("/ads/{id}")
     public ResponseEntity<Ad> updateAd(@PathVariable("id") long id, @RequestBody Ad ad) {
+        System.out.println("+++++++++++++++++");
         return ResponseEntity.ok(null);
     }
 
