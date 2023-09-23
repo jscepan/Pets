@@ -1,0 +1,2915 @@
+{
+  "version": "0.0.1",
+  "adsType": [
+    {
+      "value": "pets",
+      "displayValue": {
+        "en": "Pets",
+        "sr": "Kućni ljubimci"
+      },
+      "childrens": [
+        {
+          "value": "dogs",
+          "displayValue": {
+            "en": "Dogs",
+            "sr": "Psi"
+          },
+          "childrens": [
+            {
+              "value": "affenpinscher",
+              "displayValue": {
+                "en": "Affenpinscher ",
+                "sr": " Affenpinscher"
+              }
+            },
+            {
+              "value": "afghanHound",
+              "displayValue": {
+                "en": "Afghan Hound ",
+                "sr": " Avgan hrt"
+              }
+            },
+            {
+              "value": "airedaleTerrier",
+              "displayValue": {
+                "en": "Airedale Terrier ",
+                "sr": " Erdel terijer"
+              }
+            },
+            {
+              "value": "akita",
+              "displayValue": {
+                "en": "Akita ",
+                "sr": " Akita"
+              }
+            },
+            {
+              "value": "alapahaBlueBloodBulldog",
+              "displayValue": {
+                "en": "Alapaha Blue Blood Bulldog ",
+                "sr": " Alapaha plava krvna buldog"
+              }
+            },
+            {
+              "value": "alaskanMalamute",
+              "displayValue": {
+                "en": "Alaskan Malamute ",
+                "sr": " Aljaski malamut"
+              }
+            },
+            {
+              "value": "americanBulldog",
+              "displayValue": {
+                "en": "American Bulldog ",
+                "sr": " Američki buldog"
+              }
+            },
+            {
+              "value": "americanBully",
+              "displayValue": {
+                "en": "American Bully ",
+                "sr": " Američki buli"
+              }
+            },
+            {
+              "value": "americanCockerSpaniel",
+              "displayValue": {
+                "en": "American Cocker Spaniel ",
+                "sr": " Američki koker španijel"
+              }
+            },
+            {
+              "value": "anatolianShepherd",
+              "displayValue": {
+                "en": "Anatolian Shepherd ",
+                "sr": " Anadolija pastirski pas"
+              }
+            },
+            {
+              "value": "australianCattleDog",
+              "displayValue": {
+                "en": "Australian Cattle Dog ",
+                "sr": " Australijski govedarski pas"
+              }
+            },
+            {
+              "value": "australianKelpie",
+              "displayValue": {
+                "en": "Australian Kelpie ",
+                "sr": " Australijski kelpi"
+              }
+            },
+            {
+              "value": "australianLabradoodle",
+              "displayValue": {
+                "en": "Australian Labradoodle ",
+                "sr": " Australijski labradudl"
+              }
+            },
+            {
+              "value": "australianShepherd",
+              "displayValue": {
+                "en": "Australian Shepherd ",
+                "sr": " Australijski ovčar"
+              }
+            },
+            {
+              "value": "australianSilkyTerrier",
+              "displayValue": {
+                "en": "Australian Silky Terrier ",
+                "sr": " Australijski svilasti terijer"
+              }
+            },
+            {
+              "value": "australianTerrier",
+              "displayValue": {
+                "en": "Australian Terrier ",
+                "sr": " Australijski terijer"
+              }
+            },
+            {
+              "value": "azawakh",
+              "displayValue": {
+                "en": "Azawakh ",
+                "sr": " Azavak"
+              }
+            },
+            {
+              "value": "barbet",
+              "displayValue": {
+                "en": "Barbet ",
+                "sr": " Barbet"
+              }
+            },
+            {
+              "value": "basenji",
+              "displayValue": {
+                "en": "Basenji ",
+                "sr": " Basenji"
+              }
+            },
+            {
+              "value": "bassetBleuDeGascogne",
+              "displayValue": {
+                "en": "Basset Bleu De Gascogne ",
+                "sr": " Baset plavi gaskonjac"
+              }
+            },
+            {
+              "value": "bassetFauveDeBretagne",
+              "displayValue": {
+                "en": "Basset Fauve De Bretagne ",
+                "sr": " Baset fov de bretanj"
+              }
+            },
+            {
+              "value": "bassetGriffonVendeen",
+              "displayValue": {
+                "en": "Basset Griffon Vendeen ",
+                "sr": " Baset grifon vendeen"
+              }
+            },
+            {
+              "value": "bassetHound",
+              "displayValue": {
+                "en": "Basset Hound ",
+                "sr": " Baset hund"
+              }
+            },
+            {
+              "value": "bavarianMountainHound",
+              "displayValue": {
+                "en": "Bavarian Mountain Hound ",
+                "sr": " Bavarski planinski pas"
+              }
+            },
+            {
+              "value": "beagle",
+              "displayValue": {
+                "en": "Beagle ",
+                "sr": " Bigl"
+              }
+            },
+            {
+              "value": "beaglier",
+              "displayValue": {
+                "en": "Beaglier ",
+                "sr": " Biglier"
+              }
+            },
+            {
+              "value": "beardedCollie",
+              "displayValue": {
+                "en": "Bearded Collie ",
+                "sr": " Brada koli"
+              }
+            },
+            {
+              "value": "beauceron",
+              "displayValue": {
+                "en": "Beauceron ",
+                "sr": " Bokseron"
+              }
+            },
+            {
+              "value": "bedlingtonTerrier",
+              "displayValue": {
+                "en": "Bedlington Terrier ",
+                "sr": " Bedlington terijer"
+              }
+            },
+            {
+              "value": "belgianShepherdDog",
+              "displayValue": {
+                "en": "Belgian Shepherd Dog ",
+                "sr": " Belgiski ovčarski pas"
+              }
+            },
+            {
+              "value": "bergamasco",
+              "displayValue": {
+                "en": "Bergamasco ",
+                "sr": " Bergamasco"
+              }
+            },
+            {
+              "value": "bernedoodle",
+              "displayValue": {
+                "en": "Bernedoodle ",
+                "sr": " Bernedudl"
+              }
+            },
+            {
+              "value": "berneseMountainDog",
+              "displayValue": {
+                "en": "Bernese Mountain Dog ",
+                "sr": " Bernski planinski pas"
+              }
+            },
+            {
+              "value": "bichonFrise",
+              "displayValue": {
+                "en": "Bichon Frise ",
+                "sr": " Bišon frize"
+              }
+            },
+            {
+              "value": "biewerTerrier",
+              "displayValue": {
+                "en": "Biewer Terrier ",
+                "sr": " Bijer terijer"
+              }
+            },
+            {
+              "value": "bloodhound",
+              "displayValue": {
+                "en": "Bloodhound ",
+                "sr": " Bladhaund"
+              }
+            },
+            {
+              "value": "bocker",
+              "displayValue": {
+                "en": "Bocker ",
+                "sr": " Boker"
+              }
+            },
+            {
+              "value": "boerboel",
+              "displayValue": {
+                "en": "Boerboel ",
+                "sr": " Borbul"
+              }
+            },
+            {
+              "value": "bolognese",
+              "displayValue": {
+                "en": "Bolognese ",
+                "sr": " Bolonjez"
+              }
+            },
+            {
+              "value": "borderCollie",
+              "displayValue": {
+                "en": "Border Collie ",
+                "sr": " Bordr kolli"
+              }
+            },
+            {
+              "value": "borderTerrier",
+              "displayValue": {
+                "en": "Border Terrier ",
+                "sr": " Bordr terijer"
+              }
+            },
+            {
+              "value": "bordoodle",
+              "displayValue": {
+                "en": "Bordoodle ",
+                "sr": " Bordudl"
+              }
+            },
+            {
+              "value": "borzoi",
+              "displayValue": {
+                "en": "Borzoi ",
+                "sr": " Borzoj"
+              }
+            },
+            {
+              "value": "bostonTerrier",
+              "displayValue": {
+                "en": "Boston Terrier ",
+                "sr": " Boston terijer"
+              }
+            },
+            {
+              "value": "bouvierDesFlandres",
+              "displayValue": {
+                "en": "Bouvier Des Flandres ",
+                "sr": " Buvije de flandres"
+              }
+            },
+            {
+              "value": "boxer",
+              "displayValue": {
+                "en": "Boxer ",
+                "sr": " Bokser"
+              }
+            },
+            {
+              "value": "braccoItaliano",
+              "displayValue": {
+                "en": "Bracco Italiano ",
+                "sr": " Brako italijano"
+              }
+            },
+            {
+              "value": "braqueDuBourbonnais",
+              "displayValue": {
+                "en": "Braque du Bourbonnais ",
+                "sr": " Brak di burbon"
+              }
+            },
+            {
+              "value": "braqueD’Auvergne",
+              "displayValue": {
+                "en": "Braque D’Auvergne ",
+                "sr": " Brak dovornj"
+              }
+            },
+            {
+              "value": "briard",
+              "displayValue": {
+                "en": "Briard ",
+                "sr": " Briar"
+              }
+            },
+            {
+              "value": "brittanySpaniel",
+              "displayValue": {
+                "en": "Brittany Spaniel ",
+                "sr": " Britanski španijel"
+              }
+            },
+            {
+              "value": "bullmastiff",
+              "displayValue": {
+                "en": "Bullmastiff ",
+                "sr": " Bulmastif"
+              }
+            },
+            {
+              "value": "bullTerrier",
+              "displayValue": {
+                "en": "Bull Terrier ",
+                "sr": " Bul terijer"
+              }
+            },
+            {
+              "value": "cairnTerrier",
+              "displayValue": {
+                "en": "Cairn Terrier ",
+                "sr": " Keren terijer"
+              }
+            },
+            {
+              "value": "caledonianWolfalike",
+              "displayValue": {
+                "en": "Caledonian wolfalike ",
+                "sr": " Kalcedonijski vukalajk"
+              }
+            },
+            {
+              "value": "canaanDog",
+              "displayValue": {
+                "en": "Canaan Dog ",
+                "sr": " Kanan pas"
+              }
+            },
+            {
+              "value": "canadianEskimoDog",
+              "displayValue": {
+                "en": "Canadian Eskimo Dog ",
+                "sr": " Kanadski eskimski pas"
+              }
+            },
+            {
+              "value": "caneCorso",
+              "displayValue": {
+                "en": "Cane Corso ",
+                "sr": " Kane kors"
+              }
+            },
+            {
+              "value": "catalanSheepdog",
+              "displayValue": {
+                "en": "Catalan Sheepdog ",
+                "sr": " Katalonski ovčar"
+              }
+            },
+            {
+              "value": "caucasianShepherdDog",
+              "displayValue": {
+                "en": "Caucasian Shepherd Dog ",
+                "sr": " Kavkaski ovčarski pas"
+              }
+            },
+            {
+              "value": "cavachon",
+              "displayValue": {
+                "en": "Cavachon ",
+                "sr": " Kavakon"
+              }
+            },
+            {
+              "value": "cavalierKingCharlesSpaniel",
+              "displayValue": {
+                "en": "Cavalier King Charles Spaniel ",
+                "sr": " Kavalijer kralj čarls španijel"
+              }
+            },
+            {
+              "value": "cavapoo",
+              "displayValue": {
+                "en": "Cavapoo ",
+                "sr": " Kavapu"
+              }
+            },
+            {
+              "value": "cavapoochon",
+              "displayValue": {
+                "en": "Cavapoochon ",
+                "sr": " Kavapučon"
+              }
+            },
+            {
+              "value": "centralAsianShepherd",
+              "displayValue": {
+                "en": "Central Asian Shepherd ",
+                "sr": " Srednjeazijski ovčarski pas"
+              }
+            },
+            {
+              "value": "ceskyTerrier",
+              "displayValue": {
+                "en": "Cesky Terrier ",
+                "sr": " Češki terijer"
+              }
+            },
+            {
+              "value": "chesapeakeBayRetriever",
+              "displayValue": {
+                "en": "Chesapeake Bay Retriever ",
+                "sr": " Česapeak Bej retriver"
+              }
+            },
+            {
+              "value": "chihuahua",
+              "displayValue": {
+                "en": "Chihuahua ",
+                "sr": " Čivava"
+              }
+            },
+            {
+              "value": "chineseCrested",
+              "displayValue": {
+                "en": "Chinese Crested ",
+                "sr": " Kineski čivava"
+              }
+            },
+            {
+              "value": "chipoo",
+              "displayValue": {
+                "en": "Chipoo ",
+                "sr": " Čipu"
+              }
+            },
+            {
+              "value": "chiweenie",
+              "displayValue": {
+                "en": "Chiweenie ",
+                "sr": " Čivini"
+              }
+            },
+            {
+              "value": "chorkie",
+              "displayValue": {
+                "en": "Chorkie ",
+                "sr": " Čorki"
+              }
+            },
+            {
+              "value": "chowChow",
+              "displayValue": {
+                "en": "Chow Chow ",
+                "sr": " Čau čau"
+              }
+            },
+            {
+              "value": "chug",
+              "displayValue": {
+                "en": "Chug ",
+                "sr": " Čag"
+              }
+            },
+            {
+              "value": "cirnecoDellEtna",
+              "displayValue": {
+                "en": "Cirneco Dell'Etna ",
+                "sr": " Sirneco Del Etna"
+              }
+            },
+            {
+              "value": "clumberSpaniel",
+              "displayValue": {
+                "en": "Clumber Spaniel ",
+                "sr": " Klamber španijel"
+              }
+            },
+            {
+              "value": "cockalier",
+              "displayValue": {
+                "en": "Cockalier ",
+                "sr": " Kokerijer"
+              }
+            },
+            {
+              "value": "cockapoo",
+              "displayValue": {
+                "en": "Cockapoo ",
+                "sr": " Kokapu"
+              }
+            },
+            {
+              "value": "cockerSpaniel",
+              "displayValue": {
+                "en": "Cocker Spaniel ",
+                "sr": " Koker španijel"
+              }
+            },
+            {
+              "value": "coonhound",
+              "displayValue": {
+                "en": "Coonhound ",
+                "sr": " Kunhaund"
+              }
+            },
+            {
+              "value": "cotonDeTulear",
+              "displayValue": {
+                "en": "Coton De Tulear ",
+                "sr": " Koton de Tulere"
+              }
+            },
+            {
+              "value": "curlyCoatedRetriever",
+              "displayValue": {
+                "en": "Curly Coated Retriever ",
+                "sr": " Kvrli koutid retriver"
+              }
+            },
+            {
+              "value": "dachshund",
+              "displayValue": {
+                "en": "Dachshund ",
+                "sr": " Tegeterijen"
+              }
+            },
+            {
+              "value": "dalmatian",
+              "displayValue": {
+                "en": "Dalmatian ",
+                "sr": " Dalmatinac"
+              }
+            },
+            {
+              "value": "dandieDinmontTerrier",
+              "displayValue": {
+                "en": "Dandie Dinmont Terrier ",
+                "sr": " Dendi Dinmont terijer"
+              }
+            },
+            {
+              "value": "deerhound",
+              "displayValue": {
+                "en": "Deerhound ",
+                "sr": " Dirhund"
+              }
+            },
+            {
+              "value": "dobermann",
+              "displayValue": {
+                "en": "Dobermann ",
+                "sr": " Doberman"
+              }
+            },
+            {
+              "value": "dogueDeBordeaux",
+              "displayValue": {
+                "en": "Dogue De Bordeaux ",
+                "sr": " Dog De Bordeo"
+              }
+            },
+            {
+              "value": "dorsetOldeTymeBulldogge",
+              "displayValue": {
+                "en": "Dorset Olde Tyme Bulldogge ",
+                "sr": " Dorski olde tajm buldog"
+              }
+            },
+            {
+              "value": "doubleDoodle",
+              "displayValue": {
+                "en": "Double Doodle ",
+                "sr": " Dabl Dudl"
+              }
+            },
+            {
+              "value": "doxiepoo",
+              "displayValue": {
+                "en": "Doxiepoo ",
+                "sr": " Doksi pu"
+              }
+            },
+            {
+              "value": "englishBullTerrier",
+              "displayValue": {
+                "en": "English Bull Terrier ",
+                "sr": " Engleski bul terijer"
+              }
+            },
+            {
+              "value": "englishBulldog",
+              "displayValue": {
+                "en": "English Bulldog ",
+                "sr": " Engleski buldog"
+              }
+            },
+            {
+              "value": "englishSetter",
+              "displayValue": {
+                "en": "English Setter ",
+                "sr": " Engleski seter"
+              }
+            },
+            {
+              "value": "englishSpringerSpaniel",
+              "displayValue": {
+                "en": "English Springer Spaniel ",
+                "sr": " Engleski springer španijel"
+              }
+            },
+            {
+              "value": "englishToyTerrier",
+              "displayValue": {
+                "en": "English Toy Terrier ",
+                "sr": " Engleski toj terijer"
+              }
+            },
+            {
+              "value": "entlebucherMountainDog",
+              "displayValue": {
+                "en": "Entlebucher Mountain Dog ",
+                "sr": " Entlebuherski planinski pas"
+              }
+            },
+            {
+              "value": "estrelaMountainDog",
+              "displayValue": {
+                "en": "Estrela Mountain Dog ",
+                "sr": " Estrela planinski pas"
+              }
+            },
+            {
+              "value": "eurasier",
+              "displayValue": {
+                "en": "Eurasier ",
+                "sr": " Euroazijat"
+              }
+            },
+            {
+              "value": "fieldSpaniel",
+              "displayValue": {
+                "en": "Field Spaniel ",
+                "sr": " Fild španijel"
+              }
+            },
+            {
+              "value": "finnishLapphund",
+              "displayValue": {
+                "en": "Finnish Lapphund ",
+                "sr": " Finski laponski pas"
+              }
+            },
+            {
+              "value": "finnishSpitz",
+              "displayValue": {
+                "en": "Finnish Spitz ",
+                "sr": " Finski spic"
+              }
+            },
+            {
+              "value": "flatCoatedRetriever",
+              "displayValue": {
+                "en": "Flat coated Retriever ",
+                "sr": " Flat koutid retriver"
+              }
+            },
+            {
+              "value": "foxhound",
+              "displayValue": {
+                "en": "Foxhound ",
+                "sr": " Foks hund"
+              }
+            },
+            {
+              "value": "foxTerrier",
+              "displayValue": {
+                "en": "Fox Terrier ",
+                "sr": " Foks terijer"
+              }
+            },
+            {
+              "value": "frenchBulldog",
+              "displayValue": {
+                "en": "French Bulldog ",
+                "sr": " Francuski buldog"
+              }
+            },
+            {
+              "value": "frug",
+              "displayValue": {
+                "en": "Frug ",
+                "sr": " Frug"
+              }
+            },
+            {
+              "value": "germanLonghairedPointer",
+              "displayValue": {
+                "en": "German Longhaired Pointer ",
+                "sr": " Nemački dugodlaki ptičar"
+              }
+            },
+            {
+              "value": "germanShepherd",
+              "displayValue": {
+                "en": "German Shepherd ",
+                "sr": " Nemački ovčar"
+              }
+            },
+            {
+              "value": "germanShorthairedPointer",
+              "displayValue": {
+                "en": "German Shorthaired Pointer ",
+                "sr": " Nemački kratkodlaki ptičar"
+              }
+            },
+            {
+              "value": "germanSpitz",
+              "displayValue": {
+                "en": "German Spitz ",
+                "sr": " Nemački spic"
+              }
+            },
+            {
+              "value": "germanWirehairedPointer",
+              "displayValue": {
+                "en": "German Wirehaired Pointer ",
+                "sr": " Nemački žičar"
+              }
+            },
+            {
+              "value": "giantSchnauzer",
+              "displayValue": {
+                "en": "Giant Schnauzer ",
+                "sr": " Džinat šnauzer"
+              }
+            },
+            {
+              "value": "glenOfImaalTerrier",
+              "displayValue": {
+                "en": "Glen of Imaal Terrier ",
+                "sr": " Glen od Imaal terijer"
+              }
+            },
+            {
+              "value": "goldador",
+              "displayValue": {
+                "en": "Goldador ",
+                "sr": " Goldador"
+              }
+            },
+            {
+              "value": "goldendoodle",
+              "displayValue": {
+                "en": "Goldendoodle ",
+                "sr": " Goldendudl"
+              }
+            },
+            {
+              "value": "goldenRetriever",
+              "displayValue": {
+                "en": "Golden Retriever ",
+                "sr": " Zlatni retriver"
+              }
+            },
+            {
+              "value": "gordonSetter",
+              "displayValue": {
+                "en": "Gordon Setter ",
+                "sr": " Gordon seter"
+              }
+            },
+            {
+              "value": "grandBleuDeGascogne",
+              "displayValue": {
+                "en": "Grand Bleu De Gascogne ",
+                "sr": " Grand blu de Gaskonja"
+              }
+            },
+            {
+              "value": "greatDane",
+              "displayValue": {
+                "en": "Great Dane ",
+                "sr": " Nemački džin"
+              }
+            },
+            {
+              "value": "greaterSwissMountainDog",
+              "displayValue": {
+                "en": "Greater Swiss Mountain Dog ",
+                "sr": " Veliki švajcarski planinski pas"
+              }
+            },
+            {
+              "value": "greenlandDog",
+              "displayValue": {
+                "en": "Greenland Dog ",
+                "sr": " Grenlandski pas"
+              }
+            },
+            {
+              "value": "greyhound",
+              "displayValue": {
+                "en": "Greyhound ",
+                "sr": " Grejhund"
+              }
+            },
+            {
+              "value": "griffonBruxellois",
+              "displayValue": {
+                "en": "Griffon Bruxellois ",
+                "sr": " Grifon briselski"
+              }
+            },
+            {
+              "value": "hamiltonstovare",
+              "displayValue": {
+                "en": "Hamiltonstovare ",
+                "sr": " Hamiltonstover"
+              }
+            },
+            {
+              "value": "harrier",
+              "displayValue": {
+                "en": "Harrier ",
+                "sr": " Harier"
+              }
+            },
+            {
+              "value": "havanese",
+              "displayValue": {
+                "en": "Havanese ",
+                "sr": " Havanski bišon"
+              }
+            },
+            {
+              "value": "highland",
+              "displayValue": {
+                "en": "Highland ",
+                "sr": " Hailend terijer"
+              }
+            },
+            {
+              "value": "hovawart",
+              "displayValue": {
+                "en": "Hovawart ",
+                "sr": " Hovavart"
+              }
+            },
+            {
+              "value": "hungarianKuvasz",
+              "displayValue": {
+                "en": "Hungarian Kuvasz ",
+                "sr": " Mađarski kuvas"
+              }
+            },
+            {
+              "value": "hungarianPuli",
+              "displayValue": {
+                "en": "Hungarian Puli ",
+                "sr": " Mađarski puli"
+              }
+            },
+            {
+              "value": "hungarianPumi",
+              "displayValue": {
+                "en": "Hungarian Pumi ",
+                "sr": " Mađarski pumi"
+              }
+            },
+            {
+              "value": "hungarianVizsla",
+              "displayValue": {
+                "en": "Hungarian Vizsla ",
+                "sr": " Mađarski vižla"
+              }
+            },
+            {
+              "value": "huntaway",
+              "displayValue": {
+                "en": "Huntaway ",
+                "sr": " Hantavej"
+              }
+            },
+            {
+              "value": "ibizanHound",
+              "displayValue": {
+                "en": "Ibizan Hound ",
+                "sr": " Ibicijanski hrt"
+              }
+            },
+            {
+              "value": "irishDoodle",
+              "displayValue": {
+                "en": "Irish Doodle ",
+                "sr": " Irska pudla"
+              }
+            },
+            {
+              "value": "irishSetter",
+              "displayValue": {
+                "en": "Irish Setter ",
+                "sr": " Irska seter"
+              }
+            },
+            {
+              "value": "irishTerrier",
+              "displayValue": {
+                "en": "Irish Terrier ",
+                "sr": " Irska terijer"
+              }
+            },
+            {
+              "value": "irishWaterSpaniel",
+              "displayValue": {
+                "en": "Irish Water Spaniel ",
+                "sr": " Irska vodeni španijel"
+              }
+            },
+            {
+              "value": "irishWolfhound",
+              "displayValue": {
+                "en": "Irish Wolfhound ",
+                "sr": " Irska vučja hrtad"
+              }
+            },
+            {
+              "value": "italianGreyhound",
+              "displayValue": {
+                "en": "Italian Greyhound ",
+                "sr": " Italijanski hrt"
+              }
+            },
+            {
+              "value": "italianSpinone",
+              "displayValue": {
+                "en": "Italian Spinone ",
+                "sr": " Italijanski spinon"
+              }
+            },
+            {
+              "value": "jackapoo",
+              "displayValue": {
+                "en": "Jackapoo ",
+                "sr": " Džekapu"
+              }
+            },
+            {
+              "value": "jackRussell",
+              "displayValue": {
+                "en": "Jack Russell ",
+                "sr": " Džek rasel terijer"
+              }
+            },
+            {
+              "value": "jagdterrier",
+              "displayValue": {
+                "en": "Jagdterrier ",
+                "sr": " Jagd terijer"
+              }
+            },
+            {
+              "value": "japaneseAkitaInu",
+              "displayValue": {
+                "en": "Japanese Akita Inu ",
+                "sr": " Japanski akita inu"
+              }
+            },
+            {
+              "value": "japaneseChin",
+              "displayValue": {
+                "en": "Japanese Chin ",
+                "sr": " Japanski čin"
+              }
+            },
+            {
+              "value": "japaneseShibaInu",
+              "displayValue": {
+                "en": "Japanese Shiba Inu ",
+                "sr": " Japanski šiba inu"
+              }
+            },
+            {
+              "value": "japaneseSpitz",
+              "displayValue": {
+                "en": "Japanese Spitz ",
+                "sr": " Japanski spic"
+              }
+            },
+            {
+              "value": "jug",
+              "displayValue": {
+                "en": "Jug ",
+                "sr": " Džag"
+              }
+            },
+            {
+              "value": "keeshond",
+              "displayValue": {
+                "en": "Keeshond ",
+                "sr": " Kizond"
+              }
+            },
+            {
+              "value": "kerryBlueTerrier",
+              "displayValue": {
+                "en": "Kerry Blue Terrier ",
+                "sr": " Keri plavi terijer"
+              }
+            },
+            {
+              "value": "kingCharlesSpaniel",
+              "displayValue": {
+                "en": "King Charles Spaniel ",
+                "sr": " Kralj Čarls španijel"
+              }
+            },
+            {
+              "value": "kishuDog",
+              "displayValue": {
+                "en": "Kishu dog ",
+                "sr": " Kisu pas"
+              }
+            },
+            {
+              "value": "komondor",
+              "displayValue": {
+                "en": "Komondor ",
+                "sr": " Komondor"
+              }
+            },
+            {
+              "value": "kooikerhondje",
+              "displayValue": {
+                "en": "Kooikerhondje ",
+                "sr": " Kojkerhondje"
+              }
+            },
+            {
+              "value": "koreanJindo",
+              "displayValue": {
+                "en": "Korean Jindo ",
+                "sr": " Korejski džindo"
+              }
+            },
+            {
+              "value": "korthalsGriffon",
+              "displayValue": {
+                "en": "Korthals Griffon ",
+                "sr": " Kortals grifon"
+              }
+            },
+            {
+              "value": "kromfohrlander",
+              "displayValue": {
+                "en": "Kromfohrlander ",
+                "sr": " Kromfohrlender"
+              }
+            },
+            {
+              "value": "labradoodle",
+              "displayValue": {
+                "en": "Labradoodle ",
+                "sr": " Labradudl"
+              }
+            },
+            {
+              "value": "labradorRetriever",
+              "displayValue": {
+                "en": "Labrador Retriever ",
+                "sr": " Labrador retriver"
+              }
+            },
+            {
+              "value": "lagottoRomagnolo",
+              "displayValue": {
+                "en": "Lagotto Romagnolo ",
+                "sr": " Lagoto Romanjolo"
+              }
+            },
+            {
+              "value": "lakelandTerrier",
+              "displayValue": {
+                "en": "Lakeland Terrier ",
+                "sr": " Lejkland terijer"
+              }
+            },
+            {
+              "value": "lancashireHeeler",
+              "displayValue": {
+                "en": "Lancashire Heeler ",
+                "sr": " Lankešir hilr"
+              }
+            },
+            {
+              "value": "largeMunsterlander",
+              "displayValue": {
+                "en": "Large Munsterlander ",
+                "sr": " Veliki munerlender"
+              }
+            },
+            {
+              "value": "leonberger",
+              "displayValue": {
+                "en": "Leonberger ",
+                "sr": " Leonberger"
+              }
+            },
+            {
+              "value": "lhasaApso",
+              "displayValue": {
+                "en": "Lhasa Apso ",
+                "sr": " Lhasa apso"
+              }
+            },
+            {
+              "value": "lhasapoo",
+              "displayValue": {
+                "en": "Lhasapoo ",
+                "sr": " Lhasapu"
+              }
+            },
+            {
+              "value": "lowchen",
+              "displayValue": {
+                "en": "Lowchen ",
+                "sr": " Lošen"
+              }
+            },
+            {
+              "value": "lurcher",
+              "displayValue": {
+                "en": "Lurcher ",
+                "sr": " Lurčer"
+              }
+            },
+            {
+              "value": "malshi",
+              "displayValue": {
+                "en": "Malshi ",
+                "sr": " Malši"
+              }
+            },
+            {
+              "value": "maltese",
+              "displayValue": {
+                "en": "Maltese ",
+                "sr": " Maltezer"
+              }
+            },
+            {
+              "value": "maltipoo",
+              "displayValue": {
+                "en": "Maltipoo ",
+                "sr": " Malcipu"
+              }
+            },
+            {
+              "value": "manchesterTerrier",
+              "displayValue": {
+                "en": "Manchester Terrier ",
+                "sr": " Mančester terijer"
+              }
+            },
+            {
+              "value": "maremmaSheepdog",
+              "displayValue": {
+                "en": "Maremma Sheepdog ",
+                "sr": " Marema ovčarski pas"
+              }
+            },
+            {
+              "value": "mastiff",
+              "displayValue": {
+                "en": "Mastiff ",
+                "sr": " Mastif"
+              }
+            },
+            {
+              "value": "mexicanHairless",
+              "displayValue": {
+                "en": "Mexican Hairless ",
+                "sr": " Meksički bezdlaki pas"
+              }
+            },
+            {
+              "value": "miKi",
+              "displayValue": {
+                "en": "Mi-Ki",
+                "sr": "Mi-Ki"
+              }
+            },
+            {
+              "value": "miniatureAmericanShepherd",
+              "displayValue": {
+                "en": "Miniature American Shepherd ",
+                "sr": " Mini američki ovčar"
+              }
+            },
+            {
+              "value": "miniatureDachshund",
+              "displayValue": {
+                "en": "Miniature Dachshund ",
+                "sr": " Mini tegeterijer"
+              }
+            },
+            {
+              "value": "miniaturePinscher",
+              "displayValue": {
+                "en": "Miniature Pinscher ",
+                "sr": " Mini pinč"
+              }
+            },
+            {
+              "value": "miniaturePoodle",
+              "displayValue": {
+                "en": "Miniature Poodle ",
+                "sr": " Mini pudla"
+              }
+            },
+            {
+              "value": "miniatureSchnauzer",
+              "displayValue": {
+                "en": "Miniature Schnauzer ",
+                "sr": " Mini šnauzer"
+              }
+            },
+            {
+              "value": "mixedBreed",
+              "displayValue": {
+                "en": "Mixed Breed ",
+                "sr": " Mešavina rasa"
+              }
+            },
+            {
+              "value": "morkie",
+              "displayValue": {
+                "en": "Morkie ",
+                "sr": " Morki"
+              }
+            },
+            {
+              "value": "neapolitanMastiff",
+              "displayValue": {
+                "en": "Neapolitan Mastiff ",
+                "sr": " Neapolitanski mastif"
+              }
+            },
+            {
+              "value": "newfoundland",
+              "displayValue": {
+                "en": "Newfoundland ",
+                "sr": " Njufaundlend"
+              }
+            },
+            {
+              "value": "norfolkTerrier",
+              "displayValue": {
+                "en": "Norfolk Terrier ",
+                "sr": " Norfok terijer"
+              }
+            },
+            {
+              "value": "northernInuit",
+              "displayValue": {
+                "en": "Northern Inuit ",
+                "sr": " Severni Inuit"
+              }
+            },
+            {
+              "value": "norwegianBuhund",
+              "displayValue": {
+                "en": "Norwegian Buhund ",
+                "sr": " Norveški buhund"
+              }
+            },
+            {
+              "value": "norwegianElkhound",
+              "displayValue": {
+                "en": "Norwegian Elkhound ",
+                "sr": " Norveški elkhund"
+              }
+            },
+            {
+              "value": "norwichTerrier",
+              "displayValue": {
+                "en": "Norwich Terrier ",
+                "sr": " Norički terijer"
+              }
+            },
+            {
+              "value": "novaScotiaDuckTollingRetriever",
+              "displayValue": {
+                "en": "Nova Scotia Duck Tolling Retriever ",
+                "sr": " Novoskotski retriver za lov patki"
+              }
+            },
+            {
+              "value": "oldeEnglishBulldogge",
+              "displayValue": {
+                "en": "Olde English Bulldogge ",
+                "sr": " Stari engleski buldog"
+              }
+            },
+            {
+              "value": "oldEnglishSheepdog",
+              "displayValue": {
+                "en": "Old English Sheepdog ",
+                "sr": " Staro engleski ovčar"
+              }
+            },
+            {
+              "value": "oldTymeBulldog",
+              "displayValue": {
+                "en": "Old Tyme Bulldog ",
+                "sr": " Old tajm buldog"
+              }
+            },
+            {
+              "value": "otterhound",
+              "displayValue": {
+                "en": "Otterhound ",
+                "sr": " Otterhund"
+              }
+            },
+            {
+              "value": "papillon",
+              "displayValue": {
+                "en": "Papillon ",
+                "sr": " Papilon"
+              }
+            },
+            {
+              "value": "parsonRussell",
+              "displayValue": {
+                "en": "Parson Russell ",
+                "sr": " Parson Rasel terijer"
+              }
+            },
+            {
+              "value": "patterdaleTerrier",
+              "displayValue": {
+                "en": "Patterdale Terrier ",
+                "sr": " Paterdejl terijer"
+              }
+            },
+            {
+              "value": "patterjack",
+              "displayValue": {
+                "en": "Patterjack ",
+                "sr": " Paterdžek"
+              }
+            },
+            {
+              "value": "pekingese",
+              "displayValue": {
+                "en": "Pekingese ",
+                "sr": " Pekinezer"
+              }
+            },
+            {
+              "value": "pharaohHound",
+              "displayValue": {
+                "en": "Pharaoh Hound ",
+                "sr": " Faroski hrt"
+              }
+            },
+            {
+              "value": "picardySpaniel",
+              "displayValue": {
+                "en": "Picardy Spaniel ",
+                "sr": " Pikardiski španijel"
+              }
+            },
+            {
+              "value": "pinscher",
+              "displayValue": {
+                "en": "Pinscher ",
+                "sr": " Pinč"
+              }
+            },
+            {
+              "value": "plummerTerrier",
+              "displayValue": {
+                "en": "Plummer Terrier ",
+                "sr": " Plamer terijer"
+              }
+            },
+            {
+              "value": "pointer",
+              "displayValue": {
+                "en": "Pointer ",
+                "sr": " Pojnter"
+              }
+            },
+            {
+              "value": "polishLowlandSheepdog",
+              "displayValue": {
+                "en": "Polish Lowland Sheepdog ",
+                "sr": " Poljski niskogorski ovčar"
+              }
+            },
+            {
+              "value": "pomapoo",
+              "displayValue": {
+                "en": "Pomapoo ",
+                "sr": " Pomapu"
+              }
+            },
+            {
+              "value": "pomchi",
+              "displayValue": {
+                "en": "Pomchi ",
+                "sr": " Pomči"
+              }
+            },
+            {
+              "value": "pomeranian",
+              "displayValue": {
+                "en": "Pomeranian ",
+                "sr": " Pomeranac"
+              }
+            },
+            {
+              "value": "pomsky",
+              "displayValue": {
+                "en": "Pomsky ",
+                "sr": " Pomski"
+              }
+            },
+            {
+              "value": "poochon",
+              "displayValue": {
+                "en": "Poochon ",
+                "sr": " Pučon"
+              }
+            },
+            {
+              "value": "poodle",
+              "displayValue": {
+                "en": "Poodle ",
+                "sr": " Pudla"
+              }
+            },
+            {
+              "value": "portuguesePodengo",
+              "displayValue": {
+                "en": "Portuguese Podengo ",
+                "sr": " Portugalski podengo"
+              }
+            },
+            {
+              "value": "portugueseSheepdog",
+              "displayValue": {
+                "en": "Portuguese Sheepdog ",
+                "sr": " Portugalski ovčarski pas"
+              }
+            },
+            {
+              "value": "portugueseWaterDog",
+              "displayValue": {
+                "en": "Portuguese Water Dog ",
+                "sr": " Portugalski vodeni pas"
+              }
+            },
+            {
+              "value": "presaCanario",
+              "displayValue": {
+                "en": "Presa Canario ",
+                "sr": " Presa kanario"
+              }
+            },
+            {
+              "value": "pug",
+              "displayValue": {
+                "en": "Pug ",
+                "sr": " Mops"
+              }
+            },
+            {
+              "value": "puggle",
+              "displayValue": {
+                "en": "Puggle ",
+                "sr": " Pagl"
+              }
+            },
+            {
+              "value": "pyreneanMastiff",
+              "displayValue": {
+                "en": "Pyrenean Mastiff ",
+                "sr": " Pirenejski mastif"
+              }
+            },
+            {
+              "value": "pyreneanMountainDog",
+              "displayValue": {
+                "en": "Pyrenean Mountain Dog ",
+                "sr": " Pirenejski planinski pas"
+              }
+            },
+            {
+              "value": "pyreneanSheepdog",
+              "displayValue": {
+                "en": "Pyrenean Sheepdog ",
+                "sr": " Pirenejski ovčarski pas"
+              }
+            },
+            {
+              "value": "rhodesianRidgeback",
+              "displayValue": {
+                "en": "Rhodesian Ridgeback ",
+                "sr": " Rodensijan ridžbek"
+              }
+            },
+            {
+              "value": "rottweiler",
+              "displayValue": {
+                "en": "Rottweiler ",
+                "sr": " Rotvajler"
+              }
+            },
+            {
+              "value": "roughCollie",
+              "displayValue": {
+                "en": "Rough Collie ",
+                "sr": " Rof kolli"
+              }
+            },
+            {
+              "value": "russianBlackTerrier",
+              "displayValue": {
+                "en": "Russian Black Terrier ",
+                "sr": " Ruski crni terijer"
+              }
+            },
+            {
+              "value": "russianToyTerrier",
+              "displayValue": {
+                "en": "Russian Toy Terrier ",
+                "sr": " Ruski toj terijer"
+              }
+            },
+            {
+              "value": "saarloosWolfdog",
+              "displayValue": {
+                "en": "Saarloos Wolfdog ",
+                "sr": " Sarlos vuk pas"
+              }
+            },
+            {
+              "value": "saintBernard",
+              "displayValue": {
+                "en": "Saint Bernard ",
+                "sr": " Bernardinac"
+              }
+            },
+            {
+              "value": "saluki",
+              "displayValue": {
+                "en": "Saluki ",
+                "sr": " Saluki"
+              }
+            },
+            {
+              "value": "samoyed",
+              "displayValue": {
+                "en": "Samoyed ",
+                "sr": " Samojed"
+              }
+            },
+            {
+              "value": "schipperke",
+              "displayValue": {
+                "en": "Schipperke ",
+                "sr": " Šiprker"
+              }
+            },
+            {
+              "value": "schnauzer",
+              "displayValue": {
+                "en": "Schnauzer ",
+                "sr": " Šnauzer"
+              }
+            },
+            {
+              "value": "schnoodle",
+              "displayValue": {
+                "en": "Schnoodle ",
+                "sr": " Šnudl"
+              }
+            },
+            {
+              "value": "scottishTerrier",
+              "displayValue": {
+                "en": "Scottish Terrier ",
+                "sr": " Škotski terijer"
+              }
+            },
+            {
+              "value": "sealyhamTerrier",
+              "displayValue": {
+                "en": "Sealyham Terrier ",
+                "sr": " Silhem terijer"
+              }
+            },
+            {
+              "value": "segugioItaliano",
+              "displayValue": {
+                "en": "Segugio Italiano ",
+                "sr": " Segudžo italijano"
+              }
+            },
+            {
+              "value": "sharPei",
+              "displayValue": {
+                "en": "Shar Pei ",
+                "sr": " Šar pej"
+              }
+            },
+            {
+              "value": "sheepadoodle",
+              "displayValue": {
+                "en": "Sheepadoodle ",
+                "sr": " Šipudl"
+              }
+            },
+            {
+              "value": "shepsky",
+              "displayValue": {
+                "en": "Shepsky ",
+                "sr": " Šepski"
+              }
+            },
+            {
+              "value": "shetlandSheepdog",
+              "displayValue": {
+                "en": "Shetland Sheepdog ",
+                "sr": " Šetlandski ovčarski pas"
+              }
+            },
+            {
+              "value": "shichon",
+              "displayValue": {
+                "en": "Shichon ",
+                "sr": " Šičon"
+              }
+            },
+            {
+              "value": "shihpoo",
+              "displayValue": {
+                "en": "Shihpoo ",
+                "sr": " Šipu"
+              }
+            },
+            {
+              "value": "shihTzu",
+              "displayValue": {
+                "en": "Shih Tzu ",
+                "sr": " Šicu"
+              }
+            },
+            {
+              "value": "shorkie",
+              "displayValue": {
+                "en": "Shorkie ",
+                "sr": " Šorki"
+              }
+            },
+            {
+              "value": "shortyBull",
+              "displayValue": {
+                "en": "Shorty Bull ",
+                "sr": " Šorti bul"
+              }
+            },
+            {
+              "value": "siberianHusky",
+              "displayValue": {
+                "en": "Siberian Husky ",
+                "sr": " Sibirska haski"
+              }
+            },
+            {
+              "value": "skyeTerrier",
+              "displayValue": {
+                "en": "Skye Terrier ",
+                "sr": " Skaj terijer"
+              }
+            },
+            {
+              "value": "sloughi",
+              "displayValue": {
+                "en": "Sloughi ",
+                "sr": " Slauji"
+              }
+            },
+            {
+              "value": "smoothCollie",
+              "displayValue": {
+                "en": "Smooth Collie ",
+                "sr": " Glatakoli"
+              }
+            },
+            {
+              "value": "softCoatedWheatenTerrier",
+              "displayValue": {
+                "en": "Soft Coated Wheaten Terrier ",
+                "sr": " Softer koated vitin terijer"
+              }
+            },
+            {
+              "value": "spanishWaterDog",
+              "displayValue": {
+                "en": "Spanish Water Dog ",
+                "sr": " Španski vodeni pas"
+              }
+            },
+            {
+              "value": "sportingLucasTerrier",
+              "displayValue": {
+                "en": "Sporting Lucas Terrier ",
+                "sr": " Sportin Lukas terijer"
+              }
+            },
+            {
+              "value": "springador",
+              "displayValue": {
+                "en": "Springador ",
+                "sr": " Springador"
+              }
+            },
+            {
+              "value": "sprocker",
+              "displayValue": {
+                "en": "Sprocker ",
+                "sr": " Sproker"
+              }
+            },
+            {
+              "value": "sprollie",
+              "displayValue": {
+                "en": "Sprollie ",
+                "sr": " Sproli"
+              }
+            },
+            {
+              "value": "sproodle",
+              "displayValue": {
+                "en": "Sproodle ",
+                "sr": " Sprodul"
+              }
+            },
+            {
+              "value": "stabyhoun",
+              "displayValue": {
+                "en": "Stabyhoun ",
+                "sr": " Stabihun"
+              }
+            },
+            {
+              "value": "staffordshireBullTerrier",
+              "displayValue": {
+                "en": "Staffordshire Bull Terrier ",
+                "sr": " Stafordski bul terijer"
+              }
+            },
+            {
+              "value": "standardPoodle",
+              "displayValue": {
+                "en": "Standard Poodle ",
+                "sr": " Standard pudla"
+              }
+            },
+            {
+              "value": "sussexSpaniel",
+              "displayValue": {
+                "en": "Sussex Spaniel ",
+                "sr": " Saseks španijel"
+              }
+            },
+            {
+              "value": "swedishLapphund",
+              "displayValue": {
+                "en": "Swedish Lapphund ",
+                "sr": " Švedski laponski pas"
+              }
+            },
+            {
+              "value": "swedishVallhund",
+              "displayValue": {
+                "en": "Swedish Vallhund ",
+                "sr": " Švedski valhund"
+              }
+            },
+            {
+              "value": "thaiRidgeback",
+              "displayValue": {
+                "en": "Thai Ridgeback ",
+                "sr": " Tajski ridžbek"
+              }
+            },
+            {
+              "value": "tibetanMastiff",
+              "displayValue": {
+                "en": "Tibetan Mastiff ",
+                "sr": " Tibetanski mastif"
+              }
+            },
+            {
+              "value": "tibetanSpaniel",
+              "displayValue": {
+                "en": "Tibetan Spaniel ",
+                "sr": " Tibetanski španijel"
+              }
+            },
+            {
+              "value": "tibetanTerrier",
+              "displayValue": {
+                "en": "Tibetan Terrier ",
+                "sr": " Tibetanski terijer"
+              }
+            },
+            {
+              "value": "toyPoodle",
+              "displayValue": {
+                "en": "Toy Poodle ",
+                "sr": " Toj pudla"
+              }
+            },
+            {
+              "value": "turkishKangal",
+              "displayValue": {
+                "en": "Turkish Kangal ",
+                "sr": " Turski kangal"
+              }
+            },
+            {
+              "value": "utonagan",
+              "displayValue": {
+                "en": "Utonagan ",
+                "sr": " Utonagan"
+              }
+            },
+            {
+              "value": "weimaraner",
+              "displayValue": {
+                "en": "Weimaraner ",
+                "sr": " Vajmaraner"
+              }
+            },
+            {
+              "value": "welshCollie",
+              "displayValue": {
+                "en": "Welsh Collie ",
+                "sr": " Velš koli"
+              }
+            },
+            {
+              "value": "welshCorgiCardigan",
+              "displayValue": {
+                "en": "Welsh Corgi Cardigan ",
+                "sr": " Velš korgi kardigan"
+              }
+            },
+            {
+              "value": "welshCorgiPembroke",
+              "displayValue": {
+                "en": "Welsh Corgi Pembroke ",
+                "sr": " Velš korgi pembruok"
+              }
+            },
+            {
+              "value": "welshSpringerSpaniel",
+              "displayValue": {
+                "en": "Welsh Springer Spaniel ",
+                "sr": " Velš springer španijel"
+              }
+            },
+            {
+              "value": "welshTerrier",
+              "displayValue": {
+                "en": "Welsh Terrier ",
+                "sr": " Velš terijer"
+              }
+            },
+            {
+              "value": "westHighlandTerrier",
+              "displayValue": {
+                "en": "West Highland Terrier ",
+                "sr": " Zapadni vislandski beli terijer"
+              }
+            },
+            {
+              "value": "whippet",
+              "displayValue": {
+                "en": "Whippet ",
+                "sr": " Vipet"
+              }
+            },
+            {
+              "value": "whiteSwissShepherd",
+              "displayValue": {
+                "en": "White Swiss Shepherd ",
+                "sr": " Beli švajcarski ovčar"
+              }
+            },
+            {
+              "value": "yochon",
+              "displayValue": {
+                "en": "Yochon ",
+                "sr": " Jochon"
+              }
+            },
+            {
+              "value": "yorkiepoo",
+              "displayValue": {
+                "en": "Yorkiepoo ",
+                "sr": " Jorkipu"
+              }
+            },
+            {
+              "value": "yorkshireTerrier",
+              "displayValue": {
+                "en": "Yorkshire Terrier ",
+                "sr": " Jorkširski terijer"
+              }
+            },
+            {
+              "value": "zuchon",
+              "displayValue": {
+                "en": "Zuchon ",
+                "sr": " Zučon"
+              }
+            }
+          ]
+        },
+        {
+          "value": "cats",
+          "displayValue": {
+            "en": "Cats",
+            "sr": "Mačke"
+          },
+          "childrens": [
+            {
+              "value": "abyssinian",
+              "displayValue": {
+                "en": "Abyssinian ",
+                "sr": " Abesinska"
+              }
+            },
+            {
+              "value": "aegean",
+              "displayValue": {
+                "en": "Aegean ",
+                "sr": " Egejska"
+              }
+            },
+            {
+              "value": "americanBobtail",
+              "displayValue": {
+                "en": "American Bobtail ",
+                "sr": " Američki bobtel"
+              }
+            },
+            {
+              "value": "americanCurl",
+              "displayValue": {
+                "en": "American Curl ",
+                "sr": " Američki kravlji"
+              }
+            },
+            {
+              "value": "americanShorthair",
+              "displayValue": {
+                "en": "American Shorthair ",
+                "sr": " Američka kratkodlaka"
+              }
+            },
+            {
+              "value": "americanWirehair",
+              "displayValue": {
+                "en": "American Wirehair ",
+                "sr": " Američka žičara"
+              }
+            },
+            {
+              "value": "aphroditeGiant",
+              "displayValue": {
+                "en": "Aphrodite Giant ",
+                "sr": " Afrodita džin"
+              }
+            },
+            {
+              "value": "arabianMau",
+              "displayValue": {
+                "en": "Arabian Mau ",
+                "sr": " Arapski mau"
+              }
+            },
+            {
+              "value": "arcticCurl",
+              "displayValue": {
+                "en": "Arctic Curl ",
+                "sr": " Arktički kravlji"
+              }
+            },
+            {
+              "value": "asian",
+              "displayValue": {
+                "en": "Asian ",
+                "sr": " Azijska"
+              }
+            },
+            {
+              "value": "australianMist",
+              "displayValue": {
+                "en": "Australian Mist ",
+                "sr": " Australijska magla"
+              }
+            },
+            {
+              "value": "balinese",
+              "displayValue": {
+                "en": "Balinese ",
+                "sr": " Balineza"
+              }
+            },
+            {
+              "value": "bengal",
+              "displayValue": {
+                "en": "Bengal ",
+                "sr": " Bengal"
+              }
+            },
+            {
+              "value": "birman",
+              "displayValue": {
+                "en": "Birman ",
+                "sr": " Birmanska"
+              }
+            },
+            {
+              "value": "bombay",
+              "displayValue": {
+                "en": "Bombay ",
+                "sr": " Bombaj"
+              }
+            },
+            {
+              "value": "bramble",
+              "displayValue": {
+                "en": "Bramble ",
+                "sr": " Trnja"
+              }
+            },
+            {
+              "value": "brazilianShorthair",
+              "displayValue": {
+                "en": "Brazilian Shorthair ",
+                "sr": " Brazilski kratkodlaki"
+              }
+            },
+            {
+              "value": "britishLonghair",
+              "displayValue": {
+                "en": "British Longhair ",
+                "sr": " Britanska dugodlaka"
+              }
+            },
+            {
+              "value": "britishShorthair",
+              "displayValue": {
+                "en": "British Shorthair ",
+                "sr": " Britanska kratkodlaka"
+              }
+            },
+            {
+              "value": "burmese",
+              "displayValue": {
+                "en": "Burmese ",
+                "sr": " Birmanska"
+              }
+            },
+            {
+              "value": "burmilla",
+              "displayValue": {
+                "en": "Burmilla ",
+                "sr": " Burmilanska"
+              }
+            },
+            {
+              "value": "californiaSpangled",
+              "displayValue": {
+                "en": "California Spangled ",
+                "sr": " Kalifornijski šareni"
+              }
+            },
+            {
+              "value": "chantillyTiffany",
+              "displayValue": {
+                "en": "Chantilly-Tiffany",
+                "sr": " Šantilija-Tifani"
+              }
+            },
+            {
+              "value": "chartreux",
+              "displayValue": {
+                "en": "Chartreux ",
+                "sr": " Šartruz"
+              }
+            },
+            {
+              "value": "chausie",
+              "displayValue": {
+                "en": "Chausie ",
+                "sr": " Šauzi"
+              }
+            },
+            {
+              "value": "cornishRex",
+              "displayValue": {
+                "en": "Cornish Rex ",
+                "sr": " Korniš reks"
+              }
+            },
+            {
+              "value": "devonRex",
+              "displayValue": {
+                "en": "Devon Rex ",
+                "sr": " Devon reks"
+              }
+            },
+            {
+              "value": "dwelf",
+              "displayValue": {
+                "en": "Dwelf ",
+                "sr": " Dvelf"
+              }
+            },
+            {
+              "value": "egyptianMau",
+              "displayValue": {
+                "en": "Egyptian Mau ",
+                "sr": " Egipatski mau"
+              }
+            },
+            {
+              "value": "european",
+              "displayValue": {
+                "en": "European ",
+                "sr": " Evropska"
+              }
+            },
+            {
+              "value": "exotic",
+              "displayValue": {
+                "en": "Exotic ",
+                "sr": " Egzotična"
+              }
+            },
+            {
+              "value": "germanRex",
+              "displayValue": {
+                "en": "German Rex ",
+                "sr": " Nemački reks"
+              }
+            },
+            {
+              "value": "havanaBrown",
+              "displayValue": {
+                "en": "Havana Brown ",
+                "sr": " Havanski braun"
+              }
+            },
+            {
+              "value": "highlander",
+              "displayValue": {
+                "en": "Highlander ",
+                "sr": " Hjland"
+              }
+            },
+            {
+              "value": "himalayan",
+              "displayValue": {
+                "en": "Himalayan ",
+                "sr": " Himalajska"
+              }
+            },
+            {
+              "value": "japaneseBobtail",
+              "displayValue": {
+                "en": "Japanese Bobtail ",
+                "sr": " Japanski bobtel"
+              }
+            },
+            {
+              "value": "keetso",
+              "displayValue": {
+                "en": "Keetso ",
+                "sr": " Kitsu"
+              }
+            },
+            {
+              "value": "khaoManee",
+              "displayValue": {
+                "en": "Khao Manee ",
+                "sr": " Khao Mani"
+              }
+            },
+            {
+              "value": "korat",
+              "displayValue": {
+                "en": "Korat ",
+                "sr": " Korat"
+              }
+            },
+            {
+              "value": "koreanBobtail",
+              "displayValue": {
+                "en": "Korean Bobtail ",
+                "sr": " Korejski bobtel"
+              }
+            },
+            {
+              "value": "kornJa",
+              "displayValue": {
+                "en": "Korn Ja ",
+                "sr": " Korn Ja"
+              }
+            },
+            {
+              "value": "kurilianBobtail",
+              "displayValue": {
+                "en": "Kurilian Bobtail ",
+                "sr": " Kurilski bobtel"
+              }
+            },
+            {
+              "value": "laPerm",
+              "displayValue": {
+                "en": "LaPerm ",
+                "sr": " LaPerm"
+              }
+            },
+            {
+              "value": "lykoi",
+              "displayValue": {
+                "en": "Lykoi ",
+                "sr": " Likoi"
+              }
+            },
+            {
+              "value": "maineCoon",
+              "displayValue": {
+                "en": "Maine Coon ",
+                "sr": " Mejn Kun"
+              }
+            },
+            {
+              "value": "manx",
+              "displayValue": {
+                "en": "Manx ",
+                "sr": " Manks"
+              }
+            },
+            {
+              "value": "minskin",
+              "displayValue": {
+                "en": "Minskin ",
+                "sr": " Minskin"
+              }
+            },
+            {
+              "value": "mixedBreed",
+              "displayValue": {
+                "en": "Mixed Breed ",
+                "sr": " Mešavina rasa"
+              }
+            },
+            {
+              "value": "munchkin",
+              "displayValue": {
+                "en": "Munchkin ",
+                "sr": " Mankin"
+              }
+            },
+            {
+              "value": "napoleon",
+              "displayValue": {
+                "en": "Napoleon ",
+                "sr": " Napoleon"
+              }
+            },
+            {
+              "value": "nebelung",
+              "displayValue": {
+                "en": "Nebelung ",
+                "sr": " Nebelung"
+              }
+            },
+            {
+              "value": "norwegianForestCat",
+              "displayValue": {
+                "en": "Norwegian Forest Cat ",
+                "sr": " Norveška šumska mačka"
+              }
+            },
+            {
+              "value": "ocicat",
+              "displayValue": {
+                "en": "Ocicat ",
+                "sr": " Oci mačka"
+              }
+            },
+            {
+              "value": "ojosAzules",
+              "displayValue": {
+                "en": "Ojos Azules ",
+                "sr": " Ojos Azules"
+              }
+            },
+            {
+              "value": "oregonRex",
+              "displayValue": {
+                "en": "Oregon Rex ",
+                "sr": " Oregon reks"
+              }
+            },
+            {
+              "value": "oriental",
+              "displayValue": {
+                "en": "Oriental ",
+                "sr": " Orijentalna"
+              }
+            },
+            {
+              "value": "persian",
+              "displayValue": {
+                "en": "Persian ",
+                "sr": " Persijska"
+              }
+            },
+            {
+              "value": "peterbald",
+              "displayValue": {
+                "en": "Peterbald ",
+                "sr": " Peterbald"
+              }
+            },
+            {
+              "value": "pixieBob",
+              "displayValue": {
+                "en": "Pixie Bob ",
+                "sr": " Piksi bob"
+              }
+            },
+            {
+              "value": "ragaMuffin",
+              "displayValue": {
+                "en": "RagaMuffin ",
+                "sr": " RagaMafin"
+              }
+            },
+            {
+              "value": "ragdoll",
+              "displayValue": {
+                "en": "Ragdoll ",
+                "sr": " Ragdol"
+              }
+            },
+            {
+              "value": "russianBlue",
+              "displayValue": {
+                "en": "Russian Blue ",
+                "sr": " Ruska plava"
+              }
+            },
+            {
+              "value": "savannah",
+              "displayValue": {
+                "en": "Savannah ",
+                "sr": " Savana"
+              }
+            },
+            {
+              "value": "scottishFold",
+              "displayValue": {
+                "en": "Scottish Fold ",
+                "sr": " Škotski folt"
+              }
+            },
+            {
+              "value": "selkirkRex",
+              "displayValue": {
+                "en": "Selkirk Rex ",
+                "sr": " Selkirk reks"
+              }
+            },
+            {
+              "value": "serengeti",
+              "displayValue": {
+                "en": "Serengeti ",
+                "sr": " Serengeti"
+              }
+            },
+            {
+              "value": "siamese",
+              "displayValue": {
+                "en": "Siamese ",
+                "sr": " Sijamska"
+              }
+            },
+            {
+              "value": "siberian",
+              "displayValue": {
+                "en": "Siberian ",
+                "sr": " Sibirska"
+              }
+            },
+            {
+              "value": "singapura",
+              "displayValue": {
+                "en": "Singapura ",
+                "sr": " Singapura"
+              }
+            },
+            {
+              "value": "snowshoe",
+              "displayValue": {
+                "en": "Snowshoe ",
+                "sr": " Snoušu"
+              }
+            },
+            {
+              "value": "sokoke",
+              "displayValue": {
+                "en": "Sokoke ",
+                "sr": " Sokoke"
+              }
+            },
+            {
+              "value": "somali",
+              "displayValue": {
+                "en": "Somali ",
+                "sr": " Somalijka"
+              }
+            },
+            {
+              "value": "sphynx",
+              "displayValue": {
+                "en": "Sphynx ",
+                "sr": " Sfinks"
+              }
+            },
+            {
+              "value": "suphalak",
+              "displayValue": {
+                "en": "Suphalak ",
+                "sr": " Suphalak"
+              }
+            },
+            {
+              "value": "thai",
+              "displayValue": {
+                "en": "Thai ",
+                "sr": " Taj"
+              }
+            },
+            {
+              "value": "tibetan",
+              "displayValue": {
+                "en": "Tibetan ",
+                "sr": " Tibetska"
+              }
+            },
+            {
+              "value": "tiffanie",
+              "displayValue": {
+                "en": "Tiffanie ",
+                "sr": " Tifani"
+              }
+            },
+            {
+              "value": "tonkinese",
+              "displayValue": {
+                "en": "Tonkinese ",
+                "sr": " Tonkin"
+              }
+            },
+            {
+              "value": "toybob",
+              "displayValue": {
+                "en": "Toybob ",
+                "sr": " Toj bob"
+              }
+            },
+            {
+              "value": "toyger",
+              "displayValue": {
+                "en": "Toyger ",
+                "sr": " Tojger"
+              }
+            },
+            {
+              "value": "turkishAngora",
+              "displayValue": {
+                "en": "Turkish Angora ",
+                "sr": " Turska angora"
+              }
+            },
+            {
+              "value": "turkishVan",
+              "displayValue": {
+                "en": "Turkish Van ",
+                "sr": " Turski van"
+              }
+            },
+            {
+              "value": "ukrainianLevkoy",
+              "displayValue": {
+                "en": "Ukrainian Levkoy ",
+                "sr": " Ukrajinski Levkoy"
+              }
+            },
+            {
+              "value": "yorkChocolate",
+              "displayValue": {
+                "en": "York Chocolate ",
+                "sr": " Jork čokolada"
+              }
+            }
+          ]
+        },
+        {
+          "value": "rodents",
+          "displayValue": {
+            "en": "Rodents",
+            "sr": "Glodari"
+          },
+          "childrens": [
+            {
+              "value": "chinchilla",
+              "displayValue": {
+                "en": "Chinchilla ",
+                "sr": " Šinšila"
+              }
+            },
+            {
+              "value": "degus",
+              "displayValue": {
+                "en": "Degus ",
+                "sr": " Degu"
+              }
+            },
+            {
+              "value": "ferret",
+              "displayValue": {
+                "en": "Ferret ",
+                "sr": " Feret"
+              }
+            },
+            {
+              "value": "gerbil",
+              "displayValue": {
+                "en": "Gerbil ",
+                "sr": " Gerbil"
+              }
+            },
+            {
+              "value": "guineaPig",
+              "displayValue": {
+                "en": "Guinea Pig ",
+                "sr": " Praščić"
+              }
+            },
+            {
+              "value": "hamster",
+              "displayValue": {
+                "en": "Hamster ",
+                "sr": " Hrčak"
+              }
+            },
+            {
+              "value": "mixedBreed",
+              "displayValue": {
+                "en": "Mixed Breed ",
+                "sr": " Mešavina rasa"
+              }
+            },
+            {
+              "value": "mouse",
+              "displayValue": {
+                "en": "Mouse ",
+                "sr": " Miš"
+              }
+            },
+            {
+              "value": "pygmyHedgehog",
+              "displayValue": {
+                "en": "Pygmy Hedgehog ",
+                "sr": " Patuljasti jež"
+              }
+            },
+            {
+              "value": "rat",
+              "displayValue": {
+                "en": "Rat ",
+                "sr": " Pacov"
+              }
+            },
+            {
+              "value": "sugarGlider",
+              "displayValue": {
+                "en": "Sugar Glider ",
+                "sr": " Šećerni leteći veverac"
+              }
+            }
+          ]
+        },
+        {
+          "value": "reptiles",
+          "displayValue": {
+            "en": "Reptiles",
+            "sr": "Gmizavci"
+          }
+        },
+        {
+          "value": "rabbits",
+          "displayValue": {
+            "en": "Rabbits",
+            "sr": "Zečevi"
+          }
+        },
+        {
+          "value": "livestock",
+          "displayValue": {
+            "en": "Livestock",
+            "sr": "Stoka"
+          }
+        },
+        {
+          "value": "poultry",
+          "displayValue": {
+            "en": "Poultry",
+            "sr": "Perad"
+          }
+        },
+        {
+          "value": "birds",
+          "displayValue": {
+            "en": "Birds",
+            "sr": "Ptice"
+          }
+        },
+        {
+          "value": "fish",
+          "displayValue": {
+            "en": "Fish",
+            "sr": "Ribe"
+          }
+        },
+        {
+          "value": "horses",
+          "displayValue": {
+            "en": "Horses",
+            "sr": "Konji"
+          }
+        },
+        {
+          "value": "invertebrates",
+          "displayValue": {
+            "en": "Invertebrates",
+            "sr": "Beskičmenjaci"
+          }
+        }
+      ]
+    },
+    {
+      "value": "accessories",
+      "displayValue": {
+        "en": "Accessories",
+        "sr": "Dodaci"
+      },
+      "childrens": [
+        {
+          "value": "dogAccessories",
+          "displayValue": {
+            "en": "Dog Accessories",
+            "sr": "Dodaci za pse"
+          }
+        },
+        {
+          "value": "catAccessories",
+          "displayValue": {
+            "en": "Cat Accessories",
+            "sr": "Dodaci za mačke"
+          }
+        },
+        {
+          "value": "catAccessories",
+          "displayValue": {
+            "en": "Cat Accessories",
+            "sr": "Dodaci za mačke"
+          }
+        },
+        {
+          "value": "reptileAccessories",
+          "displayValue": {
+            "en": "Reptile Accessories",
+            "sr": "Dodaci za gmizavce"
+          }
+        },
+        {
+          "value": "rabbitAccessories",
+          "displayValue": {
+            "en": "Rabbit Accessories",
+            "sr": "Dodaci za zeceve"
+          }
+        },
+        {
+          "value": "livestockAccessories",
+          "displayValue": {
+            "en": "Livestock Accessories",
+            "sr": "Dodaci za stoku"
+          }
+        },
+        {
+          "value": "poultryAccessories",
+          "displayValue": {
+            "en": "Poultry Accessories",
+            "sr": "Dodaci za perad"
+          }
+        },
+        {
+          "value": "birdAccessories",
+          "displayValue": {
+            "en": "Bird Accessories",
+            "sr": "Dodaci za ptice"
+          }
+        },
+        {
+          "value": "fishAccessories",
+          "displayValue": {
+            "en": "Fish Accessories",
+            "sr": "Dodaci za ribe"
+          }
+        },
+        {
+          "value": "horseAccessories",
+          "displayValue": {
+            "en": "Horse Accessories",
+            "sr": "Dodaci za konje"
+          }
+        },
+        {
+          "value": "smallAnimalAccessories",
+          "displayValue": {
+            "en": "Small Animal Accessories",
+            "sr": "Dodaci za male životinje"
+          }
+        }
+      ]
+    },
+    {
+      "value": "services",
+      "displayValue": {
+        "en": "Services",
+        "sr": "Usluge"
+      },
+      "childrens": [
+        {
+          "value": "animalJobs",
+          "displayValue": {
+            "en": "Animal Jobs",
+            "sr": "Poslovi sa životinjama"
+          }
+        },
+        {
+          "value": "holidaysForPets",
+          "displayValue": {
+            "en": "Holidays for Pets",
+            "sr": "Odmor za kućne ljubimce"
+          }
+        },
+        {
+          "value": "boarding",
+          "displayValue": {
+            "en": "Boarding",
+            "sr": "Pansion"
+          }
+        },
+        {
+          "value": "daycare",
+          "displayValue": {
+            "en": "Daycare",
+            "sr": "Čuvanje"
+          }
+        },
+        {
+          "value": "groomingCare",
+          "displayValue": {
+            "en": "Grooming / Care",
+            "sr": "Negovanje / Briga"
+          }
+        },
+        {
+          "value": "horseShare",
+          "displayValue": {
+            "en": "Horse Share",
+            "sr": "Deljenje konja"
+          }
+        },
+        {
+          "value": "pasture",
+          "displayValue": {
+            "en": "Pasture",
+            "sr": "Isplivavanje"
+          }
+        },
+        {
+          "value": "ridingHolidays",
+          "displayValue": {
+            "en": "Riding Holidays",
+            "sr": "Jahanje na odmoru"
+          }
+        },
+        {
+          "value": "training",
+          "displayValue": {
+            "en": "Training",
+            "sr": "Obuka"
+          }
+        },
+        {
+          "value": "otherServices",
+          "displayValue": {
+            "en": "Other Services",
+            "sr": "Druge usluge"
+          }
+        }
+      ]
+    }
+  ]
+}

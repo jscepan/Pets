@@ -20,9 +20,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.pets.backend.security.jwt.AuthEntryPointJwt;
 import com.pets.backend.security.jwt.AuthTokenFilter;
 import com.pets.backend.security.services.UserDetailsServiceImpl;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.HttpMethod;
 
 @Configuration
+@EnableCaching
 @EnableMethodSecurity
 public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
@@ -66,6 +68,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                         -> auth.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/ads/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/ads/search/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/definitions/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
