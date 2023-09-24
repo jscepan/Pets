@@ -2,7 +2,7 @@ package com.pets.backend.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pets.backend.models.Definitions;
-import com.pets.backend.util.Helper;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,8 +17,8 @@ public class DefinitionsRepository {
         Definitions definitions = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String defJSON = Helper.readFromFile("definitions.json");
-            definitions = objectMapper.readValue(defJSON, Definitions.class);
+            File jsonFile = new File(getClass().getResource("/definitions.json").getFile());
+            definitions = objectMapper.readValue(jsonFile, Definitions.class);
         } catch (IOException ex) {
             Logger.getLogger(DefinitionsRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

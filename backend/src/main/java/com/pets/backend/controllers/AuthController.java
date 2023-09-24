@@ -41,7 +41,7 @@ Ako je maxAge postavljen na nulu ili nije naveden, to znači da se odgovori ne s
 Važno je napomenuti da upotreba keširanja može uticati na bezbednost aplikacije, posebno ako se koristi u kombinaciji sa kritičnim operacijama. Odluka o tome kako
 konfigurisati maxAge treba da bude usklađena sa specifičnim zahtevima i bezbednosnim potrebama vaše aplikacije.
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
