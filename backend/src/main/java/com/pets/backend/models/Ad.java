@@ -5,11 +5,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ads")
-public class Ad {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Ad extends BaseModel {
 
     @Column(name = "title")
     private String title;
@@ -26,41 +22,32 @@ public class Ad {
     public Ad() {
     }
 
-    public Ad(long id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.createdOn = new Timestamp(System.currentTimeMillis());
-    }
-
-    public Ad(long id, String title, String description, boolean active) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.active = active;
-        this.createdOn = new Timestamp(System.currentTimeMillis());
-    }
-
     public Ad(String title, String description) {
         this.title = title;
         this.description = description;
-        this.active = true;
-        this.createdOn = new Timestamp(System.currentTimeMillis());
     }
 
-    public Ad(String title, String description, boolean active) {
+    public Ad(String title, String description, boolean active, Timestamp createdOn) {
         this.title = title;
         this.description = description;
         this.active = active;
-        this.createdOn = new Timestamp(System.currentTimeMillis());
+        this.createdOn = createdOn;
     }
 
-    public long getId() {
-        return id;
+    public Ad(String title, String description, boolean active, Timestamp createdOn, Long id) {
+        super(id);
+        this.title = title;
+        this.description = description;
+        this.active = active;
+        this.createdOn = createdOn;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Ad(String title, String description, boolean active, Timestamp createdOn, String oid, long id) {
+        super(oid, id);
+        this.title = title;
+        this.description = description;
+        this.active = active;
+        this.createdOn = createdOn;
     }
 
     public String getTitle() {

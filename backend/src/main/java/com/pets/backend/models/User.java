@@ -14,11 +14,7 @@ import jakarta.validation.constraints.Size;
             @UniqueConstraint(columnNames = "username"),
             @UniqueConstraint(columnNames = "email")
         })
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseModel {
 
     @NotBlank
     @Size(max = 20)
@@ -47,12 +43,18 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public User(String username, String email, String password, Long id) {
+        super(id);
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User(String username, String email, String password, String oid, long id) {
+        super(oid, id);
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
     public String getUsername() {
