@@ -5,6 +5,7 @@ import { MainLayoutComponent } from './main-layout.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MainRoutingModule } from './main-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
+import { DashboardModule } from '@features/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [MainLayoutComponent],
@@ -14,6 +15,7 @@ import { AdsModule } from '@features/ads/ads.module';
     TranslateModule,
     MainRoutingModule,
     AdsModule,
+    DashboardModule,
   ],
   providers: [],
 })

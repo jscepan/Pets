@@ -1,0 +1,44 @@
+.container {
+  .main-filter {
+    display: flex;
+
+    .category {
+      margin: 10px;
+      border: 1px solid gray;
+      border-radius: 8px;
+      width: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+      img {
+        width: 50px;
+      }
+      .name {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      &.selected {
+        border: 2px solid green;
+      }
+    }
+
+    .category:hover {
+      border: 1px solid rgb(73, 73, 73);
+      cursor: pointer;
+    }
+
+    .selecting {
+      display: flex;
+
+      .select-category,
+      .select-type {
+        margin: 10px;
+        width: 50%;
+      }
+    }
+  }
+}
