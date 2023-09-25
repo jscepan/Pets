@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
+import { Language } from './shared/components/enums/language.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
-  static defaultLanguage: 'en' | 'sr' = 'en';
-  public supportedLanguages = ['en', 'sr'];
+  static defaultLanguage: Language = Language.English;
+  public supportedLanguages = [Language.English, Language.Serbian];
 
-  public selectedLanguage: 'en' | 'sr' = 'en';
+  public selectedLanguage: Language = Language.English;
 
   constructor(
     private translateService: TranslateService,
     private titleService: Title
   ) {
     const lang = localStorage.getItem('language');
-    let selectedLanguage: 'en' | 'sr' =
-      lang != null && (lang === 'en' || lang === 'sr')
+    let selectedLanguage: Language =
+      lang != null && (lang === Language.English || lang === Language.Serbian)
         ? lang
         : LanguageService.defaultLanguage;
     if (!selectedLanguage) {
@@ -26,8 +27,8 @@ export class LanguageService {
     this.changeLanguage(selectedLanguage);
   }
 
-  changeLanguage(languageCode: 'en' | 'sr' | string): void {
-    if (languageCode === 'en' || languageCode === 'sr') {
+  changeLanguage(languageCode: Language | string): void {
+    if (languageCode === Language.English || languageCode === Language.Serbian) {
       this.selectedLanguage = languageCode;
       this.translateService.use(languageCode);
       localStorage.setItem('language', languageCode);

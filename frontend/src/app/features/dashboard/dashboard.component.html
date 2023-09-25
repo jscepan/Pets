@@ -2,58 +2,21 @@
   <div class="main-filter">
     <div
       class="category"
-      *ngFor="let item of categories"
-      (click)="selectCategory(item)"
-      [ngClass]="{ selected: item === category }"
+      *ngFor="let adType of adsType"
+      (click)="selectAdType(adType)"
+      [ngClass]="{ selected: adType === selectedAdType }"
     >
-      <img src="{{ item.thumbnailUrl }}" />
-      <div class="name">{{ item.name }}</div>
+      <img src="{{ adType.thumbnailUrl }}" />
+      <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
     </div>
     <div class="selecting">
-      <div class="select-category">
-        <form class="example-form">
-          <mat-form-field class="example-full-width" *ngIf="myControl">
-            <input
-              type="text"
-              placeholder="Pick one"
-              aria-label="Number"
-              matInput
-              [formControl]="myControl"
-              [matAutocomplete]="auto"
-            />
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option
-                *ngFor="let option of filteredOptions | async"
-                [value]="option"
-              >
-                {{ option }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </form>
-
-        <!-- <form>
-          <mat-form-field *ngIf="categoryCtrl">
-            <input
-              type="text"
-              matInput
-              placeholder="Select Category"
-              [matAutocomplete]="auto"
-              [formControl]="categoryCtrl"
-            />
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option
-                *ngFor="let state of filteredCategories | async"
-                [value]="state.name"
-              >
-                <span>{{ state.name }}</span> |
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </form> -->
-      </div>
-
-      <div class="select-type">...</div>
+      <form class="example-form">
+        <pets-autocomplete
+          [dataModel]="categories"
+          (changeEvent)="onAutocompleteChange($event)"
+        ></pets-autocomplete>
+        <pets-autocomplete [dataModel]="subCategories"></pets-autocomplete>
+      </form>
     </div>
   </div>
 
