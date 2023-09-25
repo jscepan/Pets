@@ -49,17 +49,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onAutocompleteChange(selectedObject: EnumValueModel) {
-    console.log('selectedObject');
-    console.log(selectedObject);
-    console.log('this.selectedAdType');
-    console.log(this.selectedAdType);
-    if (this.selectedAdType) {
-      this.subCategories = this.selectedAdType.childrens.map((t) => {
+    // console.log('selectedObject');
+    // console.log(selectedObject);
+    // console.log('this.selectedAdType');
+    const adTypes = this.selectedAdType?.childrens.filter(
+      (x) => x.value === selectedObject.value
+    );
+    const type = adTypes ? adTypes[0] : undefined;
+    // console.log('type');
+    // console.log(type);
+    if (type && type.childrens) {
+      this.subCategories = type.childrens.map((t) => {
         return {
           value: t.value,
           displayName: t.displayValue[this.selectedLanguage],
         };
       });
+    } else {
+      this.subCategories = [];
     }
   }
 
