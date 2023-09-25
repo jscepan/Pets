@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { EnumValueModel } from 'src/app/shared/components/enums/enum.model';
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
+    private router: Router,
     private languageService: LanguageService
   ) {}
 
@@ -68,6 +70,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } else {
       this.subCategories = [];
     }
+  }
+
+  search(): void {
+    this.router.navigate(['ads']);
   }
 
   ngOnDestroy(): void {

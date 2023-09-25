@@ -9,6 +9,13 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+  {
+    path: 'ads',
+    loadChildren: () =>
+      import('@features/ads/ads.module').then(
+        (m) => m.AdsModule
+      ),
+  },
 ];
 
 @NgModule({

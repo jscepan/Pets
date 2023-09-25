@@ -16,6 +16,10 @@
           (changeEvent)="onAutocompleteChange($event)"
         ></pets-autocomplete>
         <pets-autocomplete [dataModel]="subCategories"></pets-autocomplete>
+        <pets-button
+          [text]="'search' | translate"
+          (clickEvent)="search()"
+        ></pets-button>
       </form>
     </div>
   </div>
