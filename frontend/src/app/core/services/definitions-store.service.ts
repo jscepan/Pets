@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
 @Injectable({
   providedIn: 'root',

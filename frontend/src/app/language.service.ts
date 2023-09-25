@@ -6,28 +6,33 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class LanguageService {
-  static defaultLanguage = 'en';
+  static defaultLanguage: 'en' | 'sr' = 'en';
   public supportedLanguages = ['en', 'sr'];
 
-  public selectedLanguage!: string;
+  public selectedLanguage: 'en' | 'sr' = 'en';
 
   constructor(
     private translateService: TranslateService,
     private titleService: Title
   ) {
-    let selectedLanguage = localStorage.getItem('language');
+    const lang = localStorage.getItem('language');
+    let selectedLanguage: 'en' | 'sr' =
+      lang != null && (lang === 'en' || lang === 'sr')
+        ? lang
+        : LanguageService.defaultLanguage;
     if (!selectedLanguage) {
       selectedLanguage = LanguageService.defaultLanguage;
     }
     this.changeLanguage(selectedLanguage);
   }
 
-  changeLanguage(languageCode: string): void {
-    this.selectedLanguage = languageCode;
-    this.translateService.use(languageCode);
-    localStorage.setItem('language', languageCode);
-
-    this.setBrowserTitle();
+  changeLanguage(languageCode: 'en' | 'sr' | string): void {
+    if (languageCode === 'en' || languageCode === 'sr') {
+      this.selectedLanguage = languageCode;
+      this.translateService.use(languageCode);
+      localStorage.setItem('language', languageCode);
+      this.setBrowserTitle();
+    }
   }
 
   private setBrowserTitle(): void {
