@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthWebService } from '@layouts/auth-layout/auth.web-service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { Language } from 'src/app/shared/components/enums/language.model';
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private _authService: AuthWebService,
     private languageService: LanguageService
   ) {}
 
@@ -33,7 +35,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   signIn(): void {
-    /*
     // Return if the form is invalid
     if (this.loginForm?.invalid) {
         return;
@@ -41,15 +42,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // Disable the form
     this.loginForm?.disable();
-
+/*
     // Hide the alert
     this.showAlert = false;
-
+*/
     // Sign in
-    this._authService.signIn(this.loginForm?.value)
-        .subscribe(
+    this.subs.sink = this._authService.login(this.loginForm?.value).subscribe(
             () => {
-
+/*
                 // Set the redirect url.
                 // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
                 // to the correct page after a successful sign in. This way, that url can be set via
@@ -58,10 +58,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                 // Navigate to the redirect url
                 this._router.navigateByUrl(redirectURL);
-
+*/
             },
             (response) => {
-
+/*
                 // Re-enable the form
                 this.loginForm.enable();
                 this.serverBadLogin = true;
@@ -77,9 +77,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                 // Show the alert
                 this.showAlert = true;
+*/
             }
         );
-        */
   }
 
   ngOnDestroy(): void {
