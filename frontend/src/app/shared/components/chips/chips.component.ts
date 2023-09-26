@@ -30,7 +30,7 @@ export class ChipsComponent implements OnInit {
   fruitCtrl = new FormControl('');
   filteredFruits: Observable<string[]>;
   fruits: string[] = ['Lemon'];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  // allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   @ViewChild('fruitInput') fruitInput?: ElementRef<HTMLInputElement>;
 
@@ -40,7 +40,7 @@ export class ChipsComponent implements OnInit {
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) =>
-        fruit ? this._filter(fruit) : this.dataModel.map(item => item.displayName)
+        fruit ? this._filter(fruit).map(item => item.displayName) : this.dataModel.map(item => item.displayName)
       )
     );
     }
@@ -52,19 +52,18 @@ export class ChipsComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
-    if (value) {
+    // Proverite da li je čip već prisutan u nizu
+    if (value && !this.fruits.includes(value)) {
       const matchingItem = this.dataModel.find(item => item.displayName === value);
       if (matchingItem) {
-        this.fruits.push(matchingItem.displayName);
+        this.fruits.push(value);
       }
     }
 
     // Clear the input value
     event.chipInput!.clear();
-
     this.fruitCtrl.setValue(null);
-  }
+    }
 
   remove(fruit: string): void {
     const index = this.fruits.indexOf(fruit);
@@ -79,21 +78,26 @@ export class ChipsComponent implements OnInit {
   selected(event: MatAutocompleteSelectedEvent): void {
     const matchingItem = this.dataModel.find(item => item.displayName === event.option.viewValue);
     if (matchingItem) {
-      this.fruits.push(matchingItem.displayName);
+      const selectedFruit = matchingItem.displayName;
+
+      // Proverite da li je čip već prisutan u nizu
+      if (!this.fruits.includes(selectedFruit)) {
+        this.fruits.push(selectedFruit);
+      }
     }
 
     if (this.fruitInput) {
       this.fruitInput.nativeElement.value = '';
     }
     this.fruitCtrl.setValue(null);
-  }
+    }
 
 
-  private _filter(value: string): string[] {
+  private _filter(value: string): EnumValueModel[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter((fruit) =>
-      fruit.toLowerCase().includes(filterValue)
+    return this.dataModel.filter((fruit) =>
+      fruit.displayName.toLowerCase().includes(filterValue)
     );
   }
 

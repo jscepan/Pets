@@ -1,0 +1,38 @@
+<div class="login-section">
+  <form
+    id="login-form"
+    *ngIf="loginForm"
+    [formGroup]="loginForm"
+    (ngSubmit)="signIn()"
+  >
+    <mat-form-field>
+      <mat-label
+        [class.mark-required]="true"
+        [class.mark-opt-required]="true"
+      >
+        {{ "username" | translate }}
+      </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label
+        [class.mark-required]="true"
+        [class.mark-opt-required]="true"
+      >
+        {{ "password" | translate }}
+      </mat-label>
+      <input
+        [type]="'password'"
+        matInput
+        formControlName="password"
+      />
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="auth-submit-button" aria-label="LOG IN">
+      Sign in
+  </button>
+</form>
+</div>

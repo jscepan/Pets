@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MainLayoutComponent } from './main-layout.component';
+import { AuthLayoutComponent } from './auth-layout.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { MainRoutingModule } from './main-routing.module';
+import { MainRoutingModule } from './auth-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
 import { DashboardModule } from '@features/dashboard/dashboard.module';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
 
 @NgModule({
-  declarations: [MainLayoutComponent],
+  declarations: [AuthLayoutComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,8 +16,7 @@ import { ButtonModule } from 'src/app/shared/components/button/button.module';
     MainRoutingModule,
     AdsModule,
     DashboardModule,
-    ButtonModule,
   ],
   providers: [],
 })
-export class MainLayoutModule {}
+export class AuthLayoutModule {}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
+import { RegisterRoutingModule } from './register-routing.module';
+import { RegisterComponent } from './register.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'src/app/shared/components/button/button.module';
 import { SweetAlertModule } from 'src/app/shared/components/sweet-alert/sweet-alert.module';
@@ -10,11 +10,10 @@ import { ChipsModule } from 'src/app/shared/components/chips/chips.module';
 import { SelectModule } from 'src/app/shared/components/select/select.module';
 
 @NgModule({
-  declarations: [DashboardComponent],
-  exports: [DashboardComponent],
+  declarations: [RegisterComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    RegisterRoutingModule,
     TranslateModule,
     ButtonModule,
     SweetAlertModule,
@@ -22,5 +21,6 @@ import { SelectModule } from 'src/app/shared/components/select/select.module';
     ChipsModule,
     SelectModule,
   ],
+  exports: [RegisterComponent],
 })
-export class DashboardModule {}
+export class RegisterModule {}

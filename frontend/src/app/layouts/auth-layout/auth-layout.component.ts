@@ -9,12 +9,12 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { DefinitionsWebService } from 'src/app/web-services/definitions.web-service';
 
 @Component({
-  selector: 'pets-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss'],
+  selector: 'pets-auth-layout',
+  templateUrl: './auth-layout.component.html',
+  styleUrls: ['./auth-layout.component.scss'],
   providers: [DefinitionsWebService, LocalStorageService],
 })
-export class MainLayoutComponent implements OnInit, OnDestroy {
+export class AuthLayoutComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   definitionsIsLoading: Observable<boolean> =
@@ -41,16 +41,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     this.languageService.changeLanguage(language);
   }
 
-  register(): void {
-    this.router.navigate(['auth', 'register']);
-  }
-
-  login(): void {
-    this.router.navigate(['auth', 'login']);
-  }
-
   logout(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['auth/login']);
     // this.authStoreService.canceledURL = null;
     // this.authStoreService.user = null;
     // this.authStoreService.canceledURL = null;

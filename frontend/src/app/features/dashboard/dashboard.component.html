@@ -16,7 +16,7 @@
           (changeEvent)="onAutocompleteChange($event)"
         ></pets-autocomplete>
         <pets-chips [dataModel]="subCategories"></pets-chips>
-        <pets-autocomplete [dataModel]="subCategories"></pets-autocomplete>
+        <pets-select [dataModel]="subCategories"></pets-select>
         <pets-button
           [text]="'search' | translate"
           (clickEvent)="search()"
