@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   hasUpperCase: boolean = false;
   hasLowerCase: boolean = false;
   hasNumeric: boolean = false;
-  hasSymbol: boolean = false;
   hasEightCharacters: boolean = false;
 
   constructor(
@@ -79,9 +78,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.hasUpperCase = /[A-Z]+/.test(this.signUpForm?.get('password')?.value);
     this.hasLowerCase = /[a-z]+/.test(this.signUpForm?.get('password')?.value);
     this.hasNumeric = /\d/g.test(this.signUpForm?.get('password')?.value);
-    this.hasSymbol = /[$-/:-?{@#$%&*()+:";'|-~!"^_`\[\]\\]/.test(this.signUpForm?.get('password')?.value);
     this.hasEightCharacters = this.signUpForm?.get('password')?.value?.length >= 8;
-    const passwordValid = this.hasUpperCase && this.hasLowerCase && this.hasNumeric && this.hasSymbol && this.hasEightCharacters;
+    const passwordValid = this.hasUpperCase && this.hasLowerCase && this.hasNumeric && this.hasEightCharacters;
 
     return /*!this.setPasswordForm.invalid && passwordsMatch && */ passwordValid;
 }
