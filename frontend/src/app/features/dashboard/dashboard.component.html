@@ -15,6 +15,7 @@
           [dataModel]="categories"
           (changeEvent)="onAutocompleteChange($event)"
         ></pets-autocomplete>
+        <pets-chips [dataModel]="subCategories"></pets-chips>
         <pets-autocomplete [dataModel]="subCategories"></pets-autocomplete>
         <pets-button
           [text]="'search' | translate"
