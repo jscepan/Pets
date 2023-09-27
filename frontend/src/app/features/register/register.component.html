@@ -7,96 +7,21 @@
     novalidate
     *ngIf="signUpForm"
   >
-
-    <div
-      class="auth-message-error auth-mb-36"
-      *ngIf="passwordsDifferent"
-    >
-      <mat-icon [svgIcon]="'heroicons_solid:exclamation-circle'"></mat-icon>
-      <span>
-        Passwords don't match. Please check and try again.
-      </span>
-    </div>
-
-    <div
-      class="auth-message-error auth-mb-36"
-      *ngIf="!tokenValid"
-    >
-      <mat-icon [svgIcon]="'heroicons_solid:exclamation-circle'"></mat-icon>
-      <span>
-        Your password recovery token has expired. Please return to the sign in page.
-      </span>
-    </div>
-
-    <div class="auth-form-title">
-      <span>Complete your account creation</span>
-    </div>
-
-    <ng-container *ngIf="tokenValid">
-
       <div class="auth-input-field flex flex-row">
         <mat-form-field
           appearance="outline"
           [hideRequiredMarker]="true"
         >
-          <mat-label>First name</mat-label>
+          <mat-label>{{'email' | translate}}</mat-label>
           <input
             matInput
             type="text"
-            formControlName="firstName"
+            formControlName="username"
             required
           >
           <mat-error>
-            First name is required
+            {{'requiredField' | translate}}
           </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="auth-input-field flex flex-row">
-        <mat-form-field
-          appearance="outline"
-          [hideRequiredMarker]="true"
-        >
-          <mat-label>Last name</mat-label>
-          <input
-            matInput
-            type="text"
-            formControlName="lastName"
-            required
-          >
-          <mat-error>
-            Last name is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="auth-input-field flex flex-row">
-        <mat-form-field
-          appearance="outline"
-          [hideRequiredMarker]="true"
-        >
-          <mat-label>Email address</mat-label>
-          <input
-            matInput
-            type="text"
-            formControlName="email"
-            required
-          >
-          <mat-error>
-            Valid email is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="auth-input-field flex flex-row">
-        <mat-form-field appearance="outline">
-          <mat-label>Company name</mat-label>
-          <input
-            name="customerName"
-            matInput
-            type="text"
-            formControlName="customerName"
-          >
         </mat-form-field>
       </div>
 
@@ -226,7 +151,7 @@
           </mat-icon>
         </button>
         <mat-error>
-          Password is required
+          {{'requiredField' | translate}}
         </mat-error>
       </mat-form-field>
 
@@ -264,7 +189,7 @@
           </mat-icon>
         </button>
         <mat-error>
-          Passwords don't match
+          {{'passwordsDontMatch' | translate}}
         </mat-error>
       </mat-form-field>
 
@@ -302,15 +227,6 @@
       >
         Submit
       </button>
-    </ng-container>
-
-    <div class="flex flex-col justify-center items-center">
-      <a
-        class="auth-small-text auth-under-text"
-        [routerLink]="'/sign-in'"
-      >
-        Back to Sign in
-      </a>
-    </div>
+    <pets-button [text]="'switchToSignIn' | translate"></pets-button>
   </form>
 </div>

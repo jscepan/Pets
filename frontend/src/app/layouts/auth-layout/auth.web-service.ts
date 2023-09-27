@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseWebService } from 'src/app/core/services/base.web-service';
 import { BASE_API_URL } from 'src/app/shared/constants';
+import { AuthRegisterModel } from 'src/app/shared/models/auth-register.model';
 import { AuthRequestModel } from 'src/app/shared/models/auth-request.model';
 import { AuthModel } from 'src/app/shared/models/auth.model';
 import { UserModel } from 'src/app/shared/models/user.model';
@@ -14,6 +15,15 @@ export class AuthWebService {
   login(data: AuthRequestModel): Observable<AuthModel> {
     return this.baseWebService.postRequest<AuthModel, AuthRequestModel>(
       `${BASE_API_URL}/auth/login`,
+      data,
+      AuthModel
+      // LOGIN_FORM_CONTENT_TYPE
+    );
+  }
+
+  register(data: AuthRegisterModel): Observable<AuthModel> {
+    return this.baseWebService.postRequest<AuthModel, AuthRequestModel>(
+      `${BASE_API_URL}/auth/register`,
       data,
       AuthModel
       // LOGIN_FORM_CONTENT_TYPE
