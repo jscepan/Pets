@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="left-part">
+    <div class="logo">logo</div>
+  </div>
+  <div class="center-part">
+    <div class="search-bar">Quick search</div>
+  </div>
+  <div class="right-part">
+    <div class="notifications">notifications</div>
+    <div class="user-info">user-info</div>
+    <div class="create-ad-button">
+      <pets-button
+        [text]="'createAd' | translate"
+        (clickEvent)="createAd()"
+      ></pets-button>
+    </div>
+  </div>
+</div>

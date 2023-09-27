@@ -7,6 +7,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
 import { DashboardModule } from '@features/dashboard/dashboard.module';
 import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { MainMenuModule } from 'src/app/shared/components/main-menu/main-menu.module';
 
 @NgModule({
   declarations: [MainLayoutComponent],
@@ -18,6 +19,7 @@ import { ButtonModule } from 'src/app/shared/components/button/button.module';
     AdsModule,
     DashboardModule,
     ButtonModule,
+    MainMenuModule,
   ],
   providers: [],
 })

@@ -1,0 +1,25 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+
+  .left-part {
+    .logo {
+    }
+  }
+
+  .center-part {
+    .search-bar {
+    }
+  }
+
+  .right-part {
+    display: flex;
+
+    .notifications {
+    }
+    .user-info {
+    }
+    .create-ad-button {
+    }
+  }
+}

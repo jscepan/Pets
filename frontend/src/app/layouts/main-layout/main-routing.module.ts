@@ -12,8 +12,13 @@ const routes: Routes = [
   {
     path: 'ads',
     loadChildren: () =>
-      import('@features/ads/ads.module').then(
-        (m) => m.AdsModule
+      import('@features/ads/ads.module').then((m) => m.AdsModule),
+  },
+  {
+    path: 'ad-create-edit',
+    loadChildren: () =>
+      import('@features/ad-create-edit/ad-create-edit.module').then(
+        (m) => m.AdCreateEditModule
       ),
   },
 ];
