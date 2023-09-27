@@ -1,0 +1,37 @@
+:root {
+  // Main Colors
+  --color-primary: #00aaff;
+  --color-success: #43ad48;
+  --color-danger: #e70020;
+  --color-warning: #ffb822;
+  --color-info: #2353f3;
+  --color-link: #2353f3;
+  --color-disabled: #cfcfcf;
+
+  --color-primary-hover: #1783b9;
+  --color-success-hover: #43ae49;
+  --color-danger-hover: #ec334d;
+  --color-warning-hover: #ffc64e;
+  --color-info-hover: #4f75f5;
+  --color-link-hover: #4f75f5;
+  --color-secondary-hover: #f7f6fe;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-main-darker: #282a3c;
+  --color-main-dark: #646464;
+  --color-main: #747474;
+  --color-main-light: #bbbbbb;
+  --color-main-lighter: #f1f2f7;
+  --color-main-light-gray: #868686;
+
+  // Layout Colors
+  --color-content-background: var(--color-white);
+  --color-body-background: var(--color-main-lighter);
+  --color-auth-background: var(--color-white);
+  --color-body-font: #434349;
+
+  // Icon Colors
+  --color-icon: var(--color-main-darker);
+}

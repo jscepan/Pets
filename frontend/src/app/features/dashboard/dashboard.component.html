@@ -1,29 +1,35 @@
 <div class="container">
   <div class="main-filter">
-    <div
-      class="category"
-      *ngFor="let adType of adsType"
-      (click)="selectAdType(adType)"
-      [ngClass]="{ selected: adType === selectedAdType }"
-    >
-      <img src="{{ adType.thumbnailUrl }}" />
-      <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
+    <div class="categories">
+      <div
+        class="category"
+        *ngFor="let adType of adsType"
+        (click)="selectAdType(adType)"
+        [ngClass]="{ selected: adType === selectedAdType }"
+      >
+        <img src="{{ adType.thumbnailUrl }}" />
+        <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
+      </div>
     </div>
     <div class="selecting">
-      <form class="example-form">
+      <div class="types">
         <pets-autocomplete
           [dataModel]="categories"
           (changeEvent)="onAutocompleteChange($event)"
         ></pets-autocomplete>
-        <pets-chips [dataModel]="subCategories"></pets-chips>
+      </div>
+      <div class="sub-categories">
         <pets-select [dataModel]="subCategories"></pets-select>
-        <pets-button
-          [text]="'search' | translate"
-          (clickEvent)="search()"
-        ></pets-button>
-      </form>
+      </div>
+    </div>
+    <div class="search">
+      <pets-button
+        [text]="'search' | translate"
+        (clickEvent)="search()"
+        [fullWidth]="true"
+      ></pets-button>
     </div>
   </div>
 
-  {{ "recommendedForYou" | translate }}
+  <!-- {{ "recommendedForYou" | translate }} -->
 </div>

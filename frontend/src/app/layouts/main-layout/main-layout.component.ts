@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { DefinitionsWebService } from 'src/app/web-services/definitions.web-service';
 
@@ -12,7 +11,7 @@ import { DefinitionsWebService } from 'src/app/web-services/definitions.web-serv
   selector: 'pets-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
-  providers: [DefinitionsWebService, LocalStorageService],
+  providers: [DefinitionsWebService],
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -25,8 +24,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private translateService: TranslateService,
     private definitionsStoreService: DefinitionsStoreService,
-    private definitionsWebService: DefinitionsWebService,
-    private localStorageService: LocalStorageService
+    private definitionsWebService: DefinitionsWebService
   ) {}
 
   ngOnInit(): void {
@@ -39,22 +37,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
   changeLanguage(language: string): void {
     this.languageService.changeLanguage(language);
-  }
-
-  register(): void {
-    this.router.navigate(['auth', 'register']);
-  }
-
-  login(): void {
-    this.router.navigate(['auth', 'login']);
-  }
-
-  logout(): void {
-    this.router.navigate(['/']);
-    // this.authStoreService.canceledURL = null;
-    // this.authStoreService.user = null;
-    // this.authStoreService.canceledURL = null;
-    this.localStorageService.remove('jwt');
   }
 
   ngOnDestroy(): void {}

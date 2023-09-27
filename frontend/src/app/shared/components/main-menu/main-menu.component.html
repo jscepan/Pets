@@ -6,8 +6,18 @@
     <div class="search-bar">Quick search</div>
   </div>
   <div class="right-part">
-    <div class="notifications">notifications</div>
-    <div class="user-info">user-info</div>
+    <div class="notifications">MSG</div>
+    <div class="user-info">
+      user-info
+      <pets-button
+        [text]="'register' | translate"
+        (clickEvent)="register()"
+      ></pets-button>
+      <pets-button
+        [text]="'login' | translate"
+        (clickEvent)="login()"
+      ></pets-button>
+    </div>
     <div class="create-ad-button">
       <pets-button
         [text]="'createAd' | translate"
