@@ -3,20 +3,17 @@
     <div class="logo">logo</div>
   </div>
   <div class="center-part">
-    <div class="search-bar">Quick search</div>
+    <div class="search-bar">
+      <pets-search-filter></pets-search-filter>
+    </div>
   </div>
   <div class="right-part">
     <div class="notifications">MSG</div>
     <div class="user-info">
-      user-info
-      <pets-button
-        [text]="'register' | translate"
-        (clickEvent)="register()"
-      ></pets-button>
-      <pets-button
-        [text]="'login' | translate"
-        (clickEvent)="login()"
-      ></pets-button>
+      <pets-menu
+        [dataModel]="userMenuAction"
+        (clickEvent)="userMenuClick($event)"
+      ></pets-menu>
     </div>
     <div class="create-ad-button">
       <pets-button

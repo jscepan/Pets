@@ -5,6 +5,8 @@ import { FeatherModule } from 'angular-feather';
 import { IconsModule } from '../../modules/icons.module';
 import { ButtonModule } from '../button/button.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SearchFilterModule } from '../search-filter/search-filter.module';
+import { PetsMenuModule } from '../pets-menu/pets-menu.module';
 
 @NgModule({
   declarations: [MainMenuComponent],
@@ -14,6 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IconsModule,
     ButtonModule,
     TranslateModule,
+    SearchFilterModule,
+    PetsMenuModule,
   ],
   exports: [MainMenuComponent],
 })

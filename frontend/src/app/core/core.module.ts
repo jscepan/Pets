@@ -9,6 +9,7 @@ import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SweetAlertModule } from '../shared/components/sweet-alert/sweet-alert.module';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
     HttpClientModule,
     BasicAlertModule,
     SweetAlertModule,
+    MatMenuModule,
   ],
   providers: [
     {

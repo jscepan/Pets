@@ -1,0 +1,56 @@
+<div class="menu-button">
+  <ng-container *ngIf="dataModel?.avatarUrl else iconOrName">
+    <img
+      class="avatar"
+      [src]="dataModel?.avatarUrl"
+      [matMenuTriggerFor]="menu"
+    >
+  </ng-container>
+  <ng-template #iconOrName>
+    <ng-container *ngIf="dataModel?.icon else displayName">
+      <i-feather
+        class="user-icon"
+        matSuffix
+        [name]="dataModel?.icon||''"
+        [matMenuTriggerFor]="menu"
+      ></i-feather>
+    </ng-container>
+    <ng-template #displayName>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+      >
+        {{dataModel?.displayName}}
+      </button>
+    </ng-template>
+  </ng-template>
+</div>
+
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let menuItem of dataModel?.subMenuItems">
+    <button
+      mat-menu-item
+      *ngIf="!menuItem.subMenuItems"
+      (click)="menuItemClicked(menuItem)"
+    >
+      {{ menuItem.displayName }}
+    </button>
+    <button
+      mat-menu-item
+      *ngIf="menuItem.subMenuItems"
+      [matMenuTriggerFor]="subMenu"
+    >
+      {{ menuItem.displayName }}
+    </button>
+    <mat-menu #subMenu="matMenu">
+      <ng-container *ngFor="let subMenuItem of menuItem.subMenuItems">
+        <button
+          mat-menu-item
+          (click)="menuItemClicked(subMenuItem)"
+        >
+          {{ subMenuItem.displayName }}
+        </button>
+      </ng-container>
+    </mat-menu>
+  </ng-container>
+</mat-menu>

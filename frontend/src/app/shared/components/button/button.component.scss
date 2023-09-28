@@ -23,6 +23,8 @@ button {
   // buttons in regular mode
   &.primary {
     background: var(--color-primary, #5849e0);
+    color: var(--color-white, #ffffff);
+    font-weight: 600;
 
     &:hover {
       background: var(--color-primary-hover, #796de6);

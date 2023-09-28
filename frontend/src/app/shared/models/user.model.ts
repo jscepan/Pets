@@ -7,4 +7,5 @@ export class UserModel extends BaseModel {
   fullName: string = '';
   email: string = '';
   language: string = '';
+  avatarUrl: string = '';
 }
