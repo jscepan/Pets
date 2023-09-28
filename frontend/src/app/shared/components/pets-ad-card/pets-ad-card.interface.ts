@@ -1,4 +1,4 @@
-export interface AdCardI {
+export interface PetsAdCardI {
   thumbnailUrl: string;
   imageCounter: number;
   videoCounter: number;

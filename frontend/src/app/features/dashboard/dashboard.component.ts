@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
-import { EnumValueModel } from 'src/app/shared/components/enums/enum.model';
-import { Language } from 'src/app/shared/components/enums/language.model';
-import { SweetAlertService } from 'src/app/shared/components/sweet-alert/sweet-alert.service';
+import { EnumValueModel } from 'src/app/shared/enums/enum.model';
+import { Language } from 'src/app/shared/enums/language.model';
+import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 
@@ -12,7 +12,7 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
   selector: 'pets-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [SweetAlertService],
+  providers: [PetsSweetAlertService],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { SweetAlertService } from 'src/app/shared/components/sweet-alert/sweet-alert.service';
+import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { SearchModel } from 'src/app/shared/models/search.model';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
@@ -9,7 +9,7 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
   selector: 'pets-ads',
   templateUrl: './ads.component.html',
   styleUrls: ['./ads.component.scss'],
-  providers: [SweetAlertService],
+  providers: [PetsSweetAlertService],
 })
 export class AdsComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -21,7 +21,7 @@ export class AdsComponent implements OnInit, OnDestroy {
   constructor(
     private globalService: GlobalService,
     private translateService: TranslateService,
-    private sweetAlertService: SweetAlertService,
+    private sweetAlertService: PetsSweetAlertService,
     private router: Router
   ) {}
 

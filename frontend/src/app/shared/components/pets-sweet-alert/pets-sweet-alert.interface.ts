@@ -1,5 +1,5 @@
 import { TemplateRef } from '@angular/core';
-export enum SweetAlertTypeEnum {
+export enum PetsSweetAlertTypeEnum {
   input = 'input',
   prompt = 'prompt',
   confirm = 'confirm',
@@ -10,22 +10,22 @@ export enum SweetAlertTypeEnum {
   confirmCheckbox = 'confirmCheckbox',
 }
 
-type SweetAlertTypeInput = {
-  name: SweetAlertTypeEnum.input;
+type PetsSweetAlertTypeInput = {
+  name: PetsSweetAlertTypeEnum.input;
   buttons: {
     submit: string;
   };
 };
 
-type SweetAlertTypeAlert = {
-  name: SweetAlertTypeEnum.alert;
+type PetsSweetAlertTypeAlert = {
+  name: PetsSweetAlertTypeEnum.alert;
   buttons: {
     ok: string;
   };
 };
 
-type SweetAlertTypePrompt = {
-  name: SweetAlertTypeEnum.prompt;
+type PetsSweetAlertTypePrompt = {
+  name: PetsSweetAlertTypeEnum.prompt;
   error?: {
     msg: string;
     compareString: string;
@@ -36,51 +36,51 @@ type SweetAlertTypePrompt = {
   };
 };
 
-type SweetAlertTypeConfirm = {
-  name: SweetAlertTypeEnum.confirm;
+type PetsSweetAlertTypeConfirm = {
+  name: PetsSweetAlertTypeEnum.confirm;
   buttons: {
     cancel?: string;
     confirm: string;
   };
 };
-type SweetAlertTypeSubmit = {
-  name: SweetAlertTypeEnum.submit;
+type PetsSweetAlertTypeSubmit = {
+  name: PetsSweetAlertTypeEnum.submit;
   buttons: {
     submit: string;
     cancel: string;
   };
 };
-type SweetAlertTypeCopy = {
-  name: SweetAlertTypeEnum.copy;
+type PetsSweetAlertTypeCopy = {
+  name: PetsSweetAlertTypeEnum.copy;
   buttons: {
     cancel: string;
     copy: string;
   };
 };
-type SweetAlertTypeCustom = {
-  name: SweetAlertTypeEnum.custom;
+type PetsSweetAlertTypeCustom = {
+  name: PetsSweetAlertTypeEnum.custom;
   customTemplate: TemplateRef<unknown>;
 };
-type SweetAlertTypeConfirmCheckbox = {
-  name: SweetAlertTypeEnum.confirmCheckbox;
+type PetsSweetAlertTypeConfirmCheckbox = {
+  name: PetsSweetAlertTypeEnum.confirmCheckbox;
   checkbox: string;
   buttons: {
     cancel: string;
     submit: string;
   };
 };
-export interface SweetAlertI {
+export interface PetsSweetAlertI {
   id?: string;
   mode: 'primary' | 'success' | 'warning' | 'danger';
   type:
-    | SweetAlertTypeInput
-    | SweetAlertTypeAlert
-    | SweetAlertTypePrompt
-    | SweetAlertTypeSubmit
-    | SweetAlertTypeConfirm
-    | SweetAlertTypeCopy
-    | SweetAlertTypeCustom
-    | SweetAlertTypeConfirmCheckbox;
+    | PetsSweetAlertTypeInput
+    | PetsSweetAlertTypeAlert
+    | PetsSweetAlertTypePrompt
+    | PetsSweetAlertTypeSubmit
+    | PetsSweetAlertTypeConfirm
+    | PetsSweetAlertTypeCopy
+    | PetsSweetAlertTypeCustom
+    | PetsSweetAlertTypeConfirmCheckbox;
   icon?: string;
   title: string;
   message: string;

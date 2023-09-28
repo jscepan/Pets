@@ -7,7 +7,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
 import { DashboardModule } from '@features/dashboard/dashboard.module';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
-import { MainMenuModule } from 'src/app/shared/components/main-menu/main-menu.module';
+import { PetsMainMenuModule } from 'src/app/shared/components/pets-main-menu/pets-main-menu.module';
 
 @NgModule({
   declarations: [MainLayoutComponent],
@@ -19,7 +19,7 @@ import { MainMenuModule } from 'src/app/shared/components/main-menu/main-menu.mo
     AdsModule,
     DashboardModule,
     PetsButtonModule,
-    MainMenuModule,
+    PetsMainMenuModule,
   ],
   providers: [],
 })

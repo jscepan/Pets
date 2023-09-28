@@ -3,23 +3,25 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { Observable, Subject } from 'rxjs';
 
-import { SweetAlertI } from './sweet-alert.interface';
-import { SweetAlertComponent } from './sweet-alert.component';
+import { PetsSweetAlertI } from './pets-sweet-alert.interface';
+import { PetsSweetAlertComponent } from './pets-sweet-alert.component';
 
 @Injectable()
-export class SweetAlertService {
-  dataToReturn: Subject<SweetAlertI> = new Subject<SweetAlertI>();
+export class PetsSweetAlertService {
+  dataToReturn: Subject<PetsSweetAlertI> = new Subject<PetsSweetAlertI>();
 
   constructor(private dialog: MatDialog) {}
 
-  openMeSweetAlert(data: SweetAlertI): MatDialogRef<SweetAlertComponent> {
-    const dialogRef = this.dialog.open(SweetAlertComponent, {
+  openMeSweetAlert(
+    data: PetsSweetAlertI
+  ): MatDialogRef<PetsSweetAlertComponent> {
+    const dialogRef = this.dialog.open(PetsSweetAlertComponent, {
       data,
       panelClass: 'sweet-alert-dialog',
     });
 
     dialogRef.componentInstance.eventOccurs.subscribe(
-      (event: { eventName: string; payload: SweetAlertI }) => {
+      (event: { eventName: string; payload: PetsSweetAlertI }) => {
         if (
           event.eventName === 'submit' ||
           event.eventName === 'confirm' ||
@@ -34,14 +36,14 @@ export class SweetAlertService {
       }
     );
 
-    dialogRef.afterClosed().subscribe((alertData: SweetAlertI) => {
+    dialogRef.afterClosed().subscribe((alertData: PetsSweetAlertI) => {
       this.dataToReturn.next(alertData);
     });
 
     return dialogRef;
   }
 
-  getDataBackFromSweetAlert(): Observable<SweetAlertI> {
+  getDataBackFromSweetAlert(): Observable<PetsSweetAlertI> {
     return this.dataToReturn.asObservable();
   }
 }

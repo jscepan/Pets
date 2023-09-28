@@ -6,16 +6,16 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { AdCardI } from './ad-card.interface';
 
 @Component({
-  selector: 'pets-ad-card',
-  templateUrl: './ad-card.component.html',
-  styleUrls: ['./ad-card.component.scss'],
+  selector: 'pets-message-notification',
+  templateUrl: './pets-message-notification.component.html',
+  styleUrls: ['./pets-message-notification.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdCardComponent implements OnInit {
-  @Input() dataModel?: AdCardI;
+export class PetsMessageNotificationComponent implements OnInit {
+  @Input() showNotification: boolean = false;
+  @Input() msgCounter?: number;
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 

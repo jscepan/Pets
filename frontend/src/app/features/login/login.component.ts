@@ -4,15 +4,15 @@ import { Router } from '@angular/router';
 import { AuthWebService } from '@layouts/auth-layout/auth.web-service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
-import { Language } from 'src/app/shared/components/enums/language.model';
-import { SweetAlertService } from 'src/app/shared/components/sweet-alert/sweet-alert.service';
+import { Language } from 'src/app/shared/enums/language.model';
+import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 
 @Component({
   selector: 'pets-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [SweetAlertService],
+  providers: [PetsSweetAlertService],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -37,19 +37,19 @@ export class LoginComponent implements OnInit, OnDestroy {
   signIn(): void {
     // Return if the form is invalid
     if (this.loginForm?.invalid) {
-        return;
+      return;
     }
 
     // Disable the form
     this.loginForm?.disable();
-/*
+    /*
     // Hide the alert
     this.showAlert = false;
 */
     // Sign in
     this.subs.sink = this._authService.login(this.loginForm?.value).subscribe(
-            () => {
-/*
+      () => {
+        /*
                 // Set the redirect url.
                 // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
                 // to the correct page after a successful sign in. This way, that url can be set via
@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit, OnDestroy {
                 // Navigate to the redirect url
                 this._router.navigateByUrl(redirectURL);
 */
-            },
-            (response) => {
-/*
+      },
+      (response) => {
+        /*
                 // Re-enable the form
                 this.loginForm.enable();
                 this.serverBadLogin = true;
@@ -78,8 +78,8 @@ export class LoginComponent implements OnInit, OnDestroy {
                 // Show the alert
                 this.showAlert = true;
 */
-            }
-        );
+      }
+    );
   }
 
   ngOnDestroy(): void {

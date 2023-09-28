@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pets-breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
+  selector: 'pets-pets-paginator',
+  templateUrl: './pets-paginator.component.html',
+  styleUrls: ['./pets-paginator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BreadcrumbComponent implements OnInit {
+export class PetsPaginatorComponent implements OnInit {
   @Input() text: string = '';
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChipsComponent } from './chips.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
-import { IconsModule } from '../../modules/icons.module';
+import { PetsIconsModule } from '../../modules/icons.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -18,7 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatButtonModule,
     FeatherModule,
-    IconsModule,
+    PetsIconsModule,
     MatSelectModule,
     MatAutocompleteModule,
     ReactiveFormsModule,

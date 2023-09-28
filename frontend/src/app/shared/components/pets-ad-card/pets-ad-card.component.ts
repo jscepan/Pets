@@ -6,15 +6,16 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { PetsAdCardI } from './pets-ad-card.interface';
 
 @Component({
-  selector: 'pets-ad-line',
-  templateUrl: './ad-line.component.html',
-  styleUrls: ['./ad-line.component.scss'],
+  selector: 'pets-ad-card',
+  templateUrl: './pets-ad-card.component.html',
+  styleUrls: ['./pets-ad-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdLineComponent implements OnInit {
-  @Input() text: string = '';
+export class PetsAdCardComponent implements OnInit {
+  @Input() dataModel?: PetsAdCardI;
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 

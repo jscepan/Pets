@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
-import { EnumValueModel } from '../enums/enum.model';
+import { EnumValueModel } from '../../enums/enum.model';
 
 @Component({
   selector: 'pets-autocomplete',
@@ -42,7 +42,9 @@ export class AutocompleteComponent implements OnInit, OnChanges {
     return this.dataModel
       ? this.dataModel.filter(
           (state) =>
-            state.displayName.toLowerCase().indexOf(item.displayName.toLowerCase()) === 0
+            state.displayName
+              .toLowerCase()
+              .indexOf(item.displayName.toLowerCase()) === 0
         )
       : [];
   }

@@ -13,12 +13,12 @@ import { PetsMenuItemI } from '../pets-menu/pets-menu-item.interface';
 
 @Component({
   selector: 'pets-main-menu',
-  templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.scss'],
+  templateUrl: './pets-main-menu.component.html',
+  styleUrls: ['./pets-main-menu.component.scss'],
   providers: [LocalStorageService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainMenuComponent implements OnInit, OnDestroy {
+export class PetsMainMenuComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   companyLogo: string =
@@ -93,6 +93,10 @@ export class MainMenuComponent implements OnInit, OnDestroy {
         this.router.navigate(['auth', 'register']);
         break;
     }
+  }
+
+  redirectToHome(): void {
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {

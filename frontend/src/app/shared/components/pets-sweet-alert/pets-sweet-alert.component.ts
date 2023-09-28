@@ -10,18 +10,21 @@ import {
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { SweetAlertI, SweetAlertTypeEnum } from './sweet-alert.interface';
+import {
+  PetsSweetAlertI,
+  PetsSweetAlertTypeEnum,
+} from './pets-sweet-alert.interface';
 
 @Component({
   selector: 'pets-sweet-alert',
-  templateUrl: './sweet-alert.component.html',
-  styleUrls: ['./sweet-alert.component.scss'],
+  templateUrl: './pets-sweet-alert.component.html',
+  styleUrls: ['./pets-sweet-alert.component.scss'],
 })
-export class SweetAlertComponent implements AfterViewInit, OnDestroy {
+export class PetsSweetAlertComponent implements AfterViewInit, OnDestroy {
   @ViewChild('sweetAlertForm') sweetForm!: NgForm;
   @Output() eventOccurs: EventEmitter<{
     eventName: string;
-    payload: SweetAlertI;
+    payload: PetsSweetAlertI;
   }> = new EventEmitter();
 
   submitButtonDisabled: boolean = false;
@@ -30,14 +33,14 @@ export class SweetAlertComponent implements AfterViewInit, OnDestroy {
 
   enabledCheckbox: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: SweetAlertI) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: PetsSweetAlertI) {}
 
   toLowerCase = (str?: string) => {
     return str?.toLowerCase();
   };
 
   ngAfterViewInit(): void {
-    if (this.data.type.name === SweetAlertTypeEnum.input) {
+    if (this.data.type.name === PetsSweetAlertTypeEnum.input) {
       this._statusSubscritpion = this.sweetForm.form.statusChanges.subscribe(
         (result) => {
           if (result === 'INVALID') {
@@ -50,7 +53,7 @@ export class SweetAlertComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  customEvent(eventName: string, payload: SweetAlertI): void {
+  customEvent(eventName: string, payload: PetsSweetAlertI): void {
     this.eventOccurs.emit({ eventName, payload });
   }
 

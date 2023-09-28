@@ -4,18 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SweetAlertComponent } from './sweet-alert.component';
-import { SweetAlertService } from './sweet-alert.service';
+import { PetsSweetAlertComponent } from './pets-sweet-alert.component';
+import { PetsSweetAlertService } from './pets-sweet-alert.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { SafePipeModule } from 'safe-pipe';
-import { IconsModule } from '../../modules/icons.module';
+import { PetsIconsModule } from '../../modules/icons.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    IconsModule,
+    PetsIconsModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -25,8 +25,8 @@ import { IconsModule } from '../../modules/icons.module';
     SafePipeModule,
     MatTooltipModule,
   ],
-  declarations: [SweetAlertComponent],
-  exports: [SweetAlertComponent],
-  providers: [SweetAlertService],
+  declarations: [PetsSweetAlertComponent],
+  exports: [PetsSweetAlertComponent],
+  providers: [PetsSweetAlertService],
 })
-export class SweetAlertModule {}
+export class PetsSweetAlertModule {}

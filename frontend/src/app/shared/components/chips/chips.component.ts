@@ -16,7 +16,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { EnumValueModel } from '../enums/enum.model';
+import { EnumValueModel } from '../../enums/enum.model';
 
 @Component({
   selector: 'pets-chips',
@@ -40,13 +40,15 @@ export class ChipsComponent implements OnInit {
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) =>
-        fruit ? this._filter(fruit).map(item => item.displayName) : this.dataModel.map(item => item.displayName)
+        fruit
+          ? this._filter(fruit).map((item) => item.displayName)
+          : this.dataModel.map((item) => item.displayName)
       )
     );
-    }
+  }
 
   ngOnInit(): void {
-    this.fruits = this.dataModel.map(item => item.displayName);
+    this.fruits = this.dataModel.map((item) => item.displayName);
   }
 
   add(event: MatChipInputEvent): void {
@@ -54,7 +56,9 @@ export class ChipsComponent implements OnInit {
 
     // Proverite da li je čip već prisutan u nizu
     if (value && !this.fruits.includes(value)) {
-      const matchingItem = this.dataModel.find(item => item.displayName === value);
+      const matchingItem = this.dataModel.find(
+        (item) => item.displayName === value
+      );
       if (matchingItem) {
         this.fruits.push(value);
       }
@@ -63,7 +67,7 @@ export class ChipsComponent implements OnInit {
     // Clear the input value
     event.chipInput!.clear();
     this.fruitCtrl.setValue(null);
-    }
+  }
 
   remove(fruit: string): void {
     const index = this.fruits.indexOf(fruit);
@@ -76,7 +80,9 @@ export class ChipsComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    const matchingItem = this.dataModel.find(item => item.displayName === event.option.viewValue);
+    const matchingItem = this.dataModel.find(
+      (item) => item.displayName === event.option.viewValue
+    );
     if (matchingItem) {
       const selectedFruit = matchingItem.displayName;
 
@@ -90,8 +96,7 @@ export class ChipsComponent implements OnInit {
       this.fruitInput.nativeElement.value = '';
     }
     this.fruitCtrl.setValue(null);
-    }
-
+  }
 
   private _filter(value: string): EnumValueModel[] {
     const filterValue = value.toLowerCase();

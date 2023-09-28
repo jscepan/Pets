@@ -8,10 +8,10 @@ import {
 } from '../components/basic-alert/basic-alert.interface';
 import { BasicAlertService } from '../components/basic-alert/basic-alert.service';
 import {
-  SweetAlertI,
-  SweetAlertTypeEnum,
-} from '../components/sweet-alert/sweet-alert.interface';
-import { SweetAlertService } from '../components/sweet-alert/sweet-alert.service';
+  PetsSweetAlertI,
+  PetsSweetAlertTypeEnum,
+} from '../components/pets-sweet-alert/pets-sweet-alert.interface';
+import { PetsSweetAlertService } from '../components/pets-sweet-alert/pets-sweet-alert.service';
 import { ErrorResponseI } from './error-response.interface';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -23,7 +23,7 @@ export class GlobalService {
 
   constructor(
     private basicAlertService: BasicAlertService,
-    private sweetAlertService: SweetAlertService,
+    private sweetAlertService: PetsSweetAlertService,
     private translateService: TranslateService
   ) {}
 
@@ -71,7 +71,7 @@ export class GlobalService {
       message,
       mode: 'warning',
       type: {
-        name: SweetAlertTypeEnum.alert,
+        name: PetsSweetAlertTypeEnum.alert,
         buttons: {
           ok: okBtn || this.translateService.instant('ok'),
         },
@@ -80,12 +80,14 @@ export class GlobalService {
   }
 
   // -- SWEET ALERT: generic alert
-  showAlertDialog(model: SweetAlertI): Observable<SweetAlertI | undefined> {
+  showAlertDialog(
+    model: PetsSweetAlertI
+  ): Observable<PetsSweetAlertI | undefined> {
     const alertId: string = model.id || uuidv4();
     model.id = alertId;
     this.sweetAlertService.openMeSweetAlert(model);
     return this.sweetAlertService.getDataBackFromSweetAlert().pipe(
-      filter((data: SweetAlertI) => {
+      filter((data: PetsSweetAlertI) => {
         return data.id === alertId;
       })
     );
@@ -98,14 +100,14 @@ export class GlobalService {
     warning: boolean = false,
     cancelBtn?: string,
     confirmBtn?: string
-  ): Observable<SweetAlertI | undefined> {
+  ): Observable<PetsSweetAlertI | undefined> {
     return this.showAlertDialog({
       icon: warning ? 'alert-triangle' : 'alert-octagon',
       title,
       message,
       mode: warning ? 'warning' : 'danger',
       type: {
-        name: SweetAlertTypeEnum.confirm,
+        name: PetsSweetAlertTypeEnum.confirm,
         buttons: {
           cancel: cancelBtn || this.translateService.instant('cancel'),
           confirm: confirmBtn || this.translateService.instant('confirm'),
@@ -121,14 +123,14 @@ export class GlobalService {
     warning: boolean = false,
     cancelBtn?: string,
     submitBtn?: string
-  ): Observable<SweetAlertI | undefined> {
+  ): Observable<PetsSweetAlertI | undefined> {
     return this.showAlertDialog({
       icon: warning ? 'alert-triangle' : 'alert-octagon',
       title,
       message,
       mode: warning ? 'warning' : 'danger',
       type: {
-        name: SweetAlertTypeEnum.submit,
+        name: PetsSweetAlertTypeEnum.submit,
         buttons: {
           cancel: cancelBtn || this.translateService.instant('cancel'),
           submit: submitBtn || this.translateService.instant('delete'),
@@ -148,14 +150,14 @@ export class GlobalService {
     },
     cancelBtn?: string,
     saveBtn?: string
-  ): Observable<SweetAlertI | undefined> {
+  ): Observable<PetsSweetAlertI | undefined> {
     return this.showAlertDialog({
       title,
       message,
       userInput,
       mode: 'warning',
       type: {
-        name: SweetAlertTypeEnum.prompt,
+        name: PetsSweetAlertTypeEnum.prompt,
         error: {
           compareString: checkForError?.errorCompareString || '',
           msg: checkForError?.errorMsg || '',

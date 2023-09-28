@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { Language } from './shared/components/enums/language.model';
+import { Language } from './shared/enums/language.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,10 @@ export class LanguageService {
   }
 
   changeLanguage(languageCode: Language | string): void {
-    if (languageCode === Language.English || languageCode === Language.Serbian) {
+    if (
+      languageCode === Language.English ||
+      languageCode === Language.Serbian
+    ) {
       this.selectedLanguage = languageCode;
       this.translateService.use(languageCode);
       localStorage.setItem('language', languageCode);

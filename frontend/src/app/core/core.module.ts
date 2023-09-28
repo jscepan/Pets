@@ -7,7 +7,7 @@ import { MatSnackBarConfig } from '@angular/material/snack-bar';
 import { BasicAlertModule } from '../shared/components/basic-alert/basic-alert.module';
 import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { SweetAlertModule } from '../shared/components/sweet-alert/sweet-alert.module';
+import { PetsSweetAlertModule } from '../shared/components/pets-sweet-alert/pets-sweet-alert.module';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -19,7 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserAnimationsModule,
     HttpClientModule,
     BasicAlertModule,
-    SweetAlertModule,
+    PetsSweetAlertModule,
     MatMenuModule,
   ],
   providers: [

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PetsButtonComponent } from './pets-button.component';
+import { PetsAdCardComponent } from './pets-ad-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
 import { PetsIconsModule } from '../../modules/icons.module';
 
 @NgModule({
-  declarations: [PetsButtonComponent],
+  declarations: [PetsAdCardComponent],
   imports: [CommonModule, MatButtonModule, FeatherModule, PetsIconsModule],
-  exports: [PetsButtonComponent],
+  exports: [PetsAdCardComponent],
 })
-export class PetsButtonModule {}
+export class PetsAdCardModule {}

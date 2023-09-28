@@ -8,14 +8,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pets-message-notification',
-  templateUrl: './message-notification.component.html',
-  styleUrls: ['./message-notification.component.scss'],
+  selector: 'pets-ad-line',
+  templateUrl: './pets-ad-line.component.html',
+  styleUrls: ['./pets-ad-line.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MessageNotificationComponent implements OnInit {
-  @Input() showNotification: boolean = false;
-  @Input() msgCounter?: number;
+export class PetsAdLineComponent implements OnInit {
+  @Input() text: string = '';
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 

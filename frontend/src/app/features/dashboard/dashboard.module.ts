@@ -4,10 +4,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
-import { SweetAlertModule } from 'src/app/shared/components/sweet-alert/sweet-alert.module';
+import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
 import { AutocompleteModule } from 'src/app/shared/components/autocomplete/autocomplete.module';
 import { ChipsModule } from 'src/app/shared/components/chips/chips.module';
-import { SelectModule } from 'src/app/shared/components/select/select.module';
+import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-select.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -17,10 +17,10 @@ import { SelectModule } from 'src/app/shared/components/select/select.module';
     DashboardRoutingModule,
     TranslateModule,
     PetsButtonModule,
-    SweetAlertModule,
+    PetsSweetAlertModule,
     AutocompleteModule,
     ChipsModule,
-    SelectModule,
+    PetsSelectModule,
   ],
 })
 export class DashboardModule {}

@@ -14,11 +14,11 @@ import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'pets-search-filter',
-  templateUrl: './search-filter.component.html',
-  styleUrls: ['./search-filter.component.scss'],
+  templateUrl: './pets-search-filter.component.html',
+  styleUrls: ['./pets-search-filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchFilterComponent implements OnInit, OnDestroy, OnChanges {
+export class PetsSearchFilterComponent implements OnInit, OnDestroy, OnChanges {
   @Input() keyword: string = '';
   @Input() placeholder: string = 'Search for...';
   @Input() debounceTime: number = 500;

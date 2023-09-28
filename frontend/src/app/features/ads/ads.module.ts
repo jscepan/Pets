@@ -4,10 +4,10 @@ import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
-import { SweetAlertModule } from 'src/app/shared/components/sweet-alert/sweet-alert.module';
+import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { SearchFilterModule } from 'src/app/shared/components/search-filter/search-filter.module';
+import { PetsSearchFilterModule } from 'src/app/shared/components/pets-search-filter/pets-search-filter.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -17,10 +17,10 @@ import { SearchFilterModule } from 'src/app/shared/components/search-filter/sear
     AdsRoutingModule,
     TranslateModule,
     PetsButtonModule,
-    SweetAlertModule,
+    PetsSweetAlertModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    SearchFilterModule,
+    PetsSearchFilterModule,
   ],
 })
 export class AdsModule {}

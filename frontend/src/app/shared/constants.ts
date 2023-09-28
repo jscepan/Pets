@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { EnumValueModel } from './components/enums/enum.model';
+import { EnumValueModel } from './enums/enum.model';
 
 // BASE_API_URL should have value 'http://localhost:8081' in DEVELOPMENT MODE, otherwise empty string ''
 // export const BASE_API_URL: string = '';
