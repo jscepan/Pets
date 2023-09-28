@@ -9,14 +9,20 @@
   [class.full-width]="fullWidth"
   [class.full-height]="fullHeight"
 >
-  <i-feather *ngIf="isFeatherIcon && iconName" [name]="iconName"></i-feather>
-  <i-feather
-    *ngIf="!isFeatherIcon && iconName"
-    [name]="iconName"
-    class="icon"
-  ></i-feather>
-  <div [class.text-with-icon]="!!iconName">
-    <ng-container *ngIf="text">{{ text }}</ng-container>
-    <ng-content *ngIf="!text"></ng-content>
+  <div class="button-content">
+    <i-feather
+      *ngIf="isFeatherIcon && iconName"
+      [name]="iconName"
+    ></i-feather>
+    <i-feather
+      *ngIf="!isFeatherIcon && iconName"
+      [name]="iconName"
+      class="icon"
+    ></i-feather>
+    <div [class.text-with-icon]="!!iconName">
+      <ng-container *ngIf="text">{{ text }}</ng-container>
+      <ng-content *ngIf="!text"></ng-content>
+    </div>
+
   </div>
 </button>

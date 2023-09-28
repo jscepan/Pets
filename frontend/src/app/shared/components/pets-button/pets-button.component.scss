@@ -5,6 +5,11 @@ button {
   color: var(--color-white, #ffffff);
   transition: 0.3s ease-in-out;
 
+  .button-content{
+    display: flex;
+    align-items: center;
+  }
+
   // Case if button has specified size outside
   &.full-width {
     width: 100%;
