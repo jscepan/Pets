@@ -20,6 +20,9 @@ import { PetsMenuItemI } from '../pets-menu/pets-menu-item.interface';
 })
 export class MainMenuComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
+
+  companyLogo: string =
+    'https://tse1.mm.bing.net/th?id=OIP.8TQYxFy-aIYn7WTbKEg06gHaEK&pid=Api&P=0&h=180';
   user: UserModel | null = null;
   userMenuAction?: PetsMenuItemI;
 
@@ -83,7 +86,7 @@ export class MainMenuComponent implements OnInit, OnDestroy {
 
   userMenuClick(item: PetsMenuItemI): void {
     switch (item.key) {
-      case 'create':
+      case 'login':
         this.router.navigate(['auth', 'login']);
         break;
       case 'register':

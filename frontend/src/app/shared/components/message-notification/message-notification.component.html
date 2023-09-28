@@ -1,14 +1,10 @@
 <div class="container">
-  <i-feather
-    class="msg-icon"
-    matSuffix
-    [name]="'mail'"
-  ></i-feather>
   <div
     class="counter"
     *ngIf="showNotification"
-    [class.counterPositive]="msgCounter ? (msgCounter > 0): false"
+    [class.counterPositive]="msgCounter ? msgCounter > 0 : false"
   >
     {{ msgCounter }}
   </div>
+  <i-feather class="msg-icon" matSuffix [name]="'mail'"></i-feather>
 </div>

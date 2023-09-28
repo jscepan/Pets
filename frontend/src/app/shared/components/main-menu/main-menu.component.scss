@@ -3,26 +3,39 @@
   justify-content: space-between;
 
   .left-part {
-    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+
     .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 50px;
+      }
     }
   }
 
   .center-part {
-    border: 1px solid blue;
-    flex-grow: 1;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 30px;
 
     .search-bar {
+      width: 100%;
     }
   }
 
   .right-part {
     display: flex;
-    border: 1px solid blue;
+    align-items: center;
 
     .notifications {
     }
     .user-info {
+      display: flex;
       margin: 0 20px;
     }
     .create-ad-button {
