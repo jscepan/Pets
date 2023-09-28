@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { SweetAlertModule } from 'src/app/shared/components/sweet-alert/sweet-alert.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,7 +16,7 @@ import { SearchFilterModule } from 'src/app/shared/components/search-filter/sear
     CommonModule,
     AdsRoutingModule,
     TranslateModule,
-    ButtonModule,
+    PetsButtonModule,
     SweetAlertModule,
     MatProgressSpinnerModule,
     MatSelectModule,

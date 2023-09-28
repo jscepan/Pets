@@ -1,0 +1,14 @@
+
+// Button icon positioning
+pets-button {
+  .mat-button-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .pets-icon-right {
+    .mat-button-wrapper {
+      flex-direction: row-reverse;
+    }
+  }
+}

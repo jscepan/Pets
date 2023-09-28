@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { SweetAlertModule } from 'src/app/shared/components/sweet-alert/sweet-alert.module';
 import { AutocompleteModule } from 'src/app/shared/components/autocomplete/autocomplete.module';
 import { ChipsModule } from 'src/app/shared/components/chips/chips.module';
@@ -17,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     LoginRoutingModule,
     TranslateModule,
-    ButtonModule,
+    PetsButtonModule,
     SweetAlertModule,
     AutocompleteModule,
     ChipsModule,

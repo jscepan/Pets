@@ -21,11 +21,11 @@ type PalleteOptions =
 
 @Component({
   selector: 'pets-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  templateUrl: './pets-button.component.html',
+  styleUrls: ['./pets-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent implements OnInit {
+export class PetsButtonComponent implements OnInit {
   @Input() text: string = '';
   @Input() iconName?: string;
   @Input() iconPosition?: 'left' | 'right' = 'left';

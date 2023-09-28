@@ -8,7 +8,7 @@ import { SweetAlertComponent } from './sweet-alert.component';
 import { SweetAlertService } from './sweet-alert.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ButtonModule } from '../button/button.module';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { SafePipeModule } from 'safe-pipe';
 import { IconsModule } from '../../modules/icons.module';
 
@@ -21,7 +21,7 @@ import { IconsModule } from '../../modules/icons.module';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    ButtonModule,
+    PetsButtonModule,
     SafePipeModule,
     MatTooltipModule,
   ],

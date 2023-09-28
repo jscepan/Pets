@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainMenuComponent } from './main-menu.component';
 import { FeatherModule } from 'angular-feather';
 import { IconsModule } from '../../modules/icons.module';
-import { ButtonModule } from '../button/button.module';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchFilterModule } from '../search-filter/search-filter.module';
 import { PetsMenuModule } from '../pets-menu/pets-menu.module';
@@ -14,7 +14,7 @@ import { PetsMenuModule } from '../pets-menu/pets-menu.module';
     CommonModule,
     FeatherModule,
     IconsModule,
-    ButtonModule,
+    PetsButtonModule,
     TranslateModule,
     SearchFilterModule,
     PetsMenuModule,

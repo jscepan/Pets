@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MainRoutingModule } from './main-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
 import { DashboardModule } from '@features/dashboard/dashboard.module';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { MainMenuModule } from 'src/app/shared/components/main-menu/main-menu.module';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { MainMenuModule } from 'src/app/shared/components/main-menu/main-menu.mo
     MainRoutingModule,
     AdsModule,
     DashboardModule,
-    ButtonModule,
+    PetsButtonModule,
     MainMenuModule,
   ],
   providers: [],
