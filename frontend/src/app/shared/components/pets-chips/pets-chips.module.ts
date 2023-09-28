@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChipsComponent } from './chips.component';
+import { PetsChipsComponent } from './pets-chips.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
 import { PetsIconsModule } from '../../modules/icons.module';
@@ -13,7 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [ChipsComponent],
+  declarations: [PetsChipsComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -27,6 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     MatIconModule,
   ],
-  exports: [ChipsComponent],
+  exports: [PetsChipsComponent],
 })
-export class ChipsModule {}
+export class PetsChipsModule {}

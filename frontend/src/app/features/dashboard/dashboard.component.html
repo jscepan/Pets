@@ -19,7 +19,11 @@
         ></pets-autocomplete>
       </div>
       <div class="sub-categories">
-        <pets-select [dataModel]="subCategories"></pets-select>
+        <pets-select
+          [dataModel]="subCategories"
+          [multipleSelect]="true"
+          [label]="'Selektuj' | translate"
+        ></pets-select>
       </div>
     </div>
     <div class="search">

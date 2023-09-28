@@ -8,7 +8,7 @@ export enum MODE {
   outlined = 'outlined',
 }
 
-export interface BasicAlertI {
+export interface PetsBasicAlertI {
   mode: MODE;
   title: string;
   content: string;
@@ -17,6 +17,6 @@ export interface BasicAlertI {
   externalLink?: string;
 }
 
-export enum BasicAlertEventsTypes {
+export enum PetsBasicAlertEventsTypes {
   EXIT = 'exit',
 }

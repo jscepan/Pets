@@ -13,10 +13,10 @@ import { EnumValueModel } from '../../enums/enum.model';
 
 @Component({
   selector: 'pets-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
+  templateUrl: './pets-autocomplete.component.html',
+  styleUrls: ['./pets-autocomplete.component.scss'],
 })
-export class AutocompleteComponent implements OnInit, OnChanges {
+export class PetsAutocompleteComponent implements OnInit, OnChanges {
   @Input() dataModel?: EnumValueModel[];
   states: EnumValueModel[] = [];
   stateCtrl: FormControl;

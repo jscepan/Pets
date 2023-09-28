@@ -16,6 +16,7 @@ import { EnumValueModel } from '../../enums/enum.model';
 export class PetsSelectComponent implements OnInit {
   @Input() dataModel: EnumValueModel[] = [];
   @Input() label: string = '';
+  @Input() multipleSelect?: boolean;
   selectControl = new FormControl('');
 
   constructor() {}

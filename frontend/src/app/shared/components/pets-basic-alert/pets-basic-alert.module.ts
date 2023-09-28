@@ -4,12 +4,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { PetsIconsModule } from '../../modules/icons.module';
 
-import { BasicAlertComponent } from './basic-alert.component';
-import { BasicAlertService } from './basic-alert.service';
+import { PetsBasicAlertComponent } from './pets-basic-alert.component';
+import { PetsBasicAlertService } from './pets-basic-alert.service';
 @NgModule({
   imports: [CommonModule, RouterModule, PetsIconsModule, MatSnackBarModule],
-  exports: [BasicAlertComponent],
-  declarations: [BasicAlertComponent],
-  providers: [BasicAlertService],
+  exports: [PetsBasicAlertComponent],
+  declarations: [PetsBasicAlertComponent],
+  providers: [PetsBasicAlertService],
 })
-export class BasicAlertModule {}
+export class PetsBasicAlertModule {}

@@ -20,11 +20,11 @@ import { EnumValueModel } from '../../enums/enum.model';
 
 @Component({
   selector: 'pets-chips',
-  templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.scss'],
+  templateUrl: './pets-chips.component.html',
+  styleUrls: ['./pets-chips.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChipsComponent implements OnInit {
+export class PetsChipsComponent implements OnInit {
   @Input() dataModel: EnumValueModel[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
   fruitCtrl = new FormControl('');

@@ -8,6 +8,8 @@ import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { PetsSearchFilterModule } from 'src/app/shared/components/pets-search-filter/pets-search-filter.module';
+import { PetsFiltersModule } from 'src/app/shared/components/pets-filters/pets-filters.module';
+import { PetsSearchBarModule } from 'src/app/shared/components/pets-search-bar/pets-search-bar.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -21,6 +23,8 @@ import { PetsSearchFilterModule } from 'src/app/shared/components/pets-search-fi
     MatProgressSpinnerModule,
     MatSelectModule,
     PetsSearchFilterModule,
+    PetsFiltersModule,
+    PetsSearchBarModule,
   ],
 })
 export class AdsModule {}

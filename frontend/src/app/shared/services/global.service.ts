@@ -3,10 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import {
-  BasicAlertI,
+  PetsBasicAlertI,
   MODE,
-} from '../components/basic-alert/basic-alert.interface';
-import { BasicAlertService } from '../components/basic-alert/basic-alert.service';
+} from '../components/pets-basic-alert/pets-basic-alert.interface';
+import { PetsBasicAlertService } from '../components/pets-basic-alert/pets-basic-alert.service';
 import {
   PetsSweetAlertI,
   PetsSweetAlertTypeEnum,
@@ -22,7 +22,7 @@ export class GlobalService {
   private readonly _loaderComponent = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private basicAlertService: BasicAlertService,
+    private basicAlertService: PetsBasicAlertService,
     private sweetAlertService: PetsSweetAlertService,
     private translateService: TranslateService
   ) {}
@@ -37,7 +37,7 @@ export class GlobalService {
 
   // -- BASIC ALERT: general usage
   showBasicAlert(mode: MODE, title: string, content: string): void {
-    const basicAlertData: BasicAlertI = {
+    const basicAlertData: PetsBasicAlertI = {
       mode,
       title,
       content,

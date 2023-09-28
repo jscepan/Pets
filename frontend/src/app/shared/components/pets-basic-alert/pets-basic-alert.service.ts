@@ -5,20 +5,23 @@ import {
   MatSnackBarRef,
 } from '@angular/material/snack-bar';
 import { takeUntil } from 'rxjs/operators';
-import { BasicAlertComponent } from './basic-alert.component';
+import { PetsBasicAlertComponent } from './pets-basic-alert.component';
 
-import { BasicAlertEventsTypes, BasicAlertI } from './basic-alert.interface';
+import {
+  PetsBasicAlertEventsTypes,
+  PetsBasicAlertI,
+} from './pets-basic-alert.interface';
 
 @Injectable()
-export class BasicAlertService {
+export class PetsBasicAlertService {
   constructor(
     private snackBar: MatSnackBar,
     private basicAlertConfiguration: MatSnackBarConfig
   ) {}
 
-  openBasicAlert(data: BasicAlertI, closeAfter: number = 5000): void {
-    const barRef: MatSnackBarRef<BasicAlertComponent> =
-      this.snackBar.openFromComponent(BasicAlertComponent, {
+  openBasicAlert(data: PetsBasicAlertI, closeAfter: number = 5000): void {
+    const barRef: MatSnackBarRef<PetsBasicAlertComponent> =
+      this.snackBar.openFromComponent(PetsBasicAlertComponent, {
         ...this.basicAlertConfiguration,
         data,
       });
@@ -26,7 +29,7 @@ export class BasicAlertService {
     barRef.instance.eventOccurs
       .pipe(takeUntil(barRef.afterDismissed()))
       .subscribe((event: { eventName: string }) => {
-        if (event.eventName === BasicAlertEventsTypes.EXIT) {
+        if (event.eventName === PetsBasicAlertEventsTypes.EXIT) {
           this.snackBar.dismiss();
         }
       });

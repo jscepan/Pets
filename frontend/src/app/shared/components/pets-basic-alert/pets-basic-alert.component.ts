@@ -7,20 +7,23 @@ import {
 } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
-import { BasicAlertEventsTypes, BasicAlertI } from './basic-alert.interface';
+import {
+  PetsBasicAlertEventsTypes,
+  PetsBasicAlertI,
+} from './pets-basic-alert.interface';
 
 @Component({
   selector: 'pets-basic-alert',
-  templateUrl: './basic-alert.component.html',
-  styleUrls: ['./basic-alert.component.scss'],
+  templateUrl: './pets-basic-alert.component.html',
+  styleUrls: ['./pets-basic-alert.component.scss'],
 })
-export class BasicAlertComponent implements OnDestroy {
+export class PetsBasicAlertComponent implements OnDestroy {
   @Output() eventOccurs: EventEmitter<{ eventName: string }> =
     new EventEmitter();
 
-  readonly EVENT_TYPES = BasicAlertEventsTypes;
+  readonly EVENT_TYPES = PetsBasicAlertEventsTypes;
 
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: BasicAlertI) {}
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: PetsBasicAlertI) {}
 
   customEvent(eventName: string): void {
     this.eventOccurs.emit({ eventName });

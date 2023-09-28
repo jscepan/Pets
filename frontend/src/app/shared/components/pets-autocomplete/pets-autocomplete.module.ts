@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AutocompleteComponent } from './autocomplete.component';
+import { PetsAutocompleteComponent } from './pets-autocomplete.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
 import { PetsIconsModule } from '../../modules/icons.module';
@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AutocompleteComponent],
+  declarations: [PetsAutocompleteComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -23,6 +23,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
   ],
-  exports: [AutocompleteComponent],
+  exports: [PetsAutocompleteComponent],
 })
-export class AutocompleteModule {}
+export class PetsAutocompleteModule {}
