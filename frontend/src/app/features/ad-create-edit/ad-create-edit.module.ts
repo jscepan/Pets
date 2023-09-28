@@ -8,6 +8,11 @@ import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert
 import { PetsAutocompleteModule } from 'src/app/shared/components/pets-autocomplete/pets-autocomplete.module';
 import { PetsChipsModule } from 'src/app/shared/components/pets-chips/pets-chips.module';
 import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-select.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [AdCreateEditComponent],
@@ -21,6 +26,12 @@ import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-sel
     PetsAutocompleteModule,
     PetsChipsModule,
     PetsSelectModule,
+    MatButtonModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
 })
 export class AdCreateEditModule {}
