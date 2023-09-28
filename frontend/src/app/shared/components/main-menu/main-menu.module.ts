@@ -7,6 +7,7 @@ import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchFilterModule } from '../search-filter/search-filter.module';
 import { PetsMenuModule } from '../pets-menu/pets-menu.module';
+import { MessageNotificationModule } from '../message-notification/message-notification.module';
 
 @NgModule({
   declarations: [MainMenuComponent],
@@ -18,6 +19,7 @@ import { PetsMenuModule } from '../pets-menu/pets-menu.module';
     TranslateModule,
     SearchFilterModule,
     PetsMenuModule,
+    MessageNotificationModule,
   ],
   exports: [MainMenuComponent],
 })

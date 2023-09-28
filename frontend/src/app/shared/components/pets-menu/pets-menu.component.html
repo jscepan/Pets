@@ -1,9 +1,11 @@
-<div class="menu-button">
+<div
+  class="menu-button"
+  [matMenuTriggerFor]="menu"
+>
   <ng-container *ngIf="dataModel?.avatarUrl else iconOrName">
     <img
       class="avatar"
       [src]="dataModel?.avatarUrl"
-      [matMenuTriggerFor]="menu"
     >
   </ng-container>
   <ng-template #iconOrName>
@@ -12,18 +14,19 @@
         class="user-icon"
         matSuffix
         [name]="dataModel?.icon||''"
-        [matMenuTriggerFor]="menu"
       ></i-feather>
     </ng-container>
     <ng-template #displayName>
-      <button
-        mat-button
-        [matMenuTriggerFor]="menu"
-      >
+      <button mat-button>
         {{dataModel?.displayName}}
       </button>
     </ng-template>
   </ng-template>
+  <i-feather
+    class="down-icon"
+    matSuffix
+    [name]="'chevron-down'"
+  ></i-feather>
 </div>
 
 <mat-menu #menu="matMenu">

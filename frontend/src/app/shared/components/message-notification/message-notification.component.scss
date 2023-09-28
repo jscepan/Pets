@@ -1,0 +1,23 @@
+.container{
+  position: relative;
+
+  .msg-icon{
+    width: 35px;
+    height: 35px;
+  }
+
+  .counter{
+    position: absolute;
+    background-color: var(--color-white);
+    color: var(--color-main);
+    padding: 3px;
+
+    &.counterPositive {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-white);
+      background-color: var(--color-danger);
+      border-radius: 50%;
+    }
+  }
+}
