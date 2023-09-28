@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { PetsMenuModule } from '../pets-menu/pets-menu.module';
 
 @NgModule({
   declarations: [PetsSearchBarComponent],
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     FormsModule,
     MatIconModule,
+    PetsMenuModule,
   ],
   exports: [PetsSearchBarComponent],
 })

@@ -1,1 +1,22 @@
-search bar
+<mat-form-field class="search-input-form-field">
+  <mat-label>{{ placeholder }}</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="searchInput"
+    [autocomplete]="'on'"
+  />
+  <i-feather
+    *ngIf="!searchInput.value && !iconHidden"
+    matSuffix
+    name="search"
+    class="search-icon"
+  ></i-feather>
+  <i-feather
+    *ngIf="searchInput.value"
+    (click)="resetSearchInputValue()"
+    name="x"
+    class="close"
+    matSuffix
+  ></i-feather>
+</mat-form-field>
