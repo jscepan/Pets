@@ -1,6 +1,7 @@
 import { Currency } from '../enums/currency.model';
 import { SellType } from '../enums/sell-type.model';
 import { BaseModel } from './base-model';
+import { ImageModel } from './image.model';
 import { PromotionModel } from './promotion.model';
 
 export class AdModel extends BaseModel {
@@ -15,9 +16,8 @@ export class AdModel extends BaseModel {
   priceIsFixed?: boolean;
   freeOfCharge?: boolean;
   description?: string;
-  images?: [];
+  images?: ImageModel[];
 
-  country?: string;
   city?: string;
   contactName?: string;
   contactPhone?: string;

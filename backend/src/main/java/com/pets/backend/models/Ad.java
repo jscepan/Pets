@@ -20,14 +20,16 @@ public class Ad extends BaseModel {
     @Column(name = "title")
     private String title;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "adSellType")
     private SellType sellType;
 
     @Column(name = "price")
     private double price;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "priceCurrency")
-    private PriceCurrency priceCurrency;
+    private Currency priceCurrency;
 
     @Column(name = "priceIsFixed")
     private boolean priceIsFixed;
@@ -38,13 +40,13 @@ public class Ad extends BaseModel {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "images")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "ad_images",
+            joinColumns = @JoinColumn(name = "ad_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id"))
     private List<Image> images;
 
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "city")
+    @ManyToOne()
     private City city;
 
     @Column(name = "contactName")
@@ -53,19 +55,20 @@ public class Ad extends BaseModel {
     @Column(name = "contactPhone")
     private String contactPhone;
 
-    @Column(name = "promotion")
+    @ManyToOne()
     private Promotion promotion;
-
-    @Column(name = "inactive")
-    private boolean inactive;
 
     @Column(name = "createdOn")
     private Timestamp createdOn;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "adStatus")
+    private AdStatus adStatus;
+
     public Ad() {
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, PriceCurrency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String country, City city, String contactName, String contactPhone, Promotion promotion, boolean inactive, Timestamp createdOn) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus) {
         this.adType = adType;
         this.category = category;
         this.subcategory = subcategory;
@@ -77,16 +80,15 @@ public class Ad extends BaseModel {
         this.freeOfCharge = freeOfCharge;
         this.description = description;
         this.images = images;
-        this.country = country;
         this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
         this.promotion = promotion;
-        this.inactive = inactive;
         this.createdOn = createdOn;
+        this.adStatus = adStatus;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, PriceCurrency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String country, City city, String contactName, String contactPhone, Promotion promotion, boolean inactive, Timestamp createdOn, Long id) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, Long id) {
         super(id);
         this.adType = adType;
         this.category = category;
@@ -99,16 +101,15 @@ public class Ad extends BaseModel {
         this.freeOfCharge = freeOfCharge;
         this.description = description;
         this.images = images;
-        this.country = country;
         this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
         this.promotion = promotion;
-        this.inactive = inactive;
         this.createdOn = createdOn;
+        this.adStatus = adStatus;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, PriceCurrency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String country, City city, String contactName, String contactPhone, Promotion promotion, boolean inactive, Timestamp createdOn, String oid, long id) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, String oid, long id) {
         super(oid, id);
         this.adType = adType;
         this.category = category;
@@ -121,13 +122,12 @@ public class Ad extends BaseModel {
         this.freeOfCharge = freeOfCharge;
         this.description = description;
         this.images = images;
-        this.country = country;
         this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
         this.promotion = promotion;
-        this.inactive = inactive;
         this.createdOn = createdOn;
+        this.adStatus = adStatus;
     }
 
     public String getAdType() {
@@ -178,11 +178,11 @@ public class Ad extends BaseModel {
         this.price = price;
     }
 
-    public PriceCurrency getPriceCurrency() {
+    public Currency getPriceCurrency() {
         return priceCurrency;
     }
 
-    public void setPriceCurrency(PriceCurrency priceCurrency) {
+    public void setPriceCurrency(Currency priceCurrency) {
         this.priceCurrency = priceCurrency;
     }
 
@@ -218,14 +218,6 @@ public class Ad extends BaseModel {
         this.images = images;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public City getCity() {
         return city;
     }
@@ -258,14 +250,6 @@ public class Ad extends BaseModel {
         this.promotion = promotion;
     }
 
-    public boolean isInactive() {
-        return inactive;
-    }
-
-    public void setInactive(boolean inactive) {
-        this.inactive = inactive;
-    }
-
     public Timestamp getCreatedOn() {
         return createdOn;
     }
@@ -274,8 +258,28 @@ public class Ad extends BaseModel {
         this.createdOn = createdOn;
     }
 
+    public AdStatus getAdStatus() {
+        return adStatus;
+    }
+
+    public void setAdStatus(AdStatus adStatus) {
+        this.adStatus = adStatus;
+    }
+
     @Override
     public String toString() {
-        return "Ad{" + "adType=" + adType + ", category=" + category + ", subcategory=" + subcategory + ", title=" + title + ", sellType=" + sellType + ", price=" + price + ", priceCurrency=" + priceCurrency + ", priceIsFixed=" + priceIsFixed + ", freeOfCharge=" + freeOfCharge + ", description=" + description + ", images=" + images + ", country=" + country + ", city=" + city + ", contactName=" + contactName + ", contactPhone=" + contactPhone + ", promotion=" + promotion + ", inactive=" + inactive + ", createdOn=" + createdOn + '}';
+        return "Ad{" + "adType=" + adType + ", category=" + category + ", subcategory=" + subcategory + ", title=" + title + ", sellType=" + sellType + ", price=" + price + ", priceCurrency=" + priceCurrency + ", priceIsFixed=" + priceIsFixed + ", freeOfCharge=" + freeOfCharge + ", description=" + description + ", images=" + images + ", city=" + city + ", contactName=" + contactName + ", contactPhone=" + contactPhone + ", promotion=" + promotion + ", createdOn=" + createdOn + ", adStatus=" + adStatus + '}';
+    }
+
+    public enum AdStatus {
+        ACTIVE, PAUSED, INACTIVE
+    }
+
+    public enum Currency {
+        RSD, EUR
+    }
+
+    public enum SellType {
+        BUY, SELL
     }
 }
