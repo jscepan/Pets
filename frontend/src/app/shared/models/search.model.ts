@@ -1,5 +1,5 @@
 export class SearchModel {
-  criteriaQuick: string = '';
+  quickSearch: string = '';
   private betweenAttributes: BettweenAttribute[] = [];
   ordering: 'ASC' | 'DESC' = 'ASC';
 

@@ -15,15 +15,6 @@ export const LOGIN_FORM_CONTENT_TYPE: { 'Content-Type': string } = {
 
 ////////////////////////////////////////////////////////////////////////
 
-export const PRIVILEGES: EnumValueModel[] = [
-  { value: 'USER_ANY', displayName: 'userBasicPrivileges' },
-];
-
-export const BUYER_TYPES: EnumValueModel[] = [
-  { value: 'COMPANY', displayName: 'company' },
-  { value: 'PERSON', displayName: 'person' },
-];
-
 export const AD_STATUS: EnumValueModel[] = [
   { value: 'ACTIVE', displayName: 'active' },
   { value: 'PAUSED', displayName: 'paused' },

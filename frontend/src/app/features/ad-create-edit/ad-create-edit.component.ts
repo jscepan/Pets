@@ -105,14 +105,18 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   }
 
   createAd(): void {
+    const prom =
+      '{"oid": "promotion::1","id": 1,"type": "tip_neki_tamo","title": "Standardna vidljivost","subtitle": "","description": "Objavite vas oglas potpuno besplatno","services": "Objava oglasa u trajanju od 30 dana","price": 0.0,"priceCurrency": "RSD","freeOfCharge": "1","inactive": false,"createdOn": "2023-09-29T23:09:41.000+00:00"  }';
     const adData: AdModel = <AdModel>{
       oid: '',
       adType: this.selectedAdType?.value,
       category: this.selectedCategories?.value,
       subcategory: this.selectedSubCategories?.value,
       ...this.secondFormGroup.value,
-      ...this.thirdFormGroup.value,
+      // ...this.thirdFormGroup.value,
+      promotion: JSON.parse(prom),
     };
+    adData.city = this.selectedCity?.value;
     this.subs.sink = this.adWebService.createEntity(adData).subscribe((ad) => {
       console.log('------------------');
       console.log(ad);
@@ -160,7 +164,6 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
       .get('subcategory')
       ?.setValue(this.selectedSubCategories?.value || '');
   }
-
   onCityChange(item: any): void {}
 
   ngOnDestroy(): void {
