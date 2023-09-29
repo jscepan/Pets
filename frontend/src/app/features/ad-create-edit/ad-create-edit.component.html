@@ -1,56 +1,39 @@
-<mat-stepper
-  linear
-  #stepper
->
+<mat-stepper linear #stepper>
   <mat-step [stepControl]="firstFormGroup">
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>adType</ng-template>
-      <mat-form-field>
-        <mat-label>adType</mat-label>
-        <input
-          matInput
-          formControlName="adType"
-          placeholder="adType"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>category</mat-label>
-        <input
-          matInput
-          formControlName="category"
-          placeholder="category"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>subcategory</mat-label>
-        <input
-          matInput
-          formControlName="subcategory"
-          placeholder="subcategory"
-        />
-      </mat-form-field>
-      <div>
-        <button
-          mat-button
-          matStepperNext
-        >Next</button>
-      </div>
+      <pets-autocomplete
+        [dataModel]="adsType"
+        (changeEvent)="onAdsTypeChange($event)"
+      ></pets-autocomplete>
+      <pets-autocomplete
+        [dataModel]="categories"
+        (changeEvent)="oncategoriesChange($event)"
+      ></pets-autocomplete>
+      <pets-autocomplete
+        [dataModel]="subCategories"
+        (changeEvent)="onSubcategoriesChange($event)"
+      ></pets-autocomplete>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>title</ng-template>
       <mat-form-field>
         <mat-label>title</mat-label>
-        <input
-          matInput
-          formControlName="title"
-          placeholder="title"
-        />
+        <input matInput formControlName="title" placeholder="title" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>price</mat-label>
         <input
+          type="number"
           matInput
           formControlName="price"
           placeholder="price"
@@ -64,22 +47,8 @@
           placeholder="priceCurrency"
         />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>priceIsFixed</mat-label>
-        <input
-          matInput
-          formControlName="priceIsFixed"
-          placeholder="priceIsFixed"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>freeOfCharge</mat-label>
-        <input
-          matInput
-          formControlName="freeOfCharge"
-          placeholder="freeOfCharge"
-        />
-      </mat-form-field>
+      <mat-checkbox formControlName="priceIsFixed"></mat-checkbox>
+      <mat-checkbox formControlName="freeOfCharge"></mat-checkbox>
       <mat-form-field>
         <mat-label>description</mat-label>
         <input
@@ -90,20 +59,12 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>images</mat-label>
-        <input
-          matInput
-          formControlName="images"
-          placeholder="images"
-        />
+        <input matInput formControlName="images" placeholder="images" />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>city</mat-label>
-        <input
-          matInput
-          formControlName="city"
-          placeholder="city"
-        />
-      </mat-form-field>
+      <pets-autocomplete
+        [dataModel]="cities"
+        (changeEvent)="onCityChange($event)"
+      ></pets-autocomplete>
       <mat-form-field>
         <mat-label>contactName</mat-label>
         <input
@@ -120,53 +81,22 @@
           placeholder="contactPhone"
         />
       </mat-form-field>
-      <div>
-        <button
-          mat-button
-          matStepperPrevious
-        >Back</button>
-        <button
-          mat-button
-          matStepperNext
-        >Next</button>
-      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
+    <ng-template matStepLabel>Izbor promocije</ng-template>
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Izbor promocije</ng-template>
       <mat-form-field>
         <mat-label>promotion</mat-label>
-        <input
-          matInput
-          formControlName="promotion"
-          placeholder="promotion"
-        />
+        <input matInput formControlName="promotion" placeholder="promotion" />
       </mat-form-field>
-      <div>
-        <button
-          mat-button
-          matStepperPrevious
-        >Back</button>
-        <button
-          mat-button
-          matStepperNext
-        >Next</button>
-      </div>
     </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Izbor promocije</ng-template>
     <p>You are now done.</p>
     <div>
-      <button
-        mat-button
-        matStepperPrevious
-      >Back</button>
-      <button
-        mat-button
-        (click)="stepper.reset()"
-      >Reset</button>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="createAd()">Submit</button>
     </div>
   </mat-step>
 </mat-stepper>

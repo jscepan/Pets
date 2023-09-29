@@ -38,6 +38,16 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
     );
   }
 
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.showComponent = false;
+    this.states = this.dataModel || [];
+    setTimeout(() => {
+      this.showComponent = true;
+    });
+  }
+
   filterStates(item: EnumValueModel) {
     return this.dataModel
       ? this.dataModel.filter(
@@ -47,16 +57,6 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
               .indexOf(item.displayName.toLowerCase()) === 0
         )
       : [];
-  }
-
-  ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.showComponent = false;
-    this.states = this.dataModel || [];
-    setTimeout(() => {
-      this.showComponent = true;
-    });
   }
 
   displayFn(item?: EnumValueModel): string {

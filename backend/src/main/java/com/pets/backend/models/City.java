@@ -22,18 +22,21 @@ public class City extends BaseModel {
     public City() {
     }
 
-    public City(String name) {
+    public City(String name, String country) {
         this.name = name;
+        this.country = country;
     }
 
-    public City(String name, Long id) {
+    public City(String name, String country, Long id) {
         super(id);
         this.name = name;
+        this.country = country;
     }
 
-    public City(String name, String oid, long id) {
+    public City(String name, String country, String oid, long id) {
         super(oid, id);
         this.name = name;
+        this.country = country;
     }
 
     public String getName() {
@@ -42,5 +45,13 @@ public class City extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { EntityBaseWebService } from '../core/services/entity-base.web-service';
 import { BASE_API_URL, DOMAIN_DEFINITIONS } from '../shared/constants';
 import { DefinitionModel } from '../shared/models/definitions.model';
 import { Observable } from 'rxjs';

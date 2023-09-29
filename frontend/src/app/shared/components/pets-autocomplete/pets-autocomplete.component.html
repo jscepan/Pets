@@ -1,24 +1,23 @@
-<mat-form-field
-  class="example-full-width"
-  *ngIf="showComponent"
->
-  <input
-    matInput
-    placeholder="State"
-    aria-label="State"
-    [matAutocomplete]="auto"
-    [formControl]="stateCtrl"
-  >
-  <mat-autocomplete
-    #auto="matAutocomplete"
-    (optionSelected)="onChangeSelectedObject($event.option.value)"
-    [displayWith]="displayFn"
-  >
-    <mat-option
-      *ngFor="let option of filteredStates | async"
-      [value]="option"
+<form>
+  <mat-form-field class="example-full-width" *ngIf="showComponent">
+    <input
+      matInput
+      placeholder="State"
+      aria-label="State"
+      [matAutocomplete]="auto"
+      [formControl]="stateCtrl"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onChangeSelectedObject($event.option.value)"
+      [displayWith]="displayFn"
     >
-      <span>{{ option.displayName }}</span>
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+      <mat-option
+        *ngFor="let option of filteredStates | async"
+        [value]="option"
+      >
+        <span>{{ option.displayName }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
