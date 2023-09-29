@@ -18,12 +18,27 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    adType: ['', Validators.required],
+    category: ['', Validators.required],
+    subcategory: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    title: ['', Validators.required],
+    adSellType: [''],
+    price: [0],
+    priceCurrency: [],
+    priceIsFixed: [],
+    freeOfCharge: [],
+    description: [''],
+    images: [],
+    country: [],
+    city: [],
+    contactName: [],
+    contactPhone: [],
   });
-
+  thirdFormGroup = this._formBuilder.group({
+    promotion: [],
+  });
   selectedLanguage: Language = Language.English;
 
   constructor(

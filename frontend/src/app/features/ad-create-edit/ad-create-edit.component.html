@@ -1,45 +1,180 @@
-<mat-stepper linear #stepper>
+<mat-stepper
+  linear
+  #stepper
+>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>adType</ng-template>
       <mat-form-field>
-        <mat-label>Name</mat-label>
+        <mat-label>adType</mat-label>
         <input
           matInput
-          formControlName="firstCtrl"
-          placeholder="Last name, First name"
-          required
+          formControlName="adType"
+          placeholder="adType"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>category</mat-label>
+        <input
+          matInput
+          formControlName="category"
+          placeholder="category"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>subcategory</mat-label>
+        <input
+          matInput
+          formControlName="subcategory"
+          placeholder="subcategory"
         />
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button
+          mat-button
+          matStepperNext
+        >Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>title</ng-template>
       <mat-form-field>
-        <mat-label>Address</mat-label>
+        <mat-label>title</mat-label>
         <input
           matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
+          formControlName="title"
+          placeholder="title"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>price</mat-label>
+        <input
+          matInput
+          formControlName="price"
+          placeholder="price"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>priceCurrency</mat-label>
+        <input
+          matInput
+          formControlName="priceCurrency"
+          placeholder="priceCurrency"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>priceIsFixed</mat-label>
+        <input
+          matInput
+          formControlName="priceIsFixed"
+          placeholder="priceIsFixed"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>freeOfCharge</mat-label>
+        <input
+          matInput
+          formControlName="freeOfCharge"
+          placeholder="freeOfCharge"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          placeholder="description"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>images</mat-label>
+        <input
+          matInput
+          formControlName="images"
+          placeholder="images"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>country</mat-label>
+        <input
+          matInput
+          formControlName="country"
+          placeholder="country"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>city</mat-label>
+        <input
+          matInput
+          formControlName="city"
+          placeholder="city"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>contactName</mat-label>
+        <input
+          matInput
+          formControlName="contactName"
+          placeholder="contactName"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>contactPhone</mat-label>
+        <input
+          matInput
+          formControlName="contactPhone"
+          placeholder="contactPhone"
         />
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button
+          mat-button
+          matStepperPrevious
+        >Back</button>
+        <button
+          mat-button
+          matStepperNext
+        >Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Izbor promocije</ng-template>
+      <mat-form-field>
+        <mat-label>promotion</mat-label>
+        <input
+          matInput
+          formControlName="promotion"
+          placeholder="promotion"
+        />
+      </mat-form-field>
+      <div>
+        <button
+          mat-button
+          matStepperPrevious
+        >Back</button>
+        <button
+          mat-button
+          matStepperNext
+        >Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <ng-template matStepLabel>Izbor promocije</ng-template>
     <p>You are now done.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button
+        mat-button
+        matStepperPrevious
+      >Back</button>
+      <button
+        mat-button
+        (click)="stepper.reset()"
+      >Reset</button>
     </div>
   </mat-step>
 </mat-stepper>
