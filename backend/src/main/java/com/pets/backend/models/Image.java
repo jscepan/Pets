@@ -5,23 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "images")
 public class Image extends BaseModel {
 
-    @NotBlank
     @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @NotBlank
-    @Column(name = "index")
-    private int index;
+    @Column(name = "indexOfImage")
+    private int indexOfImage;
 
     @Size(max = 40)
     @Enumerated(EnumType.STRING)
@@ -31,26 +28,26 @@ public class Image extends BaseModel {
     public Image() {
     }
 
-    public Image(String name, String description, int index, ImageServer imageServer) {
+    public Image(String name, String description, int indexOfImage, ImageServer imageServer) {
         this.name = name;
         this.description = description;
-        this.index = index;
+        this.indexOfImage = indexOfImage;
         this.imageServer = imageServer;
     }
 
-    public Image(String name, String description, int index, ImageServer imageServer, Long id) {
+    public Image(String name, String description, int indexOfImage, ImageServer imageServer, Long id) {
         super(id);
         this.name = name;
         this.description = description;
-        this.index = index;
+        this.indexOfImage = indexOfImage;
         this.imageServer = imageServer;
     }
 
-    public Image(String name, String description, int index, ImageServer imageServer, String oid, long id) {
+    public Image(String name, String description, int indexOfImage, ImageServer imageServer, String oid, long id) {
         super(oid, id);
         this.name = name;
         this.description = description;
-        this.index = index;
+        this.indexOfImage = indexOfImage;
         this.imageServer = imageServer;
     }
 
@@ -70,12 +67,12 @@ public class Image extends BaseModel {
         this.description = description;
     }
 
-    public int getIndex() {
-        return index;
+    public int getIndexOfImage() {
+        return indexOfImage;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setIndexOfImage(int indexOfImage) {
+        this.indexOfImage = indexOfImage;
     }
 
     public ImageServer getImageServer() {

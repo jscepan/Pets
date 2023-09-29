@@ -45,7 +45,6 @@ public class Ad extends BaseModel {
             joinColumns = @JoinColumn(name = "ad_id"),
             inverseJoinColumns = @JoinColumn(name = "image_id"))
     private List<Image> images;
-
     @ManyToOne()
     private City city;
 
@@ -264,11 +263,6 @@ public class Ad extends BaseModel {
 
     public void setAdStatus(AdStatus adStatus) {
         this.adStatus = adStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "Ad{" + "adType=" + adType + ", category=" + category + ", subcategory=" + subcategory + ", title=" + title + ", sellType=" + sellType + ", price=" + price + ", priceCurrency=" + priceCurrency + ", priceIsFixed=" + priceIsFixed + ", freeOfCharge=" + freeOfCharge + ", description=" + description + ", images=" + images + ", city=" + city + ", contactName=" + contactName + ", contactPhone=" + contactPhone + ", promotion=" + promotion + ", createdOn=" + createdOn + ", adStatus=" + adStatus + '}';
     }
 
     public enum AdStatus {
