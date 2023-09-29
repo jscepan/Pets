@@ -3,32 +3,35 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
+import { CURRENCY, SELL_TYPE } from 'src/app/shared/constants';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
 import { Language } from 'src/app/shared/enums/language.model';
 import { SellType } from 'src/app/shared/enums/sell-type.model';
 import { AdModel } from 'src/app/shared/models/ad.model';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
+import { SearchModel } from 'src/app/shared/models/search.model';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
+import { PromotionWebService } from 'src/app/web-services/promotion.web-service';
 
 @Component({
   selector: 'pets-ad-create-edit',
   templateUrl: './ad-create-edit.component.html',
   styleUrls: ['./ad-create-edit.component.scss'],
-  providers: [AdWebService],
+  providers: [AdWebService, PromotionWebService],
 })
 export class AdCreateEditComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   firstFormGroup = this._formBuilder.group({
+    adSellType: [SellType.SELL],
     adType: ['', Validators.required],
     category: ['', Validators.required],
     subcategory: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     title: ['', Validators.required],
-    adSellType: [SellType.SELL],
     price: [0],
     priceCurrency: [''],
     priceIsFixed: false,
@@ -42,7 +45,6 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   thirdFormGroup = this._formBuilder.group({
     promotion: [''],
   });
-  selectedLanguage: Language = Language.English;
 
   definitions?: DefinitionModel | null;
   adsType: EnumValueModel[] = [];
@@ -56,12 +58,16 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   selectedSubCategories?: DefinitionEntityModel;
   selectedCity?: DefinitionEntityModel;
 
+  priceCurrencyOptions: EnumValueModel[] = CURRENCY;
+  sellTypeOptions: EnumValueModel[] = SELL_TYPE;
+
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
     private router: Router,
     private languageService: LanguageService,
     private _formBuilder: FormBuilder,
-    private adWebService: AdWebService
+    private adWebService: AdWebService,
+    private promotionWebService: PromotionWebService
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +77,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         const types = definitions?.adsType.map((d) => {
           return {
             value: d.value,
-            displayName: d.displayValue[this.selectedLanguage],
+            displayName: d.displayValue[this.languageService.selectedLanguage],
           };
         });
         if (types) {
@@ -83,11 +89,19 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         this.cities = country?.childrens.map((c) => {
           return {
             value: c.value,
-            displayName: c.displayValue[this.selectedLanguage],
+            displayName: c.displayValue[this.languageService.selectedLanguage],
           };
         });
       }
     );
+    const searchModel = new SearchModel();
+    this.subs.sink = this.promotionWebService
+      .searchEntities(searchModel)
+      .subscribe((promotions) => {
+        console.log('promotions');
+        console.log(promotions);
+        // this.promotions = promotions;
+      });
   }
 
   createAd(): void {
@@ -116,7 +130,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     this.categories = types?.childrens.map((t) => {
       return {
         value: t.value,
-        displayName: t.displayValue[this.selectedLanguage],
+        displayName: t.displayValue[this.languageService.selectedLanguage],
       };
     });
   }
@@ -132,7 +146,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     this.subCategories = cat?.childrens.map((t) => {
       return {
         value: t.value,
-        displayName: t.displayValue[this.selectedLanguage],
+        displayName: t.displayValue[this.languageService.selectedLanguage],
       };
     });
   }

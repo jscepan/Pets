@@ -17,42 +17,42 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class AdsController {
-    
+
     @Autowired
     AdRepository adRepository;
-    
+
     @GetMapping("/ads")
     public ResponseEntity<List<Ad>> getAllAds(@RequestParam(required = false) String title) {
         try {
             List<Ad> tutorials = new ArrayList<>();
-            
+
             if (title == null) {
                 adRepository.findAll().forEach(tutorials::add);
             } else {
                 adRepository.findByTitleContaining(title).forEach(tutorials::add);
             }
-            
+
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            
+
             return new ResponseEntity<>(tutorials, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @GetMapping("/ads/{id}")
     public ResponseEntity<Ad> getAdById(@PathVariable("id") long id) {
         Optional<Ad> tutorialData = adRepository.findById(id);
-        
+
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @PostMapping("/ads")
     public ResponseEntity<Ad> createAd(@RequestBody Ad ad) {
         try {
@@ -64,11 +64,11 @@ public class AdsController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @PutMapping("/ads/{id}")
     public ResponseEntity<Ad> updateAd(@PathVariable("id") long id, @RequestBody Ad ad) {
         Optional<Ad> tutorialData = adRepository.findById(id);
-        
+
         if (tutorialData.isPresent()) {
             Ad _tutorial = tutorialData.get();
             _tutorial.setTitle(ad.getTitle());
@@ -78,7 +78,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @DeleteMapping("/ads/{id}")
     public ResponseEntity<HttpStatus> deleteAd(@PathVariable("id") long id) {
         try {
@@ -88,7 +88,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @DeleteMapping("/ads")
     public ResponseEntity<HttpStatus> deleteAllAds() {
         try {
@@ -98,7 +98,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @GetMapping("/ads/search")
     public ResponseEntity<List<Ad>> findByTitle(@RequestBody SearchFilter filter) {
         try {

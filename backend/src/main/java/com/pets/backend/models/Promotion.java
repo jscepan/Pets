@@ -42,7 +42,7 @@ public class Promotion extends BaseModel {
 
     @Column(name = "createdOn")
     private Timestamp createdOn;
-
+    
     public Promotion() {
     }
 
