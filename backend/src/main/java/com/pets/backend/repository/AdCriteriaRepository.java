@@ -45,8 +45,8 @@ public class AdCriteriaRepository {
         List<Ad> content = typedQuery.getResultList();
 
         Pageable pageable = getPageable(adPage);
-        long adCount = getAdsCount(predicate);
-        return new PageImpl<>(content, pageable, adCount);
+//        long adCount = getAdsCount(predicate);
+        return new PageImpl<>(content, pageable, 1);
     }
 
     private Predicate getPredicate(AdSearchCriteria adSearchCriteria, Root<Ad> adRoot) {
@@ -73,10 +73,11 @@ public class AdCriteriaRepository {
         return PageRequest.of(adPage.getPageNumber(), adPage.getPageSize(), sort);
     }
 
-    private long getAdsCount(Predicate predicate) {
-        CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
-        Root<Ad> countRoot = countQuery.from(Ad.class);
-        countQuery.select(criteriaBuilder.count(countRoot)).where(predicate);
-        return entityManager.createQuery(countQuery).getSingleResult();
-    }
+//    private long getAdsCount(Predicate predicate) {
+//        CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
+//        Root<Ad> countRoot = countQuery.from(Ad.class);
+//        countQuery.select(criteriaBuilder.count(countRoot)).where(predicate);
+//        TypedQuery<Long> typedCountQuery = entityManager.createQuery(countQuery);
+//        return typedCountQuery.getSingleResult();
+//    }
 }
