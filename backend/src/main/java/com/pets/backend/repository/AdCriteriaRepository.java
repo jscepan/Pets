@@ -38,15 +38,15 @@ public class AdCriteriaRepository {
         Predicate predicate = getPredicate(adSearchCriteria, adRoot);
         criteriaQuery.where(predicate);
         setOrder(adPage, criteriaQuery, adRoot);
-
         TypedQuery<Ad> typedQuery = entityManager.createQuery(criteriaQuery);
+        long adCount = typedQuery.getResultList().size();
         typedQuery.setFirstResult(adPage.getPageNumber() * adPage.getPageSize());
         typedQuery.setMaxResults(adPage.getPageSize());
         List<Ad> content = typedQuery.getResultList();
 
         Pageable pageable = getPageable(adPage);
 //        long adCount = getAdsCount(predicate);
-        return new PageImpl<>(content, pageable, 1);
+        return new PageImpl<>(content, pageable, adCount);
     }
 
     private Predicate getPredicate(AdSearchCriteria adSearchCriteria, Root<Ad> adRoot) {
