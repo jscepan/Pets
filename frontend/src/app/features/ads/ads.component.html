@@ -9,7 +9,12 @@
     </div>
     <div class="ads-container">
       <pets-search-bar></pets-search-bar>
-      <div class="grid-container">ads.......</div>
+      <div class="grid-container">
+        aaaaa{{ entities | async | json }}bbbbb
+        <div *ngFor="let ad of entities | async">
+          <pets-ad-card [dataModel]="ad"></pets-ad-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>

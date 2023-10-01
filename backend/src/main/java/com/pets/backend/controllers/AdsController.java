@@ -99,8 +99,9 @@ public class AdsController {
         }
     }
 
-    @GetMapping("/ads/search")
+    @PostMapping("/ads/search")
     public ResponseEntity<List<Ad>> findByTitle(@RequestBody SearchFilter filter) {
+        System.out.println("findByTitle");
         try {
             List<Ad> tutorials = adRepository.findByTitleContaining(filter.getQuickSearch());
             if (tutorials.isEmpty()) {
