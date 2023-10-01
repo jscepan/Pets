@@ -1,14 +1,21 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.Ad;
+import com.pets.backend.models.AdPage;
+import com.pets.backend.models.AdSearchCriteria;
 import com.pets.backend.models.SearchFilter;
+import com.pets.backend.repository.AdCriteriaRepository;
 import com.pets.backend.repository.AdRepository;
+import com.pets.backend.repository.DefinitionsRepository;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +27,8 @@ public class AdsController {
 
     @Autowired
     AdRepository adRepository;
+    @Autowired
+    AdCriteriaRepository adCriteriaRepository;
 
     @GetMapping("/ads")
     public ResponseEntity<List<Ad>> getAllAds(@RequestParam(required = false) String title) {
@@ -100,15 +109,11 @@ public class AdsController {
     }
 
     @PostMapping("/ads/search")
-    public ResponseEntity<List<Ad>> findByTitle(@RequestBody SearchFilter filter) {
-        System.out.println("findByTitle");
+    public ResponseEntity<Page<Ad>> search(@RequestBody SearchFilter searchFilter) {
         try {
-            List<Ad> tutorials = adRepository.findByTitleContaining(filter.getQuickSearch());
-            if (tutorials.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+            return new ResponseEntity<>(adCriteriaRepository.findAllWithFilters(searchFilter.getAdPage(), searchFilter.getAdSearchCriteria()), HttpStatus.OK);
         } catch (Exception e) {
+            Logger.getLogger(AdsController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
