@@ -1,33 +1,52 @@
+import { Sort } from '../enums/sort.model';
+
 export class SearchModel {
   quickSearch: string = '';
-  private betweenAttributes: BettweenAttribute[] = [];
-  ordering: 'ASC' | 'DESC' = 'ASC';
+  adPage: {
+    pageNumber: number;
+    pageSize: number;
+    sortDirection: Sort;
+    sortBy: string;
+  } = {
+    pageNumber: 0,
+    pageSize: 10,
+    sortDirection: Sort.ASC,
+    sortBy: 'title',
+  };
+  adSearchCriteria: {
+    title: string;
+    description: string;
+  } = { title: '', description: '' };
 
-  getBetweenAttributes(): BettweenAttribute[] {
-    return this.betweenAttributes;
-  }
+  // quickSearch: string = '';
+  // private betweenAttributes: BettweenAttribute[] = [];
+  // ordering: 'ASC' | 'DESC' = 'ASC';
 
-  addBetweenAttribute(newBetweenAttribute: BettweenAttribute): void {
-    let prevAttrIndex = this.betweenAttributes.findIndex(
-      (x) => x.attribute === newBetweenAttribute.attribute
-    );
-    prevAttrIndex < 0
-      ? this.betweenAttributes.push(newBetweenAttribute)
-      : (this.betweenAttributes[prevAttrIndex] = newBetweenAttribute);
-  }
+  // getBetweenAttributes(): BettweenAttribute[] {
+  //   return this.betweenAttributes;
+  // }
 
-  clearAllBetweenAttributes(): void {
-    this.betweenAttributes = [];
-  }
+  // addBetweenAttribute(newBetweenAttribute: BettweenAttribute): void {
+  //   let prevAttrIndex = this.betweenAttributes.findIndex(
+  //     (x) => x.attribute === newBetweenAttribute.attribute
+  //   );
+  //   prevAttrIndex < 0
+  //     ? this.betweenAttributes.push(newBetweenAttribute)
+  //     : (this.betweenAttributes[prevAttrIndex] = newBetweenAttribute);
+  // }
 
-  removeBetweenAttribute(attr: string): void {
-    let prevAttrIndex = this.betweenAttributes.findIndex(
-      (x) => x.attribute === attr
-    );
-    if (prevAttrIndex >= 0) {
-      this.betweenAttributes.splice(prevAttrIndex, 1);
-    }
-  }
+  // clearAllBetweenAttributes(): void {
+  //   this.betweenAttributes = [];
+  // }
+
+  // removeBetweenAttribute(attr: string): void {
+  //   let prevAttrIndex = this.betweenAttributes.findIndex(
+  //     (x) => x.attribute === attr
+  //   );
+  //   if (prevAttrIndex >= 0) {
+  //     this.betweenAttributes.splice(prevAttrIndex, 1);
+  //   }
+  // }
 }
 
 export interface BettweenAttribute {

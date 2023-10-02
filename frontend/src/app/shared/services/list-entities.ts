@@ -4,6 +4,7 @@ import { ArrayResponseI } from 'src/app/core/interfaces/array-response.interface
 import { EntityBaseWebService } from 'src/app/core/services/entity-base.web-service';
 import { BaseModel } from '../models/base-model';
 import { SearchModel } from '../models/search.model';
+import { Sort } from '../enums/sort.model';
 
 export class ListEntities<T extends BaseModel> {
   private entities$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
@@ -47,8 +48,8 @@ export class ListEntities<T extends BaseModel> {
     return this;
   }
 
-  public setOrdering(orderType: 'ASC' | 'DESC'): ListEntities<T> {
-    this.searchModel.ordering = orderType;
+  public setOrdering(orderType: Sort): ListEntities<T> {
+    this.searchModel.adPage.sortBy = orderType;
     return this;
   }
 
@@ -69,9 +70,9 @@ export class ListEntities<T extends BaseModel> {
       this.isLoading$.next(true);
       this.webService
         ?.searchEntities(
-          this.searchModel,
-          this.entities$.getValue().length || 0,
-          this.NUMBER_OF_ITEMS_ON_PAGE
+          this.searchModel
+          // this.entities$.getValue().length || 0,
+          // this.NUMBER_OF_ITEMS_ON_PAGE
         )
         .pipe(
           finalize(() => {
@@ -79,14 +80,12 @@ export class ListEntities<T extends BaseModel> {
           })
         )
         .subscribe((response: ArrayResponseI<T>) => {
-          console.log('requestNextPage');
-          console.log(response);
           this.entities$.next(
-            this.entities$.getValue().concat(response.entities)
+            this.entities$.getValue().concat(response.content)
           );
           const length = this.entities$.getValue().length || 0;
-          this.bottomReached$.next(!(length < response.totalCount));
-          this.totalEntitiesLength$.next(response.totalCount);
+          this.bottomReached$.next(!(length < response.totalElementa));
+          this.totalEntitiesLength$.next(response.totalElementa);
         });
     }
   }

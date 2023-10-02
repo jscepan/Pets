@@ -8,4 +8,4 @@ import { allIcons } from 'angular-feather/icons';
   imports: [CommonModule, FeatherModule.pick(allIcons)],
   exports: [FeatherModule],
 })
-export class PetsIconsModule {}
+export class PetsIcons222Module {}

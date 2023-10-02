@@ -1,0 +1,2 @@
+export const Monitor =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M4 3.5h16v-1H4v1zM21.5 5v10h1V5h-1zM20 16.5H4v1h16v-1zM2.5 15V5h-1v10h1zM4 16.5A1.5 1.5 0 012.5 15h-1A2.5 2.5 0 004 17.5v-1zM21.5 15a1.5 1.5 0 01-1.5 1.5v1a2.5 2.5 0 002.5-2.5h-1zM20 3.5A1.5 1.5 0 0121.5 5h1A2.5 2.5 0 0020 2.5v1zm-16-1A2.5 2.5 0 001.5 5h1A1.5 1.5 0 014 3.5v-1zM8 20.5a.5.5 0 000 1v-1zm8 1a.5.5 0 000-1v1zm-8 0h8v-1H8v1z"/><path d="M12.5 17a.5.5 0 10-1 0h1zm-1 4a.5.5 0 101 0h-1zm0-4v4h1v-4h-1z"/></g></svg>';

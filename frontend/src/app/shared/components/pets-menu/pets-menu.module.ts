@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PetsMenuComponent } from './pets-menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
-import { PetsIconsModule } from '../../modules/icons.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { PetsIconsProviderModule } from '../../modules/me-icons.module';
 
 @NgModule({
   declarations: [PetsMenuComponent],
@@ -12,8 +12,8 @@ import { MatMenuModule } from '@angular/material/menu';
     CommonModule,
     MatButtonModule,
     FeatherModule,
-    PetsIconsModule,
     MatMenuModule,
+    PetsIconsProviderModule,
   ],
   exports: [PetsMenuComponent],
 })

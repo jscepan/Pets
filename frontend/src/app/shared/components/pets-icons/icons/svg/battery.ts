@@ -1,0 +1,2 @@
+export const Battery =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M3 6.5h14v-1H3v1zM18.5 8v8h1V8h-1zM17 17.5H3v1h14v-1zM1.5 16V8h-1v8h1zM3 17.5A1.5 1.5 0 011.5 16h-1A2.5 2.5 0 003 18.5v-1zM18.5 16a1.5 1.5 0 01-1.5 1.5v1a2.5 2.5 0 002.5-2.5h-1zM17 6.5A1.5 1.5 0 0118.5 8h1A2.5 2.5 0 0017 5.5v1zm-14-1A2.5 2.5 0 00.5 8h1A1.5 1.5 0 013 6.5v-1zM22.5 13a.5.5 0 001 0h-1zm1-2a.5.5 0 00-1 0h1zm0 2v-2h-1v2h1z"/></g></svg>';

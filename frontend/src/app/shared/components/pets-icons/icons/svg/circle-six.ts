@@ -1,0 +1,2 @@
+export const CircleSix =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"> <circle cx="6.25" cy="4.25" r="1.25" fill="#93949D" /><circle cx="10.75" cy="4.25" r="1.25" fill="#93949D" /><circle cx="6.25" cy="8.75" r="1.25" fill="#93949D" /><circle cx="10.75" cy="8.75" r="1.25" fill="#93949D" /><circle cx="6.25" cy="13.25" r="1.25" fill="#93949D" /><circle cx="10.75" cy="13.25" r="1.25" fill="#93949D" /></svg>';

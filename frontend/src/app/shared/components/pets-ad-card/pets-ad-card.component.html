@@ -1,12 +1,61 @@
 <div class="container" *ngIf="dataModel">
-  <!-- {{ dataModel.thumbnailUrl }}
+  <div
+    class="thumbnail"
+    *ngIf="dataModel.images && dataModel.images[0]?.name; else noImage"
+  >
+    <img [src]="dataModel.images[0].name" />
+    <div class="media-counters">
+      <div class="counter">
+        <pets-icons [name]="'camera'"></pets-icons>
+        10
+      </div>
+      <div class="counter">
+        <pets-icons [name]="'video'"></pets-icons>
+        2
+      </div>
+    </div>
+  </div>
+  <div class="ad-container">
+    <div class="title">{{ dataModel.title }}</div>
+    <div class="price">{{ dataModel.price }} {{ dataModel.priceCurrency }}</div>
+    <div class="description">{{ dataModel.description }}</div>
+    <div class="time">
+      <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
+      1 hour
+    </div>
+    <div class="place">
+      {{ dataModel.city }}
+    </div>
+    <!-- {{ dataModel.thumbnailUrl }}
   {{ dataModel.imageCounter }}
   {{ dataModel.videoCounter }}
-  {{ dataModel.time }} -->
+  {{ dataModel.time }}
   {{ dataModel.title }}
-  {{ dataModel.price }}
-  <!-- {{ dataModel.characteristics }} -->
-  {{ dataModel.description }}
-  <!-- {{ dataModel.author.name }}
+
+  {{ dataModel.characteristics }}
+
+  {{ dataModel.author.name }}
   {{ dataModel.favorite }} -->
+    <div class="favorite">
+      <pets-icons [name]="'heart'" *ngIf="true"></pets-icons>
+      <pets-icons [name]="'heart-filled'" *ngIf="true"></pets-icons>
+    </div>
+  </div>
 </div>
+<ng-template #noImage>
+  <div class="thumbnail">
+    <img
+      src="https://www.allianceplast.com/wp-content/uploads/no-image-1024x1024.png"
+    />
+    <div class="media-counters">
+      <div class="counter">
+        <pets-icons [name]="'camera'"></pets-icons>
+        10
+      </div>
+      <div class="counter">
+        <pets-icons [name]="'video'"></pets-icons>
+        2
+      </div>
+    </div>
+  </div>
+</ng-template>

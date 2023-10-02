@@ -18,14 +18,14 @@ export abstract class EntityBaseWebService<T> {
   ) {}
 
   searchEntities = (
-    data: SearchModel,
-    skip?: number,
-    top?: number
+    data: SearchModel
+    // skip?: number,
+    // top?: number
   ): Observable<ArrayResponseI<T>> => {
     const url: string = constructUrl(
-      `${BASE_API_URL + '/' + this.domainName}/search`,
-      skip,
-      top
+      `${BASE_API_URL + '/' + this.domainName}/search`
+      // skip,
+      // top
     );
     return this.baseWebService.postRequestForArray<T, SearchModel>(
       url,

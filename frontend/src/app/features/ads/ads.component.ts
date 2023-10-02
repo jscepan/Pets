@@ -37,7 +37,7 @@ export class AdsComponent implements OnInit, OnDestroy {
       .setWebService(this.webService)
       .requestFirstPage();
 
-    this.entities?.subscribe((ent) => {
+    this.subs.sink = this.entities?.subscribe((ent) => {
       console.log('ententententententent');
       console.log(ent);
     });

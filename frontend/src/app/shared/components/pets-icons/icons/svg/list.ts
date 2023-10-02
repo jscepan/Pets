@@ -1,0 +1,2 @@
+export const List =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M8 5.5a.5.5 0 000 1v-1zm13 1a.5.5 0 000-1v1zm-13 0h13v-1H8v1zM8 11.5a.5.5 0 000 1v-1zm13 1a.5.5 0 000-1v1zm-13 0h13v-1H8v1zM8 17.5a.5.5 0 000 1v-1zm13 1a.5.5 0 000-1v1zm-13 0h13v-1H8v1zM4 5.5a.5.5 0 010 1v-1zm-1 1a.5.5 0 010-1v1zm1 0H3v-1h1v1zM4 11.5a.5.5 0 010 1v-1zm-1 1a.5.5 0 010-1v1zm1 0H3v-1h1v1zM4 17.5a.5.5 0 010 1v-1zm-1 1a.5.5 0 010-1v1zm1 0H3v-1h1v1z"/></g></svg>';

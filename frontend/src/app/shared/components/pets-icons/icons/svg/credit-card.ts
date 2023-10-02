@@ -1,0 +1,2 @@
+export const CreditCard =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M3 4.5h18v-1H3v1zM22.5 6v12h1V6h-1zM21 19.5H3v1h18v-1zM1.5 18V6h-1v12h1zM3 19.5A1.5 1.5 0 011.5 18h-1A2.5 2.5 0 003 20.5v-1zM22.5 18a1.5 1.5 0 01-1.5 1.5v1a2.5 2.5 0 002.5-2.5h-1zM21 4.5A1.5 1.5 0 0122.5 6h1A2.5 2.5 0 0021 3.5v1zm-18-1A2.5 2.5 0 00.5 6h1A1.5 1.5 0 013 4.5v-1z"/><path d="M1 9.5a.5.5 0 000 1v-1zm22 1a.5.5 0 100-1v1zm-22 0h22v-1H1v1z"/></g></svg>';

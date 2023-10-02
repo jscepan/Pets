@@ -1,0 +1,2 @@
+export const Book =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M3.5 19.5a.5.5 0 001 0h-1zm16.5-2a.5.5 0 100-1v1zm-15.5 2a2 2 0 012-2v-1a3 3 0 00-3 3h1zm2-2H20v-1H6.5v1z"/><path d="M20 2h.5a.5.5 0 00-.5-.5V2zm0 20v.5a.5.5 0 00.5-.5H20zM6.5 2.5H20v-1H6.5v1zm13-.5v20h1V2h-1zm.5 19.5H6.5v1H20v-1zm-13.5 0a2 2 0 01-2-2h-1a3 3 0 003 3v-1zm-2-2v-15h-1v15h1zm0-15a2 2 0 012-2v-1a3 3 0 00-3 3h1z"/></g></svg>';

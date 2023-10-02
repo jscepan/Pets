@@ -1,12 +1,9 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.Ad;
-import com.pets.backend.models.AdPage;
-import com.pets.backend.models.AdSearchCriteria;
 import com.pets.backend.models.SearchFilter;
 import com.pets.backend.repository.AdCriteriaRepository;
 import com.pets.backend.repository.AdRepository;
-import com.pets.backend.repository.DefinitionsRepository;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

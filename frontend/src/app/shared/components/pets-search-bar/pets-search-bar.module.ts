@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PetsSearchBarComponent } from './pets-search-bar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
-import { PetsIconsModule } from '../../modules/icons.module';
+import { PetsIcons222Module } from '../../modules/icons.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,7 +16,7 @@ import { PetsMenuModule } from '../pets-menu/pets-menu.module';
     CommonModule,
     MatButtonModule,
     FeatherModule,
-    PetsIconsModule,
+    PetsIcons222Module,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

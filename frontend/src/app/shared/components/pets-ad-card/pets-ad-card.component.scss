@@ -1,0 +1,78 @@
+.container {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 6px;
+  display: flex;
+
+  .thumbnail {
+    position: relative;
+    width: 200px;
+
+    img {
+      object-fit: contain;
+      object-position: center;
+      top: 50%;
+      width: 100%;
+    }
+
+    .media-counters {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 6px;
+      padding: 3px;
+      display: flex;
+      background-color: rgb(0, 0, 0);
+      opacity: 0.5;
+      align-items: center;
+      z-index: 1;
+
+      .counter {
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+        color: var(--color-white);
+
+        pets-icons {
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
+  .ad-container {
+    width: 100%;
+
+    .title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .description {
+    }
+
+    .time {
+      display: flex;
+
+      pets-icons {
+        margin-right: 5px;
+      }
+    }
+
+    .place {
+    }
+
+    .favorite {
+      position: absolute;
+      margin: 10px;
+      top: 0;
+      right: 0;
+    }
+  }
+}

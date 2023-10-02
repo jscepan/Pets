@@ -1,0 +1,2 @@
+export const Year =
+  '<svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25 49C38.2547 49 49 38.2547 49 25C49 11.7453 38.2547 1 25 1C11.7453 1 1 11.7453 1 25C1 38.2547 11.7453 49 25 49Z" stroke="#282A3C" stroke-miterlimit="10" stroke-linecap="round"/><path d="M25 10V25L32.5 32.5" stroke="#282A3C" stroke-miterlimit="10" stroke-linecap="round"/></svg>';

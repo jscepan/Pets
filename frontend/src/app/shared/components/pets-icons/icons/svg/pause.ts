@@ -1,0 +1,2 @@
+export const Pause =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><g ><path d="M6 4v-.5a.5.5 0 00-.5.5H6zm4 0h.5a.5.5 0 00-.5-.5V4zm0 16v.5a.5.5 0 00.5-.5H10zm-4 0h-.5a.5.5 0 00.5.5V20zM6 4.5h4v-1H6v1zM9.5 4v16h1V4h-1zm.5 15.5H6v1h4v-1zm-3.5.5V4h-1v16h1zM14 4v-.5a.5.5 0 00-.5.5h.5zm4 0h.5a.5.5 0 00-.5-.5V4zm0 16v.5a.5.5 0 00.5-.5H18zm-4 0h-.5a.5.5 0 00.5.5V20zm0-15.5h4v-1h-4v1zm3.5-.5v16h1V4h-1zm.5 15.5h-4v1h4v-1zm-3.5.5V4h-1v16h1z"/></g></svg>';

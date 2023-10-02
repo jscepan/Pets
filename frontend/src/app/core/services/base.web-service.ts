@@ -43,14 +43,15 @@ export class BaseWebService {
     const options = this.addOptionsForRequest();
     return this.http.get<ArrayResponseI<T>>(url, options).pipe(
       map((res) => {
-        const result: ArrayResponseI<T> = {
-          entities: res.entities
-            ? res.entities.map((entity: T) => plainToClass(classType, entity))
-            : [],
-          nextID: res.nextID,
-          totalCount: res.totalCount,
-        };
-        return result;
+        // const result: ArrayResponseI<T> = {
+        //   entities: res.entities
+        //     ? res.entities.map((entity: T) => plainToClass(classType, entity))
+        //     : [],
+        //   nextID: res.nextID,
+        //   totalCount: res.totalCount,
+        // };
+        res.content.map((entity: T) => plainToClass(classType, entity));
+        return res;
       })
     );
   }
@@ -85,14 +86,16 @@ export class BaseWebService {
     const options = this.addOptionsForRequest();
     return this.http.post<ArrayResponseI<T>>(url, data, options).pipe(
       map((res) => {
-        const result: ArrayResponseI<T> = {
-          entities: res.entities
-            ? res.entities.map((entity: T) => plainToClass(classType, entity))
-            : [],
-          nextID: res.nextID,
-          totalCount: res.totalCount,
-        };
-        return result;
+        // const result: ArrayResponseI<T> = {
+        //   entities: res.content
+        //     ? res.content.map((entity: T) => plainToClass(classType, entity))
+        //     : [],
+
+        //   nextID: res.nextID,
+        //   totalCount: res.totalCount,
+        // };
+        res.content.map((entity: T) => plainToClass(classType, entity));
+        return res;
       })
     );
   }

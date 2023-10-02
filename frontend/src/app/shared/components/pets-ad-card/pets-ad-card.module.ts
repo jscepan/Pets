@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PetsAdCardComponent } from './pets-ad-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherModule } from 'angular-feather';
-import { PetsIconsModule } from '../../modules/icons.module';
+import { PetsIconsModule } from '../pets-icons/pets-icons.module';
 
 @NgModule({
   declarations: [PetsAdCardComponent],
