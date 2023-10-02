@@ -2,12 +2,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
-import { PetsIcons222Module } from '../../modules/icons.module';
 
 import { PetsBasicAlertComponent } from './pets-basic-alert.component';
 import { PetsBasicAlertService } from './pets-basic-alert.service';
+import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 @NgModule({
-  imports: [CommonModule, RouterModule, PetsIcons222Module, MatSnackBarModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    PetsIconsProviderModule,
+    MatSnackBarModule,
+  ],
   exports: [PetsBasicAlertComponent],
   declarations: [PetsBasicAlertComponent],
   providers: [PetsBasicAlertService],

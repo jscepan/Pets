@@ -6,17 +6,17 @@
     [formControl]="searchInput"
     [autocomplete]="'on'"
   />
-  <i-feather
+  <pets-icons
     *ngIf="!searchInput.value && !iconHidden"
     matSuffix
     name="search"
     class="search-icon"
-  ></i-feather>
-  <i-feather
+  ></pets-icons>
+  <pets-icons
     *ngIf="searchInput.value"
     (click)="resetSearchInputValue()"
     name="x"
     class="close"
     matSuffix
-  ></i-feather>
+  ></pets-icons>
 </mat-form-field>

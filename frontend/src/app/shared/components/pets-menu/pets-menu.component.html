@@ -1,32 +1,22 @@
-<div
-  class="menu-button"
-  [matMenuTriggerFor]="menu"
->
-  <ng-container *ngIf="dataModel?.avatarUrl else iconOrName">
-    <img
-      class="avatar"
-      [src]="dataModel?.avatarUrl"
-    >
+<div class="menu-button" [matMenuTriggerFor]="menu">
+  <ng-container *ngIf="dataModel?.avatarUrl; else iconOrName">
+    <img class="avatar" [src]="dataModel?.avatarUrl" />
   </ng-container>
   <ng-template #iconOrName>
-    <ng-container *ngIf="dataModel?.icon else displayName">
-      <i-feather
+    <ng-container *ngIf="dataModel?.icon; else displayName">
+      <pets-icons
         class="user-icon"
         matSuffix
-        [name]="dataModel?.icon||''"
-      ></i-feather>
+        [name]="dataModel?.icon || ''"
+      ></pets-icons>
     </ng-container>
     <ng-template #displayName>
       <button mat-button>
-        {{dataModel?.displayName}}
+        {{ dataModel?.displayName }}
       </button>
     </ng-template>
   </ng-template>
-  <i-feather
-    class="down-icon"
-    matSuffix
-    [name]="'chevron-down'"
-  ></i-feather>
+  <pets-icons class="down-icon" matSuffix [name]="'chevron-down'"></pets-icons>
 </div>
 
 <mat-menu #menu="matMenu">
@@ -47,10 +37,7 @@
     </button>
     <mat-menu #subMenu="matMenu">
       <ng-container *ngFor="let subMenuItem of menuItem.subMenuItems">
-        <button
-          mat-menu-item
-          (click)="menuItemClicked(subMenuItem)"
-        >
+        <button mat-menu-item (click)="menuItemClicked(subMenuItem)">
           {{ subMenuItem.displayName }}
         </button>
       </ng-container>

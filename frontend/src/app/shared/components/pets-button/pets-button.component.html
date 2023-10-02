@@ -10,19 +10,18 @@
   [class.full-height]="fullHeight"
 >
   <div class="button-content">
-    <i-feather
+    <pets-icons
       *ngIf="isFeatherIcon && iconName"
       [name]="iconName"
-    ></i-feather>
-    <i-feather
+    ></pets-icons>
+    <pets-icons
       *ngIf="!isFeatherIcon && iconName"
       [name]="iconName"
       class="icon"
-    ></i-feather>
+    ></pets-icons>
     <div [class.text-with-icon]="!!iconName">
       <ng-container *ngIf="text">{{ text }}</ng-container>
       <ng-content *ngIf="!text"></ng-content>
     </div>
-
   </div>
 </button>

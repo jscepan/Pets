@@ -4,11 +4,11 @@
   [ngClass]="'dialog_' + data.type.name"
 >
   <div class="sweet-alert-close">
-    <i-feather name="x" mat-dialog-close></i-feather>
+    <pets-icons name="x" mat-dialog-close></pets-icons>
   </div>
 
   <div class="icon" *ngIf="data.icon">
-    <i-feather [name]="data.icon"></i-feather>
+    <pets-icons [name]="data.icon"></pets-icons>
   </div>
 
   <span class="title">{{ data.title !== "" ? data.title : data.mode }}</span>

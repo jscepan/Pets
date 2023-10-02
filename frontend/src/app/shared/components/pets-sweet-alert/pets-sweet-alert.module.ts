@@ -10,12 +10,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { SafePipeModule } from 'safe-pipe';
-import { PetsIcons222Module } from '../../modules/icons.module';
+import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PetsIcons222Module,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -24,6 +23,7 @@ import { PetsIcons222Module } from '../../modules/icons.module';
     PetsButtonModule,
     SafePipeModule,
     MatTooltipModule,
+    PetsIconsProviderModule,
   ],
   declarations: [PetsSweetAlertComponent],
   exports: [PetsSweetAlertComponent],

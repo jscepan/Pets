@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsMessageNotificationComponent } from './pets-message-notification.component';
 import { MatButtonModule } from '@angular/material/button';
-import { FeatherModule } from 'angular-feather';
-import { PetsIcons222Module } from '../../modules/icons.module';
+import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 
 @NgModule({
   declarations: [PetsMessageNotificationComponent],
-  imports: [CommonModule, MatButtonModule, FeatherModule, PetsIcons222Module],
+  imports: [CommonModule, MatButtonModule, PetsIconsProviderModule],
   exports: [PetsMessageNotificationComponent],
 })
 export class PetsMessageNotificationModule {}
