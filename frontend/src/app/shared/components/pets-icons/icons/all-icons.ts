@@ -34,6 +34,7 @@ import { Boot } from './svg/boot';
 import { Box } from './svg/box';
 import { BoxNew } from './svg/box-new';
 import { Briefcase } from './svg/briefcase';
+import { Buldog } from './svg/buldog';
 import { BusinessInformation } from './svg/business-information';
 import { Button } from './svg/button';
 import { Calendar } from './svg/calendar';
@@ -396,6 +397,7 @@ export const allIcons = {
   Box,
   BoxNew,
   Briefcase,
+  Buldog,
   BusinessInformation,
   Button,
   Calendar,

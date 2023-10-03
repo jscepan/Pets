@@ -8,6 +8,7 @@ import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert
 import { PetsAutocompleteModule } from 'src/app/shared/components/pets-autocomplete/pets-autocomplete.module';
 import { PetsChipsModule } from 'src/app/shared/components/pets-chips/pets-chips.module';
 import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-select.module';
+import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -21,6 +22,7 @@ import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-sel
     PetsAutocompleteModule,
     PetsChipsModule,
     PetsSelectModule,
+    PetsIconsProviderModule,
   ],
 })
 export class DashboardModule {}

@@ -1,39 +1,47 @@
 <div class="container">
-  <div class="main-filter">
-    <div class="categories">
-      <div
-        class="category"
-        *ngFor="let adType of adsType"
-        (click)="selectAdType(adType)"
-        [ngClass]="{ selected: adType === selectedAdType }"
-      >
-        <img src="{{ adType.thumbnailUrl }}" />
-        <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
+  <div class="central-content">
+    <div class="main-filter">
+      <div class="categories">
+        <div
+          class="category"
+          *ngFor="let adType of adsType"
+          (click)="selectAdType(adType)"
+          [ngClass]="{ selected: adType === selectedAdType }"
+        >
+          <img src="{{ adType.thumbnailUrl }}" />
+          <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
+        </div>
+      </div>
+      <div class="selecting">
+        <div class="types">
+          <pets-autocomplete
+            [dataModel]="categories"
+            (changeEvent)="onAutocompleteChange($event)"
+          ></pets-autocomplete>
+        </div>
+        <div class="sub-categories">
+          <pets-select
+            [dataModel]="subCategories"
+            [multipleSelect]="true"
+            [label]="'Selektuj' | translate"
+          ></pets-select>
+        </div>
+      </div>
+      <div class="search">
+        <pets-button
+          [text]="'search' | translate"
+          (clickEvent)="search()"
+          [fullWidth]="true"
+        ></pets-button>
       </div>
     </div>
-    <div class="selecting">
-      <div class="types">
-        <pets-autocomplete
-          [dataModel]="categories"
-          (changeEvent)="onAutocompleteChange($event)"
-        ></pets-autocomplete>
-      </div>
-      <div class="sub-categories">
-        <pets-select
-          [dataModel]="subCategories"
-          [multipleSelect]="true"
-          [label]="'Selektuj' | translate"
-        ></pets-select>
-      </div>
-    </div>
-    <div class="search">
-      <pets-button
-        [text]="'search' | translate"
-        (clickEvent)="search()"
-        [fullWidth]="true"
-      ></pets-button>
+    <div class="buldog-wrapper">
+      <pets-icons
+        [name]="'buldog'"
+        class="buldog"
+        [size]="'450px'"
+      ></pets-icons>
     </div>
   </div>
-
-  <!-- {{ "recommendedForYou" | translate }} -->
+  <div class="bottom-menu">bottom menu</div>
 </div>

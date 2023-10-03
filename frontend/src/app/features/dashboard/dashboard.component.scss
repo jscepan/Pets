@@ -1,55 +1,90 @@
 .container {
-  .main-filter {
+  width: 100%;
+  background: linear-gradient(360deg, #9461c4 0, #f2e3ff 75%, #8e37df);
+
+  .central-content {
     display: flex;
-    flex-direction: column;
+    height: calc(100vh - 155px);
+    align-items: center;
+    position: relative;
 
-    .categories {
+    .main-filter {
       display: flex;
+      flex-direction: column;
+      max-width: 450px;
+      padding: 10px;
+      background-color: var(--color-white);
+      border-radius: 8px;
+      margin-left: 40px;
+      z-index: 1;
 
-      .category {
-        margin: 10px;
-        border: 1px solid gray;
-        border-radius: 8px;
-        width: 130px;
+      .categories {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
 
-        img {
-          width: 50px;
-        }
-        .name {
-          font-size: 16px;
-          font-weight: 600;
-          text-align: center;
+        .category {
+          border: 1px solid gray;
+          border-radius: 8px;
+          width: 130px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-items: center;
+
+          img {
+            width: 50px;
+          }
+          .name {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+          }
+
+          &.selected {
+            border: 2px solid var(--color-primary);
+          }
         }
 
-        &.selected {
-          border: 2px solid green;
+        .category:hover {
+          border: 1px solid var(--color-primary);
+          cursor: pointer;
         }
       }
 
-      .category:hover {
-        border: 1px solid rgb(73, 73, 73);
-        cursor: pointer;
+      .selecting {
+        display: flex;
+        justify-content: space-between;
+
+        .types {
+        }
+
+        .sub-categories {
+        }
+      }
+
+      .search {
+        width: 100%;
       }
     }
 
-    .selecting {
+    .buldog-wrapper {
       display: flex;
-
-      .types {
-        margin: 10px;
-      }
-
-      .sub-categories {
-        width: 50%;
-      }
-    }
-
-    .search {
+      height: 100%;
       width: 100%;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      .buldog {
+        position: absolute;
+        right: 0;
+      }
     }
+  }
+
+  .bottom-menu {
+    height: 80px;
+    background-color: var(--color-white);
   }
 }
