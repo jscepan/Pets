@@ -10,7 +10,8 @@ import { PetsChipsModule } from 'src/app/shared/components/pets-chips/pets-chips
 import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-select.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -23,10 +24,11 @@ import { MatIconModule } from '@angular/material/icon';
     PetsAutocompleteModule,
     PetsChipsModule,
     PetsSelectModule,
-    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
+    MatInputModule,
+    PetsIconsProviderModule,
   ],
   exports: [RegisterComponent],
 })

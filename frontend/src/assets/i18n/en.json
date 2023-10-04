@@ -9,6 +9,7 @@
   "insertYourEmail": "Insert your email",
   "inputEmailAndYouWillGetInstructionForPasswordReset": "Input email and you will get instruction for password reset.",
   "confirm": "Confirm",
+  "email": "Email",
   "emailSent": "Email sent",
   "emailSuccessfullySentCheckYouEmailAndSpamFolder": "Email successfully sent check you email and spam folder.",
   "oldPassword": "Old password",
@@ -18,5 +19,9 @@
   "forgotPassword": "Forgot password",
   "forgetPassword": "Forget password",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "switchToSignIn": "Switch to sign-in",
+  "bySigningInIAgreeToThe": "By signing in, I agree to the",
+  "termsAndConditions": "Terms and Conditions",
+  "back": "Back"
 }

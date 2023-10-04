@@ -9,6 +9,7 @@
   "insertYourEmail": "Unesite vaš e-mail",
   "inputEmailAndYouWillGetInstructionForPasswordReset": "Unesite email i poslaćemo vam instrukcije za resetovanje lozinke.",
   "confirm": "U redu",
+  "email": "Email",
   "emailSent": "Email poslat",
   "emailSuccessfullySentCheckYouEmailAndSpamFolder": "Email je uspešno poslat. Proverite vam e-mail a takođe i vaš SPAM folder.",
   "oldPassword": "Stara lozinka",
@@ -18,5 +19,9 @@
   "forgotPassword": "Zaboravljena lozinka",
   "forgetPassword": "Zaboravljena lozinka",
   "username": "Korisničko ime",
-  "password": "Lozinka"
+  "password": "Lozinka",
+  "switchToSignIn": "Promeni na logovanje",
+  "bySigningInIAgreeToThe": "Registracijom pristajete na",
+  "termsAndConditions": "Pravila i uslovi",
+  "back": "Nazad"
 }

@@ -78,9 +78,9 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.router.navigate(['/']);
-    // this.authStoreService.canceledURL = null;
-    // this.authStoreService.user = null;
-    // this.authStoreService.canceledURL = null;
+    this.authStoreService.canceledURL = null;
+    this.authStoreService.user = null;
+    this.authStoreService.canceledURL = null;
     this.localStorageService.remove('jwt');
   }
 

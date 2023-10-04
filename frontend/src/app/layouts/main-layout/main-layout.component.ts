@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthWebService } from '@layouts/auth-layout/auth.web-service';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
@@ -11,7 +13,7 @@ import { DefinitionsWebService } from 'src/app/web-services/definitions.web-serv
   selector: 'pets-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
-  providers: [DefinitionsWebService],
+  providers: [DefinitionsWebService, AuthWebService],
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -24,7 +26,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private translateService: TranslateService,
     private definitionsStoreService: DefinitionsStoreService,
-    private definitionsWebService: DefinitionsWebService
+    private definitionsWebService: DefinitionsWebService,
+    private authWebService: AuthWebService,
+    private authStoreService: AuthStoreService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +37,12 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       .subscribe((definitions) => {
         this.definitionsStoreService.setDefinitions(definitions);
       });
+
+    this.subs.sink = this.authWebService.getCurrentUser().subscribe((user) => {
+      if (user) {
+        this.authStoreService.user = user;
+      }
+    });
   }
 
   changeLanguage(language: string): void {

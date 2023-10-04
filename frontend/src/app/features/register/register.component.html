@@ -1,5 +1,10 @@
 <!-- Sign in form -->
 <div class="auth-form flex flex-col">
+  <pets-button
+    [text]="'switchToSignIn' | translate"
+    (clickEvent)="switchToSignIn()"
+  ></pets-button>
+  <h1>{{ "register" | translate }}</h1>
   <form
     autocomplete="off"
     name="signUpForm"
@@ -7,226 +12,170 @@
     novalidate
     *ngIf="signUpForm"
   >
-      <div class="auth-input-field flex flex-row">
-        <mat-form-field
-          appearance="outline"
-          [hideRequiredMarker]="true"
-        >
-          <mat-label>{{'email' | translate}}</mat-label>
-          <input
-            matInput
-            type="text"
-            formControlName="username"
-            required
-          >
-          <mat-error>
-            {{'requiredField' | translate}}
-          </mat-error>
-        </mat-form-field>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>{{ "email" | translate }}</mat-label>
+      <input matInput type="text" formControlName="username" required />
+      <mat-error>
+        {{ "requiredField" | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <div
+      class="auth-password-message-error auth-mb-36"
+      *ngIf="!signUpForm?.get('password')?.pristine && !isPasswordValid()"
+    >
+      <div class="auth-password-message-error-false">
+        <span> New password must have at least </span>
+      </div>
+
+      <div class="auth-password-message-error-true" *ngIf="hasEightCharacters">
+        <pets-icons [name]="'check-circle'"></pets-icons>
+        <span> 8 characters </span>
       </div>
 
       <div
-        class="auth-password-message-error auth-mb-36"
-        *ngIf="!signUpForm?.get('password')?.pristine && !isPasswordValid()"
+        class="auth-password-message-error-false"
+        *ngIf="!hasEightCharacters"
       >
-
-        <div class="auth-password-message-error-false">
-          <span>
-            New password must have at least
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-true"
-          *ngIf="hasEightCharacters"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
-          <span>
-            8 characters
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-false"
-          *ngIf="!hasEightCharacters"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:minus-circle'"></mat-icon>
-          <span>
-            8 characters
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-true"
-          *ngIf="hasUpperCase"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
-          <span>
-            One uppercase
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-false"
-          *ngIf="!hasUpperCase"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:minus-circle'"></mat-icon>
-          <span>
-            One uppercase
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-true"
-          *ngIf="hasLowerCase"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
-          <span>
-            One lowercase
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-false"
-          *ngIf="!hasLowerCase"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:minus-circle'"></mat-icon>
-          <span>
-            One lowercase
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-true"
-          *ngIf="hasNumeric"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
-          <span>
-            One number
-          </span>
-        </div>
-
-        <div
-          class="auth-password-message-error-false"
-          *ngIf="!hasNumeric"
-        >
-          <mat-icon [svgIcon]="'heroicons_outline:minus-circle'"></mat-icon>
-          <span>
-            One number
-          </span>
-        </div>
+        <pets-icons [name]="'minus-circle'"></pets-icons>
+        <span> 8 characters </span>
       </div>
 
-      <mat-form-field
-        appearance="outline"
-        [hideRequiredMarker]="true"
-        class="auth-input-field"
-      >
-        <mat-label>New password</mat-label>
-        <input
-          name="password"
-          type="password"
-          matInput
-          formControlName="password"
-          required
-          #passwordField
-        >
-        <button
-          mat-icon-button
-          type="button"
-          (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
-          matSuffix
-        >
-          <mat-icon
-            [svgIcon]="'heroicons_outline:eye-off'"
-            *ngIf="passwordField.type === 'password'"
-            class="auth-password-visibility"
-          >
-          </mat-icon>
-          <mat-icon
-            [svgIcon]="'heroicons_outline:eye'"
-            *ngIf="passwordField.type === 'text'"
-            class="auth-password-visibility"
-          >
-          </mat-icon>
-        </button>
-        <mat-error>
-          {{'requiredField' | translate}}
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field
-        appearance="outline"
-        [hideRequiredMarker]="true"
-        class="auth-input-field"
-      >
-        <mat-label>Confirm new password</mat-label>
-        <input
-          name="passwordConfirm"
-          type="password"
-          matInput
-          formControlName="passwordConfirm"
-          required
-          #confirmPasswordField
-        >
-        <button
-          mat-icon-button
-          type="button"
-          (click)="confirmPasswordField.type === 'password' ? confirmPasswordField.type = 'text' : confirmPasswordField.type = 'password'"
-          matSuffix
-        >
-          <mat-icon
-            [svgIcon]="'heroicons_outline:eye-off'"
-            *ngIf="confirmPasswordField.type === 'password'"
-            class="auth-password-visibility"
-          >
-          </mat-icon>
-          <mat-icon
-            [svgIcon]="'heroicons_outline:eye'"
-            *ngIf="confirmPasswordField.type === 'text'"
-            class="auth-password-visibility"
-          >
-          </mat-icon>
-        </button>
-        <mat-error>
-          {{'passwordsDontMatch' | translate}}
-        </mat-error>
-      </mat-form-field>
-
-      <div class="auth-small-text auth-mb-42 flex flex-col items-center">
-        <span>By signing in, I agree to the <a
-            class="auth-under-text"
-            [href]="'https://material-exchange.com/dsp-terms-and-conditions/'"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Terms and Conditions</a>
-          and <a
-            class="auth-under-text"
-            [href]="'https://material-exchange.com/legal/data-processing-agreement/'"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Data Processing Agreement</a>,
-          as well as confirm that I have read the <a
-            class="auth-under-text"
-            [href]="'https://material-exchange.com/legal/data-protection-notice/'"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Data Protection Notice</a>.
-        </span>
+      <div class="auth-password-message-error-true" *ngIf="hasUpperCase">
+        <pets-icons [name]="'check-circle'"></pets-icons>
+        <span> One uppercase </span>
       </div>
 
+      <div class="auth-password-message-error-false" *ngIf="!hasUpperCase">
+        <pets-icons [name]="'minus-circle'"></pets-icons>
+        <span> One uppercase </span>
+      </div>
+
+      <div class="auth-password-message-error-true" *ngIf="hasLowerCase">
+        <pets-icons [name]="'check-circle'"></pets-icons>
+        <span> One lowercase </span>
+      </div>
+
+      <div class="auth-password-message-error-false" *ngIf="!hasLowerCase">
+        <pets-icons [name]="'minus-circle'"></pets-icons>
+        <span> One lowercase </span>
+      </div>
+
+      <div class="auth-password-message-error-true" *ngIf="hasNumeric">
+        <pets-icons [name]="'check-circle'"></pets-icons>
+        <span> One number </span>
+      </div>
+
+      <div class="auth-password-message-error-false" *ngIf="!hasNumeric">
+        <pets-icons [name]="'minus-circle'"></pets-icons>
+        <span> One number </span>
+      </div>
+    </div>
+
+    <mat-form-field
+      appearance="outline"
+      [hideRequiredMarker]="true"
+      class="auth-input-field"
+    >
+      <mat-label>New password</mat-label>
+      <input
+        name="password"
+        type="password"
+        matInput
+        formControlName="password"
+        required
+        #passwordField
+      />
       <button
-        mat-flat-button
-        color="primary"
-        class="auth-submit-button"
-        aria-label="LOG IN"
-        [disabled]="signUpForm.get('passwordConfirm')?.value === ''
-                              || signUpForm.get('passwordConfirm')?.value === null
-                              || !isPasswordValid()"
-        (click)="createAccount()"
+        mat-icon-button
+        type="button"
+        (click)="
+          passwordField.type === 'password'
+            ? (passwordField.type = 'text')
+            : (passwordField.type = 'password')
+        "
+        matSuffix
       >
-        Submit
+        <pets-icons
+          [name]="'eye-off'"
+          *ngIf="passwordField.type === 'password'"
+          class="auth-password-visibility"
+        ></pets-icons>
+        <pets-icons
+          [name]="'eye'"
+          *ngIf="passwordField.type === 'text'"
+          class="auth-password-visibility"
+        ></pets-icons>
       </button>
-    <pets-button [text]="'switchToSignIn' | translate"></pets-button>
+      <mat-error>
+        {{ "requiredField" | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      [hideRequiredMarker]="true"
+      class="auth-input-field"
+    >
+      <mat-label>Confirm new password</mat-label>
+      <input
+        name="passwordConfirm"
+        type="password"
+        matInput
+        formControlName="passwordConfirm"
+        required
+        #confirmPasswordField
+      />
+      <button
+        mat-icon-button
+        type="button"
+        (click)="
+          confirmPasswordField.type === 'password'
+            ? (confirmPasswordField.type = 'text')
+            : (confirmPasswordField.type = 'password')
+        "
+        matSuffix
+      >
+        <pets-icons
+          [name]="'eye-off'"
+          *ngIf="confirmPasswordField.type === 'password'"
+          class="auth-password-visibility"
+        ></pets-icons>
+        <pets-icons
+          [name]="'eye'"
+          *ngIf="confirmPasswordField.type === 'text'"
+          class="auth-password-visibility"
+        ></pets-icons>
+      </button>
+      <mat-error>
+        {{ "passwordsDontMatch" | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="footer-text">
+      <span
+        >{{ "bySigningInIAgreeToThe" | translate }}
+        <a
+          class="auth-under-text"
+          [href]="'https://petalker.com/dsp-terms-and-conditions/'"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "termsAndConditions" | translate }}</a
+        >.
+      </span>
+    </div>
+
+    <pets-button
+      class="auth-submit-button"
+      aria-label="LOG IN"
+      [disabled]="
+        signUpForm.get('passwordConfirm')?.value === '' ||
+        signUpForm.get('passwordConfirm')?.value === null ||
+        !isPasswordValid()
+      "
+      (click)="createAccount()"
+    >
+      Submit
+    </pets-button>
   </form>
 </div>

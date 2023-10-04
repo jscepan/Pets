@@ -8,6 +8,8 @@ import { Language } from 'src/app/shared/enums/language.model';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { UserModel } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'pets-login',
@@ -23,9 +25,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private _authService: AuthWebService,
+    private authWebService: AuthWebService,
     private authStoreService: AuthStoreService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -49,32 +52,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showAlert = false;
 */
     // Sign in
-    this.subs.sink = this._authService.login(this.loginForm?.value).subscribe(
-      () => {
-        this.router.navigate([
-          this.authStoreService.canceledURL || 'create-edit',
-        ]);
-      },
-      (response) => {
-        /*
-                // Re-enable the form
-                this.loginForm.enable();
-                this.serverBadLogin = true;
+    this.subs.sink = this.authWebService
+      .login(this.loginForm?.value)
+      .subscribe((response) => {
+        this.localStorageService.set('jwt', `Bearer ${response.accessToken}`);
+        this.authWebService
+          .getCurrentUser()
+          .subscribe((response: UserModel) => {
+            this.authStoreService.user = response;
+            this.router.navigate(['/']);
 
-                // Reset the form
-                // this.signInNgForm.resetForm();
-
-                // Set the alert
-                this.alert = {
-                    type: 'error',
-                    message: 'Login failed: invalid credentials. Please check and try again.'
-                };
-
-                // Show the alert
-                this.showAlert = true;
-*/
-      }
-    );
+            if (this.authStoreService.canceledURL) {
+              this.router.navigate([
+                decodeURI(this.authStoreService.canceledURL),
+              ]);
+              this.authStoreService.canceledURL = null;
+            }
+          });
+      });
   }
 
   ngOnDestroy(): void {

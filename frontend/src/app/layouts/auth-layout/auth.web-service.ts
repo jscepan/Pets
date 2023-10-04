@@ -48,12 +48,12 @@ export class AuthWebService {
   //   >(`${BASE_API_URL}/auth/password-change`, data);
   // }
 
-  // getCurrentUser(): Observable<UserModel> {
-  //   return this.baseWebService.getRequest<UserModel>(
-  //     `${BASE_API_URL}/users/profile`,
-  //     UserModel
-  //   );
-  // }
+  getCurrentUser(): Observable<UserModel> {
+    return this.baseWebService.getRequest<UserModel>(
+      `${BASE_API_URL}/users/profile`,
+      UserModel
+    );
+  }
 
   // requestPasswordReset(data: {
   //   username: string;
