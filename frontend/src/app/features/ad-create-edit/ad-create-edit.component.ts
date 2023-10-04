@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { CURRENCY, SELL_TYPE } from 'src/app/shared/constants';
@@ -62,6 +63,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   sellTypeOptions: EnumValueModel[] = SELL_TYPE;
 
   constructor(
+    private authStoreService: AuthStoreService,
     private definitionsStoreService: DefinitionsStoreService,
     private router: Router,
     private languageService: LanguageService,
@@ -71,6 +73,9 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (!this.authStoreService.user) {
+      this.router.navigate(['/auth/login']);
+    }
     this.subs.sink = this.definitionsStoreService.definitions$.subscribe(
       (definitions) => {
         this.definitions = definitions;

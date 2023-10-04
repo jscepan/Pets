@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pets.backend.models.ERole;
 import com.pets.backend.models.Role;
 import com.pets.backend.models.User;
+import com.pets.backend.payload.request.ForgetPasswordRequest;
 import com.pets.backend.payload.request.LoginRequest;
 import com.pets.backend.payload.request.SignupRequest;
 import com.pets.backend.payload.response.JwtResponse;
@@ -135,5 +136,11 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @PostMapping("/password-reset")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody ForgetPasswordRequest request) {
+        // TODO
+        return ResponseEntity.ok(new MessageResponse("Password reset email send successfully!"));
     }
 }

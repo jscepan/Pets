@@ -30,6 +30,13 @@ export class AuthWebService {
     );
   }
 
+  requestPasswordReset(email: string): Observable<void> {
+    return this.baseWebService.postRequest<void, string>(
+      `${BASE_API_URL}/auth/password-reset`,
+      email
+    );
+  }
+
   // changePassword(data: {
   //   username: string;
   //   oldPassword: string;
@@ -45,13 +52,6 @@ export class AuthWebService {
   //   return this.baseWebService.getRequest<UserModel>(
   //     `${BASE_API_URL}/users/profile`,
   //     UserModel
-  //   );
-  // }
-
-  // requestPasswordReset(data: { userID: string }): Observable<void> {
-  //   return this.baseWebService.postRequest<void, { userID: string }>(
-  //     `${this.constantsFromEnv.MATE_BASE_API_URL}/auth/password-reset`,
-  //     data
   //   );
   // }
 

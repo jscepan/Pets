@@ -7,12 +7,13 @@ import { LanguageService } from 'src/app/language.service';
 import { Language } from 'src/app/shared/enums/language.model';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
+import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 
 @Component({
   selector: 'pets-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [PetsSweetAlertService],
+  providers: [PetsSweetAlertService, AuthWebService],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private _authService: AuthWebService,
+    private authStoreService: AuthStoreService,
     private languageService: LanguageService
   ) {}
 
@@ -49,16 +51,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     // Sign in
     this.subs.sink = this._authService.login(this.loginForm?.value).subscribe(
       () => {
-        /*
-                // Set the redirect url.
-                // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
-                // to the correct page after a successful sign in. This way, that url can be set via
-                // routing file and we don't have to touch here.
-                const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
-
-                // Navigate to the redirect url
-                this._router.navigateByUrl(redirectURL);
-*/
+        this.router.navigate([
+          this.authStoreService.canceledURL || 'create-edit',
+        ]);
       },
       (response) => {
         /*

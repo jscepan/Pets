@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MainRoutingModule } from './auth-routing.module';
 import { AdsModule } from '@features/ads/ads.module';
 import { DashboardModule } from '@features/dashboard/dashboard.module';
+import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 
 @NgModule({
   declarations: [AuthLayoutComponent],
@@ -16,6 +17,7 @@ import { DashboardModule } from '@features/dashboard/dashboard.module';
     MainRoutingModule,
     AdsModule,
     DashboardModule,
+    PetsButtonModule,
   ],
   providers: [],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+import { ResetPasswordRoutingModule } from './reset-password-routing.module';
+import { ResetPasswordComponent } from './reset-password.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
@@ -13,10 +13,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [ResetPasswordComponent],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    ResetPasswordRoutingModule,
     TranslateModule,
     PetsButtonModule,
     PetsSweetAlertModule,
@@ -28,6 +28,6 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatInputModule,
   ],
-  exports: [LoginComponent],
+  exports: [ResetPasswordComponent],
 })
-export class LoginModule {}
+export class ResetPasswordModule {}

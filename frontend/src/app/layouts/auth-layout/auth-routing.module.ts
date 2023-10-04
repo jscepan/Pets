@@ -18,6 +18,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'forget-password',
+    loadChildren: () =>
+      import('@features/forget-password/forget-password.module').then(
+        (m) => m.ForgetPasswordModule
+      ),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('@features/login/login.module').then((m) => m.LoginModule),

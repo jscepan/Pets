@@ -1,3 +1,14 @@
 <div class="main-container">
+  <div class="main-menu">
+    <div class="logo" (click)="redirectToHome()">
+      <img [src]="companyLogo" />
+    </div>
+    <div class="buttons">
+      <pets-button
+        [text]="'back' | translate"
+        (clickEvent)="back()"
+      ></pets-button>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

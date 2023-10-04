@@ -1,38 +1,26 @@
 <div class="login-section">
-  <form
-    id="login-form"
-    *ngIf="loginForm"
-    [formGroup]="loginForm"
-    (ngSubmit)="signIn()"
-  >
+  <a href="/auth/register">{{ "register" | translate }}</a>
+  <form id="login-form" *ngIf="loginForm" [formGroup]="loginForm">
     <mat-form-field>
-      <mat-label
-        [class.mark-required]="true"
-        [class.mark-opt-required]="true"
-      >
+      <mat-label [class.mark-required]="true" [class.mark-opt-required]="true">
         {{ "username" | translate }}
       </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="username"
-      />
+      <input type="text" matInput formControlName="username" />
     </mat-form-field>
     <mat-form-field>
-      <mat-label
-        [class.mark-required]="true"
-        [class.mark-opt-required]="true"
-      >
+      <mat-label [class.mark-required]="true" [class.mark-opt-required]="true">
         {{ "password" | translate }}
       </mat-label>
-      <input
-        [type]="'password'"
-        matInput
-        formControlName="password"
-      />
+      <input [type]="'password'" matInput formControlName="password" />
     </mat-form-field>
-    <button mat-flat-button color="primary" class="auth-submit-button" aria-label="LOG IN">
-      Sign in
-  </button>
-</form>
+    <pets-button
+      color="primary"
+      class="submit-button"
+      (clickEvent)="signIn()"
+      [fullWidth]="true"
+    >
+      {{ "signIn" | translate }}
+    </pets-button>
+  </form>
+  <a href="/auth/forget-password">{{ "forgetPassword" | translate }}</a>
 </div>

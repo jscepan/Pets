@@ -2,5 +2,21 @@
   "recommendedForYou": "Preporučujemo za vas",
   "search": "Pretraga",
   "browserTitle": "Petalker",
-  "createAd": "Kreiraj oglas"
+  "createAd": "Kreiraj oglas",
+  "register": "Registruj se",
+  "signIn": "Uloguj se",
+  "sendEmail": "Pošalji email",
+  "insertYourEmail": "Unesite vaš e-mail",
+  "inputEmailAndYouWillGetInstructionForPasswordReset": "Unesite email i poslaćemo vam instrukcije za resetovanje lozinke.",
+  "confirm": "U redu",
+  "emailSent": "Email poslat",
+  "emailSuccessfullySentCheckYouEmailAndSpamFolder": "Email je uspešno poslat. Proverite vam e-mail a takođe i vaš SPAM folder.",
+  "oldPassword": "Stara lozinka",
+  "newPassword": "Nova lozinka",
+  "confirmPassword": "Ponovi novu lozinku",
+  "submit": "Pošalji",
+  "forgotPassword": "Zaboravljena lozinka",
+  "forgetPassword": "Zaboravljena lozinka",
+  "username": "Korisničko ime",
+  "password": "Lozinka"
 }

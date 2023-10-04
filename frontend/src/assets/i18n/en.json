@@ -2,5 +2,21 @@
   "recommendedForYou": "Recommended for you",
   "search": "Search",
   "browserTitle": "Petalker",
-  "createAd": "Create ad"
+  "createAd": "Create ad",
+  "register": "Register",
+  "signIn": "Sign in",
+  "sendEmail": "Send email",
+  "insertYourEmail": "Insert your email",
+  "inputEmailAndYouWillGetInstructionForPasswordReset": "Input email and you will get instruction for password reset.",
+  "confirm": "Confirm",
+  "emailSent": "Email sent",
+  "emailSuccessfullySentCheckYouEmailAndSpamFolder": "Email successfully sent check you email and spam folder.",
+  "oldPassword": "Old password",
+  "newPassword": "New password",
+  "confirmPassword": "Confirm password",
+  "submit": "Submit",
+  "forgotPassword": "Forgot password",
+  "forgetPassword": "Forget password",
+  "username": "Username",
+  "password": "Password"
 }

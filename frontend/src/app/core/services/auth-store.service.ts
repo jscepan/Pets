@@ -3,17 +3,27 @@ import { BehaviorSubject } from 'rxjs';
 import { UserModel } from 'src/app/shared/models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthStoreService {
-
   private readonly _user = new BehaviorSubject<UserModel | null>(null);
   readonly user$ = this._user.asObservable();
 
   private readonly _language = new BehaviorSubject<string | null>(null);
   readonly language$ = this._language.asObservable();
 
+  private readonly _canceledURL = new BehaviorSubject<string | null>('');
+  readonly canceledURL$ = this._canceledURL.asObservable();
+
   constructor() {}
+
+  get canceledURL(): string | null {
+    return this._canceledURL.getValue();
+  }
+
+  set canceledURL(URL: string | null) {
+    this._canceledURL.next(URL);
+  }
 
   // user
   get user(): UserModel | null {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+import { ForgetPasswordRoutingModule } from './forget-password-routing.module';
+import { ForgetPasswordComponent } from './forget-password.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
@@ -13,10 +13,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [ForgetPasswordComponent],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    ForgetPasswordRoutingModule,
     TranslateModule,
     PetsButtonModule,
     PetsSweetAlertModule,
@@ -24,10 +24,10 @@ import { MatInputModule } from '@angular/material/input';
     PetsChipsModule,
     PetsSelectModule,
     MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule,
   ],
-  exports: [LoginComponent],
+  exports: [ForgetPasswordComponent],
 })
-export class LoginModule {}
+export class ForgetPasswordModule {}

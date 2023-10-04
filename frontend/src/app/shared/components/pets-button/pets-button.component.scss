@@ -5,7 +5,7 @@ button {
   color: var(--color-white, #ffffff);
   transition: 0.3s ease-in-out;
 
-  .button-content{
+  .button-content {
     display: flex;
     align-items: center;
   }
@@ -144,72 +144,6 @@ button {
 
     &:hover {
       pointer-events: none !important; // important is used to override mat defaults
-    }
-  }
-
-  // buttons in transparent theme mode
-  &.transparent-theme {
-    &.primary {
-      background: var(--color-transparent-primary-background, #eeedfc);
-      color: var(--color-primary, #5849e0);
-
-      &:hover {
-        background: var(--color-transparent-primary-hover, #f7f6fe);
-      }
-    }
-
-    &.secondary {
-      border: 1px solid transparent;
-      background: transparent;
-
-      &:hover {
-        border: 1px solid transparent;
-        background: transparent;
-      }
-    }
-
-    &.info {
-      background: var(--color-transparent-info-background, #e9eefe);
-      color: var(--color-info, #2353f3);
-
-      &:hover {
-        background: var(--color-transparent-info-hover, #f4f7ff);
-      }
-    }
-
-    &.success {
-      color: var(--color-success, #43ad48);
-      background: var(--color-transparent-success-background, #ecf7ed);
-
-      &:hover {
-        background: var(--color-transparent-success-hover, #f6fbf6);
-      }
-    }
-
-    &.danger {
-      color: var(--color-danger, #e70020);
-      background: var(--color-transparent-danger-background, #fde6e9);
-
-      &:hover {
-        background: var(--color-transparent-danger-hover, #fef2f4);
-      }
-    }
-
-    &.warning {
-      background: var(--color-transparent-warning-background, #fff8e9);
-
-      &:hover {
-        background: var(--color-transparent-warning-hover, #fffcf4);
-      }
-    }
-
-    &.link {
-      background: transparent;
-      color: var(--color-main, #747474);
-
-      &:hover {
-        color: var(--color-link-hover, #4f75f5);
-      }
     }
   }
 

@@ -19,6 +19,8 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
 
   definitionsIsLoading: Observable<boolean> =
     this.definitionsStoreService.dataLoaded$;
+  companyLogo: string =
+    'https://tse1.mm.bing.net/th?id=OIP.8TQYxFy-aIYn7WTbKEg06gHaEK&pid=Api&P=0&h=180';
 
   constructor(
     private router: Router,
@@ -47,6 +49,14 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     // this.authStoreService.user = null;
     // this.authStoreService.canceledURL = null;
     this.localStorageService.remove('jwt');
+  }
+
+  redirectToHome(): void {
+    this.router.navigate(['/']);
+  }
+
+  back(): void {
+    this.router.navigate(['/ads']);
   }
 
   ngOnDestroy(): void {}
