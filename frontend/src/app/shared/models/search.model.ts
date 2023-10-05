@@ -1,6 +1,6 @@
 import { Sort } from '../enums/sort.model';
 
-export class SearchModel {
+export class SearchFilterModel {
   quickSearch: string = '';
   adPage: {
     pageNumber: number;

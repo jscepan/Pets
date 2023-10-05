@@ -3,12 +3,14 @@ import { finalize } from 'rxjs/operators';
 import { ArrayResponseI } from 'src/app/core/interfaces/array-response.interface';
 import { EntityBaseWebService } from 'src/app/core/services/entity-base.web-service';
 import { BaseModel } from '../models/base-model';
-import { SearchModel } from '../models/search.model';
+import { SearchFilterModel } from '../models/search.model';
 import { Sort } from '../enums/sort.model';
 
 export class ListEntities<T extends BaseModel> {
   private entities$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
   private totalEntitiesLength$: BehaviorSubject<number | undefined> =
+    new BehaviorSubject<number | undefined>(undefined);
+  private currentPage$: BehaviorSubject<number | undefined> =
     new BehaviorSubject<number | undefined>(undefined);
   private bottomReached$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
@@ -19,9 +21,11 @@ export class ListEntities<T extends BaseModel> {
   public entities: Observable<T[]> = this.entities$.asObservable();
   public totalEntitiesLength: Observable<number | undefined> =
     this.totalEntitiesLength$.asObservable();
+  public currentPage: Observable<number | undefined> =
+    this.currentPage$.asObservable();
   public isLoading: Observable<boolean> = this.isLoading$.asObservable();
 
-  private searchModel: SearchModel = new SearchModel();
+  private searchModel: SearchFilterModel = new SearchFilterModel();
 
   private NUMBER_OF_ITEMS_ON_PAGE: number = 50;
 
@@ -53,7 +57,7 @@ export class ListEntities<T extends BaseModel> {
     return this;
   }
 
-  public setFilter(searchFilter: SearchModel): void {
+  public setFilter(searchFilter: SearchFilterModel): void {
     this.searchModel = searchFilter;
     this.requestFirstPage();
   }

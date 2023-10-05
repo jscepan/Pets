@@ -6,24 +6,30 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
-  selector: 'pets-pets-paginator',
+  selector: 'pets-paginator',
   templateUrl: './pets-paginator.component.html',
   styleUrls: ['./pets-paginator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetsPaginatorComponent implements OnInit {
-  @Input() text: string = '';
+  @Input() totalPagesCount: number | undefined | null;
+  @Input() currentPageCount: number | undefined | null;
+  showPagesLeft: number = 2;
+  showPagesRight: number = 2;
+  pageNumbers: number[] = [];
 
-  @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
+  inputPageNumber: UntypedFormControl = new UntypedFormControl();
+
+  @Output() goToPageEvent: EventEmitter<number> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onClick(e: Event): void {
-    e.preventDefault();
-    this.clickEvent.emit(e);
+  goToPage(value: number): void {
+    this.goToPageEvent.emit(value);
   }
 }

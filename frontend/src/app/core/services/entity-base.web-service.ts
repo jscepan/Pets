@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/shared/constants';
 import { BaseModel } from 'src/app/shared/models/base-model';
-import { SearchModel } from 'src/app/shared/models/search.model';
+import { SearchFilterModel } from 'src/app/shared/models/search.model';
 import { constructUrl } from 'src/app/shared/utils';
 import { ArrayResponseI } from '../interfaces/array-response.interface';
 import { BaseWebService } from './base.web-service';
@@ -18,7 +18,7 @@ export abstract class EntityBaseWebService<T> {
   ) {}
 
   searchEntities = (
-    data: SearchModel
+    data: SearchFilterModel
     // skip?: number,
     // top?: number
   ): Observable<ArrayResponseI<T>> => {
@@ -27,7 +27,7 @@ export abstract class EntityBaseWebService<T> {
       // skip,
       // top
     );
-    return this.baseWebService.postRequestForArray<T, SearchModel>(
+    return this.baseWebService.postRequestForArray<T, SearchFilterModel>(
       url,
       data,
       this.ModelFromType

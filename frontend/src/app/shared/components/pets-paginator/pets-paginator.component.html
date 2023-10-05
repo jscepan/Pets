@@ -1,1 +1,23 @@
-Paginacija
+<div class="paginator-container">
+  <div
+    class="page"
+    *ngFor="let pageNumber of pageNumbers"
+  >
+    <ng-container *ngIf="true">
+      {{pageNumber}}
+    </ng-container>
+  </div>
+  <mat-form-field class="input-form-field">
+    <mat-label>{{ "pageNumber"|translate }}</mat-label>
+    <input
+      type="number"
+      matInput
+      [formControl]="inputPageNumber"
+    />
+    <pets-icons
+      matSuffix
+      [name]="'search'"
+      class="search-icon"
+    ></pets-icons>
+  </mat-form-field>
+</div>

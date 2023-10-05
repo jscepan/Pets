@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { AdModel } from 'src/app/shared/models/ad.model';
-import { SearchModel } from 'src/app/shared/models/search.model';
+import { SearchFilterModel } from 'src/app/shared/models/search.model';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { ListEntities } from 'src/app/shared/services/list-entities';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
@@ -20,8 +20,12 @@ export class AdsComponent implements OnInit, OnDestroy {
 
   keyword: string = '';
   entities?: Observable<AdModel[]> = this.listEntities.entities;
+  totalEntitiesLength: Observable<number | undefined> =
+    this.listEntities.totalEntitiesLength;
+  currentPage: Observable<number | undefined> =
+    this.listEntities.totalEntitiesLength;
 
-  searchFilter: SearchModel = new SearchModel();
+  searchFilter: SearchFilterModel = new SearchFilterModel();
 
   constructor(
     private globalService: GlobalService,

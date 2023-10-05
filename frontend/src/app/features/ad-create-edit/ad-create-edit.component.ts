@@ -11,7 +11,7 @@ import { SellType } from 'src/app/shared/enums/sell-type.model';
 import { AdModel } from 'src/app/shared/models/ad.model';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
-import { SearchModel } from 'src/app/shared/models/search.model';
+import { SearchFilterModel } from 'src/app/shared/models/search.model';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { PromotionWebService } from 'src/app/web-services/promotion.web-service';
@@ -99,7 +99,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         });
       }
     );
-    const searchModel = new SearchModel();
+    const searchModel = new SearchFilterModel();
     this.subs.sink = this.promotionWebService
       .searchEntities(searchModel)
       .subscribe((promotions) => {

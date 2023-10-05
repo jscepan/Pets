@@ -11,6 +11,7 @@ import { PetsSearchFilterModule } from 'src/app/shared/components/pets-search-fi
 import { PetsFiltersModule } from 'src/app/shared/components/pets-filters/pets-filters.module';
 import { PetsSearchBarModule } from 'src/app/shared/components/pets-search-bar/pets-search-bar.module';
 import { PetsAdCardModule } from 'src/app/shared/components/pets-ad-card/pets-ad-card.module';
+import { PetsPaginatorModule } from 'src/app/shared/components/pets-paginator/pets-paginator.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -27,6 +28,7 @@ import { PetsAdCardModule } from 'src/app/shared/components/pets-ad-card/pets-ad
     PetsFiltersModule,
     PetsSearchBarModule,
     PetsAdCardModule,
+    PetsPaginatorModule,
   ],
 })
 export class AdsModule {}
