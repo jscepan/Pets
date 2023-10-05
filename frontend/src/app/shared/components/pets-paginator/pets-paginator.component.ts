@@ -19,7 +19,7 @@ export class PetsPaginatorComponent implements OnInit {
   @Input() currentPageCount: number | undefined | null;
   showPagesLeft: number = 2;
   showPagesRight: number = 2;
-  pageNumbers: number[] = [];
+  pageNumbers: string[] = [];
 
   inputPageNumber: UntypedFormControl = new UntypedFormControl();
 
@@ -27,9 +27,41 @@ export class PetsPaginatorComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setPageNumbers();
+  }
 
-  goToPage(value: number): void {
+  setPageNumbers(): void {
+    for (let i = 0; i < (this.totalPagesCount || 0); i++) {
+      console.log('idemo sad da postavimo page numbers. Sada smo na i: ' + i);
+      if (this.currentPageCount && i < this.currentPageCount) {
+        console.log('USLI SMO U IF');
+        if (this.showPagesLeft > 0) {
+          console.log('IF: this.showPagesLeft>0');
+          this.pageNumbers.push(i + '');
+          this.showPagesLeft--;
+        } else if (
+          this.currentPageCount &&
+          this.totalPagesCount &&
+          this.currentPageCount === this.totalPagesCount &&
+          this.showPagesRight > 0
+        ) {
+          console.log('else if(this.currentPageCount');
+          this.pageNumbers.push(i + '');
+          this.showPagesRight--;
+        }
+      } else if (this.currentPageCount && this.currentPageCount === i) {
+        console.log('evo ga ELSE IF  broj 1111');
+        this.pageNumbers.push(i + '');
+      } else if (this.currentPageCount && i > this.currentPageCount) {
+        console.log('drugo else IF 2222');
+      }
+    }
+  }
+
+  goToPage(value: any): void {
+    console.log('clicked:    HEJEJJEHEHEHEHHE');
+    console.log(value);
     this.goToPageEvent.emit(value);
   }
 }

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
 
 @NgModule({
   declarations: [PetsPaginatorComponent],
@@ -19,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormFieldModule,
     TranslateModule,
     ReactiveFormsModule,
+    PetsButtonModule,
   ],
   exports: [PetsPaginatorComponent],
 })
