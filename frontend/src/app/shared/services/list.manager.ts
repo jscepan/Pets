@@ -28,8 +28,6 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
   private _filter?: Filter|undefined;
   private requestFn!: RequestFn<M, Filter>;
 
-  abstract isFilter(): boolean;
-
   get filter(): Filter | undefined {
     return this._filter;
   }
@@ -108,7 +106,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
       this.subs.sink.$dataRequest = this.requestFn(this._filter, this.page).subscribe({
         next: (response: ArrayResponseI<M>) => {
           this.listIsEmpty$.next(
-          (initialLoad && response.content.length === 0) || (!this.isFilter() && this.page === 1 && response.content.length === 0)
+          (initialLoad && response.content.length === 0) || (this.page === 1 && response.content.length === 0)
           );
           this._page = response.pageable.pageNumber + 1;
           this.entities = [...this.entities, ...response.content];
@@ -145,7 +143,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
 
     this.length$.next(this.entities.length || 0);
     // todo check if works right
-    this.listIsEmpty$.next(!this.isFilter() && !entities?.length);
+    this.listIsEmpty$.next(!entities?.length);
   }
 
   public addEntity(entity: M, top: boolean = false): void {
@@ -157,7 +155,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
     }
 
     this.length$.next(this.entities.length || 0);
-    this.listIsEmpty$.next(!this.isFilter() && !this.entities.length);
+    this.listIsEmpty$.next(!this.entities.length);
   }
 
   public updateEntity(updatedEntity: M, top: boolean = false): void {

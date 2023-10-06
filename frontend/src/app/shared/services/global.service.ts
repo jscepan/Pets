@@ -51,7 +51,7 @@ export class GlobalService {
     this.showBasicAlert(
       MODE.error,
       this.translateService.instant('error'),
-      error.error.message
+      error?.error?.message
     );
   }
 

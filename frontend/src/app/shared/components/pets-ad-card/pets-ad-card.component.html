@@ -1,9 +1,9 @@
 <div class="container" *ngIf="dataModel">
   <div
     class="thumbnail"
-    *ngIf="dataModel.images && dataModel.images[0]?.name; else noImage"
+    *ngIf="dataModel.thumbnailUrl; else noImage"
   >
-    <img [src]="dataModel.images[0].name" />
+    <img [src]="dataModel.thumbnailUrl" />
     <div class="media-counters">
       <div class="counter">
         <pets-icons [name]="'camera'"></pets-icons>
@@ -17,25 +17,15 @@
   </div>
   <div class="ad-container">
     <div class="title">{{ dataModel.title }}</div>
-    <div class="price">{{ dataModel.price }} {{ dataModel.priceCurrency }}</div>
+    <div class="price">{{ dataModel.price }}</div>
     <div class="description">{{ dataModel.description }}</div>
     <div class="time">
       <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
       1 hour
     </div>
     <div class="place">
-      {{ dataModel.city }}
+      {{ dataModel.author.location }}
     </div>
-    <!-- {{ dataModel.thumbnailUrl }}
-  {{ dataModel.imageCounter }}
-  {{ dataModel.videoCounter }}
-  {{ dataModel.time }}
-  {{ dataModel.title }}
-
-  {{ dataModel.characteristics }}
-
-  {{ dataModel.author.name }}
-  {{ dataModel.favorite }} -->
     <div class="favorite">
       <pets-icons [name]="'heart'" *ngIf="true"></pets-icons>
       <pets-icons [name]="'heart-filled'" *ngIf="true"></pets-icons>

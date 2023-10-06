@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { AdModel } from '../../models/ad.model';
+import { PetsAdCardI } from './pets-ad-card.interface';
 
 @Component({
   selector: 'pets-ad-card',
@@ -15,7 +15,7 @@ import { AdModel } from '../../models/ad.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetsAdCardComponent implements OnInit {
-  @Input() dataModel?: AdModel;
+  @Input() dataModel?: PetsAdCardI;
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 

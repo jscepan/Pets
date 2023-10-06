@@ -1,4 +1,6 @@
-export interface PetsAdCardI {
+import { BaseModel } from '../../models/base-model';
+
+export interface PetsAdCardI extends BaseModel {
   thumbnailUrl: string;
   imageCounter: number;
   videoCounter: number;
