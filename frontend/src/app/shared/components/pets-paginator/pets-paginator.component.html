@@ -1,6 +1,9 @@
 <div class="paginator-container">
-  totalPagesCount: {{totalPagesCount}}
-  currentPageCount: {{currentPageCount}}
+  <pets-button
+    [text]="'previous'|translate"
+    (clickEvent)="goToPreviousPage()"
+    *ngIf="currentPageCount && currentPageCount > 1"
+  ></pets-button>
   <div
     class="page"
     *ngFor="let pageNumber of pageNumbers"
@@ -12,14 +15,15 @@
       <pets-button
         [text]="pageNumber"
         [color]="'link'"
-        (clickEvent)="goToPage($event)"
+        (clickEvent)="goToPage(+pageNumber)"
+        [smallWidth]="true"
       ></pets-button>
     </ng-container>
     <ng-container *ngIf="currentPageCount && pageNumber === currentPageCount + ''">
       <pets-button
         [text]="currentPageCount+''"
-        [color]="'link'"
-        (clickEvent)="goToPage($event)"
+        [color]="'primary'"
+        [smallWidth]="true"
         [disabled]="true"
       ></pets-button>
     </ng-container>
@@ -27,6 +31,11 @@
       {{ pageNumber }}
     </ng-container>
   </div>
+  <pets-button
+    [text]="'next'|translate"
+    (clickEvent)="goToNextPage()"
+    *ngIf="totalPagesCount&&currentPageCount&&totalPagesCount>currentPageCount"
+  ></pets-button>
   <mat-form-field class="input-form-field">
     <mat-label>{{ "pageNumber" | translate }}</mat-label>
     <input
@@ -38,6 +47,7 @@
       matSuffix
       [name]="'search'"
       class="search-icon"
+      (click)="goToPage(inputPageNumber.value)"
     ></pets-icons>
   </mat-form-field>
 </div>

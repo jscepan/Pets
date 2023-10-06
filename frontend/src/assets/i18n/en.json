@@ -24,5 +24,7 @@
   "bySigningInIAgreeToThe": "By signing in, I agree to the",
   "termsAndConditions": "Terms and Conditions",
   "back": "Back",
-  "pageNumber": "Page num"
+  "pageNumber": "Page num",
+  "next":"Next",
+  "previous":"Previous"
 }

@@ -25,16 +25,11 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
   private readonly _entities = new BehaviorSubject<M[]>([]);
 
   private NUMBER_OF_ITEMS_ON_PAGE: number = 10;
-  private _page: number = 1;
   private _filter?: Filter|undefined;
   private requestFn!: RequestFn<M, Filter>;
 
   get filter(): Filter | undefined {
     return this._filter;
-  }
-
-  get page(): number {
-    return this._page;
   }
 
   public setRequestFn(requestFn: RequestFn<M, Filter>): void {
@@ -87,7 +82,6 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
 
   public requestFirstPage(initialLoad: boolean = false): void {
     this.selection.setItems([]);
-    this._page = 1;
     this.bottomReached$.next(false);
     this.entities = [];
     this.totalCount$.next(0)
@@ -105,12 +99,12 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
       this.isLoading$.next(true);
 
       if(this._filter){
-      this.subs.sink.$dataRequest = this.requestFn(this._filter, this.page).subscribe({
+      this.subs.sink.$dataRequest = this.requestFn(this._filter, this.currentPage$.getValue()||1).subscribe({
         next: (response: ArrayResponseI<M>) => {
           this.listIsEmpty$.next(
-          (initialLoad && response.content.length === 0) || (this.page === 1 && response.content.length === 0)
+          (initialLoad && response.content.length === 0) || (this.currentPage$.getValue() === 1 && response.content.length === 0)
           );
-          this._page = response.pageable.pageNumber + 1;
+          this.currentPage$.next(response.pageable.pageNumber + 1);
           this.entities = [...this.entities, ...response.content];
 
           this.lastResponse$.next(response.content);

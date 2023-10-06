@@ -24,5 +24,7 @@
   "bySigningInIAgreeToThe": "Registracijom pristajete na",
   "termsAndConditions": "Pravila i uslovi",
   "back": "Nazad",
-  "pageNumber":"Str. br."
+  "pageNumber":"Str. br.",
+  "next":"Sledeća",
+  "previous":"Prethodna"
 }

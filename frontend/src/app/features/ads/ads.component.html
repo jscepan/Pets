@@ -17,6 +17,7 @@
       <pets-paginator
         [totalPagesCount]="totalEntitiesLength | async"
         [currentPageCount]="(((currentPage | async)||0)+1)"
+        (goToPageEvent)="goToPage($event)"
       ></pets-paginator>
     </div>
   </div>

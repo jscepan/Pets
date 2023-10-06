@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -16,7 +17,7 @@ import { UntypedFormControl } from '@angular/forms';
   styleUrls: ['./pets-paginator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetsPaginatorComponent implements OnInit, OnChanges {
+export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() totalPagesCount: number | undefined | null;
   @Input() currentPageCount: number | undefined | null;
   showPagesLeft: number = 2;
@@ -34,52 +35,71 @@ export class PetsPaginatorComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes['totalPagesCount'] ||
-      changes['currentPageCount']
-      ) {
+    if (changes['totalPagesCount'] || changes['currentPageCount']) {
       this.setPageNumbers();
     }
   }
 
   setPageNumbers(): void {
-    for (let i = 1; i < (this.totalPagesCount || 1); i++) {
-      console.log('idemo sad da postavimo page numbers. Sada smo na i: ' + i);
-      if (this.currentPageCount && i < this.currentPageCount) {
-        console.log('USLI SMO U IF');
-        if (this.showPagesLeft > 0) {
-          console.log('IF: this.showPagesLeft>0');
+    if (this.totalPagesCount && this.totalPagesCount > 0) {
+      if (this.totalPagesCount && this.totalPagesCount < 10) {
+        for (let i = 1; i < (this.totalPagesCount || 1); i++) {
           this.pageNumbers.push(i + '');
-          this.showPagesLeft--;
-        } else if (
-          this.currentPageCount &&
-          this.totalPagesCount &&
-          this.currentPageCount === this.totalPagesCount &&
-          this.showPagesRight > 0
-        ) {
-          console.log('else if(this.currentPageCount');
-          this.pageNumbers.push(i + '');
-          this.showPagesRight--;
         }
-      } else if (this.currentPageCount && this.currentPageCount === i) {
-        console.log('evo ga ELSE IF  broj 1111');
-        this.pageNumbers.push(i + '');
-      } else if (this.currentPageCount && i > this.currentPageCount) {
-        if(this.showPagesLeft>0){
-          this.pageNumbers.push(i + '');
-          this.showPagesLeft--;
-        }else if(this.showPagesRight>0){
-          this.pageNumbers.push(i + '');
-          this.showPagesRight--;
+      } else {
+        let leftToAdd = 6;
+        if (this.currentPageCount && this.currentPageCount < 6) {
+          for (let i = 1; i <= this.currentPageCount; i++) {
+            this.pageNumbers.push(i + '');
+            leftToAdd--;
+          }
+          for (
+            let i = this.currentPageCount + 1;
+            i <= this.totalPagesCount;
+            i++
+          ) {
+            if (leftToAdd === 0) {
+              break;
+            }
+            this.pageNumbers.push(i + '');
+            leftToAdd--;
+          }
+          this.pageNumbers.push('...');
+          this.pageNumbers.push(this.totalPagesCount + '');
+        } else {
+          this.pageNumbers.push('1');
+          this.pageNumbers.push('...');
         }
-        console.log('drugo else IF 2222');
       }
     }
   }
 
-  goToPage(value: any): void {
-    console.log('clicked:    HEJEJJEHEHEHEHHE');
-    console.log(value);
-    this.goToPageEvent.emit(value);
+  goToPage(value: number): void {
+    if (
+      value != this.currentPageCount &&
+      value > 0 &&
+      this.totalPagesCount &&
+      value <= this.totalPagesCount
+    ) {
+      this.goToPageEvent.emit(value);
+    }
   }
+
+  goToPreviousPage(): void {
+    if (this.currentPageCount && this.currentPageCount - 1 > 0) {
+      this.goToPageEvent.emit(this.currentPageCount - 1);
+    }
+  }
+
+  goToNextPage(): void {
+    if (
+      this.currentPageCount &&
+      this.totalPagesCount &&
+      this.currentPageCount + 1 > this.totalPagesCount
+    ) {
+      this.goToPageEvent.emit(this.currentPageCount + 1);
+    }
+  }
+
+  ngOnDestroy(): void {}
 }
