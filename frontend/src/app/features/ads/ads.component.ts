@@ -24,9 +24,9 @@ export class AdsComponent implements OnInit, OnDestroy {
   public readonly entities?: Observable<PetsAdCardI[]> =
     this.adsService.response$;
   totalEntitiesLength: Observable<number | undefined> =
-    this.listEntities.totalEntitiesLength;
+    this.adsService.length$;
   currentPage: Observable<number | undefined> =
-    this.listEntities.totalEntitiesLength;
+    this.adsService.currentPage$;
 
   searchFilter: SearchFilterModel = new SearchFilterModel();
 

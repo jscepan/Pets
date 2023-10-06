@@ -3,8 +3,10 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
@@ -14,7 +16,7 @@ import { UntypedFormControl } from '@angular/forms';
   styleUrls: ['./pets-paginator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetsPaginatorComponent implements OnInit {
+export class PetsPaginatorComponent implements OnInit, OnChanges {
   @Input() totalPagesCount: number | undefined | null;
   @Input() currentPageCount: number | undefined | null;
   showPagesLeft: number = 2;
@@ -31,8 +33,17 @@ export class PetsPaginatorComponent implements OnInit {
     this.setPageNumbers();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['totalPagesCount'] ||
+      changes['currentPageCount']
+      ) {
+      this.setPageNumbers();
+    }
+  }
+
   setPageNumbers(): void {
-    for (let i = 0; i < (this.totalPagesCount || 0); i++) {
+    for (let i = 1; i < (this.totalPagesCount || 1); i++) {
       console.log('idemo sad da postavimo page numbers. Sada smo na i: ' + i);
       if (this.currentPageCount && i < this.currentPageCount) {
         console.log('USLI SMO U IF');
@@ -54,6 +65,13 @@ export class PetsPaginatorComponent implements OnInit {
         console.log('evo ga ELSE IF  broj 1111');
         this.pageNumbers.push(i + '');
       } else if (this.currentPageCount && i > this.currentPageCount) {
+        if(this.showPagesLeft>0){
+          this.pageNumbers.push(i + '');
+          this.showPagesLeft--;
+        }else if(this.showPagesRight>0){
+          this.pageNumbers.push(i + '');
+          this.showPagesRight--;
+        }
         console.log('drugo else IF 2222');
       }
     }

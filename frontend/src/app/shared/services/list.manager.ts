@@ -20,6 +20,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
   public bottomReached$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public lastResponse$: BehaviorSubject<M[]> = new BehaviorSubject<M[]>([]);
   public totalCount$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
+  public currentPage$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 
   private readonly _entities = new BehaviorSubject<M[]>([]);
 
@@ -90,6 +91,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
     this.bottomReached$.next(false);
     this.entities = [];
     this.totalCount$.next(0)
+    this.currentPage$.next(1);
     this.length$.next(0);
     this.listIsEmpty$.next(false);
 
@@ -115,6 +117,7 @@ export abstract class ListManager<M extends BaseModel, C extends BaseModel, Filt
           this.length$.next(this.entities.length || 0);
           this.isLoading$.next(false);
           this.totalCount$.next(response.totalElementa);
+          this.currentPage$.next(response.pageable.pageNumber);
 
           if (response.last) {
             this.bottomReached$.next(true);

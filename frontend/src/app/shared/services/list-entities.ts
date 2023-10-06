@@ -10,8 +10,6 @@ export class ListEntities<T extends BaseModel> {
   private entities$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
   private totalEntitiesLength$: BehaviorSubject<number | undefined> =
     new BehaviorSubject<number | undefined>(undefined);
-  private currentPage$: BehaviorSubject<number | undefined> =
-    new BehaviorSubject<number | undefined>(undefined);
   private bottomReached$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
   private isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
@@ -21,8 +19,6 @@ export class ListEntities<T extends BaseModel> {
   public entities: Observable<T[]> = this.entities$.asObservable();
   public totalEntitiesLength: Observable<number | undefined> =
     this.totalEntitiesLength$.asObservable();
-  public currentPage: Observable<number | undefined> =
-    this.currentPage$.asObservable();
   public isLoading: Observable<boolean> = this.isLoading$.asObservable();
 
   private searchModel: SearchFilterModel = new SearchFilterModel();
