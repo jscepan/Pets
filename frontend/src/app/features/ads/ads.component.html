@@ -5,10 +5,13 @@
   <div class="content">
     <div class="selected-filters">
       selected filters i reset filters dugme
-      <pets-filters></pets-filters>
+      <pets-filters [dataModel]="searchFilter"></pets-filters>
     </div>
     <div class="ads-container">
-      <pets-search-bar></pets-search-bar>
+      <pets-search-bar
+        [dataModel]="searchBarModel"
+        *ngIf="searchBarModel"
+      ></pets-search-bar>
       <div class="grid-container">
         <div *ngFor="let ad of entities | async">
           <pets-ad-card [dataModel]="ad"></pets-ad-card>

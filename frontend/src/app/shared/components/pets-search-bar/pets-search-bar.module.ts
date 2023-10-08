@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { PetsMenuModule } from '../pets-menu/pets-menu.module';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [PetsSearchBarComponent],
@@ -21,6 +23,8 @@ import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
     FormsModule,
     MatIconModule,
     PetsMenuModule,
+    MatSelectModule,
+    TranslateModule,
   ],
   exports: [PetsSearchBarComponent],
 })

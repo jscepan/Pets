@@ -77,6 +77,13 @@ export abstract class ListManager<
     return attachedSelection;
   }
 
+  setPageSize(size: number): void {
+    if (this._filter) {
+      this._filter.adPage.pageSize = size;
+      this.requestFirstPage();
+    }
+  }
+
   public get entities(): M[] {
     return this._entities.getValue();
   }
@@ -85,18 +92,9 @@ export abstract class ListManager<
     this._entities.next(entities);
   }
 
-  // public setFilterLimit(limit: number): void {
-  //   this._filter?.limit = limit;
-  //   this.NUMBER_OF_ITEMS_ON_PAGE = limit;
-  // }
-
-  public resetFilter(filter: Filter): void {
-    this._filter = filter;
-    this.requestFirstPage();
-  }
-
   setFilter(filter: Filter): void {
     this._filter = filter;
+    this.requestFirstPage();
   }
 
   public subscribeToData(): Observable<M[]> {

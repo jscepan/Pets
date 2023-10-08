@@ -1,4 +1,15 @@
 <div class="container" *ngIf="dataModel">
+  <form [formGroup]="searchBarForm" *ngIf="searchBarForm">
+    <mat-form-field class="page-size">
+      <mat-label>{{ "resultsNr" | translate }}</mat-label>
+      <mat-select formControlName="pageSizeCtrl">
+        <mat-option *ngFor="let item of pageSizeOptions" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  sort
   <pets-menu [dataModel]="dataModel.sort"></pets-menu>
 </div>
 <pets-icons [name]="'grid'"></pets-icons>

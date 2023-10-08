@@ -34,7 +34,12 @@
   ></pets-button>
   <mat-form-field class="input-form-field">
     <mat-label>{{ "pageNumber" | translate }}</mat-label>
-    <input type="number" matInput [formControl]="inputPageNumber" />
+    <input
+      type="number"
+      matInput
+      [formControl]="inputPageNumber"
+      (keyup.enter)="goToPage(inputPageNumber.value - 1)"
+    />
     <pets-icons
       matSuffix
       [name]="'search'"

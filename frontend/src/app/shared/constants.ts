@@ -1,8 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { EnumValueModel } from './enums/enum.model';
 
-export const NUMBER_OF_ITEMS_ON_PAGE: number = 5;
-
 // BASE_API_URL should have value 'http://localhost:8081' in DEVELOPMENT MODE, otherwise empty string ''
 // export const BASE_API_URL: string = '';
 export const BASE_API_URL: string = environment.baseApiUrl + '/api';
@@ -31,4 +29,10 @@ export const CURRENCY: EnumValueModel[] = [
 export const SELL_TYPE: EnumValueModel[] = [
   { value: 'BUY', displayName: 'buy' },
   { value: 'SELL', displayName: 'sell' },
+];
+
+export const PAGE_SIZE: EnumValueModel[] = [
+  { value: '10', displayName: '10' },
+  { value: '20', displayName: '20' },
+  { value: '50', displayName: '50' },
 ];

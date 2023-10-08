@@ -92,12 +92,6 @@ export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   goToPage(value: number): void {
-    console.log('111 value');
-    console.log(value);
-    console.log('222 this.currentPageCount');
-    console.log(this.currentPageCount);
-    console.log('333 this.totalPagesCount');
-    console.log(this.totalPagesCount);
     if (
       value != this.currentPageCount &&
       value >= 0 &&
@@ -110,16 +104,15 @@ export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   goToPreviousPage(): void {
-    if (this.currentPageCount && this.currentPageCount - 1 > 0) {
+    if (this.currentPageCount && this.currentPageCount > 0) {
       this.goToPageEvent.emit(this.currentPageCount - 1);
     }
   }
 
   goToNextPage(): void {
     if (
-      this.currentPageCount &&
       this.totalPagesCount &&
-      this.currentPageCount + 1 > this.totalPagesCount
+      this.currentPageCount + 1 < this.totalPagesCount
     ) {
       this.goToPageEvent.emit(this.currentPageCount + 1);
     }

@@ -1,16 +1,16 @@
-import { NUMBER_OF_ITEMS_ON_PAGE } from '../constants';
+import { PAGE_SIZE } from '../constants';
 import { Sort } from '../enums/sort.model';
 
 export class SearchFilterModel {
   quickSearch: string = '';
   adPage: {
     pageNumber: number;
-    pageSize: number;
+    pageSize: PageSize;
     sortDirection: Sort;
     sortBy: string;
   } = {
     pageNumber: 0,
-    pageSize: NUMBER_OF_ITEMS_ON_PAGE,
+    pageSize: PageSize.TEN,
     sortDirection: Sort.ASC,
     sortBy: 'title',
   };
@@ -18,4 +18,10 @@ export class SearchFilterModel {
     title: string;
     description: string;
   } = { title: '', description: '' };
+}
+
+export enum PageSize {
+  TEN = 10,
+  TWENTY = 20,
+  FIFTHY = 50,
 }

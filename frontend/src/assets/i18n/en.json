@@ -25,6 +25,7 @@
   "termsAndConditions": "Terms and Conditions",
   "back": "Back",
   "pageNumber": "Page num",
-  "next":"Next",
-  "previous":"Previous"
+  "next": "Next",
+  "previous": "Previous",
+  "resultsNr": "Page results"
 }
