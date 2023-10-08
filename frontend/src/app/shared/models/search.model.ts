@@ -10,7 +10,7 @@ export class SearchFilterModel {
     sortBy: string;
   } = {
     pageNumber: 0,
-    pageSize: PageSize.TEN,
+    pageSize: PageSize.ten,
     sortDirection: Sort.ASC,
     sortBy: 'title',
   };
@@ -21,9 +21,9 @@ export class SearchFilterModel {
 }
 
 export enum PageSize {
-  TEN = 10,
-  TWENTY = 20,
-  FIFTHY = 50,
+  ten = 10,
+  twenty = 20,
+  fifthy = 50,
 }
 
 export enum PetsSearchSortByTypes {
@@ -36,4 +36,9 @@ export enum PetsSearchSortByTypes {
 export enum PetsSearchDirectionTypes {
   ascending = 'ASC',
   descending = 'DESC',
+}
+
+export enum ViewType {
+  grid = 'GRID',
+  list = 'LIST',
 }

@@ -1,21 +1,39 @@
 <div class="container">
-  <div class="filters">
-    <pets-search-filter></pets-search-filter>
-  </div>
+  <div class="filters">levo svi filteri</div>
   <div class="content">
     <div class="selected-filters">
       selected filters i reset filters dugme
       <pets-filters [dataModel]="searchFilter"></pets-filters>
     </div>
-    <div class="ads-container">
+    <div class="ads-wrapper-container">
       <pets-search-bar
         [dataModel]="searchBarModel"
+        (changeEvent)="searchBarEventHandler($event)"
         *ngIf="searchBarModel"
       ></pets-search-bar>
-      <div class="grid-container">
-        <div *ngFor="let ad of entities | async">
-          <pets-ad-card [dataModel]="ad"></pets-ad-card>
+      <div class="ads-container">
+        <div
+          class="grid-container"
+          *ngIf="
+            (isLoading$ | async) === true ||
+              (length$ | async) !== 0 ||
+              selection.showSelected;
+            else zeroAdsTemplate
+          "
+          [ngClass]="{
+            list: viewType === viewTypeEnum.list,
+            grid: viewType === viewTypeEnum.grid
+          }"
+        >
+          <pets-ad-card
+            [dataModel]="ad"
+            *ngFor="let ad of entities | async; trackBy: trackByOid"
+            class="ad-card-container"
+          ></pets-ad-card>
         </div>
+        <ng-template #zeroAdsTemplate>
+          <div class="no-ads">{{ "thereAreNoResults" | translate }}</div>
+        </ng-template>
       </div>
       <pets-paginator
         [totalPagesCount]="totalPageLength | async"

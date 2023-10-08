@@ -1,4 +1,32 @@
 .container {
   display: flex;
   border: 2px solid green;
+  --card-max-width: 1.5fr;
+  --card-max-height: 4fr;
+
+  .filters {
+  }
+
+  .content {
+    .selected-filters {
+    }
+
+    .ads-wrapper-container {
+      .ads-container {
+        .grid-container {
+          width: 100%;
+          height: fit-content;
+
+          &.grid {
+            display: grid;
+            grid-template-columns: repeat(
+              auto-fill,
+              minmax(260px, var(--card-max-width))
+            );
+            grid-gap: 40px;
+          }
+        }
+      }
+    }
+  }
 }

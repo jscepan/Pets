@@ -13,9 +13,8 @@ import {
   UntypedFormControl,
   Validators,
 } from '@angular/forms';
-import { Subscription, debounceTime } from 'rxjs';
 import { PetsSearchBarI } from './pets-search-bar.interface';
-import { PageSize } from '../../models/search.model';
+import { ViewType } from '../../models/search.model';
 
 @Component({
   selector: 'pets-search-bar',
@@ -26,38 +25,40 @@ import { PageSize } from '../../models/search.model';
 export class PetsSearchBarComponent implements OnInit, OnDestroy {
   @Input() dataModel?: PetsSearchBarI;
 
-  @Output() changeEvent: EventEmitter<string> = new EventEmitter();
+  @Output() changeEvent: EventEmitter<{ type: string; value: string }> =
+    new EventEmitter();
 
   searchBarForm?: FormGroup;
-  pageSizeOptions: PageSize[] = [
-    PageSize.TEN,
-    PageSize.TWENTY,
-    PageSize.FIFTHY,
-  ];
-
   searchInput: UntypedFormControl = new UntypedFormControl();
+
+  viewType: ViewType = ViewType.list;
+  viewTypeEnum = ViewType;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.viewType = this.dataModel?.view || ViewType.list;
     this.searchBarForm = new FormGroup({
-      pageSize: new FormControl(this.dataModel?.search?.adPage.pageSize, [
+      pageSize: new FormControl(this.dataModel?.searchText, [
         Validators.required,
       ]),
       pageSort: new FormControl(this.dataModel?.sort.selected, [
         Validators.required,
       ]),
     });
-    this.searchBarForm.valueChanges.subscribe((value) => {
-      console.log('CHANGE');
-      console.log(value);
-    });
   }
 
-  changeView(type: 'list' | 'grid'): void {
-    console.log('type');
-    console.log(type);
-    this.changeEvent.emit(type);
+  changePageSize(value: string): void {
+    this.changeEvent.emit({ type: 'pageSize', value });
+  }
+
+  changeSortBy(value: string): void {
+    this.changeEvent.emit({ type: 'sort', value });
+  }
+
+  changeView(value: ViewType): void {
+    this.viewType = value;
+    this.changeEvent.emit({ type: 'viewType', value });
   }
 
   ngOnDestroy(): void {}

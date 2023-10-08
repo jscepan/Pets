@@ -1,17 +1,27 @@
 <div class="container" *ngIf="dataModel">
   <form [formGroup]="searchBarForm" *ngIf="searchBarForm">
+    <pets-search-filter></pets-search-filter>
     <mat-form-field class="page-size">
-      <mat-label>{{ "resultsNr" | translate }}</mat-label>
-      <mat-select formControlName="pageSize">
-        <mat-option *ngFor="let item of pageSizeOptions" [value]="item">
-          {{ item }}
+      <mat-label>{{ "num" | translate }}</mat-label>
+      <mat-select
+        formControlName="pageSize"
+        (valueChange)="changePageSize($event)"
+      >
+        <mat-option
+          *ngFor="let item of dataModel.pageSize.options"
+          [value]="item.value"
+        >
+          {{ item.displayName }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="page-sort">
       <mat-label>{{ "sortBy" | translate }}</mat-label>
-      <mat-select formControlName="pageSort">
+      <mat-select
+        formControlName="pageSort"
+        (valueChange)="changeSortBy($event)"
+      >
         <mat-option
           *ngFor="let item of dataModel.sort.options"
           [value]="item.value"
@@ -24,14 +34,14 @@
       <pets-button
         [iconName]="'grid'"
         [color]="'link'"
-        (clickEvent)="changeView('grid')"
-        [disabled]="dataModel?.view === 'grid'"
+        (clickEvent)="changeView(viewTypeEnum.grid)"
+        [disabled]="viewType === viewTypeEnum.grid"
       ></pets-button>
       <pets-button
         [iconName]="'align-justify'"
         [color]="'link'"
-        (clickEvent)="changeView('list')"
-        [disabled]="dataModel?.view === 'list'"
+        (clickEvent)="changeView(viewTypeEnum.list)"
+        [disabled]="viewType === viewTypeEnum.list"
       ></pets-button>
     </div>
   </form>

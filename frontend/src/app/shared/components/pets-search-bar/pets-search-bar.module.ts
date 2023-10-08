@@ -11,6 +11,7 @@ import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from '../pets-button/pets-button.module';
+import { PetsSearchFilterModule } from '../pets-search-filter/pets-search-filter.module';
 
 @NgModule({
   declarations: [PetsSearchBarComponent],
@@ -27,6 +28,7 @@ import { PetsButtonModule } from '../pets-button/pets-button.module';
     MatSelectModule,
     TranslateModule,
     PetsButtonModule,
+    PetsSearchFilterModule,
   ],
   exports: [PetsSearchBarComponent],
 })

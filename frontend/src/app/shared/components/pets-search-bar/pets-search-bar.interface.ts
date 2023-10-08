@@ -1,11 +1,15 @@
 import { EnumValueModel } from '../../enums/enum.model';
-import { SearchFilterModel } from '../../models/search.model';
+import { ViewType } from '../../models/search.model';
 
 export interface PetsSearchBarI {
-  search: SearchFilterModel;
+  searchText: string;
   sort: {
     selected: string;
     options: EnumValueModel[];
   };
-  view?: 'grid' | 'list';
+  view: ViewType;
+  pageSize: {
+    selected: string;
+    options: EnumValueModel[];
+  };
 }

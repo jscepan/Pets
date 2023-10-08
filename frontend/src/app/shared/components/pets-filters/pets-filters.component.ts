@@ -6,9 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { PageSize, SearchFilterModel } from '../../models/search.model';
-import { PAGE_SIZE } from '../../constants';
-import { EnumValueModel } from '../../enums/enum.model';
+import { SearchFilterModel } from '../../models/search.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -21,12 +19,6 @@ export class PetsFiltersComponent implements OnInit {
   @Input() dataModel?: SearchFilterModel;
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
-
-  pageSizeOptions: PageSize[] = [
-    PageSize.TEN,
-    PageSize.TWENTY,
-    PageSize.FIFTHY,
-  ];
 
   searchBarForm?: FormGroup;
 
