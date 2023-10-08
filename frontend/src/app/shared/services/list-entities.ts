@@ -84,8 +84,8 @@ export class ListEntities<T extends BaseModel> {
             this.entities$.getValue().concat(response.content)
           );
           const length = this.entities$.getValue().length || 0;
-          this.bottomReached$.next(!(length < response.totalElementa));
-          this.totalEntitiesLength$.next(response.totalElementa);
+          this.bottomReached$.next(!(length < response.totalElements));
+          this.totalEntitiesLength$.next(response.totalElements);
         });
     }
   }

@@ -23,7 +23,8 @@ export class AdsComponent implements OnInit, OnDestroy {
   keyword: string = '';
   public readonly entities?: Observable<PetsAdCardI[]> =
     this.adsService.response$;
-  totalEntitiesLength: Observable<number | undefined> = this.adsService.length$;
+  totalPageLength: Observable<number | undefined> =
+    this.adsService.totalPageCount$;
   currentPage: Observable<number | undefined> = this.adsService.currentPage$;
 
   searchFilter: SearchFilterModel = new SearchFilterModel();
@@ -41,18 +42,12 @@ export class AdsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.adsService.init();
     this.adsService.requestFirstPage();
-    // this.subs.sink = this.listEntities
-    //   .setWebService(this.webService)
-    //   .requestFirstPage();
-
-    // this.subs.sink = this.entities?.subscribe((ent) => {
-    //   console.log('ententententententent');
-    //   console.log(ent);
-    // });
   }
 
   goToPage(page: number): void {
-    console.log('IDI NA STRANICU: ' + page);
+    console.log('pagepagepagepagepagepage');
+    console.log(page);
+    this.adsService.requestPageNumber(page);
   }
 
   ngOnDestroy(): void {

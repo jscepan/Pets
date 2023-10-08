@@ -17,6 +17,6 @@ export interface ArrayResponseI<T> {
       unsorted: boolean;
     };
   };
-  totalElementa: number;
+  totalElements: number;
   totalPages: number;
 }

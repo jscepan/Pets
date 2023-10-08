@@ -19,7 +19,7 @@ import { UntypedFormControl } from '@angular/forms';
 })
 export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() totalPagesCount: number | undefined | null;
-  @Input() currentPageCount: number | undefined | null;
+  @Input() currentPageCount: number = 0;
   showPagesLeft: number = 2;
   showPagesRight: number = 2;
   pageNumbers: string[] = [];
@@ -41,46 +41,70 @@ export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setPageNumbers(): void {
+    this.pageNumbers = [];
     if (this.totalPagesCount && this.totalPagesCount > 0) {
       if (this.totalPagesCount && this.totalPagesCount < 10) {
-        for (let i = 1; i < (this.totalPagesCount || 1); i++) {
+        for (let i = 0; i < (this.totalPagesCount - 1 || 0); i++) {
           this.pageNumbers.push(i + '');
         }
       } else {
         let leftToAdd = 6;
-        if (this.currentPageCount && this.currentPageCount < 6) {
-          for (let i = 1; i <= this.currentPageCount; i++) {
-            this.pageNumbers.push(i + '');
+        this.pageNumbers.push(this.currentPageCount.toString());
+        let lastLeftIndex = this.currentPageCount - 1;
+        let lastRightIndex = this.currentPageCount + 1;
+
+        while (leftToAdd > 0) {
+          // add left
+          if (leftToAdd > 0 && lastLeftIndex >= 0) {
+            this.pageNumbers.unshift(lastLeftIndex.toString());
+            lastLeftIndex--;
             leftToAdd--;
           }
-          for (
-            let i = this.currentPageCount + 1;
-            i <= this.totalPagesCount;
-            i++
-          ) {
-            if (leftToAdd === 0) {
-              break;
-            }
-            this.pageNumbers.push(i + '');
+          // add right
+          if (leftToAdd > 0 && lastRightIndex < this.totalPagesCount) {
+            this.pageNumbers.push(lastRightIndex.toString());
+            lastRightIndex++;
             leftToAdd--;
           }
+        }
+
+        if (lastLeftIndex === 0) {
+          this.pageNumbers.unshift('0');
+        } else if (lastLeftIndex === 1) {
+          this.pageNumbers.unshift('1');
+          this.pageNumbers.unshift('0');
+        } else if (lastLeftIndex > 1) {
+          this.pageNumbers.unshift('...');
+          this.pageNumbers.unshift('0');
+        }
+
+        if (lastRightIndex === this.totalPagesCount - 1) {
+          this.pageNumbers.push((this.totalPagesCount - 1).toString());
+        } else if (lastRightIndex === this.totalPagesCount - 2) {
+          this.pageNumbers.push((this.totalPagesCount - 2).toString());
+          this.pageNumbers.push((this.totalPagesCount - 1).toString());
+        } else if (lastRightIndex < this.totalPagesCount - 2) {
           this.pageNumbers.push('...');
-          this.pageNumbers.push(this.totalPagesCount + '');
-        } else {
-          this.pageNumbers.push('1');
-          this.pageNumbers.push('...');
+          this.pageNumbers.push((this.totalPagesCount - 1).toString());
         }
       }
     }
   }
 
   goToPage(value: number): void {
+    console.log('111 value');
+    console.log(value);
+    console.log('222 this.currentPageCount');
+    console.log(this.currentPageCount);
+    console.log('333 this.totalPagesCount');
+    console.log(this.totalPagesCount);
     if (
       value != this.currentPageCount &&
-      value > 0 &&
+      value >= 0 &&
       this.totalPagesCount &&
-      value <= this.totalPagesCount
+      value <= this.totalPagesCount - 1
     ) {
+      console.log('EMIT');
       this.goToPageEvent.emit(value);
     }
   }

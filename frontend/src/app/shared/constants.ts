@@ -1,6 +1,8 @@
 import { environment } from 'src/environments/environment';
 import { EnumValueModel } from './enums/enum.model';
 
+export const NUMBER_OF_ITEMS_ON_PAGE: number = 5;
+
 // BASE_API_URL should have value 'http://localhost:8081' in DEVELOPMENT MODE, otherwise empty string ''
 // export const BASE_API_URL: string = '';
 export const BASE_API_URL: string = environment.baseApiUrl + '/api';

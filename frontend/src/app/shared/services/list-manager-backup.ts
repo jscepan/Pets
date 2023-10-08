@@ -6,13 +6,14 @@ import { SearchFilterModel } from '../models/search.model';
 import { BaseModel } from '../models/base-model';
 
 type RequestFn<M extends { oid: string }, Filter extends SearchFilterModel> = (
-  filter: Filter
+  filter: Filter,
+  page: number
 ) => Observable<ArrayResponseI<M>>;
 type ResponseFn<M extends { oid: string }, C extends BaseModel> = (
   responseModels: M[]
 ) => C[];
 
-export abstract class ListManager<
+export abstract class ListManagerBackup<
   M extends BaseModel,
   C extends BaseModel,
   Filter extends SearchFilterModel
@@ -37,13 +38,12 @@ export abstract class ListManager<
   public totalCount$: BehaviorSubject<number | undefined> = new BehaviorSubject<
     number | undefined
   >(undefined);
-  public totalPageCount$: BehaviorSubject<number | undefined> =
-    new BehaviorSubject<number | undefined>(undefined);
   public currentPage$: BehaviorSubject<number | undefined> =
     new BehaviorSubject<number | undefined>(undefined);
 
   private readonly _entities = new BehaviorSubject<M[]>([]);
 
+  private NUMBER_OF_ITEMS_ON_PAGE: number = 10;
   private _filter?: Filter | undefined;
   private requestFn!: RequestFn<M, Filter>;
 
@@ -108,41 +108,48 @@ export abstract class ListManager<
     this.bottomReached$.next(false);
     this.entities = [];
     this.totalCount$.next(0);
-    this.currentPage$.next(0);
+    this.currentPage$.next(1);
     this.length$.next(0);
     this.listIsEmpty$.next(false);
 
-    this.requestPageNumber(0);
+    this.requestNextPage(initialLoad);
   }
 
-  public requestPageNumber(pageNumber: number): void {
-    this.isLoading$.next(true);
-    if (this._filter) {
-      this._filter.adPage.pageNumber = pageNumber;
-      this.subs.sink.$dataRequest = this.requestFn(this._filter).subscribe({
-        next: (response: ArrayResponseI<M>) => {
-          this.listIsEmpty$.next(
-            response.content.length === 0 ||
-              (this.currentPage$.getValue() === 1 &&
-                response.content.length === 0)
-          );
-          this._entities.next(response.content);
+  // As listIsEmpty$ gets true only if search object is not set
+  // In case where you set search object in initial load just send initialLoad = true
+  public requestNextPage(initialLoad: boolean = false): void {
+    if (!this.bottomReached$.getValue()) {
+      this.isLoading$.next(true);
 
-          this.lastResponse$.next(response.content);
-          this.length$.next(this.entities.length || 0);
-          this.isLoading$.next(false);
-          this.totalCount$.next(response.totalElements);
-          this.currentPage$.next(response.pageable.pageNumber);
-          this.totalPageCount$.next(response.totalPages);
+      if (this._filter) {
+        this.subs.sink.$dataRequest = this.requestFn(
+          this._filter,
+          this.currentPage$.getValue() || 1
+        ).subscribe({
+          next: (response: ArrayResponseI<M>) => {
+            this.listIsEmpty$.next(
+              (initialLoad && response.content.length === 0) ||
+                (this.currentPage$.getValue() === 1 &&
+                  response.content.length === 0)
+            );
+            this.currentPage$.next(response.pageable.pageNumber + 1);
+            this.entities = [...this.entities, ...response.content];
 
-          if (response.last) {
-            this.bottomReached$.next(true);
-          }
-        },
-        error: () => {
-          this.isLoading$.next(false);
-        },
-      });
+            this.lastResponse$.next(response.content);
+            this.length$.next(this.entities.length || 0);
+            this.isLoading$.next(false);
+            this.totalCount$.next(response.totalElements);
+            this.currentPage$.next(response.pageable.pageNumber);
+
+            if (response.last) {
+              this.bottomReached$.next(true);
+            }
+          },
+          error: () => {
+            this.isLoading$.next(false);
+          },
+        });
+      }
     }
   }
 
