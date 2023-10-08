@@ -27,5 +27,8 @@
   "pageNumber": "Str. br.",
   "next": "Sledeća",
   "previous": "Prethodna",
-  "resultsNr": "Rez.str."
+  "resultsNr": "Rez.str.",
+  "priceAscending": "Cena uzlazno",
+  "priceDescending": "Cena silazno",
+  "sortBy": "Sortiranje"
 }

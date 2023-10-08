@@ -27,5 +27,8 @@
   "pageNumber": "Page num",
   "next": "Next",
   "previous": "Previous",
-  "resultsNr": "Page results"
+  "resultsNr": "Page results",
+  "priceAscending": "Price ascending",
+  "priceDescending": "Price descending",
+  "sortBy": "Sort by"
 }

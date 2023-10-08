@@ -46,6 +46,19 @@ export class AdsComponent implements OnInit, OnDestroy {
     this.searchBarModel = {
       search: this.searchFilter,
       view: 'list',
+      sort: {
+        selected: 'yyy',
+        options: [
+          {
+            value: 'xxx',
+            displayName: 'Xxxxx',
+          },
+          {
+            value: 'yyy',
+            displayName: 'Yuyuyuy',
+          },
+        ],
+      },
     };
   }
 

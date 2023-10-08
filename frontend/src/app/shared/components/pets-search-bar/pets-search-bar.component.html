@@ -2,15 +2,37 @@
   <form [formGroup]="searchBarForm" *ngIf="searchBarForm">
     <mat-form-field class="page-size">
       <mat-label>{{ "resultsNr" | translate }}</mat-label>
-      <mat-select formControlName="pageSizeCtrl">
+      <mat-select formControlName="pageSize">
         <mat-option *ngFor="let item of pageSizeOptions" [value]="item">
           {{ item }}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field class="page-sort">
+      <mat-label>{{ "sortBy" | translate }}</mat-label>
+      <mat-select formControlName="pageSort">
+        <mat-option
+          *ngFor="let item of dataModel.sort.options"
+          [value]="item.value"
+        >
+          {{ item.displayName | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="view-type">
+      <pets-button
+        [iconName]="'grid'"
+        [color]="'link'"
+        (clickEvent)="changeView('grid')"
+        [disabled]="dataModel?.view === 'grid'"
+      ></pets-button>
+      <pets-button
+        [iconName]="'align-justify'"
+        [color]="'link'"
+        (clickEvent)="changeView('list')"
+        [disabled]="dataModel?.view === 'list'"
+      ></pets-button>
+    </div>
   </form>
-  sort
-  <pets-menu [dataModel]="dataModel.sort"></pets-menu>
 </div>
-<pets-icons [name]="'grid'"></pets-icons>
-<pets-icons [name]="'align-justify'"></pets-icons>

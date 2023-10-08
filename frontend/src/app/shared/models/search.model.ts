@@ -25,3 +25,15 @@ export enum PageSize {
   TWENTY = 20,
   FIFTHY = 50,
 }
+
+export enum PetsSearchSortByTypes {
+  created = 'CreatedOn',
+  modified = 'ModifiedOn',
+  name = 'name',
+  title = 'title',
+}
+
+export enum PetsSearchDirectionTypes {
+  ascending = 'ASC',
+  descending = 'DESC',
+}

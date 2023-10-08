@@ -41,7 +41,10 @@ export class PetsSearchBarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchBarForm = new FormGroup({
-      pageSizeCtrl: new FormControl(this.dataModel?.search?.adPage.pageSize, [
+      pageSize: new FormControl(this.dataModel?.search?.adPage.pageSize, [
+        Validators.required,
+      ]),
+      pageSort: new FormControl(this.dataModel?.sort.selected, [
         Validators.required,
       ]),
     });
@@ -49,6 +52,12 @@ export class PetsSearchBarComponent implements OnInit, OnDestroy {
       console.log('CHANGE');
       console.log(value);
     });
+  }
+
+  changeView(type: 'list' | 'grid'): void {
+    console.log('type');
+    console.log(type);
+    this.changeEvent.emit(type);
   }
 
   ngOnDestroy(): void {}
