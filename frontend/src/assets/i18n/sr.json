@@ -31,5 +31,10 @@
   "priceAscending": "Cena uzlazno",
   "priceDescending": "Cena silazno",
   "sortBy": "Sortiranje",
-  "num": "Br."
+  "num": "Br.",
+  "adUpTo15ImagesTitle": "Dodajte do 15 slika. Upamtite da su oglasi bez slika manje gledani.",
+  "maxFileSize": "Maksimalna veličina fajla do",
+  "restImagesToUpload": "Moguće dodati još {{imageCount}} slika",
+  "addOrDropImages": "Dodajte ili prevucite slike",
+  "maxImagesCountIs": "Maksimalni broj slika je {{imageCount}}"
 }

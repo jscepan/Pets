@@ -31,5 +31,10 @@
   "priceAscending": "Price ascending",
   "priceDescending": "Price descending",
   "sortBy": "Sort by",
-  "num": "Num"
+  "num": "Num",
+  "adUpTo15ImagesTitle": "Ad up to 15 images. Remember: ads without image has less view.",
+  "maxFileSize": "Max file size up to",
+  "restImagesToUpload": "Rest {{imageCount}} images to upload",
+  "addOrDropImages": "Add or drop images",
+  "maxImagesCountIs": "Max images count is {{imageCount}}"
 }

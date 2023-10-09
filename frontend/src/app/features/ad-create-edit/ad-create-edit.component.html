@@ -1,5 +1,6 @@
 <mat-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step>
+    <!-- [stepControl]="firstFormGroup" -->
     <form [formGroup]="firstFormGroup">
       <mat-radio-group
         aria-label="Select sell type"
@@ -26,10 +27,11 @@
       ></pets-autocomplete>
     </form>
     <div class="button-group">
-      <button mat-button matStepperNext>Next</button>
+      <pets-button [text]="'next' | translate" matStepperNext></pets-button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
+  <mat-step>
+    <!--  [stepControl]="secondFormGroup" -->
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>title</ng-template>
       <mat-form-field>
@@ -66,10 +68,10 @@
           placeholder="description"
         />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>images</mat-label>
-        <input matInput formControlName="images" placeholder="images" />
-      </mat-form-field>
+      <div class="image-upload">
+        <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>
+        <pets-image-upload [maxFileSize]="'500MB'"></pets-image-upload>
+      </div>
       <pets-autocomplete
         [dataModel]="cities"
         (changeEvent)="onCityChange($event)"
@@ -92,11 +94,12 @@
       </mat-form-field>
     </form>
     <div class="button-group">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
+      <pets-button [text]="'back' | translate" matStepperPrevious></pets-button>
+      <pets-button [text]="'next' | translate" matStepperNext></pets-button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
+  <mat-step>
+    <!--  [stepControl]="thirdFormGroup" -->
     <ng-template matStepLabel>Izbor promocije</ng-template>
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Izbor promocije</ng-template>
@@ -107,8 +110,11 @@
     </form>
     <p>You are now done.</p>
     <div class="button-group">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="createAd()">Submit</button>
+      <pets-button [text]="'back' | translate" matStepperPrevious></pets-button>
+      <pets-button
+        [text]="'submit' | translate"
+        (clickEvent)="createAd()"
+      ></pets-button>
     </div>
   </mat-step>
 </mat-stepper>
