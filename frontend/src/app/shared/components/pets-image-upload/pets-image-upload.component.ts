@@ -1,10 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
   Output,
+  QueryList,
+  ViewChildren,
 } from '@angular/core';
 import { SearchFilterModel } from '../../models/search.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -56,6 +59,13 @@ export class PetsImageUploadComponent implements OnInit {
 
   triggerFileInput() {
     document.getElementById('fileInput')?.click();
+  }
+
+  removeImage(file: File): void {
+    const f = this.files.indexOf(file);
+    if (f) {
+      this.files.splice(f, 1);
+    }
   }
 
   onClick(e: Event): void {

@@ -2,13 +2,24 @@
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
   <div *ngIf="files.length" class="file-section">
     <div class="grid-container">
-      <div *ngFor="let file of files" class="file">
+      <div
+        *ngFor="let file of files; let i = index"
+        class="file"
+        draggable="true"
+      >
         <div class="image-wrapper">
           <img [src]="getSafeImageUrl(file)" alt="Image" />
         </div>
-        <div class="name">{{ file.name }}</div>
+        <div class="name">
+          <pets-button
+            [iconName]="'trash-2'"
+            [color]="'link-white'"
+            [smallWidth]="true"
+            (clickEvent)="removeImage(file)"
+          ></pets-button>
+        </div>
         <div class="additional-info">
-          <div class="size">{{ file.size | filesize }}</div>
+          <div class="image-index">{{ i + 1 }}</div>
         </div>
       </div>
     </div>

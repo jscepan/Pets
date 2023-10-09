@@ -18,13 +18,6 @@ button {
     align-items: center;
   }
 
-  &.small-width {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 15px;
-  }
-
   &.full-height {
     height: 100%;
     display: flex;
@@ -166,6 +159,13 @@ button {
 
   .text-with-icon:not(:empty) {
     margin: 0 10px;
+  }
+
+  &.small-width {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px;
   }
 }
 
