@@ -35,11 +35,11 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>title</ng-template>
       <mat-form-field>
-        <mat-label>title</mat-label>
+        <mat-label>{{ "title" | translate }}</mat-label>
         <input matInput formControlName="title" placeholder="title" />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>price</mat-label>
+        <mat-label>{{ "price" | translate }}</mat-label>
         <input
           type="number"
           matInput
@@ -48,7 +48,7 @@
         />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>priceCurrency</mat-label>
+        <mat-label>{{ "priceCurrency" | translate }}</mat-label>
         <mat-select formControlName="priceCurrency">
           <mat-option
             *ngFor="let item of priceCurrencyOptions"
@@ -61,7 +61,7 @@
       <mat-checkbox formControlName="priceIsFixed"></mat-checkbox>
       <mat-checkbox formControlName="freeOfCharge"></mat-checkbox>
       <mat-form-field>
-        <mat-label>description</mat-label>
+        <mat-label>{{ "description" | translate }}</mat-label>
         <input
           matInput
           formControlName="description"
@@ -77,7 +77,7 @@
         (changeEvent)="onCityChange($event)"
       ></pets-autocomplete>
       <mat-form-field>
-        <mat-label>contactName</mat-label>
+        <mat-label>{{ "contactName" | translate }}</mat-label>
         <input
           matInput
           formControlName="contactName"
@@ -85,7 +85,7 @@
         />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>contactPhone</mat-label>
+        <mat-label>{{ "contactPhone" | translate }}</mat-label>
         <input
           matInput
           formControlName="contactPhone"

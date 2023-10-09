@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { SearchFilterModel } from '../../models/search.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeStyle, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'pets-image-upload',
@@ -27,7 +28,7 @@ export class PetsImageUploadComponent implements OnInit {
 
   searchBarForm?: FormGroup;
 
-  constructor() {}
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.searchBarForm = new FormGroup({
@@ -41,33 +42,20 @@ export class PetsImageUploadComponent implements OnInit {
     });
   }
 
+  getSafeImageUrl(file: File): SafeUrl {
+    const imageUrl = URL.createObjectURL(file);
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+
   onChange(event: any): void {
     const files = event.target.files;
-
     if (files.length) {
-      this.status = 'initial';
-      this.files = files;
+      this.files.push(...files); // Dodaj nove datoteke u postojeći niz
     }
   }
 
-  onUpload() {
-    //   if (this.files.length) {
-    //     const formData = new FormData();
-    //     [...this.files].forEach((file) => {
-    //       formData.append("file", file, file.name);
-    //     });
-    //     const upload$ = this.http.post("https://httpbin.com/post", formData);
-    //     this.status = "uploading";
-    //     upload$.subscribe({
-    //       next: () => {
-    //         this.status = "success";
-    //       },
-    //       error: (error: any) => {
-    //         this.status = "fail";
-    //         return throwError(() => error);
-    //       },
-    //     });
-    //   }
+  triggerFileInput() {
+    document.getElementById('fileInput')?.click();
   }
 
   onClick(e: Event): void {

@@ -36,5 +36,12 @@
   "maxFileSize": "Maksimalna veličina fajla do",
   "restImagesToUpload": "Moguće dodati još {{imageCount}} slika",
   "addOrDropImages": "Dodajte ili prevucite slike",
-  "maxImagesCountIs": "Maksimalni broj slika je {{imageCount}}"
+  "maxImagesCountIs": "Maksimalni broj slika je {{imageCount}}",
+  "left": "Preostalo",
+  "contactPhone": "Kontakt telefon",
+  "contactName": "Kontakt ime",
+  "description": "Opis",
+  "title": "Naslov",
+  "priceCurrency": "Cena izražena u",
+  "price": "Cena"
 }

@@ -73,9 +73,9 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    if (!this.authStoreService.user) {
-      this.router.navigate(['/auth/login']);
-    }
+    // if (!this.authStoreService.user) {
+    //   this.router.navigate(['/auth/login']);
+    // }
     this.subs.sink = this.definitionsStoreService.definitions$.subscribe(
       (definitions) => {
         this.definitions = definitions;

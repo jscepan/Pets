@@ -34,7 +34,14 @@
   "num": "Num",
   "adUpTo15ImagesTitle": "Ad up to 15 images. Remember: ads without image has less view.",
   "maxFileSize": "Max file size up to",
-  "restImagesToUpload": "Rest {{imageCount}} images to upload",
+  "restImagesToUpload": "Left {{imageCount}} images to upload",
   "addOrDropImages": "Add or drop images",
-  "maxImagesCountIs": "Max images count is {{imageCount}}"
+  "maxImagesCountIs": "Max images count is {{imageCount}}",
+  "left": "Left",
+  "contactPhone": "Contact phone",
+  "contactName": "Contact name",
+  "description": "Description",
+  "title": "Title",
+  "priceCurrency": "Price currency",
+  "price": "Price"
 }

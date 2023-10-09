@@ -1,39 +1,35 @@
 <div class="container">
-  <h3>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h3>
-  <input type="file" multiple (change)="onChange($event)" />
+  <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
   <div *ngIf="files.length" class="file-section">
-    <div *ngFor="let file of files" class="file">
-      <div
-        class="image-wrapper"
-        [ngStyle]="{ 'background-image': 'url(' + file.name + ')' }"
-      ></div>
-      <div class="name">{{ file.name }}</div>
-      <div class="additional-info">
-        <div class="size">{{ file.size | filesize }}</div>
-        <!-- <div class="type">{{ file.type }}</div> -->
+    <div class="grid-container">
+      <div *ngFor="let file of files" class="file">
+        <div class="image-wrapper">
+          <img [src]="getSafeImageUrl(file)" alt="Image" />
+        </div>
+        <div class="name">{{ file.name }}</div>
+        <div class="additional-info">
+          <div class="size">{{ file.size | filesize }}</div>
+        </div>
       </div>
     </div>
-
-    <pets-button
-      (click)="onUpload()"
-      [color]="'secondary'"
-      class="upload-button"
-      [text]="'addOrDropImages' | translate"
-    ></pets-button>
-
-    <section [ngSwitch]="status">
-      <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
-      <p *ngSwitchCase="'success'">✅ Done!</p>
-      <p *ngSwitchCase="'fail'">❌ Error!</p>
-      <p *ngSwitchDefault>😶 Waiting to upload...</p>
-    </section>
   </div>
-  <h3 [class.warning]="maxImagesCount - files.length < 0">
-    {{
-      maxImagesCount - files.length > 0
-        ? ("restImagesToUpload"
-          | translate : { imageCount: maxImagesCount - files.length })
-        : ("maxImagesCountIs" | translate : { imageCount: maxImagesCount })
-    }}
+  <h3 class="warning" *ngIf="maxImagesCount - files.length < 0">
+    {{ "maxImagesCountIs" | translate : { imageCount: maxImagesCount } }}
   </h3>
+  <div class="upload-button">
+    <input type="file" id="fileInput" multiple (change)="onChange($event)" />
+    <pets-button
+      (clickEvent)="triggerFileInput()"
+      [text]="
+        ('addOrDropImages' | translate) +
+        ' - ' +
+        (maxImagesCount - files.length >= 0
+          ? maxImagesCount - files.length
+          : 0) +
+        ' ' +
+        ('left' | translate)
+      "
+      [fullWidth]="true"
+    ></pets-button>
+  </div>
 </div>
