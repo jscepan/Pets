@@ -1,6 +1,7 @@
 <div class="container" (click)="triggerFileInput()">
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
-  <div *ngIf="files.length" class="file-section" cdkDropListGroup>
+  <pets-drag-drop></pets-drag-drop>
+  <!-- <div *ngIf="files.length" class="file-section" cdkDropListGroup>
     <div
       class="grid-container"
       cdkDropList
@@ -25,7 +26,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <h3 class="warning" *ngIf="maxImagesCount - files.length < 0">
     {{ "maxImagesCountIs" | translate : { imageCount: maxImagesCount } }}
   </h3>

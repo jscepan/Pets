@@ -1,0 +1,19 @@
+<div
+  class="example-container"
+  cdkDropListGroup
+  [ngStyle]="{ '--box-width': boxWidth, '--box-height': boxHeight }"
+>
+  <div
+    cdkDropList
+    (cdkDropListEntered)="onDropListEntered($event)"
+    (cdkDropListDropped)="onDropListDropped()"
+  ></div>
+  <div
+    cdkDropList
+    (cdkDropListEntered)="onDropListEntered($event)"
+    (cdkDropListDropped)="onDropListDropped()"
+    *ngFor="let item of items"
+  >
+    <div cdkDrag class="example-box">{{ item }}</div>
+  </div>
+</div>
