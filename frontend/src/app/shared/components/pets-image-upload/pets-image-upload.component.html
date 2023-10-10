@@ -1,12 +1,14 @@
-<div class="container">
+<div class="container" (click)="triggerFileInput()">
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
-  <div *ngIf="files.length" class="file-section">
-    <div class="grid-container">
-      <div
-        *ngFor="let file of files; let i = index"
-        class="file"
-        draggable="true"
-      >
+  <div *ngIf="files.length" class="file-section" cdkDropListGroup>
+    <div
+      class="grid-container"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="files"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let file of files; let i = index" class="file" cdkDrag>
         <div class="image-wrapper">
           <img [src]="getSafeImageUrl(file)" alt="Image" />
         </div>
@@ -15,7 +17,7 @@
             [iconName]="'trash-2'"
             [color]="'link-white'"
             [smallWidth]="true"
-            (clickEvent)="removeImage(file)"
+            (clickEvent)="removeImage(file); $event.stopPropagation()"
           ></pets-button>
         </div>
         <div class="additional-info">
@@ -30,7 +32,6 @@
   <div class="upload-button">
     <input type="file" id="fileInput" multiple (change)="onChange($event)" />
     <pets-button
-      (clickEvent)="triggerFileInput()"
       [text]="
         ('addOrDropImages' | translate) +
         ' - ' +
