@@ -1,4 +1,9 @@
-<div class="container" (click)="triggerFileInput()">
+<div
+  class="container"
+  (click)="triggerFileInput()"
+  petsDragDrop
+  (fileDropped)="onDropped($event)"
+>
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
   <pets-drag-drop
     [items]="files"

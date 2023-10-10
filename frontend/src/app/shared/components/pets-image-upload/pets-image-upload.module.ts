@@ -8,8 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { FileSizePipe } from '../../pipes/file-size.pipe';
 import { PetsButtonModule } from '../pets-button/pets-button.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PetsDragDropModule } from '../pets-drag-drop/pets-drag-drop.module';
+import { PetsDragDropDirective } from '../../directives/pets-drag-drop.directive';
 
 @NgModule({
   declarations: [PetsImageUploadComponent],
@@ -23,8 +23,8 @@ import { PetsDragDropModule } from '../pets-drag-drop/pets-drag-drop.module';
     TranslateModule,
     FileSizePipe,
     PetsButtonModule,
-    DragDropModule,
     PetsDragDropModule,
+    PetsDragDropDirective,
   ],
   exports: [PetsImageUploadComponent],
 })
