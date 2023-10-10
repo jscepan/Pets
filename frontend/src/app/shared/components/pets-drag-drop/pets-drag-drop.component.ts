@@ -1,9 +1,9 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -12,12 +12,12 @@ import {
   DragRef,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'pets-drag-drop',
   templateUrl: './pets-drag-drop.component.html',
   styleUrls: ['./pets-drag-drop.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetsDragDropComponent implements AfterViewInit {
   // @ts-ignore
@@ -34,10 +34,13 @@ export class PetsDragDropComponent implements AfterViewInit {
   // @ts-ignore
   private dragRef: DragRef = null;
 
-  @Input() items: Array<number> = [1, 2, 3, 4, 5, 6, 7];
+  @Input() items: Array<File> = [];
+  @Output() removeItemEvent: EventEmitter<File> = new EventEmitter();
 
-  boxWidth = '200px';
-  boxHeight = '200px';
+  boxWidth = '150px';
+  boxHeight = '150px';
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngAfterViewInit() {
     const placeholderElement = this.placeholder.element.nativeElement;
@@ -45,6 +48,15 @@ export class PetsDragDropComponent implements AfterViewInit {
     placeholderElement.style.display = 'none';
     // @ts-ignore
     placeholderElement.parentNode.removeChild(placeholderElement);
+  }
+
+  removeImage(file: File): void {
+    this.removeItemEvent.emit(file);
+  }
+
+  getSafeImageUrl(file: File): SafeUrl {
+    const imageUrl = URL.createObjectURL(file);
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 
   onDropListDropped() {

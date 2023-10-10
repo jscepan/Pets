@@ -12,8 +12,21 @@
     cdkDropList
     (cdkDropListEntered)="onDropListEntered($event)"
     (cdkDropListDropped)="onDropListDropped()"
-    *ngFor="let item of items"
+    *ngFor="let item of items; let i = index"
   >
-    <div cdkDrag class="example-box">{{ item }}</div>
+    <div cdkDrag class="example-box">
+      <img [src]="getSafeImageUrl(item)" alt="Image" class="image" />
+      <div class="name">
+        <pets-button
+          [iconName]="'trash-2'"
+          [color]="'link-white'"
+          [smallWidth]="true"
+          (clickEvent)="removeImage(item); $event.stopPropagation()"
+        ></pets-button>
+      </div>
+      <div class="additional-info">
+        <div class="image-index">{{ i + 1 }}</div>
+      </div>
+    </div>
   </div>
 </div>

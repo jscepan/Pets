@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
 
 @NgModule({
   declarations: [PetsDragDropComponent],
@@ -19,6 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ReactiveFormsModule,
     TranslateModule,
     DragDropModule,
+    PetsButtonModule,
   ],
   exports: [PetsDragDropComponent],
 })

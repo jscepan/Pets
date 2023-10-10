@@ -1,6 +1,9 @@
 <div class="container" (click)="triggerFileInput()">
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
-  <pets-drag-drop></pets-drag-drop>
+  <pets-drag-drop
+    [items]="files"
+    (removeItemEvent)="removeImage($event)"
+  ></pets-drag-drop>
   <!-- <div *ngIf="files.length" class="file-section" cdkDropListGroup>
     <div
       class="grid-container"
