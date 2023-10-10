@@ -67,6 +67,16 @@
           formControlName="description"
           placeholder="description"
         />
+        <div class="EditorWrapper">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+          <ngx-editor
+            [editor]="editor"
+            [ngModel]="html"
+            [disabled]="false"
+            [placeholder]="'inputDescriptionOfYourAd' | translate"
+          ></ngx-editor>
+        </div>
       </mat-form-field>
       <div class="image-upload">
         <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>

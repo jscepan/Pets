@@ -43,5 +43,6 @@
   "description": "Opis",
   "title": "Naslov",
   "priceCurrency": "Cena izražena u",
-  "price": "Cena"
+  "price": "Cena",
+  "inputDescriptionOfYourAd": "Unesite opis Vašeg oglasa"
 }

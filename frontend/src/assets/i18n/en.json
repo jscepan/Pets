@@ -43,5 +43,6 @@
   "description": "Description",
   "title": "Title",
   "priceCurrency": "Price currency",
-  "price": "Price"
+  "price": "Price",
+  "inputDescriptionOfYourAd": "Input description of your ad"
 }

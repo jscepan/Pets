@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { PetsImageUploadModule } from 'src/app/shared/components/pets-image-upload/pets-image-upload.module';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [AdCreateEditComponent],
@@ -40,6 +41,7 @@ import { PetsImageUploadModule } from 'src/app/shared/components/pets-image-uplo
     MatSelectModule,
     MatRadioModule,
     PetsImageUploadModule,
+    NgxEditorModule,
   ],
 })
 export class AdCreateEditModule {}
