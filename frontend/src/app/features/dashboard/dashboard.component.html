@@ -8,7 +8,11 @@
           (click)="selectAdType(adType)"
           [ngClass]="{ selected: adType === selectedAdType }"
         >
-          <img src="{{ adType.thumbnailUrl }}" />
+          <pets-icons
+            [name]="adType.iconName"
+            class="icon"
+            [size]="'80px'"
+          ></pets-icons>
           <div class="name">{{ adType.displayValue[selectedLanguage] }}</div>
         </div>
       </div>
@@ -17,13 +21,14 @@
           <pets-autocomplete
             [dataModel]="categories"
             (changeEvent)="onAutocompleteChange($event)"
+            [label]="'selectCategory' | translate"
           ></pets-autocomplete>
         </div>
         <div class="sub-categories">
           <pets-select
             [dataModel]="subCategories"
             [multipleSelect]="true"
-            [label]="'Selektuj' | translate"
+            [label]="'selectSubcategory' | translate"
           ></pets-select>
         </div>
       </div>
@@ -43,5 +48,16 @@
       ></pets-icons>
     </div>
   </div>
-  <div class="bottom-menu">bottom menu</div>
+  <div class="bottom-menu">
+    <div class="favorites">
+      <div
+        class="favorite"
+        *ngFor="let fav of favoritesMenu"
+        (click)="goTo(fav)"
+      >
+        <pets-icons [name]="fav.icon"></pets-icons>
+        <div class="name">{{ fav.name }}</div>
+      </div>
+    </div>
+  </div>
 </div>

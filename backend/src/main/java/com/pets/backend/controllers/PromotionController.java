@@ -28,8 +28,8 @@ public class PromotionController {
     @Autowired
     PromotionRepository promotionRepository;
 
-    @PostMapping("/promotions/search")
-    public ResponseEntity<List<Promotion>> findByTitle(@RequestBody SearchFilter filter) {
+    @GetMapping("/promotions")
+    public ResponseEntity<List<Promotion>> getAllPromotions() {
         try {
             List<Promotion> promotions = promotionRepository.findAll();
             if (promotions.isEmpty()) {

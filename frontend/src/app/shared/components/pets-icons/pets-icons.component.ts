@@ -11,7 +11,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class PetsIconsComponent implements OnChanges {
   @Input() name!: string;
   @Input() color?: string = 'inherit';
-  @Input() size: string = '24px';
+  @Input() size?: string = '24px';
   svg!: SafeHtml;
 
   constructor(

@@ -6,7 +6,7 @@ import java.util.List;
 public class DefinitionEntity {
 
     private String value;
-    private String thumbnailUrl;
+    private String iconName;
     private DisplayValue displayValue;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<DefinitionEntity> childrens;
@@ -14,9 +14,9 @@ public class DefinitionEntity {
     public DefinitionEntity() {
     }
 
-    public DefinitionEntity(String value, String thumbnailUrl, DisplayValue displayValue, List<DefinitionEntity> childrens) {
+    public DefinitionEntity(String value, String iconName, DisplayValue displayValue, List<DefinitionEntity> childrens) {
         this.value = value;
-        this.thumbnailUrl = thumbnailUrl;
+        this.iconName = iconName;
         this.displayValue = displayValue;
         this.childrens = childrens;
     }
@@ -29,12 +29,12 @@ public class DefinitionEntity {
         this.value = value;
     }
 
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
+    public String getIconName() {
+        return iconName;
     }
 
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
     }
 
     public DisplayValue getDisplayValue() {

@@ -132,7 +132,7 @@ export class BaseWebService {
   ): object {
     const authorization: string = this.jwt
       ? ''
-      : this.localStorageService.get('jwt');
+      : this.localStorageService.get('PetsJwt');
     // Create headers
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -160,7 +160,7 @@ export class BaseWebService {
   ): object {
     const authorization: string = this.jwt
       ? ''
-      : this.localStorageService.get('jwt');
+      : this.localStorageService.get('PetsJwt');
     // Create headers
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

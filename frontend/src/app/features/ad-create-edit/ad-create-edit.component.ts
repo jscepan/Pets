@@ -114,9 +114,8 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         });
       }
     );
-    const searchModel = new SearchFilterModel();
     this.subs.sink = this.promotionWebService
-      .searchEntities(searchModel)
+      .getAllPromotions()
       .subscribe((promotions) => {
         console.log('promotions');
         console.log(promotions);

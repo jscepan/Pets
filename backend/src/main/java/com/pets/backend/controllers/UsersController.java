@@ -25,10 +25,14 @@ public class UsersController {
     @GetMapping("/profile")
     public ResponseEntity<User> getCurrentUser() {
         try {
+            System.out.println("111");
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            System.out.println("222");
             UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-
-            Optional<User> userData = userRepository.findByUsername(userPrincipal.getUsername());
+            System.out.println("333");
+            String username = userPrincipal.getUsername();
+            System.out.println("username: " + username);
+            Optional<User> userData = userRepository.findByUsername(username);
 
             if (userData.isPresent()) {
                 return new ResponseEntity<>(userData.get(), HttpStatus.OK);

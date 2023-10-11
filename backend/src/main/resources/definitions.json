@@ -50,7 +50,7 @@
     "adsType": [
         {
             "value": "pets",
-            "thumbnailUrl": "https://static.vecteezy.com/system/resources/previews/000/567/006/original/vector-dog-icon.jpg",
+            "iconName": "type-dog",
             "displayValue": {
                 "en": "Pets",
                 "sr": "Kućni ljubimci"
@@ -4674,7 +4674,7 @@
         },
         {
             "value": "accessories",
-            "thumbnailUrl": "https://icon-library.com/images/accessories-icon-png/accessories-icon-png-3.jpg",
+            "iconName": "type-accessories",
             "displayValue": {
                 "en": "Accessories",
                 "sr": "Dodaci"
@@ -5355,7 +5355,7 @@
         },
         {
             "value": "services",
-            "thumbnailUrl": "https://vectorified.com/images/icon-service-com-12.jpg",
+            "iconName": "type-service",
             "displayValue": {
                 "en": "Services",
                 "sr": "Usluge"

@@ -44,5 +44,7 @@
   "title": "Naslov",
   "priceCurrency": "Cena izražena u",
   "price": "Cena",
-  "inputDescriptionOfYourAd": "Unesite opis Vašeg oglasa"
+  "inputDescriptionOfYourAd": "Unesite opis Vašeg oglasa",
+  "selectCategory": "Izaberi vrstu",
+  "selectSubcategory": "Izaberi podvrstu"
 }

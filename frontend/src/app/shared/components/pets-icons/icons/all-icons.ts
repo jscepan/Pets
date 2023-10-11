@@ -94,6 +94,7 @@ import { DenimMaterialType } from './svg/denim-material-type';
 import { DigitalProfile } from './svg/digital-profile';
 import { Disc } from './svg/disc';
 import { DownAndFeatherMaterialType } from './svg/down-and-feather-material-type';
+import { DownIcon } from './svg/down-icon';
 import { Download } from './svg/download';
 import { DownloadCloud } from './svg/download-cloud';
 import { DragAndDrop } from './svg/drag-and-drop';
@@ -304,6 +305,10 @@ import { Tv } from './svg/tv';
 import { Twitter } from './svg/twitter';
 import { TwitterFilled } from './svg/twitter-filled';
 import { Type } from './svg/type';
+import { TypeAccessories } from './svg/type-accessories';
+import { TypeCat } from './svg/type-cat';
+import { TypeDog } from './svg/type-dog';
+import { TypeService } from './svg/type-service';
 import { Umbrella } from './svg/umbrella';
 import { Underline } from './svg/underline';
 import { Unlock } from './svg/unlock';
@@ -457,6 +462,7 @@ export const allIcons = {
   DigitalProfile,
   Disc,
   DownAndFeatherMaterialType,
+  DownIcon,
   Download,
   DownloadCloud,
   DragAndDrop,
@@ -671,6 +677,10 @@ export const allIcons = {
   Twitter,
   TwitterFilled,
   Type,
+  TypeAccessories,
+  TypeCat,
+  TypeDog,
+  TypeService,
   Umbrella,
   Underline,
   Unlock,

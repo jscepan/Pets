@@ -31,10 +31,11 @@
           flex-direction: column;
           align-items: center;
           justify-items: center;
+          height: 100px;
 
-          img {
-            width: 50px;
+          .icon {
           }
+
           .name {
             font-size: 16px;
             font-weight: 600;

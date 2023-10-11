@@ -55,7 +55,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subs.sink = this.authWebService
       .login(this.loginForm?.value)
       .subscribe((response) => {
-        this.localStorageService.set('jwt', `Bearer ${response.accessToken}`);
+        this.localStorageService.set(
+          'PetsJwt',
+          `Bearer ${response.accessToken}`
+        );
         this.authWebService
           .getCurrentUser()
           .subscribe((response: UserModel) => {

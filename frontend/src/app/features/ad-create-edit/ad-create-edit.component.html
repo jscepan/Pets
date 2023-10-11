@@ -60,6 +60,13 @@
       </mat-form-field>
       <mat-checkbox formControlName="priceIsFixed"></mat-checkbox>
       <mat-checkbox formControlName="freeOfCharge"></mat-checkbox>
+      <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+      <ngx-editor
+        [editor]="editor"
+        [ngModel]="html"
+        [disabled]="false"
+        [placeholder]="'inputDescriptionOfYourAd' | translate"
+      ></ngx-editor>
       <mat-form-field>
         <mat-label>{{ "description" | translate }}</mat-label>
         <input
@@ -67,16 +74,7 @@
           formControlName="description"
           placeholder="description"
         />
-        <div class="EditorWrapper">
-          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
-          </ngx-editor-menu>
-          <ngx-editor
-            [editor]="editor"
-            [ngModel]="html"
-            [disabled]="false"
-            [placeholder]="'inputDescriptionOfYourAd' | translate"
-          ></ngx-editor>
-        </div>
+        <div class="EditorWrapper"></div>
       </mat-form-field>
       <div class="image-upload">
         <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>

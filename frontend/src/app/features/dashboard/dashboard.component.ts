@@ -7,6 +7,7 @@ import { Language } from 'src/app/shared/enums/language.model';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'pets-dashboard',
@@ -25,10 +26,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   selectedLanguage: Language = Language.English;
 
+  favoritesMenu: { icon: string; route: string; name: string }[] = [];
+
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
     private router: Router,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -36,18 +40,31 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.subs.sink = this.definitionsStoreService.definitions$.subscribe(
       (definitions) => {
         this.adsType = definitions?.adsType || [];
+        this.selectAdType(definitions?.adsType[0]);
       }
     );
+
+    // this.favoritesMenu.push({
+    //   icon: '',
+    //   route:'',
+    //   name: this.translateService.instant('dogs'),
+    // });
   }
 
-  selectAdType(item: DefinitionEntityModel): void {
-    this.selectedAdType = item;
-    this.categories = this.selectedAdType.childrens.map((t) => {
-      return {
-        value: t.value,
-        displayName: t.displayValue[this.selectedLanguage],
-      };
-    });
+  goTo(fav: { icon: string; route: string; name: string }): void {
+    this.router.navigate(['ads']);
+  }
+
+  selectAdType(item?: DefinitionEntityModel): void {
+    if (item) {
+      this.selectedAdType = item;
+      this.categories = this.selectedAdType.childrens.map((t) => {
+        return {
+          value: t.value,
+          displayName: t.displayValue[this.selectedLanguage],
+        };
+      });
+    }
   }
 
   onAutocompleteChange(selectedObject: EnumValueModel) {

@@ -81,7 +81,7 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
     this.authStoreService.canceledURL = null;
     this.authStoreService.user = null;
     this.authStoreService.canceledURL = null;
-    this.localStorageService.remove('jwt');
+    this.localStorageService.remove('PetsJwt');
   }
 
   userMenuClick(item: PetsMenuItemI): void {

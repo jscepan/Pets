@@ -18,6 +18,7 @@ import { EnumValueModel } from '../../enums/enum.model';
 })
 export class PetsAutocompleteComponent implements OnInit, OnChanges {
   @Input() dataModel?: EnumValueModel[];
+  @Input() label: string = '';
   states: EnumValueModel[] = [];
   stateCtrl: FormControl;
   filteredStates?: Observable<any[]>;
