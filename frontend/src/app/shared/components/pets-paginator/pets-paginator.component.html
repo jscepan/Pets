@@ -1,50 +1,58 @@
 <div class="paginator-container">
-  <pets-button
-    [text]="'previous' | translate"
-    (clickEvent)="goToPreviousPage()"
-    *ngIf="currentPageCount > 0"
-  ></pets-button>
-  <div class="page" *ngFor="let pageNumber of pageNumbers">
-    <ng-container
-      *ngIf="pageNumber !== '...' && pageNumber !== currentPageCount + ''"
-    >
-      <pets-button
-        [text]="+pageNumber + 1 + ''"
-        [color]="'link'"
-        (clickEvent)="goToPage(+pageNumber)"
-        [smallWidth]="true"
-      ></pets-button>
-    </ng-container>
-    <ng-container *ngIf="pageNumber === currentPageCount + ''">
-      <pets-button
-        [text]="currentPageCount + 1 + ''"
-        [color]="'primary'"
-        [smallWidth]="true"
-        [disabled]="true"
-      ></pets-button>
-    </ng-container>
-    <ng-container *ngIf="pageNumber === '...'">
-      {{ pageNumber }}
-    </ng-container>
+  <div class="left">
+    <pets-button
+      *ngIf="currentPageCount > 0"
+      [text]="'previous' | translate"
+      (clickEvent)="goToPreviousPage()"
+    ></pets-button>
   </div>
-  <pets-button
-    [text]="'next' | translate"
-    (clickEvent)="goToNextPage()"
-    *ngIf="totalPagesCount && totalPagesCount - 1 > currentPageCount"
-  ></pets-button>
-  <mat-form-field class="input-form-field">
-    <mat-label>{{ "pageNumber" | translate }}</mat-label>
-    <input
-      type="number"
-      matInput
-      [formControl]="inputPageNumber"
-      (keyup.enter)="goToPage(inputPageNumber.value - 1)"
-    />
-    <pets-icons
-      matSuffix
-      [name]="'search'"
-      class="search-icon"
-      (click)="goToPage(inputPageNumber.value - 1)"
-    ></pets-icons>
-  </mat-form-field>
+
+  <div class="center">
+    <div class="page" *ngFor="let pageNumber of pageNumbers">
+      <ng-container
+        *ngIf="pageNumber !== '...' && pageNumber !== currentPageCount + ''"
+      >
+        <pets-button
+          [text]="+pageNumber + 1 + ''"
+          [color]="'link'"
+          (clickEvent)="goToPage(+pageNumber)"
+          [smallWidth]="true"
+        ></pets-button>
+      </ng-container>
+      <ng-container *ngIf="pageNumber === currentPageCount + ''">
+        <pets-button
+          [text]="currentPageCount + 1 + ''"
+          [color]="'primary'"
+          [smallWidth]="true"
+          [disabled]="true"
+        ></pets-button>
+      </ng-container>
+      <ng-container *ngIf="pageNumber === '...'">
+        {{ pageNumber }}
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="right">
+    <pets-button
+      [text]="'next' | translate"
+      (clickEvent)="goToNextPage()"
+      *ngIf="totalPagesCount && totalPagesCount - 1 > currentPageCount"
+    ></pets-button>
+    <mat-form-field class="input-form-field">
+      <mat-label>{{ "pageNumber" | translate }}</mat-label>
+      <input
+        type="number"
+        matInput
+        [formControl]="inputPageNumber"
+        (keyup.enter)="goToPage(inputPageNumber.value - 1)"
+      />
+      <pets-icons
+        matSuffix
+        [name]="'search'"
+        class="search-icon"
+        (click)="goToPage(inputPageNumber.value - 1)"
+      ></pets-icons>
+    </mat-form-field>
+  </div>
 </div>
