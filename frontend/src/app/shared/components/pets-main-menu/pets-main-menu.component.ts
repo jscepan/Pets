@@ -54,7 +54,7 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
       } else {
         this.userMenuAction = {
           key: 'userUnfo',
-          avatarUrl: this.user.avatarUrl,
+          avatarUrl: this.user.avatar.name,
           icon: 'user',
           displayName: 'user',
           subMenuItems: [

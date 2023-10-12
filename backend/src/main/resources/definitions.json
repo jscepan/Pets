@@ -1,52 +1,5 @@
 {
     "version": "0.0.1",
-    "countries": [
-        {
-            "value": "serbia",
-            "displayValue": {
-                "en": "Serbia",
-                "sr": "Srbija"
-            },
-            "childrens": [
-                {
-                    "value": "subotica",
-                    "displayValue": {
-                        "en": "Subotica",
-                        "sr": "Subotica"
-                    }
-                },
-                {
-                    "value": "belgrade",
-                    "displayValue": {
-                        "en": "Belgrade",
-                        "sr": "Beograd"
-                    }
-                },
-                {
-                    "value": "noviSad",
-                    "displayValue": {
-                        "en": "Novi Sad",
-                        "sr": "Novi Sad"
-                    }
-                }
-            ]
-        },
-        {
-            "value": "montenegro",
-            "displayValue": {
-                "en": "Montenegro",
-                "sr": "Crna Gora"
-            },
-            "childrens": []
-        },
-        {
-            "value": "hungary",
-            "displayValue": {
-                "en": "Hungary",
-                "sr": "Madjarska"
-            }
-        }
-    ],
     "adsType": [
         {
             "value": "pets",

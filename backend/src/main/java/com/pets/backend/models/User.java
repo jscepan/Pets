@@ -28,6 +28,26 @@ public class User extends BaseModel {
     @Size(max = 120)
     private String password;
 
+    @Size(max = 120)
+    private String displayName;
+
+    @ManyToOne()
+    private City city;
+
+    @Size(max = 50)
+    private String phoneNumber;
+
+    private boolean inactive;
+
+    @Size(max = 150)
+    private String fullName;
+
+    @Size(max = 40)
+    private String language;
+
+    @ManyToOne()
+    private Avatar avatar;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -43,18 +63,45 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    public User(String username, String email, String password, Long id) {
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.displayName = displayName;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.inactive = inactive;
+        this.fullName = fullName;
+        this.language = language;
+        this.avatar = avatar;
+    }
+
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, Long id) {
         super(id);
         this.username = username;
         this.email = email;
         this.password = password;
+        this.displayName = displayName;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.inactive = inactive;
+        this.fullName = fullName;
+        this.language = language;
+        this.avatar = avatar;
     }
 
-    public User(String username, String email, String password, String oid, long id) {
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, String oid, long id) {
         super(oid, id);
         this.username = username;
         this.email = email;
         this.password = password;
+        this.displayName = displayName;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.inactive = inactive;
+        this.fullName = fullName;
+        this.language = language;
+        this.avatar = avatar;
     }
 
     public String getUsername() {
@@ -81,11 +128,67 @@ public class User extends BaseModel {
         this.password = password;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isInactive() {
+        return inactive;
+    }
+
+    public void setInactive(boolean inactive) {
+        this.inactive = inactive;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
     }
 }

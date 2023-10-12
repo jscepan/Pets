@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
+      "@backoffice/*": ["src/app/back-office-features/*"],
       "@features/*": ["src/app/features/*"],
       "@layouts/*": ["src/app/layouts/*"]
     },

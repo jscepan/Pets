@@ -11,8 +11,8 @@ export class PromotionWebService extends EntityBaseWebService<PromotionModel> {
     super(baseWebService, PromotionModel, DOMAIN_PROMOTIONS);
   }
 
-  getAllPromotions(): Observable<PromotionModel> {
-    return this.baseWebService.getRequest<PromotionModel>(
+  getAllPromotions(): Observable<PromotionModel[]> {
+    return this.baseWebService.getRequest<PromotionModel[]>(
       `${BASE_API_URL + '/' + DOMAIN_PROMOTIONS}`
     );
   }

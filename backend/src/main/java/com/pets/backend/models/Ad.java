@@ -46,8 +46,8 @@ public class Ad extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "image_id"))
     private List<Image> images;
 
-    @Column(name = "city")
-    private String city;
+    @ManyToOne()
+    private City city;
 
     @Column(name = "contactName")
     private String contactName;
@@ -68,7 +68,7 @@ public class Ad extends BaseModel {
     public Ad() {
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus) {
         this.adType = adType;
         this.category = category;
         this.subcategory = subcategory;
@@ -88,7 +88,7 @@ public class Ad extends BaseModel {
         this.adStatus = adStatus;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, Long id) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, Long id) {
         super(id);
         this.adType = adType;
         this.category = category;
@@ -109,7 +109,7 @@ public class Ad extends BaseModel {
         this.adStatus = adStatus;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, String city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, String oid, long id) {
+    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, String oid, long id) {
         super(oid, id);
         this.adType = adType;
         this.category = category;
@@ -218,11 +218,11 @@ public class Ad extends BaseModel {
         this.images = images;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 

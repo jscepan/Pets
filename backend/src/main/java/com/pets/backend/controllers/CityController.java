@@ -1,10 +1,7 @@
 package com.pets.backend.controllers;
 
-import com.pets.backend.models.Promotion;
-import com.pets.backend.models.SearchFilter;
-import com.pets.backend.repository.PromotionRepository;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import com.pets.backend.models.City;
+import com.pets.backend.repository.CityRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +20,27 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4444/")
 @RestController
 @RequestMapping("/api")
-public class PromotionController {
+public class CityController {
 
     @Autowired
-    PromotionRepository promotionRepository;
+    CityRepository cityRepository;
 
-    @GetMapping("/promotions")
-    public ResponseEntity<List<Promotion>> getAllPromotions() {
+    @GetMapping("/cities")
+    public ResponseEntity<List<City>> getAllCities() {
         try {
-            List<Promotion> promotions = promotionRepository.findAll();
-            if (promotions.isEmpty()) {
+            List<City> cities = cityRepository.findAll();
+            if (cities.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(promotions, HttpStatus.OK);
+            return new ResponseEntity<>(cities, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/promotions/{id}")
-    public ResponseEntity<Promotion> getPromotionById(@PathVariable("id") long id) {
-        Optional<Promotion> tutorialData = promotionRepository.findById(id);
+    @GetMapping("/cities/{id}")
+    public ResponseEntity<City> getCityById(@PathVariable("id") long id) {
+        Optional<City> tutorialData = cityRepository.findById(id);
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -52,36 +49,34 @@ public class PromotionController {
         }
     }
 
-    @PostMapping("/promotions")
-    public ResponseEntity<Promotion> createPromotion(@RequestBody Promotion promotion) {
+    @PostMapping("/cities")
+    public ResponseEntity<City> createCity(@RequestBody City city) {
         try {
-            promotion.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
-            Promotion _promotion = promotionRepository
-                    .save(promotion);
-            return new ResponseEntity<>(_promotion, HttpStatus.CREATED);
+            City _city = cityRepository
+                    .save(city);
+            return new ResponseEntity<>(_city, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping("/promotions/{id}")
-    public ResponseEntity<Promotion> updatePromotion(@PathVariable("id") long id, @RequestBody Promotion promotion) {
-        Optional<Promotion> tutorialData = promotionRepository.findById(id);
+    @PutMapping("/cities/{id}")
+    public ResponseEntity<City> updateCity(@PathVariable("id") long id, @RequestBody City city) {
+        Optional<City> tutorialData = cityRepository.findById(id);
 
         if (tutorialData.isPresent()) {
-            Promotion _tutorial = tutorialData.get();
-            _tutorial.setTitle(promotion.getTitle());
-            _tutorial.setDescription(promotion.getDescription());
-            return new ResponseEntity<>(promotionRepository.save(_tutorial), HttpStatus.OK);
+            City _tutorial = tutorialData.get();
+            _tutorial.setValue(city.getValue());
+            return new ResponseEntity<>(cityRepository.save(_tutorial), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/promotions/{id}")
-    public ResponseEntity<HttpStatus> deletePromotion(@PathVariable("id") long id) {
+    @DeleteMapping("/cities/{id}")
+    public ResponseEntity<HttpStatus> deleteCity(@PathVariable("id") long id) {
         try {
-            promotionRepository.deleteById(id);
+            cityRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

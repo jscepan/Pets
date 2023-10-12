@@ -62,5 +62,10 @@
   "freeOfCharge": "Free of charge",
   "selectYourPlace": "Select your place",
   "contactInformation": "Contact information",
-  "priceInformation": "Price information"
+  "priceInformation": "Price information",
+  "zipCode": "Zip code",
+  "value": "Value",
+  "subotica": "Subotica",
+  "noviSad": "Novi Sad",
+  "beograd": "Belgrade"
 }

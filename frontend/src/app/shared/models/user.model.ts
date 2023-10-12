@@ -1,11 +1,14 @@
+import { AvatarModel } from './avatar.model';
 import { BaseModel } from './base-model';
 
 export class UserModel extends BaseModel {
-  displayName: string = '';
   username: string = '';
-  enabled: boolean = true;
-  fullName: string = '';
   email: string = '';
+  displayName: string = '';
+  city: string = '';
+  phoneNumber: string = '';
+  inactive: boolean = false;
+  fullName: string = '';
   language: string = '';
-  avatarUrl: string = '';
+  avatar: AvatarModel = new AvatarModel();
 }

@@ -62,5 +62,10 @@
   "freeOfCharge": "Besplatno",
   "selectYourPlace": "Izaberite vaše mesto",
   "contactInformation": "Kontakt informacije",
-  "priceInformation": "Informacije u vezi cene"
+  "priceInformation": "Informacije u vezi cene",
+  "zipCode": "Poštanski broj",
+  "value": "Vrednost",
+  "subotica": "Subotica",
+  "noviSad": "Novi Sad",
+  "beograd": "Beograd"
 }

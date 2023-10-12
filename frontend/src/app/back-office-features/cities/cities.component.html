@@ -1,0 +1,16 @@
+<div class="container">
+  <table mat-table [dataSource]="cities" class="mat-elevation-z8">
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef>{{ "value" | translate }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.value | translate }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="zipCode">
+      <th mat-header-cell *matHeaderCellDef>{{ "zipCode" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.zipCode }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
