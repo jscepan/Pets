@@ -40,13 +40,16 @@ public class Promotion extends BaseModel {
     @Column(name = "inactive")
     private boolean inactive;
 
+    @Column(name = "points")
+    private int points;
+
     @Column(name = "createdOn")
     private Timestamp createdOn;
-    
+
     public Promotion() {
     }
 
-    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, Timestamp createdOn) {
+    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, int points, Timestamp createdOn) {
         this.type = type;
         this.title = title;
         this.subtitle = subtitle;
@@ -56,10 +59,11 @@ public class Promotion extends BaseModel {
         this.priceCurrency = priceCurrency;
         this.freeOfCharge = freeOfCharge;
         this.inactive = inactive;
+        this.points = points;
         this.createdOn = createdOn;
     }
 
-    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, Timestamp createdOn, Long id) {
+    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, int points, Timestamp createdOn, Long id) {
         super(id);
         this.type = type;
         this.title = title;
@@ -70,10 +74,11 @@ public class Promotion extends BaseModel {
         this.priceCurrency = priceCurrency;
         this.freeOfCharge = freeOfCharge;
         this.inactive = inactive;
+        this.points = points;
         this.createdOn = createdOn;
     }
 
-    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, Timestamp createdOn, String oid, long id) {
+    public Promotion(String type, String title, String subtitle, String description, String services, double price, Currency priceCurrency, String freeOfCharge, boolean inactive, int points, Timestamp createdOn, String oid, long id) {
         super(oid, id);
         this.type = type;
         this.title = title;
@@ -84,6 +89,7 @@ public class Promotion extends BaseModel {
         this.priceCurrency = priceCurrency;
         this.freeOfCharge = freeOfCharge;
         this.inactive = inactive;
+        this.points = points;
         this.createdOn = createdOn;
     }
 
@@ -159,6 +165,14 @@ public class Promotion extends BaseModel {
         this.inactive = inactive;
     }
 
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
     public Timestamp getCreatedOn() {
         return createdOn;
     }
@@ -167,8 +181,4 @@ public class Promotion extends BaseModel {
         this.createdOn = createdOn;
     }
 
-    @Override
-    public String toString() {
-        return "Promotion{" + "type=" + type + ", title=" + title + ", subtitle=" + subtitle + ", description=" + description + ", services=" + services + ", price=" + price + ", priceCurrency=" + priceCurrency + ", freeOfCharge=" + freeOfCharge + ", inactive=" + inactive + ", createdOn=" + createdOn + '}';
-    }
 }

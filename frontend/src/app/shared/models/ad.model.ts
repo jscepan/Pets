@@ -26,7 +26,7 @@ export class AdModel extends BaseModel {
   contactName?: string;
   contactPhone?: string;
 
-  promotions: PromotionModel[] = [];
+  promotion?: PromotionModel;
 
   inactive?: boolean;
   createdOn?: string;
