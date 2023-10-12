@@ -1,15 +1,10 @@
 <div class="container">
-  <div
-    class="counter"
-    *ngIf="showNotification"
-    [class.counterPositive]="msgCounter ? msgCounter > 0 : false"
-  >
-    {{ msgCounter }}
-  </div>
   <pets-icons
-    class="msg-icon"
-    matSuffix
     [name]="'mail'"
+    matBadge="8"
+    matBadgePosition="before"
+    matBadgeColor="accent"
     [size]="'35px'"
+    class="icon"
   ></pets-icons>
 </div>

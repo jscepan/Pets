@@ -3,17 +3,26 @@
     <mat-label>{{ label }}</mat-label>
     <input
       matInput
-      placeholder="State"
       aria-label="State"
       [matAutocomplete]="auto"
-      [formControl]="stateCtrl"
+      [formControl]="autoselectCtrl"
+      #autoselect
     />
-    <pets-icons
-      class="down-icon"
-      matSuffix
-      [name]="'down-icon'"
-      [size]="'11px'"
-    ></pets-icons>
+    <div class="icons" matSuffix>
+      <pets-icons
+        class="clear-icon"
+        [name]="'x'"
+        [size]="'17px'"
+        (click)="clearText()"
+        *ngIf="autoselect.value"
+      ></pets-icons>
+      <pets-icons
+        class="down-icon"
+        [name]="'down-icon'"
+        [size]="'11px'"
+        *ngIf="!autoselect.value"
+      ></pets-icons>
+    </div>
     <mat-autocomplete
       #auto="matAutocomplete"
       (optionSelected)="onChangeSelectedObject($event.option.value)"

@@ -2,3 +2,47 @@
   display: flex;
   justify-content: space-between;
 }
+
+.second-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .title {
+    width: 100%;
+
+    .full-width {
+      width: 100%;
+    }
+  }
+
+  .additional-information {
+    display: flex;
+    justify-content: space-evenly;
+
+    .price-wrapper {
+      background-color: var(--color-main-lighter);
+      width: min-content;
+      border-radius: 8px;
+      padding: 20px;
+
+      .price {
+        margin-right: 30px;
+      }
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-main-lighter);
+      width: min-content;
+      border-radius: 8px;
+      padding: 20px;
+
+      .contact-field {
+        // margin-right: 20px;
+        width: min-content;
+      }
+    }
+  }
+}

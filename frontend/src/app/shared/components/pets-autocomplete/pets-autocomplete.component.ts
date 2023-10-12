@@ -20,7 +20,7 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
   @Input() dataModel?: EnumValueModel[];
   @Input() label: string = '';
   states: EnumValueModel[] = [];
-  stateCtrl: FormControl;
+  autoselectCtrl: FormControl;
   filteredStates?: Observable<any[]>;
 
   showComponent: boolean = true;
@@ -30,8 +30,8 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
   @Output() changeEvent: EventEmitter<EnumValueModel> = new EventEmitter();
 
   constructor() {
-    this.stateCtrl = new FormControl();
-    this.filteredStates = this.stateCtrl.valueChanges.pipe(
+    this.autoselectCtrl = new FormControl();
+    this.filteredStates = this.autoselectCtrl.valueChanges.pipe(
       startWith(''),
       map((state) =>
         state ? this.filterStates(state) : this.dataModel?.slice() || []
@@ -67,5 +67,9 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
   onChangeSelectedObject(selectedObject: EnumValueModel) {
     this.selectedObject = selectedObject;
     this.changeEvent.emit(selectedObject); // Emitujte selektovani objekat
+  }
+
+  clearText(): void {
+    this.autoselectCtrl.setValue('');
   }
 }

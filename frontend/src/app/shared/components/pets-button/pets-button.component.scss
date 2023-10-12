@@ -82,10 +82,10 @@ button {
 
   &.link {
     background: transparent;
-    color: var(--color-info-button, #2353f3);
+    color: var(--color-primary, #2353f3);
 
     &:hover {
-      color: var(--color-link-hover, #4f75f5);
+      color: var(--color-primary-hover, #4f75f5);
     }
   }
 

@@ -27,4 +27,8 @@ export class PetsMessageNotificationComponent implements OnInit {
     e.preventDefault();
     this.clickEvent.emit(e);
   }
+
+  goToNotifications(): void {
+    // TODO
+  }
 }

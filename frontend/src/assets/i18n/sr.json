@@ -46,5 +46,21 @@
   "price": "Cena",
   "inputDescriptionOfYourAd": "Unesite opis Vašeg oglasa",
   "selectCategory": "Izaberi vrstu",
-  "selectSubcategory": "Izaberi podvrstu"
+  "selectSubcategory": "Izaberi podvrstu",
+  "buy": "Kupi",
+  "sell": "Prodaj",
+  "selectAdType": "Izaberite vrstu oglasa",
+  "selectAdSubcategory": "Izaberite podvrstu",
+  "selectAdCategory": "Izaberite vrstu",
+  "addBasicInformation": "Dodaj osnovne informacije",
+  "titleGoodTitleEqualMoreViewers": "Naslov - UPAMTITE: dobar naslov = više pregleda",
+  "forExampleFrenchBulldogsOldOneMonth": "Na primer: Francuski buldog star jedan mesec",
+  "adTitle": "Naslov vašeg oglasa",
+  "priceIsFixed": "Cena je fiksna",
+  "rsd": "Din",
+  "eur": "Eur",
+  "freeOfCharge": "Besplatno",
+  "selectYourPlace": "Izaberite vaše mesto",
+  "contactInformation": "Kontakt informacije",
+  "priceInformation": "Informacije u vezi cene"
 }

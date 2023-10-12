@@ -1,4 +1,13 @@
-.down-icon {
-  cursor: pointer;
-  margin-right: 10px;
+.icons {
+  display: flex;
+
+  .clear-icon {
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .down-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
 }

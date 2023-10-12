@@ -46,5 +46,21 @@
   "price": "Price",
   "inputDescriptionOfYourAd": "Input description of your ad",
   "selectCategory": "Select category",
-  "selectSubcategory": "Select subcategory"
+  "selectSubcategory": "Select subcategory",
+  "buy": "Buy",
+  "sell": "Sell",
+  "selectAdType": "Select ad type",
+  "selectAdSubcategory": "Select ad subcategory",
+  "selectAdCategory": "Select ad category",
+  "addBasicInformation": "Add basic information",
+  "titleGoodTitleEqualMoreViewers": "Title - REMEMBER: good title = more viewers",
+  "forExampleFrenchBulldogsOldOneMonth": "For example: French bulldog old one month",
+  "adTitle": "Ad title",
+  "priceIsFixed": "Price is fixed",
+  "rsd": "Rsd",
+  "eur": "Eur",
+  "freeOfCharge": "Free of charge",
+  "selectYourPlace": "Select your place",
+  "contactInformation": "Contact information",
+  "priceInformation": "Price information"
 }

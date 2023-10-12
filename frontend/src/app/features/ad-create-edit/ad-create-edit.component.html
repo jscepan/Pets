@@ -1,10 +1,16 @@
 <mat-stepper linear #stepper>
   <mat-step>
     <!-- [stepControl]="firstFormGroup" -->
-    <form [formGroup]="firstFormGroup">
+    <ng-template matStepperIcon="edit">
+      <pets-icons [name]="'check'"></pets-icons>
+    </ng-template>
+
+    <ng-template matStepLabel>{{ "selectAdType" | translate }}</ng-template>
+    <form [formGroup]="firstFormGroup" *ngIf="firstFormGroup">
       <mat-radio-group
         aria-label="Select sell type"
         formControlName="adSellType"
+        [color]="'primary'"
       >
         <mat-radio-button
           value="{{ item.value }}"
@@ -12,98 +18,116 @@
           >{{ item.displayName | translate }}</mat-radio-button
         >
       </mat-radio-group>
-      <ng-template matStepLabel>adType</ng-template>
       <pets-autocomplete
         [dataModel]="adsType"
         (changeEvent)="onAdsTypeChange($event)"
+        [label]="'selectAdType' | translate"
       ></pets-autocomplete>
       <pets-autocomplete
         [dataModel]="categories"
         (changeEvent)="oncategoriesChange($event)"
+        [label]="'selectAdCategory' | translate"
       ></pets-autocomplete>
       <pets-autocomplete
         [dataModel]="subCategories"
         (changeEvent)="onSubcategoriesChange($event)"
+        [label]="'selectAdSubcategory' | translate"
       ></pets-autocomplete>
     </form>
     <div class="button-group">
-      <pets-button [text]="'next' | translate" matStepperNext></pets-button>
+      <pets-button
+        [text]="'next' | translate"
+        [disabled]="!(firstFormGroup.touched && firstFormGroup.valid)"
+        (clickEvent)="nextStep()"
+      ></pets-button>
     </div>
   </mat-step>
   <mat-step>
-    <!--  [stepControl]="secondFormGroup" -->
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>title</ng-template>
-      <mat-form-field>
-        <mat-label>{{ "title" | translate }}</mat-label>
-        <input matInput formControlName="title" placeholder="title" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{ "price" | translate }}</mat-label>
-        <input
-          type="number"
-          matInput
-          formControlName="price"
-          placeholder="price"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{ "priceCurrency" | translate }}</mat-label>
-        <mat-select formControlName="priceCurrency">
-          <mat-option
-            *ngFor="let item of priceCurrencyOptions"
-            [value]="item.value"
-          >
-            {{ item.displayName | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-checkbox formControlName="priceIsFixed"></mat-checkbox>
-      <mat-checkbox formControlName="freeOfCharge"></mat-checkbox>
-      <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+    <!-- [stepControl]="secondFormGroup" -->
+    <ng-template matStepLabel>{{
+      "addBasicInformation" | translate
+    }}</ng-template>
+    <form [formGroup]="secondFormGroup" class="second-form">
+      <div class="image-upload">
+        <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>
+        <pets-image-upload [maxFileSize]="'500MB'"></pets-image-upload>
+      </div>
+
+      <div class="title">
+        <h3>{{ "adTitle" | translate }}</h3>
+        <mat-form-field class="full-width">
+          <mat-label>{{
+            "forExampleFrenchBulldogsOldOneMonth" | translate
+          }}</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </div>
+      <!-- <mat-label>{{ "description" | translate }}</mat-label>
+        <input matInput formControlName="description" />
+        <div class="EditorWrapper"></div> -->
+      <!-- <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
       <ngx-editor
         [editor]="editor"
         [ngModel]="html"
         [disabled]="false"
         [placeholder]="'inputDescriptionOfYourAd' | translate"
-      ></ngx-editor>
-      <mat-form-field>
-        <mat-label>{{ "description" | translate }}</mat-label>
-        <input
-          matInput
-          formControlName="description"
-          placeholder="description"
-        />
-        <div class="EditorWrapper"></div>
-      </mat-form-field>
-      <div class="image-upload">
-        <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>
-        <pets-image-upload [maxFileSize]="'500MB'"></pets-image-upload>
+      ></ngx-editor> -->
+      <div class="additional-information">
+        <div class="price-wrapper">
+          <h4>{{ "priceInformation" | translate }}</h4>
+          <mat-form-field class="price">
+            <mat-label>{{ "price" | translate }}</mat-label>
+            <input type="number" matInput formControlName="price" #priceInput />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ "priceCurrency" | translate }}</mat-label>
+            <mat-select formControlName="priceCurrency">
+              <mat-option
+                *ngFor="let item of priceCurrencyOptions"
+                [value]="item.value"
+              >
+                {{ item.displayName | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-checkbox formControlName="priceIsFixed" [color]="'primary'">{{
+            "priceIsFixed" | translate
+          }}</mat-checkbox>
+          <mat-checkbox
+            [color]="'primary'"
+            formControlName="freeOfCharge"
+            [disabled]="+priceInput.value > 0"
+            >{{ "freeOfCharge" | translate }}</mat-checkbox
+          >
+        </div>
+        <div class="contact-wrapper">
+          <h4>{{ "contactInformation" | translate }}</h4>
+          <mat-form-field class="contact-field">
+            <mat-label>{{ "contactName" | translate }}</mat-label>
+            <input matInput formControlName="contactName" />
+          </mat-form-field>
+          <mat-form-field class="contact-field">
+            <mat-label>{{ "contactPhone" | translate }}</mat-label>
+            <input matInput formControlName="contactPhone" />
+          </mat-form-field>
+          <pets-autocomplete
+            [dataModel]="cities"
+            (changeEvent)="onCityChange($event)"
+            [label]="'selectYourPlace' | translate"
+            class="contact-field"
+          ></pets-autocomplete>
+        </div>
       </div>
-      <pets-autocomplete
-        [dataModel]="cities"
-        (changeEvent)="onCityChange($event)"
-      ></pets-autocomplete>
-      <mat-form-field>
-        <mat-label>{{ "contactName" | translate }}</mat-label>
-        <input
-          matInput
-          formControlName="contactName"
-          placeholder="contactName"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>{{ "contactPhone" | translate }}</mat-label>
-        <input
-          matInput
-          formControlName="contactPhone"
-          placeholder="contactPhone"
-        />
-      </mat-form-field>
     </form>
     <div class="button-group">
-      <pets-button [text]="'back' | translate" matStepperPrevious></pets-button>
-      <pets-button [text]="'next' | translate" matStepperNext></pets-button>
+      <pets-button
+        [text]="'back' | translate"
+        (clickEvent)="previousStep()"
+      ></pets-button>
+      <pets-button
+        [text]="'next' | translate"
+        (clickEvent)="nextStep()"
+      ></pets-button>
     </div>
   </mat-step>
   <mat-step>

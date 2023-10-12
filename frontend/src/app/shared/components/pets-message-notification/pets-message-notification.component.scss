@@ -1,24 +1,5 @@
 .container {
-  position: relative;
-
-  .counter {
-    position: absolute;
-    background-color: var(--color-white);
-    color: var(--color-main);
-    padding: 3px;
-    z-index: 1;
-    left: 20px;
-    font-size: 16px;
-    font-weight: 600;
-
-    &.counterPositive {
-      color: var(--color-white);
-      background-color: var(--color-danger);
-      border-radius: 50%;
-    }
-  }
-
-  .msg-icon {
-    position: relative;
+  .icon {
+    cursor: pointer;
   }
 }

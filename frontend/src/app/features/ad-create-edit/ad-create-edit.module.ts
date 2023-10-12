@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { PetsImageUploadModule } from 'src/app/shared/components/pets-image-upload/pets-image-upload.module';
 import { NgxEditorModule } from 'ngx-editor';
+import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
 
 @NgModule({
   declarations: [AdCreateEditComponent],
@@ -42,6 +43,7 @@ import { NgxEditorModule } from 'ngx-editor';
     MatRadioModule,
     PetsImageUploadModule,
     NgxEditorModule,
+    PetsIconsProviderModule,
   ],
 })
 export class AdCreateEditModule {}

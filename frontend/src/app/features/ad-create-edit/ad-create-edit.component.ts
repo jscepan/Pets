@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { Editor, Toolbar } from 'ngx-editor';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
@@ -26,6 +27,8 @@ import { PromotionWebService } from 'src/app/web-services/promotion.web-service'
 export class AdCreateEditComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
+  @ViewChild('stepper') private myStepper!: MatStepper;
+
   // Description editor
   editor: Editor = new Editor();
   html = '';
@@ -41,7 +44,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   ];
 
   firstFormGroup = this._formBuilder.group({
-    adSellType: [SellType.SELL],
+    adSellType: [SellType.SELL, [Validators.required]],
     adType: ['', Validators.required],
     category: ['', Validators.required],
     subcategory: ['', Validators.required],
@@ -49,7 +52,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   secondFormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     price: [0],
-    priceCurrency: [''],
+    priceCurrency: ['', [Validators.required]],
     priceIsFixed: false,
     freeOfCharge: false,
     description: [''],
@@ -183,7 +186,16 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
       .get('subcategory')
       ?.setValue(this.selectedSubCategories?.value || '');
   }
+
   onCityChange(item: any): void {}
+
+  nextStep(): void {
+    this.myStepper.next();
+  }
+
+  previousStep(): void {
+    this.myStepper.previous();
+  }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
