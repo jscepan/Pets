@@ -15,6 +15,13 @@ const routes: Routes = [
       import('@backoffice/cities/cities.module').then((m) => m.CitiesModule),
   },
   {
+    path: 'countries',
+    loadChildren: () =>
+      import('@backoffice/countries/countries.module').then(
+        (m) => m.CountriesModule
+      ),
+  },
+  {
     path: 'users',
     loadChildren: () =>
       import('@backoffice/users/users.module').then((m) => m.UsersModule),

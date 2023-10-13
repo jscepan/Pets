@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CitiesRoutingModule } from './cities-routing.module';
-import { CitiesComponent } from './cities.component';
+import { CountriesRoutingModule } from './countries-routing.module';
+import { CountryComponent } from './countries.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
@@ -13,11 +13,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { TranslateWithCapitalLettersPipe } from 'src/app/shared/pipes/translate-capital-letters.pipe';
 
 @NgModule({
-  declarations: [CitiesComponent],
-  exports: [CitiesComponent],
+  declarations: [CountryComponent],
+  exports: [CountryComponent],
   imports: [
     CommonModule,
-    CitiesRoutingModule,
+    CountriesRoutingModule,
     TranslateModule,
     PetsButtonModule,
     PetsSweetAlertModule,
@@ -29,4 +29,4 @@ import { TranslateWithCapitalLettersPipe } from 'src/app/shared/pipes/translate-
     TranslateWithCapitalLettersPipe,
   ],
 })
-export class CitiesModule {}
+export class CountriesModule {}

@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -25,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
+    MatIconModule,
   ],
 })
 export class UsersModule {}

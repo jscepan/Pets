@@ -1,14 +1,10 @@
 <div class="container">
-  <table mat-table [dataSource]="cities" class="mat-table">
+  <table mat-table [dataSource]="countries" class="mat-table">
     <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef>{{ "value" | translate }}</th>
       <td mat-cell *matCellDef="let element">
         {{ element.value | translateWithCapitalLetters }}
       </td>
-    </ng-container>
-    <ng-container matColumnDef="zipCode">
-      <th mat-header-cell *matHeaderCellDef>{{ "zipCode" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.zipCode }}</td>
     </ng-container>
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef>

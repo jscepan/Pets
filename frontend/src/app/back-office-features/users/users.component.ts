@@ -5,17 +5,45 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { TranslateService } from '@ngx-translate/core';
 import { UserModel } from 'src/app/shared/models/user.model';
 import { UserWebService } from 'src/app/web-services/user.web-service';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+
+// export interface PeriodicElement {
+//   name: string;
+//   position: number;
+//   weight: number;
+//   symbol: string;
+//   description: string;
+// }
 
 @Component({
   selector: 'pets-users',
   templateUrl: './users.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
   styleUrls: ['./users.component.scss'],
   providers: [UserWebService],
 })
 export class UsersComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  displayedColumns: string[] = [
+  users: UserModel[] = [];
+
+  dataSource = this.users;
+  columnsToDisplay = [
     'username',
     'email',
     'displayName',
@@ -27,7 +55,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     'edit',
     'deactivate',
   ];
-  users: UserModel[] = [];
+  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  expandedElement?: UserModel | null;
 
   constructor(
     private router: Router,

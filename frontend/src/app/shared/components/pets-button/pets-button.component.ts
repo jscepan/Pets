@@ -30,6 +30,7 @@ export class PetsButtonComponent implements OnInit {
   @Input() iconName?: string;
   @Input() iconPosition?: 'left' | 'right' = 'left';
   @Input() smallWidth: boolean = false;
+  @Input() stopPropagination: boolean = false;
 
   // at this moment there are 2 icn set in use, one created by design team, another one by feature lib
   // this condition need to be deleted as soon as they will fully switch to ours
@@ -48,6 +49,9 @@ export class PetsButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   onClick(e: Event): void {
+    if (this.stopPropagination) {
+      e.stopPropagation();
+    }
     e.preventDefault();
     this.clickEvent.emit(e);
   }
