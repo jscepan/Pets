@@ -1,0 +1,155 @@
+<div class="container">
+  <table
+    mat-table
+    [dataSource]="ads"
+    multiTemplateDataRows
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>{{ "username" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>{{ "email" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef>{{ "displayName" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.displayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>{{ "city" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef>{{ "phoneNumber" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef>{{ "fullName" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="language">
+      <th mat-header-cell *matHeaderCellDef>{{ "language" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.language }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="inactive">
+      <th mat-header-cell *matHeaderCellDef>{{ "isActive" | translate }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{ (element.inactive ? "no" : "yes") | translate }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "edit" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <pets-button
+          (clickEvent)="editItem(element)"
+          [iconName]="'edit'"
+          [stopPropagination]="true"
+        ></pets-button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deactivate">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "deactivateActivate" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <pets-button
+          (clickEvent)="deactivateItem(element)"
+          [iconName]="'activity'"
+          [stopPropagination]="true"
+        ></pets-button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+      <td mat-cell *matCellDef="let element">
+        <pets-button
+          [iconName]="
+            expandedElement !== element ? 'chevron-down' : 'chevron-up'
+          "
+          [color]="'link'"
+          (clickEvent)="
+            expandedElement = expandedElement === element ? null : element;
+            $event.stopPropagation()
+          "
+        ></pets-button>
+      </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="columnsToDisplayWithExpand.length"
+      >
+        <div
+          class="example-element-detail"
+          [@detailExpand]="
+            element == expandedElement ? 'expanded' : 'collapsed'
+          "
+        >
+          <div class="example-element-diagram">
+            <div class="thumbnail" *ngIf="element.avatar; else noImage">
+              <img [src]="element.avatar" />
+            </div>
+          </div>
+          <div class="grid-container">
+            <div class="grid-item">{{ "username" | translate }}</div>
+            <div class="grid-item">{{ element.username }}</div>
+            <div class="grid-item">{{ "email" | translate }}</div>
+            <div class="grid-item">{{ element.email }}</div>
+            <div class="grid-item">{{ "displayName" | translate }}</div>
+            <div class="grid-item">{{ element.displayName }}</div>
+            <div class="grid-item">{{ "city" | translate }}</div>
+            <div class="grid-item">{{ element.city }}</div>
+            <div class="grid-item">{{ "phoneNumber" | translate }}</div>
+            <div class="grid-item">{{ element.phoneNumber }}</div>
+            <div class="grid-item">{{ "fullName" | translate }}</div>
+            <div class="grid-item">{{ element.fullName }}</div>
+            <div class="grid-item">{{ "language" | translate }}</div>
+            <div class="grid-item">{{ element.language }}</div>
+            <div class="grid-item">{{ "isActive" | translate }}</div>
+            <div class="grid-item">
+              {{ (element.inactive ? "no" : "yes") | translate }}
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: columnsToDisplayWithExpand"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="example-detail-row"
+    ></tr>
+  </table>
+</div>
+<ng-template #noImage>
+  <div class="thumbnail">
+    <img
+      src="https://www.allianceplast.com/wp-content/uploads/no-image-1024x1024.png"
+    />
+  </div>
+</ng-template>

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/language.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { TranslateService } from '@ngx-translate/core';
-import { UserModel } from 'src/app/shared/models/user.model';
-import { UserWebService } from 'src/app/web-services/user.web-service';
+import { AdModel } from 'src/app/shared/models/ad.model';
+import { AdWebService } from 'src/app/web-services/ad.web-service';
 import {
   animate,
   state,
@@ -14,8 +14,9 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'pets-users',
-  templateUrl: './users.component.html',
+  selector: 'pets-ads',
+  templateUrl: './ads.component.html',
+  styleUrls: ['./ads.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -26,13 +27,13 @@ import {
       ),
     ]),
   ],
-  styleUrls: ['./users.component.scss'],
-  providers: [UserWebService],
+  providers: [AdWebService],
 })
-export class UsersComponent implements OnInit, OnDestroy {
+export class AdsComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  users: UserModel[] = [];
+  displayedColumns: string[] = ['value'];
+  ads: AdModel[] = [];
 
   columnsToDisplay = [
     'username',
@@ -47,26 +48,26 @@ export class UsersComponent implements OnInit, OnDestroy {
     'deactivate',
   ];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement?: UserModel | null;
+  expandedElement?: AdModel | null;
 
   constructor(
     private router: Router,
     private languageService: LanguageService,
     private translateService: TranslateService,
-    private webService: UserWebService
+    private webService: AdWebService
   ) {}
 
   ngOnInit(): void {
-    this.subs.sink = this.webService.getAllUsers().subscribe((users) => {
-      this.users = users;
-    });
+    // this.subs.sink = this.webService.searchEntities().subscribe((ads) => {
+    //   this.ads = ads;
+    // });
   }
 
-  editItem(element: UserModel): void {
+  editItem(element: AdModel): void {
     // TODO
   }
 
-  deactivateItem(element: UserModel): void {
+  deactivateItem(element: AdModel): void {
     // TODO
   }
 

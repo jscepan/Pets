@@ -10,6 +10,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'ads',
+    loadChildren: () =>
+      import('@backoffice/ads/ads.module').then((m) => m.AdsModule),
+  },
+  {
     path: 'cities',
     loadChildren: () =>
       import('@backoffice/cities/cities.module').then((m) => m.CitiesModule),
