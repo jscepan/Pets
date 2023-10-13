@@ -47,6 +47,8 @@ export class PromotionsComponent implements OnInit, OnDestroy {
     'priceCurrency',
     'freeOfCharge',
     'inactive',
+    'edit',
+    'deactivate',
   ];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement?: PromotionModel | null;
