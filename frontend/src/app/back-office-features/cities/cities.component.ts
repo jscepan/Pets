@@ -32,6 +32,10 @@ export class CitiesComponent implements OnInit, OnDestroy {
     });
   }
 
+  createNew(): void {
+    // TODO
+  }
+
   editItem(element: CityModel): void {
     // TODO
   }

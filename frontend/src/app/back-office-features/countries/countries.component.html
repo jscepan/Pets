@@ -1,3 +1,11 @@
+<div class="header">
+  <pets-button
+    [text]="'create' | translate"
+    [iconName]="'plus'"
+    [iconPosition]="'left'"
+    (clickEvent)="createNew()"
+  ></pets-button>
+</div>
 <div class="container">
   <table mat-table [dataSource]="countries" class="mat-table">
     <ng-container matColumnDef="value">

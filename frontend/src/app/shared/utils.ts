@@ -21,6 +21,10 @@ export function bytesToSize(bytes: number): string {
   return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
 }
 
+export function getPromotionServices(service: string): string[] {
+  return service.split('||');
+}
+
 export function constructUrl(
   endpoint: string,
   from?: number,

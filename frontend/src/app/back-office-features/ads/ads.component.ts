@@ -63,6 +63,10 @@ export class AdsComponent implements OnInit, OnDestroy {
     // });
   }
 
+  createNew(): void {
+    // TODO
+  }
+
   editItem(element: AdModel): void {
     // TODO
   }

@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { TranslateWithCapitalLettersPipe } from 'src/app/shared/pipes/translate-capital-letters.pipe';
+import { CountryCreateEditModule } from './country-create-edit-popup/country-create-edit.module';
 
 @NgModule({
   declarations: [CountryComponent],
@@ -27,6 +28,7 @@ import { TranslateWithCapitalLettersPipe } from 'src/app/shared/pipes/translate-
     MatInputModule,
     MatSortModule,
     TranslateWithCapitalLettersPipe,
+    CountryCreateEditModule,
   ],
 })
 export class CountriesModule {}

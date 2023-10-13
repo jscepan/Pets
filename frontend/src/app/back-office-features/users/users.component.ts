@@ -62,6 +62,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
   }
 
+  createNew(): void {
+    // TODO
+  }
+
   editItem(element: UserModel): void {
     // TODO
   }

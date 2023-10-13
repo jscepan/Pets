@@ -12,6 +12,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { getPromotionServices } from 'src/app/shared/utils';
 
 @Component({
   selector: 'pets-promotions',
@@ -31,6 +32,8 @@ import {
 })
 export class PromotionsComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
+
+  getPromotionServices = getPromotionServices;
 
   promotions: PromotionModel[] = [];
 
@@ -66,6 +69,10 @@ export class PromotionsComponent implements OnInit, OnDestroy {
       .subscribe((promotions) => {
         this.promotions = promotions;
       });
+  }
+
+  createNew(): void {
+    // TODO
   }
 
   editItem(element: PromotionModel): void {

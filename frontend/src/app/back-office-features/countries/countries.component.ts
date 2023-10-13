@@ -5,24 +5,26 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { TranslateService } from '@ngx-translate/core';
 import { CountryWebService } from 'src/app/web-services/country.web-service';
 import { CountryModel } from 'src/app/shared/models/country.model';
+import { CountryCreateEditPopupService } from './country-create-edit-popup/country-create-edit-popup.service';
 
 @Component({
   selector: 'pets-countries',
   templateUrl: './countries.component.html',
   styleUrls: ['./countries.component.scss'],
-  providers: [CountryWebService],
+  providers: [CountryWebService, CountryCreateEditPopupService],
 })
 export class CountryComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  displayedColumns: string[] = ['value'];
+  displayedColumns: string[] = ['value', 'edit', 'delete'];
   countries: CountryModel[] = [];
 
   constructor(
     private router: Router,
     private languageService: LanguageService,
     private translateService: TranslateService,
-    private webService: CountryWebService
+    private webService: CountryWebService,
+    private createEditPopupService: CountryCreateEditPopupService
   ) {}
 
   ngOnInit(): void {
@@ -31,8 +33,21 @@ export class CountryComponent implements OnInit, OnDestroy {
     });
   }
 
-  editItem(element: CountryModel): void {
+  createNew(): void {
     // TODO
+    this.subs.sink = this.createEditPopupService
+      .openDialog()
+      .subscribe((country) => {
+        console.log(country);
+      });
+  }
+
+  editItem(element: CountryModel): void {
+    this.subs.sink = this.createEditPopupService
+      .openDialog(element.oid)
+      .subscribe((country) => {
+        console.log(country);
+      });
   }
 
   deleteItem(element: CountryModel): void {
