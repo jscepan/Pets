@@ -13,14 +13,6 @@ import {
   trigger,
 } from '@angular/animations';
 
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-//   description: string;
-// }
-
 @Component({
   selector: 'pets-users',
   templateUrl: './users.component.html',

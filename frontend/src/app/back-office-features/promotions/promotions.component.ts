@@ -5,17 +5,36 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { TranslateService } from '@ngx-translate/core';
 import { PromotionWebService } from 'src/app/web-services/promotion.web-service';
 import { PromotionModel } from 'src/app/shared/models/promotion.model';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'pets-promotions',
   templateUrl: './promotions.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
   styleUrls: ['./promotions.component.scss'],
   providers: [PromotionWebService],
 })
 export class PromotionsComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  displayedColumns: string[] = [
+  promotions: PromotionModel[] = [];
+
+  columnsToDisplay: string[] = [
     'id',
     'type',
     'title',
@@ -29,7 +48,8 @@ export class PromotionsComponent implements OnInit, OnDestroy {
     'freeOfCharge',
     'inactive',
   ];
-  promotions: PromotionModel[] = [];
+  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  expandedElement?: PromotionModel | null;
 
   constructor(
     private router: Router,
