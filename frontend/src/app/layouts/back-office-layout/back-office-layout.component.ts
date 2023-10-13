@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthWebService } from '@layouts/auth-layout/auth.web-service';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
@@ -17,9 +16,6 @@ import { DefinitionsWebService } from 'src/app/web-services/definitions.web-serv
 })
 export class BackOfficeLayoutComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
-
-  definitionsIsLoading: Observable<boolean> =
-    this.definitionsStoreService.dataLoaded$;
 
   constructor(
     private router: Router,
@@ -47,6 +43,10 @@ export class BackOfficeLayoutComponent implements OnInit, OnDestroy {
 
   changeLanguage(language: string): void {
     this.languageService.changeLanguage(language);
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate(['back-office', route]);
   }
 
   ngOnDestroy(): void {}

@@ -1,5 +1,5 @@
 <div class="container">
-  <table mat-table [dataSource]="cities" class="mat-elevation-z8">
+  <table mat-table [dataSource]="cities" class="mat-table">
     <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef>{{ "value" | translate }}</th>
       <td mat-cell *matCellDef="let element">
@@ -10,7 +10,30 @@
       <th mat-header-cell *matHeaderCellDef>{{ "zipCode" | translate }}</th>
       <td mat-cell *matCellDef="let element">{{ element.zipCode }}</td>
     </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "edit" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <pets-button
+          (clickEvent)="editItem(element)"
+          [iconName]="'edit'"
+        ></pets-button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "delete" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <pets-button
+          (clickEvent)="deleteItem(element)"
+          [iconName]="'trash-2'"
+        ></pets-button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-row matRipple *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>

@@ -67,5 +67,20 @@
   "value": "Vrednost",
   "subotica": "Subotica",
   "noviSad": "Novi Sad",
-  "beograd": "Beograd"
+  "beograd": "Beograd",
+  "promotions": "Promocije",
+  "users": "Korisnici",
+  "cities": "Mesta/gradovi",
+  "countries": "Države",
+  "edit": "Izmeni",
+  "delete": "Obriši",
+  "displayName": "Ime za prikazivanje",
+  "city": "Grad/mesto",
+  "phoneNumber": "Broj telefona",
+  "fullName": " Puno ime",
+  "language": "Jezik",
+  "isActive": "Aktivan",
+  "deactivateActivate": "(De)aktiviraj",
+  "no": "Ne",
+  "yes": "Da"
 }

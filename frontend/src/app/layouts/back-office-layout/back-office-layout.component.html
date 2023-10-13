@@ -1,4 +1,26 @@
-<div class="main-container" *ngIf="!(definitionsIsLoading | async)">
-  back-office
+<div class="main-container">
+  <div class="main-menu">
+    <pets-button [iconName]="'list'" [matMenuTriggerFor]="menus"></pets-button>
+    <mat-menu #menus="matMenu">
+      <button mat-menu-item (click)="navigateTo('promotions')">
+        {{ "promotions" | translate }}
+      </button>
+      <button mat-menu-item (click)="navigateTo('users')">
+        {{ "users" | translate }}
+      </button>
+      <button mat-menu-item (click)="navigateTo('cities')">
+        {{ "cities" | translate }}
+      </button>
+      <button mat-menu-item (click)="navigateTo('countries')">
+        {{ "countries" | translate }}
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="xxx">Sa podmenijem</button>
+    </mat-menu>
+
+    <mat-menu #xxx="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+    </mat-menu>
+  </div>
   <router-outlet></router-outlet>
 </div>

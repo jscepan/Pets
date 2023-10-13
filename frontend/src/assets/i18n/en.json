@@ -67,5 +67,20 @@
   "value": "Value",
   "subotica": "Subotica",
   "noviSad": "Novi Sad",
-  "beograd": "Belgrade"
+  "beograd": "Belgrade",
+  "promotions": "Promotions",
+  "users": "Users",
+  "cities": "Cities",
+  "countries": "Countries",
+  "edit": "Edit",
+  "delete": "Delete",
+  "displayName": "Display name",
+  "city": "City",
+  "phoneNumber": "Phone number",
+  "fullName": " Full name",
+  "language": "Language",
+  "isActive": "Is active",
+  "deactivateActivate": "(De)activate",
+  "no": "No",
+  "yes": "Yes"
 }

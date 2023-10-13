@@ -16,7 +16,7 @@ import { CityModel } from 'src/app/shared/models/city.model';
 export class CitiesComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  displayedColumns: string[] = ['value', 'zipCode'];
+  displayedColumns: string[] = ['value', 'zipCode', 'edit', 'delete'];
   cities: CityModel[] = [];
 
   constructor(
@@ -30,6 +30,14 @@ export class CitiesComponent implements OnInit, OnDestroy {
     this.subs.sink = this.webService.getAllCities().subscribe((cities) => {
       this.cities = cities;
     });
+  }
+
+  editItem(element: CityModel): void {
+    // TODO
+  }
+
+  deleteItem(element: CityModel): void {
+    // TODO
   }
 
   ngOnDestroy(): void {

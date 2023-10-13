@@ -1,5 +1,6 @@
 package com.pets.backend.repository;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pets.backend.models.Definitions;
 import java.io.File;
@@ -16,6 +17,7 @@ public class DefinitionsRepository {
     public Definitions getAllDefinitions() {
         Definitions definitions = null;
         ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
             File jsonFile = new File(getClass().getResource("/definitions.json").getFile());
             definitions = objectMapper.readValue(jsonFile, Definitions.class);

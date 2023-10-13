@@ -9,6 +9,7 @@ export const DOMAIN_CITY: string = 'cities';
 export const DOMAIN_COUNTRY: string = 'countries';
 export const DOMAIN_PROMOTIONS: string = 'promotions';
 export const DOMAIN_DEFINITIONS: string = 'definitions';
+export const DOMAIN_USERS: string = 'users';
 
 // Login form content type
 export const LOGIN_FORM_CONTENT_TYPE: { 'Content-Type': string } = {

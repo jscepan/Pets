@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('@features/dashboard/dashboard.module').then(
+      import('@backoffice/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
   },
@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'cities',
     loadChildren: () =>
       import('@backoffice/cities/cities.module').then((m) => m.CitiesModule),
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('@backoffice/users/users.module').then((m) => m.UsersModule),
   },
 ];
 

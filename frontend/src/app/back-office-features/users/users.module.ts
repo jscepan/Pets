@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CitiesRoutingModule } from './cities-routing.module';
-import { CitiesComponent } from './cities.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { UsersComponent } from './users.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
@@ -12,11 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [CitiesComponent],
-  exports: [CitiesComponent],
+  declarations: [UsersComponent],
+  exports: [UsersComponent],
   imports: [
     CommonModule,
-    CitiesRoutingModule,
+    UsersRoutingModule,
     TranslateModule,
     PetsButtonModule,
     PetsSweetAlertModule,
@@ -27,4 +27,4 @@ import { MatSortModule } from '@angular/material/sort';
     MatSortModule,
   ],
 })
-export class CitiesModule {}
+export class UsersModule {}
