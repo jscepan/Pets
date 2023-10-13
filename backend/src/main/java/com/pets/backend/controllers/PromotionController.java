@@ -1,7 +1,6 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.Promotion;
-import com.pets.backend.models.SearchFilter;
 import com.pets.backend.repository.PromotionRepository;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

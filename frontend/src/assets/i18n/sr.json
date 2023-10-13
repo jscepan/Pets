@@ -84,5 +84,11 @@
   "no": "Ne",
   "yes": "Da",
   "serbia": "Srbija",
-  "belgrade": "Beograd"
+  "belgrade": "Beograd",
+  "id": "Id",
+  "type": "Tip",
+  "subtitle": "Podnaslov",
+  "createdOn": "Datum kreiranja",
+  "services": "Usluge",
+  "points": "Poeni"
 }

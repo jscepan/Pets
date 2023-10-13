@@ -84,5 +84,11 @@
   "no": "No",
   "yes": "Yes",
   "serbia": "Serbia",
-  "belgrade": "Belgrade"
+  "belgrade": "Belgrade",
+  "id": "Id",
+  "type": "Type",
+  "subtitle": "Subtitle",
+  "createdOn": "Created on",
+  "services": "Services",
+  "points": "Points"
 }

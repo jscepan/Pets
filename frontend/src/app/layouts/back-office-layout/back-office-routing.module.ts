@@ -22,6 +22,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'promotions',
+    loadChildren: () =>
+      import('@backoffice/promotions/promotions.module').then(
+        (m) => m.PromotionsModule
+      ),
+  },
+  {
     path: 'users',
     loadChildren: () =>
       import('@backoffice/users/users.module').then((m) => m.UsersModule),
