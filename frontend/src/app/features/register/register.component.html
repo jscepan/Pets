@@ -157,7 +157,8 @@
         >{{ "bySigningInIAgreeToThe" | translate }}
         <a
           class="auth-under-text"
-          [href]="'https://petalker.com/dsp-terms-and-conditions/'"
+          [routerLink]="['/terms-and-conditions']"
+          [queryParams]="{ version: 'newest' }"
           target="_blank"
           rel="noopener noreferrer"
           >{{ "termsAndConditions" | translate }}</a

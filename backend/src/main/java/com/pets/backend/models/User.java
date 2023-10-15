@@ -54,6 +54,12 @@ public class User extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_terms_and_conditions",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "terms_and_conditions_id"))
+    private Set<TermsAndConditions> termsAndConditions = new HashSet<>();
+
     public User() {
     }
 
@@ -190,5 +196,13 @@ public class User extends BaseModel {
 
     public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
+    }
+
+    public Set<TermsAndConditions> getTermsAndConditions() {
+        return termsAndConditions;
+    }
+
+    public void setTermsAndConditions(Set<TermsAndConditions> termsAndConditions) {
+        this.termsAndConditions = termsAndConditions;
     }
 }

@@ -27,19 +27,19 @@
       *ngIf="!menuItem.subMenuItems"
       (click)="menuItemClicked(menuItem)"
     >
-      {{ menuItem.displayName }}
+      {{ menuItem.displayName || "" | translate }}
     </button>
     <button
       mat-menu-item
       *ngIf="menuItem.subMenuItems"
       [matMenuTriggerFor]="subMenu"
     >
-      {{ menuItem.displayName }}
+      {{ menuItem.displayName || "" | translate }}
     </button>
     <mat-menu #subMenu="matMenu">
       <ng-container *ngFor="let subMenuItem of menuItem.subMenuItems">
         <button mat-menu-item (click)="menuItemClicked(subMenuItem)">
-          {{ subMenuItem.displayName }}
+          {{ menuItem.displayName || "" | translate }}
         </button>
       </ng-container>
     </mat-menu>

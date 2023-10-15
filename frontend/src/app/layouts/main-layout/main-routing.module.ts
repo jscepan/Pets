@@ -10,6 +10,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'terms-and-conditions',
+    loadChildren: () =>
+      import('@features/terms-and-conditions/terms-and-conditions.module').then(
+        (m) => m.TermsAndConditionsModule
+      ),
+  },
+  {
     path: 'ads',
     loadChildren: () =>
       import('@features/ads/ads.module').then((m) => m.AdsModule),

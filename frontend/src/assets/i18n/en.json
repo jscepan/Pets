@@ -57,6 +57,7 @@
   "isActive": "Is active",
   "language": "Language",
   "left": "Left",
+  "login": "Login",
   "maxFileSize": "Max file size up to",
   "maxImagesCountIs": "Max images count is {{imageCount}}",
   "newPassword": "New password",

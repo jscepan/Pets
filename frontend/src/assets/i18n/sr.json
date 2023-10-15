@@ -57,6 +57,7 @@
   "isActive": "Aktivan",
   "language": "Jezik",
   "left": "Preostalo",
+  "login": "Uloguj se",
   "maxFileSize": "Maksimalna veličina fajla do",
   "maxImagesCountIs": "Maksimalni broj slika je {{imageCount}}",
   "newPassword": "Nova lozinka",

@@ -43,11 +43,11 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
           subMenuItems: [
             {
               key: 'login',
-              displayName: 'Login',
+              displayName: 'login',
             },
             {
               key: 'register',
-              displayName: 'Register',
+              displayName: 'register',
             },
           ],
         };
@@ -60,11 +60,11 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
           subMenuItems: [
             {
               key: 'login',
-              displayName: 'Login',
+              displayName: 'login',
             },
             {
               key: 'register',
-              displayName: 'Register',
+              displayName: 'register',
             },
           ],
         };
