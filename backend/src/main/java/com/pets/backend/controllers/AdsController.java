@@ -1,6 +1,7 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.Ad;
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.SearchFilter;
 import com.pets.backend.repository.AdCriteriaRepository;
 import com.pets.backend.repository.AdRepository;
@@ -48,9 +49,9 @@ public class AdsController {
         }
     }
 
-    @GetMapping("/ads/{id}")
-    public ResponseEntity<Ad> getAdById(@PathVariable("id") long id) {
-        Optional<Ad> tutorialData = adRepository.findById(id);
+    @GetMapping("/ads/{oid}")
+    public ResponseEntity<Ad> getAdById(@PathVariable("oid") String oid) {
+        Optional<Ad> tutorialData = adRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -71,9 +72,9 @@ public class AdsController {
         }
     }
 
-    @PutMapping("/ads/{id}")
-    public ResponseEntity<Ad> updateAd(@PathVariable("id") long id, @RequestBody Ad ad) {
-        Optional<Ad> tutorialData = adRepository.findById(id);
+    @PutMapping("/ads/{oid}")
+    public ResponseEntity<Ad> updateAd(@PathVariable("oid") String oid, @RequestBody Ad ad) {
+        Optional<Ad> tutorialData = adRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             Ad _tutorial = tutorialData.get();
@@ -85,10 +86,10 @@ public class AdsController {
         }
     }
 
-    @DeleteMapping("/ads/{id}")
-    public ResponseEntity<HttpStatus> deleteAd(@PathVariable("id") long id) {
+    @DeleteMapping("/ads/{oid}")
+    public ResponseEntity<HttpStatus> deleteAd(@PathVariable("oid") String oid) {
         try {
-            adRepository.deleteById(id);
+            adRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

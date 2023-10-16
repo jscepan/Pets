@@ -1,5 +1,6 @@
 package com.pets.backend.controllers;
 
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.Promotion;
 import com.pets.backend.repository.PromotionRepository;
 import java.sql.Timestamp;
@@ -40,9 +41,9 @@ public class PromotionController {
         }
     }
 
-    @GetMapping("/promotions/{id}")
-    public ResponseEntity<Promotion> getPromotionById(@PathVariable("id") long id) {
-        Optional<Promotion> tutorialData = promotionRepository.findById(id);
+    @GetMapping("/promotions/{oid}")
+    public ResponseEntity<Promotion> getPromotionById(@PathVariable("oid") String oid) {
+        Optional<Promotion> tutorialData = promotionRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -63,9 +64,9 @@ public class PromotionController {
         }
     }
 
-    @PutMapping("/promotions/{id}")
-    public ResponseEntity<Promotion> updatePromotion(@PathVariable("id") long id, @RequestBody Promotion promotion) {
-        Optional<Promotion> tutorialData = promotionRepository.findById(id);
+    @PutMapping("/promotions/{oid}")
+    public ResponseEntity<Promotion> updatePromotion(@PathVariable("oid") String oid, @RequestBody Promotion promotion) {
+        Optional<Promotion> tutorialData = promotionRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             Promotion _tutorial = tutorialData.get();
@@ -77,10 +78,10 @@ public class PromotionController {
         }
     }
 
-    @DeleteMapping("/promotions/{id}")
-    public ResponseEntity<HttpStatus> deletePromotion(@PathVariable("id") long id) {
+    @DeleteMapping("/promotions/{oid}")
+    public ResponseEntity<HttpStatus> deletePromotion(@PathVariable("oid") String oid) {
         try {
-            promotionRepository.deleteById(id);
+            promotionRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

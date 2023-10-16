@@ -55,6 +55,13 @@ public abstract class BaseModel {
             this.oid = this.getClass().getSimpleName().toLowerCase() + "::" + this.id;
         }
     }
+    public static Long getIdFromOid(String oid) {
+        if (oid == null || oid.isEmpty()) {
+            return null;
+        }
+        String[] oids = oid.split("::");
+        return Long.valueOf(oids[1]);
+    }
 
     @Override
     public String toString() {

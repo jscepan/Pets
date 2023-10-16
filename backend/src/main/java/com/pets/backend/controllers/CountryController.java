@@ -1,5 +1,6 @@
 package com.pets.backend.controllers;
 
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.Country;
 import com.pets.backend.repository.CountryRepository;
 import java.util.List;
@@ -38,12 +39,12 @@ public class CountryController {
         }
     }
 
-    @GetMapping("/countries/{id}")
-    public ResponseEntity<Country> getCountryById(@PathVariable("id") long id) {
-        Optional<Country> tutorialData = countryRepository.findById(id);
+    @GetMapping("/countries/{oid}")
+    public ResponseEntity<Country> getCountryById(@PathVariable("oid") String oid) {
+        Optional<Country> countryData = countryRepository.findById(BaseModel.getIdFromOid(oid));
 
-        if (tutorialData.isPresent()) {
-            return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
+        if (countryData.isPresent()) {
+            return new ResponseEntity<>(countryData.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -60,9 +61,9 @@ public class CountryController {
         }
     }
 
-    @PutMapping("/countries/{id}")
-    public ResponseEntity<Country> updateCountry(@PathVariable("id") long id, @RequestBody Country country) {
-        Optional<Country> tutorialData = countryRepository.findById(id);
+    @PutMapping("/countries/{oid}")
+    public ResponseEntity<Country> updateCountry(@PathVariable("oid") String oid, @RequestBody Country country) {
+        Optional<Country> tutorialData = countryRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             Country _tutorial = tutorialData.get();
@@ -73,10 +74,10 @@ public class CountryController {
         }
     }
 
-    @DeleteMapping("/countries/{id}")
-    public ResponseEntity<HttpStatus> deleteCountry(@PathVariable("id") long id) {
+    @DeleteMapping("/countries/{oid}")
+    public ResponseEntity<HttpStatus> deleteCountry(@PathVariable("oid") String oid) {
         try {
-            countryRepository.deleteById(id);
+            countryRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

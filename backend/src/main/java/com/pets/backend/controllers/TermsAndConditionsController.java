@@ -1,5 +1,6 @@
 package com.pets.backend.controllers;
 
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.TermsAndConditions;
 import com.pets.backend.repository.TermsAndConditionsRepository;
 import java.sql.Timestamp;
@@ -40,9 +41,9 @@ public class TermsAndConditionsController {
         }
     }
 
-    @GetMapping("/termsAndConditions/{id}")
-    public ResponseEntity<TermsAndConditions> getTermsAndConditionsById(@PathVariable("id") long id) {
-        Optional<TermsAndConditions> tutorialData = termsAndConditionsRepository.findById(id);
+    @GetMapping("/termsAndConditions/{oid}")
+    public ResponseEntity<TermsAndConditions> getTermsAndConditionsById(@PathVariable("oid") String oid) {
+        Optional<TermsAndConditions> tutorialData = termsAndConditionsRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -63,9 +64,9 @@ public class TermsAndConditionsController {
         }
     }
 
-    @PutMapping("/termsAndConditions/{id}")
-    public ResponseEntity<TermsAndConditions> updateTermsAndConditions(@PathVariable("id") long id, @RequestBody TermsAndConditions termsAndConditions) {
-        Optional<TermsAndConditions> tutorialData = termsAndConditionsRepository.findById(id);
+    @PutMapping("/termsAndConditions/{oid}")
+    public ResponseEntity<TermsAndConditions> updateTermsAndConditions(@PathVariable("oid") String oid, @RequestBody TermsAndConditions termsAndConditions) {
+        Optional<TermsAndConditions> tutorialData = termsAndConditionsRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             TermsAndConditions _tutorial = tutorialData.get();
@@ -76,10 +77,10 @@ public class TermsAndConditionsController {
         }
     }
 
-    @DeleteMapping("/termsAndConditions/{id}")
-    public ResponseEntity<HttpStatus> deleteTermsAndConditions(@PathVariable("id") long id) {
+    @DeleteMapping("/termsAndConditions/{oid}")
+    public ResponseEntity<HttpStatus> deleteTermsAndConditions(@PathVariable("oid") String oid) {
         try {
-            termsAndConditionsRepository.deleteById(id);
+            termsAndConditionsRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,5 +1,6 @@
 package com.pets.backend.controllers;
 
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.User;
 import com.pets.backend.repository.UserRepository;
 import com.pets.backend.security.services.UserDetailsImpl;
@@ -63,9 +64,9 @@ public class UsersController {
         }
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
-        Optional<User> tutorialData = userRepository.findById(id);
+    @GetMapping("/users/{oid}")
+    public ResponseEntity<User> getUserById(@PathVariable("oid") String oid) {
+        Optional<User> tutorialData = userRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -85,9 +86,9 @@ public class UsersController {
         }
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
-        Optional<User> tutorialData = userRepository.findById(id);
+    @PutMapping("/users/{oid}")
+    public ResponseEntity<User> updateUser(@PathVariable("oid") String oid, @RequestBody User user) {
+        Optional<User> tutorialData = userRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             // TODO
@@ -99,10 +100,10 @@ public class UsersController {
         }
     }
 
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
+    @DeleteMapping("/users/{oid}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("oid") String oid) {
         try {
-            userRepository.deleteById(id);
+            userRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

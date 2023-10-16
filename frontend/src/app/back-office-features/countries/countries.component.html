@@ -7,7 +7,7 @@
   ></pets-button>
 </div>
 <div class="container">
-  <table mat-table [dataSource]="(entities | async) || []" class="mat-table">
+  <table mat-table [dataSource]="countries" class="mat-table">
     <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef>{{ "value" | translate }}</th>
       <td mat-cell *matCellDef="let element">

@@ -1,5 +1,6 @@
 package com.pets.backend.controllers;
 
+import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.City;
 import com.pets.backend.repository.CityRepository;
 import java.util.List;
@@ -38,9 +39,9 @@ public class CityController {
         }
     }
 
-    @GetMapping("/cities/{id}")
-    public ResponseEntity<City> getCityById(@PathVariable("id") long id) {
-        Optional<City> tutorialData = cityRepository.findById(id);
+    @GetMapping("/cities/{oid}")
+    public ResponseEntity<City> getCityById(@PathVariable("oid") String oid) {
+        Optional<City> tutorialData = cityRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -60,9 +61,9 @@ public class CityController {
         }
     }
 
-    @PutMapping("/cities/{id}")
-    public ResponseEntity<City> updateCity(@PathVariable("id") long id, @RequestBody City city) {
-        Optional<City> tutorialData = cityRepository.findById(id);
+    @PutMapping("/cities/{oid}")
+    public ResponseEntity<City> updateCity(@PathVariable("oid") String oid, @RequestBody City city) {
+        Optional<City> tutorialData = cityRepository.findById(BaseModel.getIdFromOid(oid));
 
         if (tutorialData.isPresent()) {
             City _tutorial = tutorialData.get();
@@ -73,10 +74,10 @@ public class CityController {
         }
     }
 
-    @DeleteMapping("/cities/{id}")
-    public ResponseEntity<HttpStatus> deleteCity(@PathVariable("id") long id) {
+    @DeleteMapping("/cities/{oid}")
+    public ResponseEntity<HttpStatus> deleteCity(@PathVariable("oid") String oid) {
         try {
-            cityRepository.deleteById(id);
+            cityRepository.deleteById(BaseModel.getIdFromOid(oid));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

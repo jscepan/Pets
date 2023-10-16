@@ -13,8 +13,6 @@ import {
   PetsSweetAlertI,
   PetsSweetAlertTypeEnum,
 } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.interface';
-import { ListEntities } from 'src/app/shared/services/list-entities';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pets-countries',
@@ -26,22 +24,26 @@ export class CountryComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   displayedColumns: string[] = ['value', 'edit', 'delete'];
-
-  entities?: Observable<CountryModel[]> = this.listEntities.entities;
+  countries: CountryModel[] = [];
 
   constructor(
+    private router: Router,
+    private languageService: LanguageService,
     private translateService: TranslateService,
     private webService: CountryWebService,
     private sweetAlertService: PetsSweetAlertService,
     private globalService: GlobalService,
-    private listEntities: ListEntities<CountryModel>,
     private createEditPopupService: CountryCreateEditPopupService
   ) {}
 
   ngOnInit(): void {
-    this.subs.sink = this.listEntities
-      .setWebService(this.webService)
-      .requestFirstPage();
+    this.getAllCities();
+  }
+
+  getAllCities(): void {
+    this.subs.sink = this.webService.getAllCities().subscribe((countries) => {
+      this.countries = countries;
+    });
   }
 
   createNew(): void {
@@ -49,7 +51,7 @@ export class CountryComponent implements OnInit, OnDestroy {
       .openDialog()
       .subscribe((country) => {
         if (country) {
-          this.listEntities.requestFirstPage();
+          this.getAllCities();
         }
       });
   }
@@ -59,7 +61,7 @@ export class CountryComponent implements OnInit, OnDestroy {
       .openDialog(element.oid)
       .subscribe((country) => {
         if (country) {
-          this.listEntities.requestFirstPage();
+          this.getAllCities();
         }
       });
   }
@@ -79,7 +81,7 @@ export class CountryComponent implements OnInit, OnDestroy {
                   'countryHaveBeenSuccessfullyDeleted'
                 )
               );
-              this.listEntities.requestFirstPage();
+              this.getAllCities();
             });
         }
       });
