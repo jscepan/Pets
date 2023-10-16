@@ -11,7 +11,7 @@ export class CountryWebService extends EntityBaseWebService<CountryModel> {
     super(baseWebService, CountryModel, DOMAIN_COUNTRY);
   }
 
-  getAllCities(): Observable<CountryModel[]> {
+  getAllCountries(): Observable<CountryModel[]> {
     return this.baseWebService.getRequest<CountryModel[]>(
       `${BASE_API_URL + '/' + DOMAIN_COUNTRY}`
     );

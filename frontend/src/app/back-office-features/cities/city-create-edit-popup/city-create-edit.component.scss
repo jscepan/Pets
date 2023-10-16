@@ -1,0 +1,15 @@
+.mat-content {
+  display: flex;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

@@ -37,13 +37,15 @@ export class CountryComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getAllCities();
+    this.getAllCountries();
   }
 
-  getAllCities(): void {
-    this.subs.sink = this.webService.getAllCities().subscribe((countries) => {
-      this.countries = countries;
-    });
+  getAllCountries(): void {
+    this.subs.sink = this.webService
+      .getAllCountries()
+      .subscribe((countries) => {
+        this.countries = countries;
+      });
   }
 
   createNew(): void {
@@ -51,7 +53,7 @@ export class CountryComponent implements OnInit, OnDestroy {
       .openDialog()
       .subscribe((country) => {
         if (country) {
-          this.getAllCities();
+          this.getAllCountries();
         }
       });
   }
@@ -61,7 +63,7 @@ export class CountryComponent implements OnInit, OnDestroy {
       .openDialog(element.oid)
       .subscribe((country) => {
         if (country) {
-          this.getAllCities();
+          this.getAllCountries();
         }
       });
   }
@@ -81,7 +83,7 @@ export class CountryComponent implements OnInit, OnDestroy {
                   'countryHaveBeenSuccessfullyDeleted'
                 )
               );
-              this.getAllCities();
+              this.getAllCountries();
             });
         }
       });
