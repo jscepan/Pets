@@ -6,6 +6,15 @@ import { TranslateService } from '@ngx-translate/core';
 import { CountryWebService } from 'src/app/web-services/country.web-service';
 import { CountryModel } from 'src/app/shared/models/country.model';
 import { CountryCreateEditPopupService } from './country-create-edit-popup/country-create-edit-popup.service';
+import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
+import { GlobalService } from 'src/app/shared/services/global.service';
+import { MODE } from 'src/app/shared/components/pets-basic-alert/pets-basic-alert.interface';
+import {
+  PetsSweetAlertI,
+  PetsSweetAlertTypeEnum,
+} from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.interface';
+import { ListEntities } from 'src/app/shared/services/list-entities';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pets-countries',
@@ -17,28 +26,31 @@ export class CountryComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   displayedColumns: string[] = ['value', 'edit', 'delete'];
-  countries: CountryModel[] = [];
+
+  entities?: Observable<CountryModel[]> = this.listEntities.entities;
 
   constructor(
-    private router: Router,
-    private languageService: LanguageService,
     private translateService: TranslateService,
     private webService: CountryWebService,
+    private sweetAlertService: PetsSweetAlertService,
+    private globalService: GlobalService,
+    private listEntities: ListEntities<CountryModel>,
     private createEditPopupService: CountryCreateEditPopupService
   ) {}
 
   ngOnInit(): void {
-    this.subs.sink = this.webService.getAllCities().subscribe((countries) => {
-      this.countries = countries;
-    });
+    this.subs.sink = this.listEntities
+      .setWebService(this.webService)
+      .requestFirstPage();
   }
 
   createNew(): void {
-    // TODO
     this.subs.sink = this.createEditPopupService
       .openDialog()
       .subscribe((country) => {
-        console.log(country);
+        if (country) {
+          this.listEntities.requestFirstPage();
+        }
       });
   }
 
@@ -46,12 +58,47 @@ export class CountryComponent implements OnInit, OnDestroy {
     this.subs.sink = this.createEditPopupService
       .openDialog(element.oid)
       .subscribe((country) => {
-        console.log(country);
+        if (country) {
+          this.listEntities.requestFirstPage();
+        }
       });
   }
 
   deleteItem(element: CountryModel): void {
-    // TODO
+    this.subs.sink.$deleteIncome = this.sweetAlertService
+      .getDataBackFromSweetAlert()
+      .subscribe((data) => {
+        if (data && data.confirmed) {
+          this.subs.sink = this.webService
+            .deleteEntity([element])
+            .subscribe(() => {
+              this.globalService.showBasicAlert(
+                MODE.success,
+                this.translateService.instant('countryDeleted'),
+                this.translateService.instant(
+                  'countryHaveBeenSuccessfullyDeleted'
+                )
+              );
+              this.listEntities.requestFirstPage();
+            });
+        }
+      });
+    const sweetAlertModel: PetsSweetAlertI = {
+      mode: 'warning',
+      icon: 'alert-triangle',
+      type: {
+        name: PetsSweetAlertTypeEnum.submit,
+        buttons: {
+          submit: this.translateService.instant('delete'),
+          cancel: this.translateService.instant('cancel'),
+        },
+      },
+      title: this.translateService.instant('deleteCountry'),
+      message: this.translateService.instant(
+        'areYouSureYouWantToDeleteTheCountry'
+      ),
+    };
+    this.sweetAlertService.openMeSweetAlert(sweetAlertModel);
   }
 
   ngOnDestroy(): void {

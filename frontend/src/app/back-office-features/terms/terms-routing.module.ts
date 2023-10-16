@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CitiesComponent } from './cities.component';
+import { TermsComponent } from './terms.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CitiesComponent,
+    component: TermsComponent,
     canActivate: [],
     data: {},
   },

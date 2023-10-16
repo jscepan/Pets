@@ -54,7 +54,7 @@ export class CountryCreateEditComponent implements OnInit, OnDestroy {
 
   initializeForm(dataModel?: CountryModel): void {
     this.formGroup = new UntypedFormGroup({
-      date: new UntypedFormControl(dataModel?.value || '', [
+      value: new UntypedFormControl(dataModel?.value || '', [
         Validators.required,
       ]),
     });
@@ -71,7 +71,7 @@ export class CountryCreateEditComponent implements OnInit, OnDestroy {
             this.globalService.showBasicAlert(
               MODE.success,
               this.translateService.instant('successfully'),
-              this.translateService.instant('incomeIsSuccessfullyUpdated')
+              this.translateService.instant('countryIsSuccessfullyUpdated')
             );
             this.dialogRef.close(newEntity);
           }
@@ -82,7 +82,7 @@ export class CountryCreateEditComponent implements OnInit, OnDestroy {
           this.globalService.showBasicAlert(
             MODE.success,
             this.translateService.instant('successfully'),
-            this.translateService.instant('newIncomeIsSuccessfullyCreated')
+            this.translateService.instant('newCountryIsSuccessfullyCreated')
           );
           this.dialogRef.close(newEntity);
         }
