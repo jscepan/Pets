@@ -6,16 +6,20 @@
     </ng-template>
 
     <ng-template matStepLabel>{{ "selectAdType" | translate }}</ng-template>
-    <form [formGroup]="firstFormGroup" *ngIf="firstFormGroup">
+    <form
+      [formGroup]="firstFormGroup"
+      *ngIf="firstFormGroup"
+      class="first-form"
+    >
       <mat-radio-group
         aria-label="Select sell type"
-        formControlName="adSellType"
+        formControlName="sellType"
         [color]="'primary'"
       >
         <mat-radio-button
-          value="{{ item.value }}"
+          value="{{ item }}"
           *ngFor="let item of sellTypeOptions"
-          >{{ item.displayName | translate }}</mat-radio-button
+          >{{ item | translate }}</mat-radio-button
         >
       </mat-radio-group>
       <pets-autocomplete
@@ -37,7 +41,7 @@
     <div class="button-group">
       <pets-button
         [text]="'next' | translate"
-        [disabled]="!(firstFormGroup.touched && firstFormGroup.valid)"
+        [disabled]="!firstFormGroup?.valid"
         (clickEvent)="nextStep()"
       ></pets-button>
     </div>
@@ -47,10 +51,17 @@
     <ng-template matStepLabel>{{
       "addBasicInformation" | translate
     }}</ng-template>
-    <form [formGroup]="secondFormGroup" class="second-form">
+    <form
+      [formGroup]="secondFormGroup"
+      *ngIf="secondFormGroup"
+      class="second-form"
+    >
       <div class="image-upload">
         <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>
-        <pets-image-upload [maxFileSize]="'500MB'"></pets-image-upload>
+        <pets-image-upload
+          [maxFileSize]="'500MB'"
+          #petsImageUpload
+        ></pets-image-upload>
       </div>
 
       <div class="title">
@@ -62,16 +73,18 @@
           <input matInput formControlName="title" />
         </mat-form-field>
       </div>
-      <!-- <mat-label>{{ "description" | translate }}</mat-label>
-        <input matInput formControlName="description" />
-        <div class="EditorWrapper"></div> -->
-      <!-- <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
-      <ngx-editor
-        [editor]="editor"
-        [ngModel]="html"
-        [disabled]="false"
-        [placeholder]="'inputDescriptionOfYourAd' | translate"
-      ></ngx-editor> -->
+      <div class="description-editor">
+        <mat-label>{{ "description" | translate }}</mat-label>
+        <div class="EditorWrapper"></div>
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          formControlName="description"
+          [disabled]="false"
+          [placeholder]="'inputDescriptionOfYourAd' | translate"
+        ></ngx-editor>
+      </div>
       <div class="additional-information">
         <div class="price-wrapper">
           <h4>{{ "priceInformation" | translate }}</h4>
@@ -84,9 +97,9 @@
             <mat-select formControlName="priceCurrency">
               <mat-option
                 *ngFor="let item of priceCurrencyOptions"
-                [value]="item.value"
+                [value]="item"
               >
-                {{ item.displayName | translate }}
+                {{ item | translate }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -111,7 +124,7 @@
             <input matInput formControlName="contactPhone" />
           </mat-form-field>
           <pets-autocomplete
-            [dataModel]="cities"
+            [dataModel]="citiesEnumValues"
             (changeEvent)="onCityChange($event)"
             [label]="'selectYourPlace' | translate"
             class="contact-field"
@@ -132,19 +145,33 @@
   </mat-step>
   <mat-step>
     <!--  [stepControl]="thirdFormGroup" -->
-    <ng-template matStepLabel>Izbor promocije</ng-template>
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Izbor promocije</ng-template>
-      <mat-form-field>
-        <mat-label>promotion</mat-label>
-        <input matInput formControlName="promotion" placeholder="promotion" />
-      </mat-form-field>
+    <ng-template matStepLabel>{{
+      "chooseYourPromotion" | translate
+    }}</ng-template>
+    <form
+      [formGroup]="thirdFormGroup"
+      *ngIf="thirdFormGroup"
+      class="third-form"
+    >
+      <mat-radio-group
+        formControlName="promotion"
+        [color]="'primary'"
+        class="promotion-list"
+      >
+        <div class="promotion-content" *ngFor="let prom of promotions">
+          <pets-promotion-card
+            [dataModel]="prom"
+            class="pets-promotion-card"
+          ></pets-promotion-card>
+          <mat-radio-button [value]="prom" class="radio"> </mat-radio-button>
+        </div>
+      </mat-radio-group>
     </form>
-    <p>You are now done.</p>
     <div class="button-group">
       <pets-button [text]="'back' | translate" matStepperPrevious></pets-button>
       <pets-button
         [text]="'submit' | translate"
+        [disabled]="!thirdFormGroup?.valid"
         (clickEvent)="createAd()"
       ></pets-button>
     </div>

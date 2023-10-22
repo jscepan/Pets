@@ -6,8 +6,8 @@ export class PromotionModel extends BaseModel {
   title: string = '';
   subtitle: string = '';
   description: string = '';
-  services: string[] = [];
-  price?: number;
+  services: string = '';
+  price: number = 0;
   priceCurrency?: Currency;
   freeOfCharge?: boolean;
 }

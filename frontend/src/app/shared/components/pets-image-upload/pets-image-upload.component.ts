@@ -26,19 +26,7 @@ export class PetsImageUploadComponent implements OnInit, OnDestroy {
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 
-  searchBarForm?: FormGroup;
-
-  ngOnInit(): void {
-    this.searchBarForm = new FormGroup({
-      pageSizeCtrl: new FormControl(this.dataModel?.adPage.pageSize, [
-        Validators.required,
-      ]),
-    });
-    this.searchBarForm.valueChanges.subscribe((value) => {
-      console.log('CHANGE');
-      console.log(value);
-    });
-  }
+  ngOnInit(): void {}
 
   onChange(event: any): void {
     const files = event.target.files;

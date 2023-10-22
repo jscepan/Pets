@@ -1,0 +1,30 @@
+<div class="promotion-content">
+  <div class="informations">
+    <div class="title">
+      {{ dataModel?.title || "" | translate }}
+    </div>
+    <div class="subtitle">
+      {{ dataModel?.subtitle || "" | translate }}
+    </div>
+    <div class="description">
+      {{ dataModel?.description || "" | translate }}
+    </div>
+    <div class="services">
+      <div
+        class="service"
+        *ngFor="let service of getPromotionServices(dataModel?.services || '')"
+      >
+        - {{ service | translate }}
+      </div>
+    </div>
+  </div>
+  <div class="price">
+    <ng-container *ngIf="dataModel && dataModel.price > 0">
+      {{ dataModel.price }}
+      {{ dataModel.priceCurrency }}
+    </ng-container>
+    <ng-container *ngIf="dataModel?.price === 0">
+      {{ "freeOfCharge" | translate }}
+    </ng-container>
+  </div>
+</div>

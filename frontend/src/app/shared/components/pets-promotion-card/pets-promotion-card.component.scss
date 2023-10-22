@@ -1,0 +1,50 @@
+:host {
+  padding: 10px;
+
+  .promotion-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .informations {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin-bottom: 10px;
+
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px 5px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .description {
+        font-size: 14px;
+        padding: 5px;
+      }
+
+      .services {
+        font-size: 12px;
+        .service {
+        }
+      }
+    }
+
+    .price {
+      font-weight: 600;
+      text-align: center;
+      background-color: rgb(238 238 34);
+      padding: 10px;
+      border-radius: 4px;
+      width: fit-content;
+      align-self: center;
+    }
+  }
+}

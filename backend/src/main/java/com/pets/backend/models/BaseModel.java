@@ -1,5 +1,6 @@
 package com.pets.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -55,6 +56,7 @@ public abstract class BaseModel {
             this.oid = this.getClass().getSimpleName().toLowerCase() + "::" + this.id;
         }
     }
+
     public static Long getIdFromOid(String oid) {
         if (oid == null || oid.isEmpty()) {
             return null;

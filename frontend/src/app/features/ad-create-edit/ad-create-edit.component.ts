@@ -1,28 +1,31 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Editor, Toolbar } from 'ngx-editor';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
-import { CURRENCY, SELL_TYPE } from 'src/app/shared/constants';
+import { CURRENCY } from 'src/app/shared/constants';
+import { Currency } from 'src/app/shared/enums/currency.model';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
-import { Language } from 'src/app/shared/enums/language.model';
 import { SellType } from 'src/app/shared/enums/sell-type.model';
 import { AdModel } from 'src/app/shared/models/ad.model';
+import { CityModel } from 'src/app/shared/models/city.model';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
-import { SearchFilterModel } from 'src/app/shared/models/search.model';
+import { PromotionModel } from 'src/app/shared/models/promotion.model';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
+import { CityWebService } from 'src/app/web-services/city.web-service';
 import { PromotionWebService } from 'src/app/web-services/promotion.web-service';
 
 @Component({
   selector: 'pets-ad-create-edit',
   templateUrl: './ad-create-edit.component.html',
   styleUrls: ['./ad-create-edit.component.scss'],
-  providers: [AdWebService, PromotionWebService],
+  providers: [AdWebService, PromotionWebService, CityWebService],
 })
 export class AdCreateEditComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
@@ -31,7 +34,6 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
 
   // Description editor
   editor: Editor = new Editor();
-  html = '';
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -43,42 +45,29 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
 
-  firstFormGroup = this._formBuilder.group({
-    adSellType: [SellType.SELL, [Validators.required]],
-    adType: ['', Validators.required],
-    category: ['', Validators.required],
-    subcategory: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    title: ['', Validators.required],
-    price: [0],
-    priceCurrency: ['', [Validators.required]],
-    priceIsFixed: false,
-    freeOfCharge: false,
-    description: [''],
-    images: [],
-    city: [this.authStoreService.user?.city || ''],
-    contactName: [this.authStoreService.user?.displayName || ''],
-    contactPhone: [this.authStoreService.user?.phoneNumber || ''],
-  });
-  thirdFormGroup = this._formBuilder.group({
-    promotion: [''],
-  });
+  firstFormGroup?: FormGroup;
+  secondFormGroup?: FormGroup;
+  thirdFormGroup?: FormGroup;
 
   definitions?: DefinitionModel | null;
   adsType: EnumValueModel[] = [];
   categories: EnumValueModel[] | undefined = [];
   subCategories: EnumValueModel[] | undefined = [];
 
-  cities: EnumValueModel[] | undefined = [];
+  cities: CityModel[] | undefined = [];
+  citiesEnumValues: EnumValueModel[] | undefined = [];
+  selectedCity?: CityModel;
+
+  promotions: PromotionModel[] = [];
 
   selectedAdType?: DefinitionEntityModel;
   selectedCategories?: DefinitionEntityModel;
   selectedSubCategories?: DefinitionEntityModel;
-  selectedCity?: DefinitionEntityModel;
 
-  priceCurrencyOptions: EnumValueModel[] = CURRENCY;
-  sellTypeOptions: EnumValueModel[] = SELL_TYPE;
+  priceCurrencyOptions: Currency[] = [Currency.RSD, Currency.EUR];
+  sellTypeOptions: SellType[] = [SellType.SELL, SellType.BUY];
+
+  //  petsImageUpload;
 
   constructor(
     private authStoreService: AuthStoreService,
@@ -87,7 +76,9 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private _formBuilder: FormBuilder,
     private adWebService: AdWebService,
-    private promotionWebService: PromotionWebService
+    private promotionWebService: PromotionWebService,
+    private cityWebService: CityWebService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -106,43 +97,75 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         if (types) {
           this.adsType = types;
         }
-        const country = definitions?.countries.filter(
-          (c) => c.value === 'serbia'
-        )[0];
-        this.cities = country?.childrens.map((c) => {
-          return {
-            value: c.value,
-            displayName: c.displayValue[this.languageService.selectedLanguage],
-          };
-        });
       }
     );
+    this.subs.sink = this.cityWebService.getAllCities().subscribe((cities) => {
+      this.cities = cities;
+      this.citiesEnumValues = this.cities?.map((c) => {
+        return {
+          value: c.value,
+          displayName: this.translateService.instant(c.value),
+        };
+      });
+    });
     this.subs.sink = this.promotionWebService
       .getAllPromotions()
       .subscribe((promotions) => {
-        console.log('promotions');
-        console.log(promotions);
-        // this.promotions = promotions;
+        this.promotions = promotions;
       });
+    this.initializeForm();
+  }
+
+  initializeForm(): void {
+    const city = this.cities?.filter(
+      (c) => c.oid === this.authStoreService.user?.city?.oid
+    )[0];
+    this.firstFormGroup = this._formBuilder.group({
+      sellType: [SellType.SELL, [Validators.required]],
+      adType: ['', Validators.required],
+      category: ['', Validators.required],
+      subcategory: ['', Validators.required],
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      images: [],
+      title: ['', Validators.required],
+      description: [''],
+      price: [0],
+      priceCurrency: ['', [Validators.required]],
+      priceIsFixed: [false],
+      freeOfCharge: [false],
+      contactName: [
+        this.authStoreService.user?.displayName || '',
+        [Validators.required],
+      ],
+      contactPhone: [
+        this.authStoreService.user?.phoneNumber || '',
+        [Validators.required],
+      ],
+      city: [city || '', [Validators.required]],
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      promotion: [
+        this.promotions ? this.promotions[0] : '',
+        [Validators.required],
+      ],
+    });
   }
 
   createAd(): void {
-    const prom =
-      '{"oid": "promotion::1","id": 1,"type": "tip_neki_tamo","title": "Standardna vidljivost","subtitle": "","description": "Objavite vas oglas potpuno besplatno","services": "Objava oglasa u trajanju od 30 dana","price": 0.0,"priceCurrency": "RSD","freeOfCharge": "1","inactive": false,"createdOn": "2023-09-29T23:09:41.000+00:00"  }';
-    // const adData: AdModel = <AdModel>{
-    //   oid: '',
-    //   adType: this.selectedAdType?.value,
-    //   category: this.selectedCategories?.value,
-    //   subcategory: this.selectedSubCategories?.value,
-    //   ...this.secondFormGroup.value,
-    //   // ...this.thirdFormGroup.value,
-    //   promotion: JSON.parse(prom),
-    // };
-    // adData.city = this.selectedCity?.value;
-    // this.subs.sink = this.adWebService.createEntity(adData).subscribe((ad) => {
-    //   console.log('------------------');
-    //   console.log(ad);
-    // });
+    const adData: AdModel = <AdModel>{
+      oid: '',
+      ...this.firstFormGroup?.value,
+      ...this.secondFormGroup?.value,
+      ...this.thirdFormGroup?.value,
+      images: [],
+      city: this.selectedCity,
+      user: this.authStoreService.user,
+    };
+    this.subs.sink = this.adWebService.createEntity(adData).subscribe((ad) => {
+      console.log('------------------');
+      console.log(ad);
+    });
   }
 
   onAdsTypeChange(item: any): void {
@@ -151,7 +174,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     )[0];
     this.selectedAdType = types;
     this.firstFormGroup
-      .get('adType')
+      ?.get('adType')
       ?.setValue(this.selectedAdType?.value || '');
     this.categories = types?.childrens.map((t) => {
       return {
@@ -167,7 +190,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     )[0];
     this.selectedCategories = cat;
     this.firstFormGroup
-      .get('category')
+      ?.get('category')
       ?.setValue(this.selectedCategories?.value || '');
     this.subCategories = cat?.childrens.map((t) => {
       return {
@@ -183,11 +206,13 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     )[0];
     this.selectedSubCategories = cat;
     this.firstFormGroup
-      .get('subcategory')
+      ?.get('subcategory')
       ?.setValue(this.selectedSubCategories?.value || '');
   }
 
-  onCityChange(item: any): void {}
+  onCityChange(item: EnumValueModel): void {
+    this.selectedCity = this.cities?.filter((c) => c.value === item.value)[0];
+  }
 
   nextStep(): void {
     this.myStepper.next();

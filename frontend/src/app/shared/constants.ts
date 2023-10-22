@@ -30,11 +30,6 @@ export const CURRENCY: EnumValueModel[] = [
   { value: 'EUR', displayName: 'eur' },
 ];
 
-export const SELL_TYPE: EnumValueModel[] = [
-  { value: 'BUY', displayName: 'buy' },
-  { value: 'SELL', displayName: 'sell' },
-];
-
 export const PAGE_SIZE: EnumValueModel[] = [
   { value: '10', displayName: '10' },
   { value: '20', displayName: '20' },

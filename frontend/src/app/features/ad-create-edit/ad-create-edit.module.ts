@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { PetsImageUploadModule } from 'src/app/shared/components/pets-image-upload/pets-image-upload.module';
 import { NgxEditorModule } from 'ngx-editor';
 import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
+import { PetsPromotionCardModule } from 'src/app/shared/components/pets-promotion-card/pets-promotion-card.module';
 
 @NgModule({
   declarations: [AdCreateEditComponent],
@@ -44,6 +45,7 @@ import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.modul
     PetsImageUploadModule,
     NgxEditorModule,
     PetsIconsProviderModule,
+    PetsPromotionCardModule,
   ],
 })
 export class AdCreateEditModule {}

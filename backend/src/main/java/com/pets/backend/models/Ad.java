@@ -1,12 +1,18 @@
 package com.pets.backend.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name = "ads")
 public class Ad extends BaseModel {
+
+///////// First group /////////
+    @Enumerated(EnumType.STRING)
+    @Column(name = "adSellType")
+    private SellType sellType;
 
     @Column(name = "adType")
     private String adType;
@@ -17,12 +23,18 @@ public class Ad extends BaseModel {
     @Column(name = "subcategory")
     private String subcategory;
 
+///////// Second group /////////
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "ad_images",
+            joinColumns = @JoinColumn(name = "ad_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id"))
+    private List<Image> images;
+
     @Column(name = "title")
     private String title;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "adSellType")
-    private SellType sellType;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "price")
     private double price;
@@ -37,24 +49,16 @@ public class Ad extends BaseModel {
     @Column(name = "freeOfCharge")
     private boolean freeOfCharge;
 
-    @Column(name = "description")
-    private String description;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "ad_images",
-            joinColumns = @JoinColumn(name = "ad_id"),
-            inverseJoinColumns = @JoinColumn(name = "image_id"))
-    private List<Image> images;
-
-    @ManyToOne()
-    private City city;
-
     @Column(name = "contactName")
     private String contactName;
 
     @Column(name = "contactPhone")
     private String contactPhone;
 
+    @ManyToOne()
+    private City city;
+
+///////// Third group /////////
     @ManyToOne()
     private Promotion promotion;
 
@@ -65,69 +69,76 @@ public class Ad extends BaseModel {
     @Column(name = "adStatus")
     private AdStatus adStatus;
 
+    @ManyToOne()
+    @NotBlank
+    private User user;
+
     public Ad() {
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus) {
+    public Ad(SellType sellType, String adType, String category, String subcategory, List<Image> images, String title, String description, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String contactName, String contactPhone, City city, Promotion promotion, Timestamp createdOn, AdStatus adStatus, User user) {
+        this.sellType = sellType;
         this.adType = adType;
         this.category = category;
         this.subcategory = subcategory;
+        this.images = images;
         this.title = title;
-        this.sellType = sellType;
+        this.description = description;
         this.price = price;
         this.priceCurrency = priceCurrency;
         this.priceIsFixed = priceIsFixed;
         this.freeOfCharge = freeOfCharge;
-        this.description = description;
-        this.images = images;
-        this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
+        this.city = city;
         this.promotion = promotion;
         this.createdOn = createdOn;
         this.adStatus = adStatus;
+        this.user = user;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, Long id) {
+    public Ad(SellType sellType, String adType, String category, String subcategory, List<Image> images, String title, String description, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String contactName, String contactPhone, City city, Promotion promotion, Timestamp createdOn, AdStatus adStatus, User user, Long id) {
         super(id);
+        this.sellType = sellType;
         this.adType = adType;
         this.category = category;
         this.subcategory = subcategory;
+        this.images = images;
         this.title = title;
-        this.sellType = sellType;
+        this.description = description;
         this.price = price;
         this.priceCurrency = priceCurrency;
         this.priceIsFixed = priceIsFixed;
         this.freeOfCharge = freeOfCharge;
-        this.description = description;
-        this.images = images;
-        this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
+        this.city = city;
         this.promotion = promotion;
         this.createdOn = createdOn;
         this.adStatus = adStatus;
+        this.user = user;
     }
 
-    public Ad(String adType, String category, String subcategory, String title, SellType sellType, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String description, List<Image> images, City city, String contactName, String contactPhone, Promotion promotion, Timestamp createdOn, AdStatus adStatus, String oid, long id) {
+    public Ad(SellType sellType, String adType, String category, String subcategory, List<Image> images, String title, String description, double price, Currency priceCurrency, boolean priceIsFixed, boolean freeOfCharge, String contactName, String contactPhone, City city, Promotion promotion, Timestamp createdOn, AdStatus adStatus, User user, String oid, long id) {
         super(oid, id);
+        this.sellType = sellType;
         this.adType = adType;
         this.category = category;
         this.subcategory = subcategory;
+        this.images = images;
         this.title = title;
-        this.sellType = sellType;
+        this.description = description;
         this.price = price;
         this.priceCurrency = priceCurrency;
         this.priceIsFixed = priceIsFixed;
         this.freeOfCharge = freeOfCharge;
-        this.description = description;
-        this.images = images;
-        this.city = city;
         this.contactName = contactName;
         this.contactPhone = contactPhone;
+        this.city = city;
         this.promotion = promotion;
         this.createdOn = createdOn;
         this.adStatus = adStatus;
+        this.user = user;
     }
 
     public String getAdType() {
@@ -266,15 +277,23 @@ public class Ad extends BaseModel {
         this.adStatus = adStatus;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public enum AdStatus {
-        ACTIVE, PAUSED, INACTIVE
+        active, paused, inactive
     }
 
     public enum Currency {
-        RSD, EUR
+        rsd, eur
     }
 
     public enum SellType {
-        BUY, SELL
+        buy, sell
     }
 }

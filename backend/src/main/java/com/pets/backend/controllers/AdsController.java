@@ -22,48 +22,49 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class AdsController {
-
+    
     @Autowired
     AdRepository adRepository;
     @Autowired
     AdCriteriaRepository adCriteriaRepository;
-
+    
     @GetMapping("/ads")
     public ResponseEntity<List<Ad>> getAllAds(@RequestParam(required = false) String title) {
         try {
             List<Ad> tutorials = new ArrayList<>();
-
+            
             if (title == null) {
                 adRepository.findAll().forEach(tutorials::add);
             } else {
                 adRepository.findByTitleContaining(title).forEach(tutorials::add);
             }
-
+            
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-
+            
             return new ResponseEntity<>(tutorials, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @GetMapping("/ads/{oid}")
     public ResponseEntity<Ad> getAdById(@PathVariable("oid") String oid) {
         Optional<Ad> tutorialData = adRepository.findById(BaseModel.getIdFromOid(oid));
-
+        
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    
     @PostMapping("/ads")
     public ResponseEntity<Ad> createAd(@RequestBody Ad ad) {
         try {
             ad.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
+            ad.setAdStatus(Ad.AdStatus.active);
             Ad _ad = adRepository
                     .save(ad);
             return new ResponseEntity<>(_ad, HttpStatus.CREATED);
@@ -71,11 +72,11 @@ public class AdsController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @PutMapping("/ads/{oid}")
     public ResponseEntity<Ad> updateAd(@PathVariable("oid") String oid, @RequestBody Ad ad) {
         Optional<Ad> tutorialData = adRepository.findById(BaseModel.getIdFromOid(oid));
-
+        
         if (tutorialData.isPresent()) {
             Ad _tutorial = tutorialData.get();
             _tutorial.setTitle(ad.getTitle());
@@ -85,7 +86,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    
     @DeleteMapping("/ads/{oid}")
     public ResponseEntity<HttpStatus> deleteAd(@PathVariable("oid") String oid) {
         try {
@@ -95,7 +96,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @DeleteMapping("/ads")
     public ResponseEntity<HttpStatus> deleteAllAds() {
         try {
@@ -105,7 +106,7 @@ public class AdsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @PostMapping("/ads/search")
     public ResponseEntity<Page<Ad>> search(@RequestBody SearchFilter searchFilter) {
         try {
