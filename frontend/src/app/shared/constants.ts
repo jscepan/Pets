@@ -5,6 +5,7 @@ import { EnumValueModel } from './enums/enum.model';
 // export const BASE_API_URL: string = '';
 export const BASE_API_URL: string = environment.baseApiUrl + '/api';
 export const DOMAIN_ADS: string = 'ads';
+export const DOMAIN_IMAGES: string = 'images';
 export const DOMAIN_CITY: string = 'cities';
 export const DOMAIN_COUNTRY: string = 'countries';
 export const DOMAIN_PROMOTIONS: string = 'promotions';

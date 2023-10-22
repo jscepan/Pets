@@ -5,37 +5,11 @@
   (fileDropped)="onDropped($event)"
 >
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
-  <pets-drag-drop
+  <!-- <pets-drag-drop
     [items]="files"
     (removeItemEvent)="removeImage($event)"
-  ></pets-drag-drop>
-  <!-- <div *ngIf="files.length" class="file-section" cdkDropListGroup>
-    <div
-      class="grid-container"
-      cdkDropList
-      cdkDropListOrientation="horizontal"
-      [cdkDropListData]="files"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div *ngFor="let file of files; let i = index" class="file" cdkDrag>
-        <div class="image-wrapper">
-          <img [src]="getSafeImageUrl(file)" alt="Image" />
-        </div>
-        <div class="name">
-          <pets-button
-            [iconName]="'trash-2'"
-            [color]="'link-white'"
-            [smallWidth]="true"
-            (clickEvent)="removeImage(file); $event.stopPropagation()"
-          ></pets-button>
-        </div>
-        <div class="additional-info">
-          <div class="image-index">{{ i + 1 }}</div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <h3 class="warning" *ngIf="maxImagesCount - files.length < 0">
+  ></pets-drag-drop> -->
+  <h3 class="warning" *ngIf="maxImagesCount - images.length < 0">
     {{ "maxImagesCountIs" | translate : { imageCount: maxImagesCount } }}
   </h3>
   <div class="upload-button">
@@ -44,8 +18,8 @@
       [text]="
         ('addOrDropImages' | translate) +
         ' - ' +
-        (maxImagesCount - files.length >= 0
-          ? maxImagesCount - files.length
+        (maxImagesCount - images.length >= 0
+          ? maxImagesCount - images.length
           : 0) +
         ' ' +
         ('left' | translate)

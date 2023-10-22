@@ -84,6 +84,6 @@ public class Image extends BaseModel {
     }
 
     public enum ImageServer {
-        SERVER_MAIN
+        main_file_system
     }
 }

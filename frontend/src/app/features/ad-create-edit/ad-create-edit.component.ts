@@ -7,6 +7,7 @@ import { Editor, Toolbar } from 'ngx-editor';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
+import { PetsImageUploadComponent } from 'src/app/shared/components/pets-image-upload/pets-image-upload.component';
 import { CURRENCY } from 'src/app/shared/constants';
 import { Currency } from 'src/app/shared/enums/currency.model';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
@@ -67,7 +68,8 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   priceCurrencyOptions: Currency[] = [Currency.RSD, Currency.EUR];
   sellTypeOptions: SellType[] = [SellType.SELL, SellType.BUY];
 
-  //  petsImageUpload;
+  @ViewChild(PetsImageUploadComponent)
+  private petsImageUploadComponent?: PetsImageUploadComponent;
 
   constructor(
     private authStoreService: AuthStoreService,
@@ -153,12 +155,14 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   }
 
   createAd(): void {
+    const images = this.petsImageUploadComponent?.images;
+
     const adData: AdModel = <AdModel>{
       oid: '',
       ...this.firstFormGroup?.value,
       ...this.secondFormGroup?.value,
       ...this.thirdFormGroup?.value,
-      images: [],
+      images: images ? images : [],
       city: this.selectedCity,
       user: this.authStoreService.user,
     };
