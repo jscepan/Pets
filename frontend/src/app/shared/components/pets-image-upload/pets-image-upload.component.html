@@ -5,10 +5,11 @@
   (fileDropped)="onDropped($event)"
 >
   <h5>{{ ("maxFileSize" | translate) + " " + maxFileSize + "." }}</h5>
-  <!-- <pets-drag-drop
-    [items]="files"
+  <pets-drag-drop
+    [items]="images"
+    (imageIndexChanged)="updateImagesIndexes()"
     (removeItemEvent)="removeImage($event)"
-  ></pets-drag-drop> -->
+  ></pets-drag-drop>
   <h3 class="warning" *ngIf="maxImagesCount - images.length < 0">
     {{ "maxImagesCountIs" | translate : { imageCount: maxImagesCount } }}
   </h3>

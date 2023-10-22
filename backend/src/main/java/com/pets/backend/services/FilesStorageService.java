@@ -19,4 +19,6 @@ public interface FilesStorageService {
     public void delete(String filename);
 
     public Stream<Path> loadAll();
+
+    public MultipartFile addWatermarkOnImage(MultipartFile file);
 }

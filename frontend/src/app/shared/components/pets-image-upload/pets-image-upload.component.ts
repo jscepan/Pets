@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -19,7 +18,6 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'pets-image-upload',
   templateUrl: './pets-image-upload.component.html',
   styleUrls: ['./pets-image-upload.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ImageWebService],
 })
 export class PetsImageUploadComponent implements OnInit, OnDestroy {
@@ -31,7 +29,6 @@ export class PetsImageUploadComponent implements OnInit, OnDestroy {
 
   status: 'initial' | 'uploading' | 'success' | 'fail' = 'initial';
   images: ImageModel[] = [];
-  // files: File[] = [];
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 
@@ -111,14 +108,15 @@ export class PetsImageUploadComponent implements OnInit, OnDestroy {
     const f = this.images.indexOf(image);
     if (f >= 0) {
       this.images.splice(f, 1);
+      this.subs.sink = this.webService.deleteEntity([image]).subscribe();
       this.updateImagesIndexes();
     }
   }
 
-  private updateImagesIndexes(): void {
-    const indexes: Map<string, number> = new Map();
+  updateImagesIndexes(): void {
+    const indexes: [string, number][] = [];
     this.images.forEach((image, index) => {
-      indexes.set(image.oid, index);
+      indexes.push([image.oid, index]);
     });
     this.subs.sink = this.webService.updateImageIndexes(indexes).subscribe();
   }

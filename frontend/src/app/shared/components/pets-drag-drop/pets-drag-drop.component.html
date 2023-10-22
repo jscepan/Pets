@@ -15,7 +15,7 @@
     *ngFor="let item of items; let i = index"
   >
     <div cdkDrag class="example-box">
-      <img [src]="getSafeImageUrl(item)" alt="Image" class="image" />
+      <img [src]="getImageUrl(item)" [alt]="item.description" class="image" />
       <div class="name">
         <pets-button
           [iconName]="'trash-2'"

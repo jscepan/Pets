@@ -13,11 +13,15 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ImageModel } from '../../models/image.model';
+import { ImageWebService } from 'src/app/web-services/images.web-service';
+import { BASE_API_URL, DOMAIN_IMAGES } from '../../constants';
 
 @Component({
   selector: 'pets-drag-drop',
   templateUrl: './pets-drag-drop.component.html',
   styleUrls: ['./pets-drag-drop.component.scss'],
+  providers: [ImageWebService],
 })
 export class PetsDragDropComponent implements AfterViewInit {
   // @ts-ignore
@@ -34,13 +38,15 @@ export class PetsDragDropComponent implements AfterViewInit {
   // @ts-ignore
   private dragRef: DragRef = null;
 
-  @Input() items: Array<File> = [];
-  @Output() removeItemEvent: EventEmitter<File> = new EventEmitter();
+  // @Input() items: Array<File> = [];
+  @Input() items: Array<ImageModel> = [];
+  @Output() imageIndexChanged: EventEmitter<void> = new EventEmitter();
+  @Output() removeItemEvent: EventEmitter<ImageModel> = new EventEmitter();
 
   boxWidth = '150px';
   boxHeight = '150px';
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private webService: ImageWebService) {}
 
   ngAfterViewInit() {
     const placeholderElement = this.placeholder.element.nativeElement;
@@ -50,14 +56,29 @@ export class PetsDragDropComponent implements AfterViewInit {
     placeholderElement.parentNode.removeChild(placeholderElement);
   }
 
-  removeImage(file: File): void {
+  removeImage(file: ImageModel): void {
     this.removeItemEvent.emit(file);
   }
 
-  getSafeImageUrl(file: File): SafeUrl {
-    const imageUrl = URL.createObjectURL(file);
-    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  getImageUrl(image: ImageModel): string {
+    return `${BASE_API_URL}/${DOMAIN_IMAGES}/${image.oid}`;
   }
+
+  // getSafeImageUrl(image: ImageModel): any {
+  //   // const imageUrl = URL.createObjectURL(file);
+  //   // return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  //   // this;
+  //   console.log('+++++++++++++++++++++++++++++++++image');
+  //   console.log(image);
+  //   return this.webService.getImage(image.oid).subscribe((data:Blob)=>{
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imageSrc = reader.result as string;
+  //     };
+  //     reader.readAsDataURL(data);
+
+  //   });
+  // }
 
   onDropListDropped() {
     if (!this.target) {
@@ -93,6 +114,7 @@ export class PetsDragDropComponent implements AfterViewInit {
     if (this.sourceIndex !== this.targetIndex) {
       moveItemInArray(this.items, this.sourceIndex, this.targetIndex);
     }
+    this.imageIndexChanged.emit();
   }
 
   onDropListEntered({ item, container }: CdkDragEnter) {

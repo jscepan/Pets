@@ -11,6 +11,12 @@ export class ImageWebService extends EntityBaseWebService<ImageModel> {
     super(baseWebService, ImageModel, DOMAIN_IMAGES);
   }
 
+  getImage(imageOID: string): Observable<{ responseType: 'blob' }> {
+    return this.baseWebService.getRequest<{ responseType: 'blob' }>(
+      `${BASE_API_URL + '/' + this.domainName + '/' + imageOID}`
+    );
+  }
+
   uploadImage(file: File): Observable<ImageModel> {
     const formData = new FormData();
     formData.append('file', file);
@@ -21,10 +27,15 @@ export class ImageWebService extends EntityBaseWebService<ImageModel> {
     );
   }
 
-  updateImageIndexes(indexes: Map<string, number>): Observable<void> {
-    return this.baseWebService.postRequest<void, Map<string, number>>(
+  updateImageIndexes(indexes: [string, number][]): Observable<void> {
+    const jsonIndexes: { [key: string]: number } = {};
+    indexes.forEach(([key, value]) => {
+      jsonIndexes[key] = value;
+    });
+
+    return this.baseWebService.postRequest<void, { [key: string]: number }>(
       `${BASE_API_URL + '/' + this.domainName + '/indexes'}`,
-      indexes
+      jsonIndexes
     );
   }
 }

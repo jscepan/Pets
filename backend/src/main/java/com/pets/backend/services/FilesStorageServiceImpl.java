@@ -80,4 +80,11 @@ public class FilesStorageServiceImpl implements FilesStorageService {
             throw new RuntimeException("Could not load the files!");
         }
     }
+
+    @Override
+    public MultipartFile addWatermarkOnImage(MultipartFile file) {
+        // TODO
+        
+        return file;
+    }
 }

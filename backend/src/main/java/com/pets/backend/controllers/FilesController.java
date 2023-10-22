@@ -6,10 +6,13 @@ import com.pets.backend.models.Image;
 import com.pets.backend.models.Image.ImageServer;
 import com.pets.backend.repository.ImageRepository;
 import com.pets.backend.services.FilesStorageService;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,7 +47,8 @@ public class FilesController {
     @PostMapping("/images/upload")
     public ResponseEntity<Image> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
-            String name = storageService.save(file);
+            MultipartFile newFile = storageService.addWatermarkOnImage(file);
+            String name = storageService.save(newFile);
             Image image = new Image();
             image.setName(name);
             image.setImageServer(ImageServer.main_file_system);
@@ -58,14 +62,17 @@ public class FilesController {
     }
 
     @PostMapping("/images/indexes")
-    public ResponseEntity<HttpStatus> updateImageIndexes(@RequestParam("indexes") Map<String, Integer> indexes) {
+    public ResponseEntity<Void> updateImageIndexes(@RequestBody Map<String, Integer> indexes) {
         for (Map.Entry<String, Integer> entry : indexes.entrySet()) {
             Optional<Image> imageData = imageRepository.findById(BaseModel.getIdFromOid(entry.getKey()));
-            Image newImage = imageData.get();
-            newImage.setIndexOfImage(entry.getValue());
-            imageRepository.save(newImage);
+            if (imageData.isPresent()) {
+
+                Image newImage = imageData.get();
+                newImage.setIndexOfImage(entry.getValue());
+                imageRepository.save(newImage);
+            }
         }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT, HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/images/{oid}")
@@ -91,22 +98,45 @@ public class FilesController {
 //
 //        return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
 //    }
+//    @GetMapping("/images/{oid}")
+//    @ResponseBody
+//    public ResponseEntity<Resource> getFile(@PathVariable String oid) {
+//        Resource file = storageService.load(oid);
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+//    }
+//    @GetMapping("/images/{oid}")
+//    @ResponseBody
+//    public ResponseEntity<Resource> getFile(@PathVariable String oid) {
+//        Resource file = storageService.load(oid);
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+//    }
     @GetMapping("/images/{oid}")
-    @ResponseBody
-    public ResponseEntity<Resource> getFile(@PathVariable String oid) {
-        Resource file = storageService.load(oid);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    public ResponseEntity<Resource> getImage(@PathVariable String oid) throws IOException {
+        Optional<Image> imageData = imageRepository.findById(BaseModel.getIdFromOid(oid));
+        if (imageData.isPresent()) {
+            Resource file = storageService.load(imageData.get().getName());
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg") // Postavite odgovarajući MIME tip slike
+                    .body(file);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
-    @DeleteMapping("/images/{oid}")
-    public ResponseEntity<HttpStatus> deleteCountry(@PathVariable("oid") String oid) {
-        Optional<Image> imageData = imageRepository.findById(BaseModel.getIdFromOid(oid));
-        try {
-            storageService.delete(imageData.get().getName());
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    @DeleteMapping("/images")
+    public ResponseEntity<Void> deleteImages(@RequestBody List<Image> images) {
+        for (Image i : images) {
+            Optional<Image> imageData = imageRepository.findById(BaseModel.getIdFromOid(i.getOid()));
+            try {
+                storageService.delete(imageData.get().getName());
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            } catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
         }
+        return ResponseEntity.ok().build();
     }
 }
