@@ -2,7 +2,15 @@
   display: flex;
   justify-content: space-between;
 }
+
 .first-form {
+  .sell-type-select {
+    margin-bottom: 20px;
+  }
+
+  .select-filter {
+    margin-bottom: 10px;
+  }
 }
 
 .second-form {
@@ -10,8 +18,16 @@
   flex-direction: column;
   width: 100%;
 
+  .image-upload {
+    h3 {
+      text-align: center;
+    }
+  }
+
   .title {
     width: 100%;
+    text-align: center;
+    margin-top: 40px;
 
     .full-width {
       width: 100%;
@@ -19,6 +35,11 @@
   }
 
   .description-editor {
+    border: 1px dotted var(--color-main-light);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 20px;
+
     ::ng-deep .NgxEditor {
       min-height: 150px;
     }
@@ -27,6 +48,7 @@
   .additional-information {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 20px;
 
     .price-wrapper {
       background-color: var(--color-main-lighter);
@@ -51,6 +73,10 @@
         // margin-right: 20px;
         width: min-content;
       }
+
+      .city-field {
+        display: none;
+      }
     }
   }
 }
@@ -58,6 +84,7 @@
 .third-form {
   .promotion-list {
     display: flex;
+    justify-content: center;
 
     .promotion-content {
       display: flex;

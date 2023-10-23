@@ -286,14 +286,14 @@ public class Ad extends BaseModel {
     }
 
     public enum AdStatus {
-        active, paused, inactive
+        ACTIVE, PAUSED, INACTIVE
     }
 
     public enum Currency {
-        rsd, eur
+        RSD, EUR
     }
 
     public enum SellType {
-        buy, sell
+        BUY, SELL
     }
 }

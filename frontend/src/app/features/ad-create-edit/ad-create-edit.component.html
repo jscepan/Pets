@@ -1,31 +1,28 @@
 <mat-stepper linear #stepper>
-  <mat-step>
-    <!-- [stepControl]="firstFormGroup" -->
+  <mat-step [stepControl]="firstFormGroup" *ngIf="firstFormGroup">
     <ng-template matStepperIcon="edit">
       <pets-icons [name]="'check'"></pets-icons>
     </ng-template>
 
     <ng-template matStepLabel>{{ "selectAdType" | translate }}</ng-template>
-    <form
-      [formGroup]="firstFormGroup"
-      *ngIf="firstFormGroup"
-      class="first-form"
-    >
+    <form [formGroup]="firstFormGroup" class="first-form">
       <mat-radio-group
         aria-label="Select sell type"
         formControlName="sellType"
         [color]="'primary'"
+        class="sell-type-select"
       >
         <mat-radio-button
-          value="{{ item }}"
-          *ngFor="let item of sellTypeOptions"
-          >{{ item | translate }}</mat-radio-button
+          value="{{ item.key }}"
+          *ngFor="let item of sellTypeOptions | keyvalue"
+          >{{ item.value | translate }}</mat-radio-button
         >
       </mat-radio-group>
       <pets-autocomplete
         [dataModel]="adsType"
         (changeEvent)="onAdsTypeChange($event)"
         [label]="'selectAdType' | translate"
+        class="select-filter"
       ></pets-autocomplete>
       <pets-autocomplete
         [dataModel]="categories"
@@ -36,6 +33,7 @@
         [dataModel]="subCategories"
         (changeEvent)="onSubcategoriesChange($event)"
         [label]="'selectAdSubcategory' | translate"
+        class="select-filter"
       ></pets-autocomplete>
     </form>
     <div class="button-group">
@@ -43,19 +41,15 @@
         [text]="'next' | translate"
         [disabled]="!firstFormGroup?.valid"
         (clickEvent)="nextStep()"
+        class="select-filter"
       ></pets-button>
     </div>
   </mat-step>
-  <mat-step>
-    <!-- [stepControl]="secondFormGroup" -->
+  <mat-step [stepControl]="secondFormGroup" *ngIf="secondFormGroup">
     <ng-template matStepLabel>{{
       "addBasicInformation" | translate
     }}</ng-template>
-    <form
-      [formGroup]="secondFormGroup"
-      *ngIf="secondFormGroup"
-      class="second-form"
-    >
+    <form [formGroup]="secondFormGroup" class="second-form">
       <div class="image-upload">
         <h3>{{ "adUpTo15ImagesTitle" | translate }}</h3>
         <pets-image-upload
@@ -74,7 +68,6 @@
         </mat-form-field>
       </div>
       <div class="description-editor">
-        <mat-label>{{ "description" | translate }}</mat-label>
         <div class="EditorWrapper"></div>
         <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
         </ngx-editor-menu>
@@ -96,10 +89,10 @@
             <mat-label>{{ "priceCurrency" | translate }}</mat-label>
             <mat-select formControlName="priceCurrency">
               <mat-option
-                *ngFor="let item of priceCurrencyOptions"
-                [value]="item"
+                *ngFor="let item of priceCurrencyOptions | keyvalue"
+                [value]="item.key"
               >
-                {{ item | translate }}
+                {{ item.value | translate }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -123,9 +116,14 @@
             <mat-label>{{ "contactPhone" | translate }}</mat-label>
             <input matInput formControlName="contactPhone" />
           </mat-form-field>
+          <mat-form-field class="city-field">
+            <input matInput formControlName="city" #cityCtrl />
+          </mat-form-field>
           <pets-autocomplete
             [dataModel]="citiesEnumValues"
+            [required]="true"
             (changeEvent)="onCityChange($event)"
+            (clearEvent)="clearCityEvent()"
             [label]="'selectYourPlace' | translate"
             class="contact-field"
           ></pets-autocomplete>
@@ -140,19 +138,15 @@
       <pets-button
         [text]="'next' | translate"
         (clickEvent)="nextStep()"
+        [disabled]="!secondFormGroup?.valid"
       ></pets-button>
     </div>
   </mat-step>
-  <mat-step>
-    <!--  [stepControl]="thirdFormGroup" -->
+  <mat-step [stepControl]="thirdFormGroup" *ngIf="thirdFormGroup">
     <ng-template matStepLabel>{{
       "chooseYourPromotion" | translate
     }}</ng-template>
-    <form
-      [formGroup]="thirdFormGroup"
-      *ngIf="thirdFormGroup"
-      class="third-form"
-    >
+    <form [formGroup]="thirdFormGroup" class="third-form">
       <mat-radio-group
         formControlName="promotion"
         [color]="'primary'"

@@ -180,5 +180,4 @@ public class Promotion extends BaseModel {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
-
 }

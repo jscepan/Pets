@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.pets.backend.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 
@@ -24,11 +25,11 @@ public class JwtUtils {
     @Value("${pets.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    private Key key;
+    private final static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public JwtUtils() {
         // Inicijalizujte ključ samo jednom, pri kreiranju bean-a
-        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
     public String generateJwtToken(Authentication authentication) {
@@ -39,7 +40,7 @@ public class JwtUtils {
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(this.key)
+                .signWith(key)
                 .compact();
     }
 
@@ -49,16 +50,25 @@ public class JwtUtils {
 
     public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parserBuilder().setSigningKey(this.key)
+//            String secretKey = TextCodec.BASE64URL.encode(this.jwtSecret);
+            System.out.println("01010101");
+//            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(authToken);
+            System.out.println("02020202");
+            Jwts.parserBuilder().setSigningKey(key)
                     .build().parse(authToken);
+            System.out.println("return true");
             return true;
         } catch (MalformedJwtException e) {
+            System.out.println("0303030303");
             logger.error("Invalid JWT token: {}", e.getMessage());
         } catch (ExpiredJwtException e) {
+            System.out.println("0404040404");
             logger.error("JWT token is expired: {}", e.getMessage());
         } catch (UnsupportedJwtException e) {
+            System.out.println("0505050505");
             logger.error("JWT token is unsupported: {}", e.getMessage());
         } catch (IllegalArgumentException e) {
+            System.out.println("0606060606");
             logger.error("JWT claims string is empty: {}", e.getMessage());
         }
 

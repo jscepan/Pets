@@ -12,7 +12,6 @@ import {
   DragRef,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ImageModel } from '../../models/image.model';
 import { ImageWebService } from 'src/app/web-services/images.web-service';
 import { BASE_API_URL, DOMAIN_IMAGES } from '../../constants';
@@ -63,22 +62,6 @@ export class PetsDragDropComponent implements AfterViewInit {
   getImageUrl(image: ImageModel): string {
     return `${BASE_API_URL}/${DOMAIN_IMAGES}/${image.oid}`;
   }
-
-  // getSafeImageUrl(image: ImageModel): any {
-  //   // const imageUrl = URL.createObjectURL(file);
-  //   // return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-  //   // this;
-  //   console.log('+++++++++++++++++++++++++++++++++image');
-  //   console.log(image);
-  //   return this.webService.getImage(image.oid).subscribe((data:Blob)=>{
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.imageSrc = reader.result as string;
-  //     };
-  //     reader.readAsDataURL(data);
-
-  //   });
-  // }
 
   onDropListDropped() {
     if (!this.target) {

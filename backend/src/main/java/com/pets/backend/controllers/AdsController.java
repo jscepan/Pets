@@ -64,7 +64,7 @@ public class AdsController {
     public ResponseEntity<Ad> createAd(@RequestBody Ad ad) {
         try {
             ad.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
-            ad.setAdStatus(Ad.AdStatus.active);
+            ad.setAdStatus(Ad.AdStatus.ACTIVE);
             Ad _ad = adRepository
                     .save(ad);
             return new ResponseEntity<>(_ad, HttpStatus.CREATED);

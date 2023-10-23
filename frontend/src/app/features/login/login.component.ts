@@ -65,12 +65,14 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.authStoreService.user = response;
             this.router.navigate(['/']);
 
-            if (this.authStoreService.canceledURL) {
-              this.router.navigate([
-                decodeURI(this.authStoreService.canceledURL),
-              ]);
-              this.authStoreService.canceledURL = null;
-            }
+            // if (this.authStoreService.canceledURL) {
+            //   this.router.navigate([
+            //     decodeURI(this.authStoreService.canceledURL),
+            //   ]);
+            //   this.authStoreService.canceledURL = null;
+            // } else {
+            this.router.navigate(['login']);
+            // }
           });
       });
   }

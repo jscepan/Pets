@@ -8,7 +8,6 @@ import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { PetsImageUploadComponent } from 'src/app/shared/components/pets-image-upload/pets-image-upload.component';
-import { CURRENCY } from 'src/app/shared/constants';
 import { Currency } from 'src/app/shared/enums/currency.model';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
 import { SellType } from 'src/app/shared/enums/sell-type.model';
@@ -65,8 +64,8 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   selectedCategories?: DefinitionEntityModel;
   selectedSubCategories?: DefinitionEntityModel;
 
-  priceCurrencyOptions: Currency[] = [Currency.RSD, Currency.EUR];
-  sellTypeOptions: SellType[] = [SellType.SELL, SellType.BUY];
+  sellTypeOptions = SellType;
+  priceCurrencyOptions = Currency;
 
   @ViewChild(PetsImageUploadComponent)
   private petsImageUploadComponent?: PetsImageUploadComponent;
@@ -129,7 +128,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
       subcategory: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      images: [],
+      images: [[]],
       title: ['', Validators.required],
       description: [''],
       price: [0],
@@ -180,12 +179,14 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     this.firstFormGroup
       ?.get('adType')
       ?.setValue(this.selectedAdType?.value || '');
+
     this.categories = types?.childrens.map((t) => {
       return {
         value: t.value,
         displayName: t.displayValue[this.languageService.selectedLanguage],
       };
     });
+    this.subCategories = [];
   }
 
   oncategoriesChange(item: any): void {
@@ -216,6 +217,11 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
 
   onCityChange(item: EnumValueModel): void {
     this.selectedCity = this.cities?.filter((c) => c.value === item.value)[0];
+    this.secondFormGroup?.get('city')?.setValue(this.selectedCity);
+  }
+
+  clearCityEvent(): void {
+    this.secondFormGroup?.get('city')?.setValue('');
   }
 
   nextStep(): void {

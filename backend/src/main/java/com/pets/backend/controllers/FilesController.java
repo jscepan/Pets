@@ -44,7 +44,7 @@ public class FilesController {
             String name = storageService.save(newFile);
             Image image = new Image();
             image.setName(name);
-            image.setImageServer(ImageServer.main_file_system);
+            image.setImageServer(ImageServer.MAIN_FILE_SYSTEM);
             image.setIndexOfImage(0);
             Image i = imageRepository.save(image);
 

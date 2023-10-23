@@ -7,7 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { EnumValueModel } from '../../enums/enum.model';
 
@@ -18,9 +18,12 @@ import { EnumValueModel } from '../../enums/enum.model';
 })
 export class PetsAutocompleteComponent implements OnInit, OnChanges {
   @Input() dataModel?: EnumValueModel[];
+  @Input() required: boolean = false;
   @Input() label: string = '';
+
   states: EnumValueModel[] = [];
-  autoselectCtrl: FormControl;
+
+  form?: FormGroup;
   filteredStates?: Observable<any[]>;
 
   showComponent: boolean = true;
@@ -28,10 +31,18 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
   selectedObject: EnumValueModel | undefined; // Dodajte ovo kao svojstvo
 
   @Output() changeEvent: EventEmitter<EnumValueModel> = new EventEmitter();
+  @Output() clearEvent: EventEmitter<void> = new EventEmitter();
 
-  constructor() {
-    this.autoselectCtrl = new FormControl();
-    this.filteredStates = this.autoselectCtrl.valueChanges.pipe(
+  constructor() {}
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      autoselectCtrl: new FormControl(
+        '',
+        this.required ? [Validators.required] : []
+      ),
+    });
+    this.filteredStates = this.form?.get('autoselectCtrl')?.valueChanges.pipe(
       startWith(''),
       map((state) =>
         state ? this.filterStates(state) : this.dataModel?.slice() || []
@@ -39,9 +50,8 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
     );
   }
 
-  ngOnInit(): void {}
-
   ngOnChanges(changes: SimpleChanges) {
+    this.form?.get('autoselectCtrl')?.setValue('');
     this.showComponent = false;
     this.states = this.dataModel || [];
     setTimeout(() => {
@@ -70,6 +80,7 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
   }
 
   clearText(): void {
-    this.autoselectCtrl.setValue('');
+    this.form?.get('autoselectCtrl')?.setValue('');
+    this.clearEvent.emit(); // Emitujte selektovani objekat
   }
 }

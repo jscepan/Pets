@@ -1,11 +1,11 @@
-<form>
+<form [formGroup]="form" *ngIf="form">
   <mat-form-field class="example-full-width" *ngIf="showComponent">
     <mat-label>{{ label }}</mat-label>
     <input
       matInput
       aria-label="State"
       [matAutocomplete]="auto"
-      [formControl]="autoselectCtrl"
+      formControlName="autoselectCtrl"
       #autoselect
     />
     <div class="icons" matSuffix>
