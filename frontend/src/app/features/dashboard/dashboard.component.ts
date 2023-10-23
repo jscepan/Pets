@@ -43,12 +43,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.selectAdType(definitions?.adsType[0]);
       }
     );
-
-    // this.favoritesMenu.push({
-    //   icon: '',
-    //   route:'',
-    //   name: this.translateService.instant('dogs'),
-    // });
   }
 
   goTo(fav: { icon: string; route: string; name: string }): void {
@@ -64,6 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           displayName: t.displayValue[this.selectedLanguage],
         };
       });
+      this.subCategories = [];
     }
   }
 
