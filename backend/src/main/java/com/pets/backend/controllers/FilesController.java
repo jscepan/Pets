@@ -1,21 +1,16 @@
 package com.pets.backend.controllers;
 
 import com.pets.backend.models.BaseModel;
-import com.pets.backend.models.FileInfo;
 import com.pets.backend.models.Image;
 import com.pets.backend.models.Image.ImageServer;
 import com.pets.backend.repository.ImageRepository;
 import com.pets.backend.services.FilesStorageService;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,9 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 @CrossOrigin(origins = "http://localhost:4444/")
 @RestController
