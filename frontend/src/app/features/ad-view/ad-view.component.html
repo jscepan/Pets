@@ -1,1 +1,11 @@
-<div class="container">ad-view</div>
+<div class="container" *ngIf="ad">
+  {{ ad.contactName }}
+  {{ ad.contactPhone }}
+  {{ ad.createdOn }}
+  {{ ad.description }}
+  {{ ad.title }}
+  {{ ad.price + " " + ad.priceCurrency }}
+  {{ ad.priceIsFixed }}
+  {{ ad.category }}
+  {{ ad.subcategory }}
+</div>

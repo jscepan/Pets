@@ -121,6 +121,10 @@ export class AdsComponent implements OnInit, OnDestroy {
     return item.oid;
   }
 
+  goToAd(ad: any): void {
+    this.router.navigate(['ad-view/', ad.oid]);
+  }
+
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }

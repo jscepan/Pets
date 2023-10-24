@@ -1,27 +1,40 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { TranslateService } from '@ngx-translate/core';
+import { AdModel } from 'src/app/shared/models/ad.model';
+import { AdWebService } from 'src/app/web-services/ad.web-service';
 
 @Component({
   selector: 'pets-ad-view',
   templateUrl: './ad-view.component.html',
   styleUrls: ['./ad-view.component.scss'],
-  providers: [],
+  providers: [AdWebService],
 })
 export class AdViewComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
+
+  ad?: AdModel;
 
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
     private router: Router,
     private languageService: LanguageService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private route: ActivatedRoute,
+    private webService: AdWebService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const oid = this.route.snapshot.paramMap.get('oid');
+    if (oid) {
+      this.subs.sink = this.webService.getEntityByOid(oid).subscribe((ad) => {
+        this.ad = ad;
+      });
+    }
+  }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();

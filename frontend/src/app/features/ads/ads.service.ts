@@ -21,7 +21,9 @@ export class AdsService extends ListManager<
   public prepareResponse(data: AdModel[]): PetsAdCardI[] {
     return data.map((ad) => ({
       oid: ad.oid,
-      thumbnailUrl: `${BASE_API_URL}/${DOMAIN_IMAGES}/${ad.images[0]?.oid}`,
+      thumbnailUrl: ad.images?.length
+        ? `${BASE_API_URL}/${DOMAIN_IMAGES}/${ad.images[0]?.oid}`
+        : '',
       imageCounter: ad.images?.length || 0,
       videoCounter: ad.videos?.length || 0,
       time: ad.createdOn || '',

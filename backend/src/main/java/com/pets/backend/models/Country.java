@@ -3,13 +3,10 @@ package com.pets.backend.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "countries",
-        uniqueConstraints = {
-            @UniqueConstraint(columnNames = "value")})
+@Table(name = "countries")
 public class Country extends BaseModel {
 
     @NotBlank

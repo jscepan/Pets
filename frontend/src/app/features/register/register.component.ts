@@ -42,7 +42,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   createAccount(): void {
     this.subs.sink = this.authWebService
-      .register(this.signUpForm?.value)
+      .register({
+        ...this.signUpForm?.value,
+        email: this.signUpForm?.value.username,
+      })
       .subscribe((res) => {
         console.log(res);
         // this.router.navigate(['ads']);

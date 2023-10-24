@@ -29,6 +29,7 @@
             [dataModel]="ad"
             *ngFor="let ad of entities | async; trackBy: trackByOid"
             class="ad-card-container"
+            (clickEvent)="goToAd(ad)"
           ></pets-ad-card>
         </div>
         <ng-template #zeroAdsTemplate>

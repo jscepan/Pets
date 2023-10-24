@@ -17,7 +17,7 @@ import { PetsAdCardI } from './pets-ad-card.interface';
 export class PetsAdCardComponent implements OnInit {
   @Input() dataModel?: PetsAdCardI;
 
-  @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
+  @Output() clickEvent: EventEmitter<void> = new EventEmitter();
 
   constructor() {}
 
@@ -25,6 +25,6 @@ export class PetsAdCardComponent implements OnInit {
 
   onClick(e: Event): void {
     e.preventDefault();
-    this.clickEvent.emit(e);
+    this.clickEvent.emit();
   }
 }

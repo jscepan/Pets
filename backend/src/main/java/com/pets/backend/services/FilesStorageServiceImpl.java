@@ -54,12 +54,16 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     @Override
     public Resource load(String filename) {
         try {
+//            System.out.println("RESAVAM za: " + filename);
             Path file = root.resolve(filename);
+//            System.out.println("file: " + file.toUri());
             Resource resource = new UrlResource(file.toUri());
 
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
+                System.out.println("PUKLO za: " + filename);
+                System.out.println("file: " + file.toUri());
                 throw new RuntimeException("Could not read the file!");
             }
         } catch (MalformedURLException e) {
@@ -84,7 +88,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     @Override
     public MultipartFile addWatermarkOnImage(MultipartFile file) {
         // TODO
-        
+
         return file;
     }
 }

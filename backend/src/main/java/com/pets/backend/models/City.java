@@ -8,9 +8,7 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "cities",
-        uniqueConstraints = {
-            @UniqueConstraint(columnNames = "value")})
+@Table(name = "cities")
 public class City extends BaseModel {
 
     @NotBlank

@@ -1,17 +1,14 @@
-<div class="container" *ngIf="dataModel">
-  <div
-    class="thumbnail"
-    *ngIf="dataModel.thumbnailUrl; else noImage"
-  >
+<div class="container" *ngIf="dataModel" (click)="onClick($event)">
+  <div class="thumbnail" *ngIf="dataModel.thumbnailUrl; else noImage">
     <img [src]="dataModel.thumbnailUrl" />
     <div class="media-counters">
       <div class="counter">
         <pets-icons [name]="'camera'"></pets-icons>
-        10
+        {{ dataModel.imageCounter }}
       </div>
       <div class="counter">
         <pets-icons [name]="'video'"></pets-icons>
-        2
+        {{ dataModel.videoCounter }}
       </div>
     </div>
   </div>
@@ -40,11 +37,11 @@
     <div class="media-counters">
       <div class="counter">
         <pets-icons [name]="'camera'"></pets-icons>
-        10
+        {{ dataModel?.imageCounter }}
       </div>
       <div class="counter">
         <pets-icons [name]="'video'"></pets-icons>
-        2
+        {{ dataModel?.videoCounter }}
       </div>
     </div>
   </div>
