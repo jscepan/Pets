@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { PetsAdCardI } from './pets-ad-card.interface';
+import { calculateTimeForCard } from '../../utils';
 
 @Component({
   selector: 'pets-ad-card',

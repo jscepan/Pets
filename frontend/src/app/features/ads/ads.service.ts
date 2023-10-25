@@ -5,6 +5,7 @@ import { AdModel } from 'src/app/shared/models/ad.model';
 import { PetsAdCardI } from 'src/app/shared/components/pets-ad-card/pets-ad-card.interface';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { BASE_API_URL, DOMAIN_IMAGES } from 'src/app/shared/constants';
+import { calculateTimeForCard } from 'src/app/shared/utils';
 
 @Injectable()
 export class AdsService extends ListManager<
@@ -26,7 +27,7 @@ export class AdsService extends ListManager<
         : '',
       imageCounter: ad.images?.length || 0,
       videoCounter: ad.videos?.length || 0,
-      time: ad.createdOn || '',
+      time: ad.createdOn ? calculateTimeForCard(ad.createdOn) : '',
       title: ad.title || '',
       price: (ad.price || '') + (ad.priceCurrency || ''),
       characteristics: (ad.category || '') + (ad.subcategory || ''),

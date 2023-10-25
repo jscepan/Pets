@@ -148,6 +148,11 @@ export function getConstructionMeasure(
   return value;
 }
 
+export function calculateTimeForCard(value: string): string {
+  const time: Date = new Date(value);
+  return '1 hour';
+}
+
 export function getDaysBetweenTwoDates(first: Date, second: Date): number {
   return (first.getTime() - second.getTime()) / (1000 * 3600 * 24);
 }
