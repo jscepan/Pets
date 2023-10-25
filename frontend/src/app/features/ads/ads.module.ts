@@ -12,6 +12,7 @@ import { PetsFiltersModule } from 'src/app/shared/components/pets-filters/pets-f
 import { PetsSearchBarModule } from 'src/app/shared/components/pets-search-bar/pets-search-bar.module';
 import { PetsAdCardModule } from 'src/app/shared/components/pets-ad-card/pets-ad-card.module';
 import { PetsPaginatorModule } from 'src/app/shared/components/pets-paginator/pets-paginator.module';
+import { PetsAdLineModule } from 'src/app/shared/components/pets-ad-line/pets-ad-line.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -28,6 +29,7 @@ import { PetsPaginatorModule } from 'src/app/shared/components/pets-paginator/pe
     PetsFiltersModule,
     PetsSearchBarModule,
     PetsAdCardModule,
+    PetsAdLineModule,
     PetsPaginatorModule,
   ],
 })

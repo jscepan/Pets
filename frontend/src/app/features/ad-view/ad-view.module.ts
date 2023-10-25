@@ -5,10 +5,8 @@ import { AdViewComponent } from './ad-view.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-button.module';
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
-import { PetsAutocompleteModule } from 'src/app/shared/components/pets-autocomplete/pets-autocomplete.module';
-import { PetsChipsModule } from 'src/app/shared/components/pets-chips/pets-chips.module';
-import { PetsSelectModule } from 'src/app/shared/components/pets-select/pets-select.module';
 import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
+import { PetsCarouselModule } from 'src/app/shared/components/pets-carousel/pets-carousel.module';
 
 @NgModule({
   declarations: [AdViewComponent],
@@ -20,6 +18,7 @@ import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.modul
     PetsButtonModule,
     PetsSweetAlertModule,
     PetsIconsProviderModule,
+    PetsCarouselModule,
   ],
 })
 export class AdViewModule {}

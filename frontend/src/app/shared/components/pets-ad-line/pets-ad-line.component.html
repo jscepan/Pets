@@ -1,1 +1,70 @@
-line
+<div class="container" *ngIf="dataModel">
+  <div class="image-container">
+    <div class="media-counters">
+      <div class="counter">
+        <pets-icons [name]="'camera'"></pets-icons>
+        {{ dataModel.imageCounter }}
+      </div>
+      <div class="counter">
+        <pets-icons [name]="'video'"></pets-icons>
+        {{ dataModel.videoCounter }}
+      </div>
+    </div>
+    <div class="thumbnail-container">
+      <div
+        class="thumbnail"
+        *ngIf="dataModel.thumbnailUrl; else noImage"
+        (click)="onClick($event)"
+      >
+        <img [src]="dataModel.thumbnailUrl" />
+      </div>
+    </div>
+  </div>
+  <div class="ad-container">
+    <div class="content">
+      <div class="title-container">
+        <div class="title">{{ dataModel.title }}</div>
+        <div class="favorite">
+          <pets-icons [name]="'heart'" *ngIf="!dataModel.favorite"></pets-icons>
+          <pets-icons
+            [name]="'heart-filled'"
+            *ngIf="dataModel.favorite"
+          ></pets-icons>
+        </div>
+      </div>
+      <div class="description">{{ dataModel.description }}</div>
+      <div class="footer">
+        <div class="time">
+          <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
+          {{ dataModel.time }}
+        </div>
+        <div class="place">
+          <pets-icons [name]="'map-pin'" class="icon"></pets-icons>
+          {{ dataModel.author.location }}
+        </div>
+        <div class="price">
+          {{
+            dataModel.price + " " + (dataModel.priceCurrency || "" | translate)
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noImage>
+  <div class="thumbnail">
+    <img
+      src="https://www.allianceplast.com/wp-content/uploads/no-image-1024x1024.png"
+    />
+    <!-- <div class="media-counters">
+      <div class="counter">
+        <pets-icons [name]="'camera'"></pets-icons>
+        {{ dataModel?.imageCounter }}
+      </div>
+      <div class="counter">
+        <pets-icons [name]="'video'"></pets-icons>
+        {{ dataModel?.videoCounter }}
+      </div>
+    </div> -->
+  </div>
+</ng-template>

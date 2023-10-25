@@ -6,16 +6,20 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { PetsAdCardI } from '../pets-ad-card/pets-ad-card.interface';
+
+export interface CarouselImagesI {
+  imageOid: string;
+  imageUrl: string;
+}
 
 @Component({
-  selector: 'pets-ad-line',
-  templateUrl: './pets-ad-line.component.html',
-  styleUrls: ['./pets-ad-line.component.scss'],
+  selector: 'pets-carousel',
+  templateUrl: './pets-carousel.component.html',
+  styleUrls: ['./pets-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetsAdLineComponent implements OnInit {
-  @Input() dataModel?: PetsAdCardI;
+export class PetsCarouselComponent implements OnInit {
+  @Input() dataModel?: CarouselImagesI[];
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
 

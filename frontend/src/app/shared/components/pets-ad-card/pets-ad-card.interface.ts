@@ -1,3 +1,4 @@
+import { Currency } from '../../enums/currency.model';
 import { BaseModel } from '../../models/base-model';
 
 export interface PetsAdCardI extends BaseModel {
@@ -7,6 +8,7 @@ export interface PetsAdCardI extends BaseModel {
   time: string;
   title: string;
   price: string;
+  priceCurrency?: string;
   characteristics: string;
   description: string;
   author: {

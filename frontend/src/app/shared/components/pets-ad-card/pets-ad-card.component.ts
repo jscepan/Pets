@@ -7,7 +7,11 @@ import {
   Output,
 } from '@angular/core';
 import { PetsAdCardI } from './pets-ad-card.interface';
-import { calculateTimeForCard } from '../../utils';
+
+export enum ClickType {
+  link,
+  favorite,
+}
 
 @Component({
   selector: 'pets-ad-card',
@@ -18,14 +22,16 @@ import { calculateTimeForCard } from '../../utils';
 export class PetsAdCardComponent implements OnInit {
   @Input() dataModel?: PetsAdCardI;
 
-  @Output() clickEvent: EventEmitter<void> = new EventEmitter();
+  @Output() clickEvent: EventEmitter<ClickType> = new EventEmitter();
+
+  clickTypeEnum = ClickType;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onClick(e: Event): void {
+  onClick(e: Event, type: ClickType): void {
     e.preventDefault();
-    this.clickEvent.emit();
+    this.clickEvent.emit(type);
   }
 }

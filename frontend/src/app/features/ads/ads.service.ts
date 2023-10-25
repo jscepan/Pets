@@ -5,7 +5,11 @@ import { AdModel } from 'src/app/shared/models/ad.model';
 import { PetsAdCardI } from 'src/app/shared/components/pets-ad-card/pets-ad-card.interface';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { BASE_API_URL, DOMAIN_IMAGES } from 'src/app/shared/constants';
-import { calculateTimeForCard } from 'src/app/shared/utils';
+import {
+  calculateTimeForCard,
+  roundOnIntegerOrMaxTwoDigits,
+} from 'src/app/shared/utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AdsService extends ListManager<
@@ -13,7 +17,10 @@ export class AdsService extends ListManager<
   PetsAdCardI,
   SearchFilterModel
 > {
-  constructor(private webService: AdWebService) {
+  constructor(
+    private webService: AdWebService,
+    private translateService: TranslateService
+  ) {
     super();
     this.setRequestFn(this.webService.searchEntities);
     this.setResponseFn(this.prepareResponse.bind(this));
@@ -27,15 +34,20 @@ export class AdsService extends ListManager<
         : '',
       imageCounter: ad.images?.length || 0,
       videoCounter: ad.videos?.length || 0,
-      time: ad.createdOn ? calculateTimeForCard(ad.createdOn) : '',
+      time: ad.createdOn
+        ? calculateTimeForCard(ad.createdOn).value +
+          ' ' +
+          this.translateService.instant(calculateTimeForCard(ad.createdOn).time)
+        : '',
       title: ad.title || '',
-      price: (ad.price || '') + (ad.priceCurrency || ''),
+      price: ad.price ? roundOnIntegerOrMaxTwoDigits(ad.price) : '',
+      priceCurrency: ad.priceCurrency?.toLowerCase(),
       characteristics: (ad.category || '') + (ad.subcategory || ''),
       description: ad.description || '',
       author: {
         thumbnailUrl: '',
         name: ad.contactName || '',
-        location: 'Kruscic',
+        location: ad.city?.value || '',
       },
       favorite: ad.inactive || false,
     }));

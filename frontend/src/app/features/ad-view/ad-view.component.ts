@@ -6,6 +6,8 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { TranslateService } from '@ngx-translate/core';
 import { AdModel } from 'src/app/shared/models/ad.model';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
+import { CarouselImagesI } from 'src/app/shared/components/pets-carousel/pets-carousel.component';
+import { BASE_API_URL, DOMAIN_IMAGES } from 'src/app/shared/constants';
 
 @Component({
   selector: 'pets-ad-view',
@@ -17,6 +19,7 @@ export class AdViewComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   ad?: AdModel;
+  images: CarouselImagesI[] = [];
 
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
@@ -32,6 +35,12 @@ export class AdViewComponent implements OnInit, OnDestroy {
     if (oid) {
       this.subs.sink = this.webService.getEntityByOid(oid).subscribe((ad) => {
         this.ad = ad;
+        ad.images.forEach((i) => {
+          this.images.push({
+            imageOid: i.oid,
+            imageUrl: `${BASE_API_URL}/${DOMAIN_IMAGES}/${i.oid}`,
+          });
+        });
       });
     }
   }

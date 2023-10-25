@@ -1,31 +1,44 @@
-<div class="container" *ngIf="dataModel" (click)="onClick($event)">
-  <div class="thumbnail" *ngIf="dataModel.thumbnailUrl; else noImage">
-    <img [src]="dataModel.thumbnailUrl" />
-    <div class="media-counters">
-      <div class="counter">
-        <pets-icons [name]="'camera'"></pets-icons>
-        {{ dataModel.imageCounter }}
+<div class="container" *ngIf="dataModel">
+  <div class="image-container" (click)="onClick($event, clickTypeEnum.link)">
+    <div class="thumbnail" *ngIf="dataModel.thumbnailUrl; else noImage">
+      <div class="media-counters">
+        <div class="counter">
+          <pets-icons [name]="'camera'"></pets-icons>
+          {{ dataModel.imageCounter }}
+        </div>
+        <div class="counter">
+          <pets-icons [name]="'video'"></pets-icons>
+          {{ dataModel.videoCounter }}
+        </div>
       </div>
-      <div class="counter">
-        <pets-icons [name]="'video'"></pets-icons>
-        {{ dataModel.videoCounter }}
-      </div>
+      <img [src]="dataModel.thumbnailUrl" />
     </div>
   </div>
-  <div class="ad-container">
-    <div class="title">{{ dataModel.title }}</div>
-    <div class="price">{{ dataModel.price }}</div>
-    <div class="description">{{ dataModel.description }}</div>
-    <div class="time">
-      <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
-      {{ dataModel.time }}
-    </div>
-    <div class="place">
-      {{ dataModel.author.location }}
-    </div>
-    <div class="favorite">
-      <pets-icons [name]="'heart'" *ngIf="true"></pets-icons>
-      <pets-icons [name]="'heart-filled'" *ngIf="true"></pets-icons>
+  <div class="info-container">
+    <div class="ad-container">
+      <div class="title-content">
+        <div class="title">{{ dataModel.title }}</div>
+        <div class="favorite" (click)="onClick($event, clickTypeEnum.favorite)">
+          <pets-icons [name]="'heart'" *ngIf="!dataModel.favorite"></pets-icons>
+          <pets-icons
+            [name]="'heart-filled'"
+            *ngIf="dataModel.favorite"
+          ></pets-icons>
+        </div>
+      </div>
+      <div class="description">{{ dataModel.description }}</div>
+      <div class="footer">
+        <!-- <div class="time">
+          <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
+          {{ dataModel.time }}
+        </div> -->
+        <div class="place">
+          {{ dataModel.author.location }}
+        </div>
+        <div class="price">
+          {{ dataModel.price }} {{ dataModel.priceCurrency }}
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,131 @@
+.container {
+  box-sizing: content-box;
+  position: relative;
+  border: 1px solid rgb(147, 147, 147);
+  border-radius: 6px;
+  display: flex;
+
+  background: linear-gradient(180deg, #e7cdff 0, #f2e3ff 75%, #b284dd);
+  box-shadow: 0 1px 3px 0 #7222bc;
+  height: 10rem;
+
+  .image-container {
+    height: 100%;
+    min-width: 200px;
+    max-width: 200px;
+    position: relative;
+    overflow: hidden;
+
+    .media-counters {
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+      border-radius: 6px;
+      padding: 3px;
+      display: flex;
+      background-color: rgb(0, 0, 0);
+      opacity: 0.5;
+      align-items: center;
+      z-index: 1;
+
+      .counter {
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+        color: var(--color-white);
+
+        pets-icons {
+          margin-right: 3px;
+        }
+      }
+    }
+
+    .thumbnail-container {
+      height: 100%;
+      width: 100%;
+
+      .thumbnail {
+        position: relative;
+        height: 100%;
+        padding: 3px;
+        cursor: pointer;
+        transition: transform 400ms ease;
+
+        img {
+          object-fit: fill;
+          object-position: center;
+          top: 50%;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+        }
+      }
+
+      .thumbnail:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  .ad-container {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    max-height: -webkit-fill-available;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .favorite {
+        cursor: pointer;
+      }
+    }
+
+    .description {
+      margin: 10px 0 20px 0;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+
+      .time {
+        display: flex;
+        align-items: center;
+
+        pets-icons {
+          margin-right: 7px;
+        }
+      }
+
+      .place {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          margin-right: 7px;
+        }
+      }
+
+      .price {
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+  }
+}

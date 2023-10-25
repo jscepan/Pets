@@ -1,4 +1,10 @@
 {
+  "week": "Week",
+  "weeks": "Weeks",
+  "day": "Day",
+  "days": "Days",
+  "hour": "Hour",
+  "hours": "Hours",
   "chooseYourPromotion": "Choose your promotion",
   "successfully": "successfully",
   "countryIsSuccessfullyUpdated": "Country is successfully updated",

@@ -1,4 +1,10 @@
 {
+  "week": "Nedelja",
+  "weeks": "Nedelje",
+  "day": "Dan",
+  "days": "Dana",
+  "hour": "Sat",
+  "hours": "Sati",
   "chooseYourPromotion": "Izaberite promociju",
   "successfully": "Uspešno",
   "countryIsSuccessfullyUpdated": "Država je uspešno izmenjena",

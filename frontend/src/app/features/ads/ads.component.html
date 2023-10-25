@@ -25,12 +25,24 @@
             grid: viewType === viewTypeEnum.grid
           }"
         >
-          <pets-ad-card
-            [dataModel]="ad"
+          <ng-container
             *ngFor="let ad of entities | async; trackBy: trackByOid"
-            class="ad-card-container"
-            (clickEvent)="goToAd(ad)"
-          ></pets-ad-card>
+          >
+            <ng-container *ngIf="viewType === viewTypeEnum.list">
+              <pets-ad-line
+                [dataModel]="ad"
+                class="ad-card-container"
+                (clickEvent)="goToAd(ad)"
+              ></pets-ad-line>
+            </ng-container>
+            <ng-container *ngIf="viewType === viewTypeEnum.grid">
+              <pets-ad-card
+                [dataModel]="ad"
+                class="ad-card-container"
+                (clickEvent)="goToAd(ad)"
+              ></pets-ad-card>
+            </ng-container>
+          </ng-container>
         </div>
         <ng-template #zeroAdsTemplate>
           <div class="no-ads">{{ "thereAreNoResults" | translate }}</div>

@@ -148,9 +148,31 @@ export function getConstructionMeasure(
   return value;
 }
 
-export function calculateTimeForCard(value: string): string {
-  const time: Date = new Date(value);
-  return '1 hour';
+export function calculateTimeForCard(value: string): {
+  value: number;
+  time: string;
+} {
+  const curentTime = new Date().getTime(); // Konvertuj trenutni datum u milisekunde
+  const betweenMS = curentTime - new Date(value).getTime();
+  const seconds = Math.floor(betweenMS / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+
+  if (weeks >= 1) {
+    return { value: weeks + 1, time: 'weeks' };
+  } else if (days >= 1) {
+    if (days === 6 && hours > 0) {
+      return { value: 1, time: 'week' };
+    }
+    return { value: days + 1, time: 'days' };
+  } else {
+    if (hours === 23 && minutes > 0) {
+      return { value: 1, time: 'day' };
+    }
+    return { value: hours + 1, time: hours > 0 ? 'hours' : 'hour' };
+  }
 }
 
 export function getDaysBetweenTwoDates(first: Date, second: Date): number {
@@ -163,4 +185,14 @@ export function compareByValue(f1: BaseModel, f2: BaseModel) {
 
 export function getWorkOrderImageUrl(url: string): string {
   return BASE_API_URL + '/images/' + url;
+}
+
+export function roundOnIntegerOrMaxTwoDigits(value: number): string {
+  if (Number.isInteger(value)) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  } else {
+    return roundOnDigits(value, 2)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
 }
