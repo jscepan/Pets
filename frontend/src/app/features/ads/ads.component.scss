@@ -14,8 +14,14 @@
     .ads-wrapper-container {
       .ads-container {
         .grid-container {
+          display: flex;
+          flex-direction: column;
           width: 100%;
           height: fit-content;
+
+          .ad-card-container {
+            margin: 5px 0;
+          }
 
           &.grid {
             display: grid;

@@ -7,23 +7,25 @@
 
   background: linear-gradient(180deg, #e7cdff 0, #f2e3ff 75%, #b284dd);
   box-shadow: 0 1px 3px 0 #7222bc;
+  height: 10rem;
 
   .thumbnail {
     position: relative;
     width: 200px;
+    padding: 3px;
 
     img {
-      object-fit: contain;
+      object-fit: fill;
       object-position: center;
       top: 50%;
       width: 100%;
       height: 100%;
-      border-radius: 20px;
+      border-radius: 10px;
     }
 
     .media-counters {
       position: absolute;
-      right: 5px;
+      right: 10px;
       bottom: 5px;
       border-radius: 6px;
       padding: 3px;

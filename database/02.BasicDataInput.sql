@@ -12,3 +12,7 @@ INSERT INTO promotions(type, title, subtitle, description, services, price, pric
 INSERT INTO promotions(type, title, subtitle, description, services, price, price_currency, free_of_charge, inactive, points, created_on) VALUES('', 'priorityAd','','moreViews','maturityOf3Days||aboveBasicAds||basicAfterMaturity', 700, 'RSD',0,0,10,now());
 INSERT INTO promotions(type, title, subtitle, description, services, price, price_currency, free_of_charge, inactive, points, created_on) VALUES('', 'highPriorityAd','','onTop','maturityOf7Days||onFirstPages||basicAfterMaturity', 1500, 'RSD',0,0,30,now());
 
+INSERT INTO users (display_name,email,full_name,inactive,language,password,phone_number,username,avatar_id,city_id) VALUES 
+(null, 'jscepan@gmail.com',null,0,null,'$2a$10$wqsORoAKMYq784HpU7HWaupKughoNuhHEGuih.IKGdBUaHpc1s7DC',null,'jscepan@gmail.com',null,null),
+(null, 'jscepan2@gmail.com',null,0,null,'$2a$10$wqsORoAKMYq784HpU7HWaupKughoNuhHEGuih.IKGdBUaHpc1s7DC',null,'jscepan2@gmail.com',null,null),
+(null, 'jscepan3@gmail.com',null,0,null,'$2a$10$wqsORoAKMYq784HpU7HWaupKughoNuhHEGuih.IKGdBUaHpc1s7DC',null,'jscepan3@gmail.com',null,null);
