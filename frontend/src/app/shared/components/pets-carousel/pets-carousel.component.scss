@@ -1,2 +1,18 @@
-.container {
+.carousel-container {
+  display: flex;
+  width: 100%;
+}
+
+.all-images {
+  display: flex;
+
+  img {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+  }
+}
+
+button {
+  margin: 10px;
 }

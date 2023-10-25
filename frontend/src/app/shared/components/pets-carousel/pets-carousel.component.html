@@ -1,3 +1,10 @@
-<div class="container">
-  <img [src]="image.imageUrl" *ngFor="let image of dataModel" />
+<div class="carousel-container">
+  <button (click)="prevSlide()">Prethodni</button>
+  <div class="active-slide">
+    <img [src]="dataModel[currentIndex].imageUrl" />
+  </div>
+  <button (click)="nextSlide()">Sledeći</button>
+</div>
+<div class="all-images">
+  <img [src]="image.imageUrl" *ngFor="let image of dataModel; let i = index" />
 </div>

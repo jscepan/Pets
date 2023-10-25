@@ -19,16 +19,21 @@ export interface CarouselImagesI {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PetsCarouselComponent implements OnInit {
-  @Input() dataModel?: CarouselImagesI[];
+  @Input() dataModel: CarouselImagesI[] = [];
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
+  currentIndex: number = 0;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onClick(e: Event): void {
-    e.preventDefault();
-    this.clickEvent.emit(e);
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.dataModel.length;
+  }
+
+  prevSlide() {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.dataModel.length) % this.dataModel.length;
   }
 }
