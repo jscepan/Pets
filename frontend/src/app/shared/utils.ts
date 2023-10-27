@@ -159,8 +159,13 @@ export function calculateTimeForCard(value: string): {
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
   const weeks = Math.floor(days / 7);
+  const months = Math.floor(weeks / 4);
 
-  if (weeks >= 1) {
+  if (months > 1) {
+    return { value: months + 1, time: 'months' };
+  } else if (weeks === 4) {
+    return { value: 1, time: 'month' };
+  } else if (weeks >= 1) {
     return { value: weeks + 1, time: 'weeks' };
   } else if (days >= 1) {
     if (days === 6 && hours > 0) {

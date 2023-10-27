@@ -1,10 +1,41 @@
 <div class="container" *ngIf="ad">
+  <div class="header-content">
+    <div class="title">
+      {{ ad.title }}
+    </div>
+    <div class="favorite">
+      <div class="favorite" (click)="onFavoriteClick()">
+        <pets-icons [name]="'heart'" *ngIf="!isFavorite"></pets-icons>
+        <pets-icons [name]="'heart-filled'" *ngIf="isFavorite"></pets-icons>
+      </div>
+    </div>
+    <div class="seller-info-container">
+      <div class="seller-name">
+        {{ ad.contactName }}
+      </div>
+      <div class="seller-phone">
+        <pets-button
+          (clickEvent)="showPhoneNumberClick()"
+          *ngIf="!showPhoneNumber"
+          >{{ "showPhoneNumber" | translate }}</pets-button
+        >
+        <div class="phone" *ngIf="showPhoneNumber">
+          {{ ad.contactPhone }}
+        </div>
+      </div>
+    </div>
+    <div class="time" *ngIf="ad.createdOn">
+      <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
+      {{
+        calculateTimeForCard(ad.createdOn).value +
+          " " +
+          (calculateTimeForCard(ad.createdOn).time | translate)
+      }}
+    </div>
+  </div>
   <pets-carousel [dataModel]="images"></pets-carousel>
-  {{ ad.contactName }}
-  {{ ad.contactPhone }}
   {{ ad.createdOn }}
   {{ ad.description }}
-  {{ ad.title }}
   {{ ad.price + " " + ad.priceCurrency }}
   {{ ad.priceIsFixed }}
   {{ ad.category }}

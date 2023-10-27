@@ -8,6 +8,7 @@ import { AdModel } from 'src/app/shared/models/ad.model';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { CarouselImagesI } from 'src/app/shared/components/pets-carousel/pets-carousel.component';
 import { BASE_API_URL, DOMAIN_IMAGES } from 'src/app/shared/constants';
+import { calculateTimeForCard } from 'src/app/shared/utils';
 
 @Component({
   selector: 'pets-ad-view',
@@ -20,6 +21,10 @@ export class AdViewComponent implements OnInit, OnDestroy {
 
   ad?: AdModel;
   images: CarouselImagesI[] = [];
+
+  isFavorite: boolean = false;
+  showPhoneNumber: boolean = false;
+  calculateTimeForCard = calculateTimeForCard;
 
   constructor(
     private definitionsStoreService: DefinitionsStoreService,
@@ -44,6 +49,10 @@ export class AdViewComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  showPhoneNumberClick(): void {}
+
+  onFavoriteClick(): void {}
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
