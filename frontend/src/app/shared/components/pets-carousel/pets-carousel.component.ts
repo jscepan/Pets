@@ -36,4 +36,10 @@ export class PetsCarouselComponent implements OnInit {
     this.currentIndex =
       (this.currentIndex - 1 + this.dataModel.length) % this.dataModel.length;
   }
+
+  selectImage(index: number): void {
+    if (index !== this.currentIndex) {
+      this.currentIndex = index;
+    }
+  }
 }

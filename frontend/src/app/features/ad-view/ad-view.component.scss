@@ -1,2 +1,66 @@
 .container {
+  display: flex;
+  flex-direction: column;
+
+  .top-container {
+    display: flex;
+    width: 100%;
+
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .cursors-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .location {
+          display: flex;
+        }
+
+        .time {
+          display: flex;
+
+          .time-value {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    .right-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      // width: 100%;
+
+      .price-content {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-danger);
+        padding: 10px;
+        border-radius: 8px;
+        // background-color: var(--color-main-lighter);
+      }
+
+      .seller-info-container {
+        display: flex;
+        flex-direction: column;
+
+        .seller-name {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--color-black);
+        }
+      }
+    }
+  }
 }

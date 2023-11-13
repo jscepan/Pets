@@ -1,4 +1,7 @@
 {
+  "sendMessage": "Send message",
+  "memberSince": "Member since",
+  "location": "Location",
   "week": "Week",
   "weeks": "Weeks",
   "day": "Day",

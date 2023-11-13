@@ -49,11 +49,14 @@ export class AdViewComponent implements OnInit, OnDestroy {
       });
     }
   }
-
-  showPhoneNumberClick(): void {}
+  sendMessage(): void {}
+  showPhoneNumberClick(): void {
+    this.showPhoneNumber = true;
+  }
 
   onFavoriteClick(): void {}
-
+  previousAd(): void {}
+  nextAd(): void {}
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }

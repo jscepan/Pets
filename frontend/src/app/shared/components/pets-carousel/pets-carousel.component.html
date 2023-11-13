@@ -1,10 +1,33 @@
 <div class="carousel-container">
-  <button (click)="prevSlide()">Prethodni</button>
-  <div class="active-slide">
-    <img [src]="dataModel[currentIndex].imageUrl" />
+  <div class="preview">
+    <pets-icons
+      [name]="'chevron-left'"
+      [color]="'white'"
+      (click)="prevSlide()"
+      class="button"
+      [size]="'32px'"
+    ></pets-icons>
+    <div class="active-slide">
+      <img [src]="dataModel[currentIndex].imageUrl" />
+    </div>
+    <pets-icons
+      [name]="'chevron-right'"
+      [color]="'white'"
+      (click)="nextSlide()"
+      class="button"
+      [size]="'32px'"
+    ></pets-icons>
   </div>
-  <button (click)="nextSlide()">Sledeći</button>
-</div>
-<div class="all-images">
-  <img [src]="image.imageUrl" *ngFor="let image of dataModel; let i = index" />
+  <div class="all-images">
+    <div
+      class="image"
+      *ngFor="let image of dataModel; let i = index"
+      (click)="selectImage(i)"
+    >
+      <img
+        [src]="image.imageUrl"
+        [ngClass]="{ selected: i === currentIndex }"
+      />
+    </div>
+  </div>
 </div>

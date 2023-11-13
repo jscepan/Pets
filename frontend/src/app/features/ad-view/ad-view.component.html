@@ -1,43 +1,97 @@
 <div class="container" *ngIf="ad">
-  <div class="header-content">
-    <div class="title">
-      {{ ad.title }}
-    </div>
-    <div class="favorite">
-      <div class="favorite" (click)="onFavoriteClick()">
-        <pets-icons [name]="'heart'" *ngIf="!isFavorite"></pets-icons>
-        <pets-icons [name]="'heart-filled'" *ngIf="isFavorite"></pets-icons>
+  <div class="top-container">
+    <div class="left-content">
+      <div class="header-content">
+        <div class="title">
+          {{ ad.title }}
+        </div>
+        <div class="favorite">
+          <div class="favorite" (click)="onFavoriteClick()">
+            <pets-icons [name]="'heart'" *ngIf="!isFavorite"></pets-icons>
+            <pets-icons [name]="'heart-filled'" *ngIf="isFavorite"></pets-icons>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="seller-info-container">
-      <div class="seller-name">
-        {{ ad.contactName }}
+      <div class="cursors-container">
+        <div class="previous-ad-button">
+          <pets-button
+            (clickEvent)="previousAd()"
+            [text]="'previousAd' | translate"
+            [color]="'link'"
+            [iconName]="'chevron-left'"
+            [iconPosition]="'left'"
+            [smallWidth]="true"
+          ></pets-button>
+        </div>
+        <div class="location">
+          {{ ad.city?.value }}
+        </div>
+        <div class="time" *ngIf="ad.createdOn">
+          <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
+          <div class="time-value">
+            {{
+              calculateTimeForCard(ad.createdOn).value +
+                " " +
+                (calculateTimeForCard(ad.createdOn).time | translate)
+            }}
+          </div>
+        </div>
+        <div class="next-ad-button">
+          <pets-button
+            (clickEvent)="nextAd()"
+            [text]="'nextAd' | translate"
+            [color]="'link'"
+            [iconName]="'chevron-right'"
+            [iconPosition]="'right'"
+            [smallWidth]="true"
+          ></pets-button>
+        </div>
       </div>
-      <div class="seller-phone">
-        <pets-button
-          (clickEvent)="showPhoneNumberClick()"
-          *ngIf="!showPhoneNumber"
-          >{{ "showPhoneNumber" | translate }}</pets-button
-        >
-        <div class="phone" *ngIf="showPhoneNumber">
-          {{ ad.contactPhone }}
+      <pets-carousel [dataModel]="images"></pets-carousel>
+    </div>
+    <div class="right-content">
+      <div class="price-content">
+        <div class="price-amount">
+          {{ "price" | translate }}: {{ ad.price + " " + ad.priceCurrency }}
+        </div>
+        <div class="price-fixed" *ngIf="ad.priceIsFixed">
+          {{ "fixedPrice" | translate }}
+        </div>
+      </div>
+      <div class="seller-info-container">
+        <div class="seller-name">
+          {{ ad.contactName }}
+        </div>
+        <div class="member-since">
+          {{ "memberSince" | translate }}:
+          <!-- {{ ad.owner.createdOn }} -->
+        </div>
+        <div class="member-from">
+          {{ "location" | translate }}:
+          <!-- {{ ad.owner.city?.value }} -->
+        </div>
+        <div class="seller-message">
+          <pets-button
+            (clickEvent)="sendMessage()"
+            [iconName]="'message-square'"
+            >{{ "sendMessage" | translate }}</pets-button
+          >
+        </div>
+        <div class="seller-phone">
+          <pets-button
+            (clickEvent)="showPhoneNumberClick()"
+            *ngIf="!showPhoneNumber"
+            [iconName]="'phone-call'"
+            >{{ "showPhoneNumber" | translate }}</pets-button
+          >
+          <div class="phone" *ngIf="showPhoneNumber">
+            {{ ad.contactPhone }}
+          </div>
         </div>
       </div>
     </div>
-    <div class="time" *ngIf="ad.createdOn">
-      <pets-icons [name]="'clock'" [size]="'15px'"></pets-icons>
-      {{
-        calculateTimeForCard(ad.createdOn).value +
-          " " +
-          (calculateTimeForCard(ad.createdOn).time | translate)
-      }}
-    </div>
   </div>
-  <pets-carousel [dataModel]="images"></pets-carousel>
-  {{ ad.createdOn }}
-  {{ ad.description }}
-  {{ ad.price + " " + ad.priceCurrency }}
-  {{ ad.priceIsFixed }}
+  <div class="ad-description" [innerHTML]="ad.description"></div>
   {{ ad.category }}
   {{ ad.subcategory }}
 </div>

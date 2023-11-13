@@ -1,4 +1,3 @@
-
 // Button icon positioning
 pets-button {
   .mat-button-wrapper {
@@ -7,7 +6,7 @@ pets-button {
   }
 
   .pets-icon-right {
-    .mat-button-wrapper {
+    .button-content {
       flex-direction: row-reverse;
     }
   }
