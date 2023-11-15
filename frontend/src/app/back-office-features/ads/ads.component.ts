@@ -12,6 +12,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { SearchFilterModel } from 'src/app/shared/models/search.model';
+import { ImageModel } from 'src/app/shared/models/image.model';
+import { BASE_API_URL, DOMAIN_IMAGES } from 'src/app/shared/constants';
 
 @Component({
   selector: 'pets-ads',
@@ -35,18 +38,7 @@ export class AdsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['value'];
   ads: AdModel[] = [];
 
-  columnsToDisplay = [
-    'username',
-    'email',
-    'displayName',
-    'city',
-    'phoneNumber',
-    'fullName',
-    'language',
-    'inactive',
-    'edit',
-    'deactivate',
-  ];
+  columnsToDisplay = ['adType', 'category', 'adStatus', 'city', 'user'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement?: AdModel | null;
 
@@ -58,9 +50,11 @@ export class AdsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.subs.sink = this.webService.searchEntities().subscribe((ads) => {
-    //   this.ads = ads;
-    // });
+    this.subs.sink = this.webService
+      .searchEntities(new SearchFilterModel())
+      .subscribe((response) => {
+        this.ads = response.content;
+      });
   }
 
   createNew(): void {
@@ -73,6 +67,10 @@ export class AdsComponent implements OnInit, OnDestroy {
 
   deactivateItem(element: AdModel): void {
     // TODO
+  }
+
+  getImageUrl(image: ImageModel): string {
+    return `${BASE_API_URL}/${DOMAIN_IMAGES}/${image.oid}`;
   }
 
   ngOnDestroy(): void {

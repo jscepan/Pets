@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users",
@@ -62,6 +63,9 @@ public class User extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "terms_and_conditions_id"))
     private Set<TermsAndConditions> termsAndConditions = new HashSet<>();
 
+    @Column(name = "createdOn")
+    private Timestamp createdOn;
+
     public User() {
     }
 
@@ -71,7 +75,7 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar) {
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, Timestamp createdOn) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -82,9 +86,10 @@ public class User extends BaseModel {
         this.fullName = fullName;
         this.language = language;
         this.avatar = avatar;
+        this.createdOn = createdOn;
     }
 
-    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, Long id) {
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, Timestamp createdOn, Long id) {
         super(id);
         this.username = username;
         this.email = email;
@@ -96,9 +101,10 @@ public class User extends BaseModel {
         this.fullName = fullName;
         this.language = language;
         this.avatar = avatar;
+        this.createdOn = createdOn;
     }
 
-    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, String oid, long id) {
+    public User(String username, String email, String password, String displayName, City city, String phoneNumber, boolean inactive, String fullName, String language, Avatar avatar, Timestamp createdOn, String oid, long id) {
         super(oid, id);
         this.username = username;
         this.email = email;
@@ -110,6 +116,7 @@ public class User extends BaseModel {
         this.fullName = fullName;
         this.language = language;
         this.avatar = avatar;
+        this.createdOn = createdOn;
     }
 
     public String getUsername() {
@@ -144,6 +151,14 @@ public class User extends BaseModel {
         this.displayName = displayName;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -176,22 +191,6 @@ public class User extends BaseModel {
         this.language = language;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
     public Avatar getAvatar() {
         return avatar;
     }
@@ -200,11 +199,27 @@ public class User extends BaseModel {
         this.avatar = avatar;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public Set<TermsAndConditions> getTermsAndConditions() {
         return termsAndConditions;
     }
 
     public void setTermsAndConditions(Set<TermsAndConditions> termsAndConditions) {
         this.termsAndConditions = termsAndConditions;
+    }
+
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 }

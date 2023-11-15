@@ -13,46 +13,29 @@
     multiTemplateDataRows
     class="mat-elevation-z8"
   >
-    <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef>{{ "username" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    <ng-container matColumnDef="adType">
+      <th mat-header-cell *matHeaderCellDef>{{ "adType" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.adType }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>{{ "email" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>{{ "category" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.category }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="displayName">
-      <th mat-header-cell *matHeaderCellDef>{{ "displayName" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.displayName }}</td>
+    <ng-container matColumnDef="adStatus">
+      <th mat-header-cell *matHeaderCellDef>{{ "adStatus" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.adStatus }}</td>
     </ng-container>
 
     <ng-container matColumnDef="city">
       <th mat-header-cell *matHeaderCellDef>{{ "city" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.city.value }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef>{{ "phoneNumber" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef>{{ "fullName" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="language">
-      <th mat-header-cell *matHeaderCellDef>{{ "language" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.language }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="inactive">
-      <th mat-header-cell *matHeaderCellDef>{{ "isActive" | translate }}</th>
-      <td mat-cell *matCellDef="let element">
-        {{ (element.inactive ? "no" : "yes") | translate }}
-      </td>
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef>{{ "user" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.user.username }}</td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
@@ -111,28 +94,44 @@
           "
         >
           <div class="example-element-diagram">
-            <div class="thumbnail" *ngIf="element.avatar; else noImage">
-              <img [src]="element.avatar" />
+            <div class="thumbnail" *ngIf="element.images?.length; else noImage">
+              <img [src]="getImageUrl(element.images[0])" />
             </div>
           </div>
           <div class="grid-container">
-            <div class="grid-item">{{ "username" | translate }}</div>
-            <div class="grid-item">{{ element.username }}</div>
-            <div class="grid-item">{{ "email" | translate }}</div>
-            <div class="grid-item">{{ element.email }}</div>
-            <div class="grid-item">{{ "displayName" | translate }}</div>
-            <div class="grid-item">{{ element.displayName }}</div>
+            <div class="grid-item">{{ "id" | translate }}</div>
+            <div class="grid-item">{{ element.id }}</div>
+            <div class="grid-item">{{ "adStatus" | translate }}</div>
+            <div class="grid-item">{{ element.adStatus }}</div>
+            <div class="grid-item">{{ "adType" | translate }}</div>
+            <div class="grid-item">{{ element.adType }}</div>
+            <div class="grid-item">{{ "category" | translate }}</div>
+            <div class="grid-item">{{ element.category }}</div>
+            <div class="grid-item">{{ "subcategory" | translate }}</div>
+            <div class="grid-item">{{ element.subcategory | translate }}</div>
             <div class="grid-item">{{ "city" | translate }}</div>
-            <div class="grid-item">{{ element.city }}</div>
-            <div class="grid-item">{{ "phoneNumber" | translate }}</div>
-            <div class="grid-item">{{ element.phoneNumber }}</div>
-            <div class="grid-item">{{ "fullName" | translate }}</div>
-            <div class="grid-item">{{ element.fullName }}</div>
-            <div class="grid-item">{{ "language" | translate }}</div>
-            <div class="grid-item">{{ element.language }}</div>
-            <div class="grid-item">{{ "isActive" | translate }}</div>
+            <div class="grid-item">{{ element.city.value }}</div>
+            <div class="grid-item">{{ "contactName" | translate }}</div>
+            <div class="grid-item">{{ element.contactName }}</div>
+            <div class="grid-item">{{ "contactPhone" | translate }}</div>
+            <div class="grid-item">{{ element.contactPhone }}</div>
+            <div class="grid-item">{{ "createdOn" | translate }}</div>
+            <div class="grid-item">{{ element.createdOn | date }}</div>
+            <div class="grid-item">{{ "price" | translate }}</div>
+            <div class="grid-item">{{ element.price | translate }}</div>
+            <div class="grid-item">{{ "priceCurrency" | translate }}</div>
+            <div class="grid-item">{{ element.priceCurrency | translate }}</div>
+            <div class="grid-item">{{ "priceIsFixed" | translate }}</div>
+            <div class="grid-item">{{ element.priceIsFixed | translate }}</div>
+            <div class="grid-item">{{ "freeOfCharge" | translate }}</div>
+            <div class="grid-item">{{ element.freeOfCharge | translate }}</div>
+            <div class="grid-item">{{ "title" | translate }}</div>
+            <div class="grid-item">{{ element.title | translate }}</div>
+            <div class="grid-item">{{ "user" | translate }}</div>
+            <div class="grid-item">{{ element.user.username | translate }}</div>
+            <div class="grid-item">{{ "promotion" | translate }}</div>
             <div class="grid-item">
-              {{ (element.inactive ? "no" : "yes") | translate }}
+              {{ element.promotion.title | translate }}
             </div>
           </div>
         </div>

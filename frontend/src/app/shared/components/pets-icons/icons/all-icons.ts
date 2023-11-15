@@ -357,6 +357,7 @@ import { Inventory } from './svg/inventory';
 import { Network } from './svg/network';
 import { Projects } from './svg/projects';
 import { SampleOrder } from './svg/sample-order';
+import { PawIcon } from './svg/paw-icon';
 import { PersonalProfile } from './svg/personal-profile';
 import { CompanyProfile } from './svg/company-profile';
 import { DashboardPie } from './svg/dashboard-pie';
@@ -725,6 +726,7 @@ export const allIcons = {
   Network,
   Projects,
   SampleOrder,
+  PawIcon,
   PersonalProfile,
   CompanyProfile,
   DashboardPie,

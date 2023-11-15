@@ -1,4 +1,8 @@
 {
+  "adType": "Tip oglasa",
+  "category": "Kategorija",
+  "adStatus": "Status oglasa",
+  "user": "Korisnik",
   "sendMessage": "Pošalji poruku",
   "memberSince": "Član od",
   "location": "Lokacija",

@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { TranslateWithCapitalLettersPipe } from 'src/app/shared/pipes/translate-capital-letters.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AdViewModule } from '@features/ad-view/ad-view.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -29,6 +30,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSortModule,
     TranslateWithCapitalLettersPipe,
     MatPaginatorModule,
+    AdViewModule,
   ],
 })
 export class AdsModule {}

@@ -4,6 +4,8 @@ import com.pets.backend.models.BaseModel;
 import com.pets.backend.models.User;
 import com.pets.backend.repository.UserRepository;
 import com.pets.backend.security.services.UserDetailsImpl;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +80,7 @@ public class UsersController {
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
+            user.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
             User _user = userRepository
                     .save(user);
             return new ResponseEntity<>(_user, HttpStatus.CREATED);

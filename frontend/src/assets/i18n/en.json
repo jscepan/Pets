@@ -1,4 +1,8 @@
 {
+  "adType": "Ad type",
+  "category": "Category",
+  "adStatus": "Ad status",
+  "user": "User",
   "sendMessage": "Send message",
   "memberSince": "Member since",
   "location": "Location",

@@ -64,11 +64,11 @@
         </div>
         <div class="member-since">
           {{ "memberSince" | translate }}:
-          <!-- {{ ad.owner.createdOn }} -->
+          {{ ad.user?.createdOn | date }}
         </div>
         <div class="member-from">
           {{ "location" | translate }}:
-          <!-- {{ ad.owner.city?.value }} -->
+          {{ ad.user?.city?.value }}
         </div>
         <div class="seller-message">
           <pets-button
@@ -92,6 +92,4 @@
     </div>
   </div>
   <div class="ad-description" [innerHTML]="ad.description"></div>
-  {{ ad.category }}
-  {{ ad.subcategory }}
 </div>

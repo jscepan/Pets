@@ -1,4 +1,3 @@
-import { PAGE_SIZE } from '../constants';
 import { Sort } from '../enums/sort.model';
 
 export class SearchFilterModel {

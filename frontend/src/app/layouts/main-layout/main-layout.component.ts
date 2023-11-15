@@ -38,11 +38,11 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
         this.definitionsStoreService.setDefinitions(definitions);
       });
 
-    this.subs.sink = this.authWebService.getCurrentUser().subscribe((user) => {
-      if (user) {
-        this.authStoreService.user = user;
-      }
-    });
+    // this.subs.sink = this.authWebService.getCurrentUser().subscribe((user) => {
+    //   if (user) {
+    //     this.authStoreService.user = user;
+    //   }
+    // });
   }
 
   changeLanguage(language: string): void {

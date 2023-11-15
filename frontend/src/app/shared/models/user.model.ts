@@ -15,5 +15,6 @@ export class UserModel extends BaseModel {
   language: string = '';
   avatar?: AvatarModel;
   roles: RoleModel[] = [];
+  createdOn: string = '';
   termsAndConditions: TermsAndConditionsModel[] = [];
 }

@@ -6,6 +6,7 @@ import { ImageModel } from './image.model';
 import { PromotionModel } from './promotion.model';
 import { VideoModel } from './video.model';
 import { CityModel } from './city.model';
+import { UserModel } from './user.model';
 
 export class AdModel extends BaseModel {
   adType?: string;
@@ -30,4 +31,6 @@ export class AdModel extends BaseModel {
 
   inactive?: boolean;
   createdOn?: string;
+
+  user?: UserModel;
 }
