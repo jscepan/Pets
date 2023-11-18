@@ -1,4 +1,4 @@
-<div class="main-container" *ngIf="!(definitionsIsLoading | async)">
+<div class="main-container" *ngIf="definitionsLoaded | async">
   <div class="main-bar">
     <pets-main-menu></pets-main-menu>
   </div>

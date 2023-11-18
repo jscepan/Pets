@@ -1,4 +1,5 @@
 import { Sort } from '../enums/sort.model';
+import { FilterModel } from './filter.model';
 
 export class SearchFilterModel {
   quickSearch: string = '';
@@ -13,10 +14,7 @@ export class SearchFilterModel {
     sortDirection: Sort.ASC,
     sortBy: 'title',
   };
-  adSearchCriteria?: {
-    title: string;
-    description: string;
-  } = { title: '', description: '' };
+  adSearchCriteria?: FilterModel;
 }
 
 export enum PageSize {

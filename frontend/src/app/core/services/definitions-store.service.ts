@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
+import { EnumValueModel } from 'src/app/shared/enums/enum.model';
+import { Language } from 'src/app/shared/enums/language.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,20 @@ export class DefinitionsStoreService {
 
   setDefinitions(definitions: DefinitionModel): void {
     this._definitions.next(definitions);
+  }
+
+  getAdsTypes(language: Language): EnumValueModel[] {
+    const types = this._definitions.getValue()?.adsType.map((d) => {
+      return {
+        value: d.value,
+        displayName: d.displayValue[language],
+      };
+    });
+
+    return types ?? [];
+  }
+
+  getCategoriesForAdTypes(adTypes: string[]): EnumValueModel[] {
+    return [];
   }
 }

@@ -18,7 +18,7 @@ import { DefinitionsWebService } from 'src/app/web-services/definitions.web-serv
 export class MainLayoutComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
-  definitionsIsLoading: Observable<boolean> =
+  definitionsLoaded: Observable<boolean> =
     this.definitionsStoreService.dataLoaded$;
 
   constructor(
@@ -36,6 +36,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       .getAllDefinitions()
       .subscribe((definitions) => {
         this.definitionsStoreService.setDefinitions(definitions);
+        this.definitionsStoreService.dataLoaded = true;
       });
 
     // this.subs.sink = this.authWebService.getCurrentUser().subscribe((user) => {

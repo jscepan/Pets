@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, Observer } from 'rxjs';
 import { BASE_API_URL } from './constants';
 import { BaseModel } from './models/base-model';
+import { EnumValueModel } from './enums/enum.model';
 
 // tslint:disable-next-line:ban-types
 declare const gtag: Function;
@@ -200,4 +201,11 @@ export function roundOnIntegerOrMaxTwoDigits(value: number): string {
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
+}
+
+export function enumToEnumValueModel(enumObj: any): EnumValueModel[] {
+  return Object.keys(enumObj).map((key) => ({
+    value: enumObj[key],
+    displayName: enumObj[key],
+  }));
 }

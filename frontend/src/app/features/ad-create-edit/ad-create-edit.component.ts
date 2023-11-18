@@ -4,6 +4,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Editor, Toolbar } from 'ngx-editor';
+import { Observable } from 'rxjs';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
@@ -16,6 +17,7 @@ import { CityModel } from 'src/app/shared/models/city.model';
 import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
 import { PromotionModel } from 'src/app/shared/models/promotion.model';
+import { StoreService } from 'src/app/shared/services/store.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { CityWebService } from 'src/app/web-services/city.web-service';
@@ -54,8 +56,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   categories: EnumValueModel[] | undefined = [];
   subCategories: EnumValueModel[] | undefined = [];
 
-  cities: CityModel[] | undefined = [];
-  citiesEnumValues: EnumValueModel[] | undefined = [];
+  citiesEnumValues?: Observable<EnumValueModel[]>;
   selectedCity?: CityModel;
 
   promotions: PromotionModel[] = [];
@@ -79,6 +80,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
     private adWebService: AdWebService,
     private promotionWebService: PromotionWebService,
     private cityWebService: CityWebService,
+    private storeService: StoreService,
     private translateService: TranslateService
   ) {}
 
@@ -100,15 +102,9 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
         }
       }
     );
-    this.subs.sink = this.cityWebService.getAllCities().subscribe((cities) => {
-      this.cities = cities;
-      this.citiesEnumValues = this.cities?.map((c) => {
-        return {
-          value: c.value,
-          displayName: this.translateService.instant(c.value),
-        };
-      });
-    });
+    this.citiesEnumValues = this.storeService.getAllCitiesAsEnumValueModel(
+      this.cityWebService
+    );
     this.subs.sink = this.promotionWebService
       .getAllPromotions()
       .subscribe((promotions) => {
@@ -118,9 +114,9 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   }
 
   initializeForm(): void {
-    const city = this.cities?.filter(
-      (c) => c.oid === this.authStoreService.user?.city?.oid
-    )[0];
+    const city = this.storeService.getCityByOid(
+      this.authStoreService.user?.city?.oid
+    );
     this.firstFormGroup = this._formBuilder.group({
       sellType: [SellType.SELL, [Validators.required]],
       adType: ['', Validators.required],
@@ -216,7 +212,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
   }
 
   onCityChange(item: EnumValueModel): void {
-    this.selectedCity = this.cities?.filter((c) => c.value === item.value)[0];
+    this.selectedCity = this.storeService.getCityByEnumValue(item.value);
     this.secondFormGroup?.get('city')?.setValue(this.selectedCity);
   }
 

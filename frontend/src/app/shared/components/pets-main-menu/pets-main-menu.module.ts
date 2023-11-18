@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PetsMainMenuComponent } from './pets-main-menu.component';
 import { PetsButtonModule } from '../pets-button/pets-button.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { PetsSearchFilterModule } from '../pets-search-filter/pets-search-filter.module';
+import { PetsSearchInputModule } from '../pets-search-input/pets-search-input.module';
 import { PetsMenuModule } from '../pets-menu/pets-menu.module';
 import { PetsMessageNotificationModule } from '../pets-message-notification/pets-message-notification.module';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
@@ -15,7 +15,7 @@ import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
     PetsIconsProviderModule,
     PetsButtonModule,
     TranslateModule,
-    PetsSearchFilterModule,
+    PetsSearchInputModule,
     PetsMenuModule,
     PetsMessageNotificationModule,
   ],

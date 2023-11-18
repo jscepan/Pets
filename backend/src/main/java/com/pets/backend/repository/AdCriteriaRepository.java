@@ -51,12 +51,12 @@ public class AdCriteriaRepository {
 
     private Predicate getPredicate(AdSearchCriteria adSearchCriteria, Root<Ad> adRoot) {
         List<Predicate> predicates = new ArrayList<>();
-        if (Objects.nonNull(adSearchCriteria.getTitle())) {
-            predicates.add(criteriaBuilder.like(adRoot.get("title"), "%" + adSearchCriteria.getTitle() + "%"));
-        }
-        if (Objects.nonNull(adSearchCriteria.getDescription())) {
-            predicates.add(criteriaBuilder.like(adRoot.get("description"), "%" + adSearchCriteria.getDescription() + "%"));
-        }
+//        if (Objects.nonNull(adSearchCriteria.getTitle())) {
+//            predicates.add(criteriaBuilder.like(adRoot.get("title"), "%" + adSearchCriteria.getTitle() + "%"));
+//        }
+//        if (Objects.nonNull(adSearchCriteria.getDescription())) {
+//            predicates.add(criteriaBuilder.like(adRoot.get("description"), "%" + adSearchCriteria.getDescription() + "%"));
+//        }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 

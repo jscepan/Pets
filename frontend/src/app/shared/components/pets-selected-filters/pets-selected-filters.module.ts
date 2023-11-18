@@ -6,12 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { PetsSelectComponent } from './pets-select.component';
+import { PetsSelectedFiltersComponent } from './pets-selected-filters.component';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
-  declarations: [PetsSelectComponent],
+  declarations: [PetsSelectedFiltersComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -21,8 +21,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    TranslateModule,
+    MatChipsModule,
   ],
-  exports: [PetsSelectComponent],
+  exports: [PetsSelectedFiltersComponent],
 })
-export class PetsSelectModule {}
+export class PetsSelectedFiltersModule {}

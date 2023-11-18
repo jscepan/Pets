@@ -15,6 +15,8 @@ import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { AdsService } from './ads.service';
 import { PetsSearchBarI } from 'src/app/shared/components/pets-search-bar/pets-search-bar.interface';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
+import { FilterService } from 'src/app/shared/services/filter.service';
+
 @Component({
   selector: 'pets-ads',
   templateUrl: './ads.component.html',
@@ -37,23 +39,30 @@ export class AdsComponent implements OnInit, OnDestroy {
   public readonly selection: SelectionManager<PetsAdCardI> =
     this.adsService.selection;
 
-  searchFilter: SearchFilterModel = new SearchFilterModel();
   searchBarModel?: PetsSearchBarI;
 
   viewType: ViewType = ViewType.list;
   viewTypeEnum = ViewType;
+
+  selectedFilter: Observable<SearchFilterModel> =
+    this.filterService.selectedFilter;
 
   constructor(
     private globalService: GlobalService,
     private adsService: AdsService,
     private translateService: TranslateService,
     private sweetAlertService: PetsSweetAlertService,
-    private router: Router
+    private router: Router,
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
     this.adsService.init();
     this.setSearchBar();
+
+    this.filterService.selectedFilter.subscribe((selectedFilter) => {
+      this.adsService.setFilter(selectedFilter);
+    });
   }
 
   setSearchBar(): void {
@@ -93,20 +102,25 @@ export class AdsComponent implements OnInit, OnDestroy {
     };
   }
 
-  searchBarEventHandler(event: any): void {
+  searchBarEventHandler(event: { type: string; value: string }): void {
     console.log('event');
     console.log(event);
     switch (event.type) {
       case 'pageSize':
-        this.adsService.setPageSize(event.value);
+        this.filterService.setPageSize(+event.value);
         break;
       case 'sort':
         //
         break;
       case 'viewType':
-        this.viewType = event.value;
+        this.viewType = event.value as ViewType;
         break;
     }
+  }
+
+  filtersChanged(event: any): void {
+    console.log(event);
+    this.filterService.setPriceFrom(+event.priceFrom);
   }
 
   goToPage(page: number): void {

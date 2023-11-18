@@ -7,12 +7,13 @@ import { PetsButtonModule } from 'src/app/shared/components/pets-button/pets-but
 import { PetsSweetAlertModule } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { PetsSearchFilterModule } from 'src/app/shared/components/pets-search-filter/pets-search-filter.module';
+import { PetsSearchInputModule } from 'src/app/shared/components/pets-search-input/pets-search-input.module';
 import { PetsFiltersModule } from 'src/app/shared/components/pets-filters/pets-filters.module';
 import { PetsSearchBarModule } from 'src/app/shared/components/pets-search-bar/pets-search-bar.module';
 import { PetsAdCardModule } from 'src/app/shared/components/pets-ad-card/pets-ad-card.module';
 import { PetsPaginatorModule } from 'src/app/shared/components/pets-paginator/pets-paginator.module';
 import { PetsAdLineModule } from 'src/app/shared/components/pets-ad-line/pets-ad-line.module';
+import { PetsSelectedFiltersModule } from 'src/app/shared/components/pets-selected-filters/pets-selected-filters.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -25,12 +26,13 @@ import { PetsAdLineModule } from 'src/app/shared/components/pets-ad-line/pets-ad
     PetsSweetAlertModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    PetsSearchFilterModule,
+    PetsSearchInputModule,
     PetsFiltersModule,
     PetsSearchBarModule,
     PetsAdCardModule,
     PetsAdLineModule,
     PetsPaginatorModule,
+    PetsSelectedFiltersModule,
   ],
 })
 export class AdsModule {}

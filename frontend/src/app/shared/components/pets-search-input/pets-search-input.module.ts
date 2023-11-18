@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PetsSearchFilterComponent } from './pets-search-filter.component';
+import { PetsSearchInputComponent } from './pets-search-input.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 
 @NgModule({
-  declarations: [PetsSearchFilterComponent],
+  declarations: [PetsSearchInputComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -20,6 +20,6 @@ import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
     FormsModule,
     MatIconModule,
   ],
-  exports: [PetsSearchFilterComponent],
+  exports: [PetsSearchInputComponent],
 })
-export class PetsSearchFilterModule {}
+export class PetsSearchInputModule {}

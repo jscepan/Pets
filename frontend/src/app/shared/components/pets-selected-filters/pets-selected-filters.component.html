@@ -1,0 +1,13 @@
+<div class="filters-container">
+  <mat-chip-listbox aria-label="filters">
+    <mat-chip-row
+      (removed)="remove(filter.value)"
+      *ngFor="let filter of filters"
+    >
+      {{ filter.displayName }}
+      <button matChipRemove [attr.aria-label]="'remove ' + 'Dog'">
+        <pets-icons [name]="'x'"></pets-icons>
+      </button>
+    </mat-chip-row>
+  </mat-chip-listbox>
+</div>

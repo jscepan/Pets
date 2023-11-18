@@ -120,7 +120,7 @@
             <input matInput formControlName="city" #cityCtrl />
           </mat-form-field>
           <pets-autocomplete
-            [dataModel]="citiesEnumValues"
+            [dataModel]="citiesEnumValues | async"
             [required]="true"
             (changeEvent)="onCityChange($event)"
             (clearEvent)="clearCityEvent()"

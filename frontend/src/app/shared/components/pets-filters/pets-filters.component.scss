@@ -2,4 +2,39 @@
   .page-size {
     width: 170px;
   }
+
+  .form {
+    .filter-content {
+      margin-top: 20px;
+    }
+
+    .filter-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .city-content {
+      width: calc(100% - 10px);
+    }
+
+    .price-content {
+      display: flex;
+      flex-direction: column;
+
+      .inputs-container {
+        display: flex;
+        .inputs {
+          .price-input-form-field {
+            width: calc(100% / 2 - 20px);
+            margin: 0px 10px;
+
+            .close {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
 }

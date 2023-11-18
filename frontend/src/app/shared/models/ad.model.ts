@@ -1,4 +1,3 @@
-import { Type } from 'class-transformer';
 import { Currency } from '../enums/currency.model';
 import { SellType } from '../enums/sell-type.model';
 import { BaseModel } from './base-model';
@@ -7,6 +6,7 @@ import { PromotionModel } from './promotion.model';
 import { VideoModel } from './video.model';
 import { CityModel } from './city.model';
 import { UserModel } from './user.model';
+import { AdStatus } from '../enums/ad-status.model';
 
 export class AdModel extends BaseModel {
   adType?: string;
@@ -33,4 +33,6 @@ export class AdModel extends BaseModel {
   createdOn?: string;
 
   user?: UserModel;
+
+  adStatus?: AdStatus;
 }

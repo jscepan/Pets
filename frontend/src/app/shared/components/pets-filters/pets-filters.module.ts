@@ -6,6 +6,11 @@ import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
+import { PetsSelectModule } from '../pets-select/pets-select.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { PetsAutocompleteModule } from '../pets-autocomplete/pets-autocomplete.module';
 
 @NgModule({
   declarations: [PetsFiltersComponent],
@@ -17,6 +22,11 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    PetsSelectModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatIconModule,
+    PetsAutocompleteModule,
   ],
   exports: [PetsFiltersComponent],
 })

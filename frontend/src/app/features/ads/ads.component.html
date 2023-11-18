@@ -1,9 +1,15 @@
 <div class="container">
-  <div class="filters">levo svi filteri</div>
+  <div class="filters">
+    <pets-filters
+      [dataModel]="selectedFilter | async"
+      (changeEvent)="filtersChanged($event)"
+    ></pets-filters>
+  </div>
   <div class="content">
     <div class="selected-filters">
-      selected filters i reset filters dugme
-      <pets-filters [dataModel]="searchFilter"></pets-filters>
+      <pets-selected-filters
+        [dataModel]="(selectedFilter | async)?.adSearchCriteria || null"
+      ></pets-selected-filters>
     </div>
     <div class="ads-wrapper-container">
       <pets-search-bar

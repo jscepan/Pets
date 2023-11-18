@@ -17,7 +17,7 @@ import { EnumValueModel } from '../../enums/enum.model';
   styleUrls: ['./pets-autocomplete.component.scss'],
 })
 export class PetsAutocompleteComponent implements OnInit, OnChanges {
-  @Input() dataModel?: EnumValueModel[];
+  @Input() dataModel: EnumValueModel[] | null | undefined;
   @Input() required: boolean = false;
   @Input() label: string = '';
 
@@ -35,7 +35,8 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    this.showComponent = false;
     this.form = new FormGroup({
       autoselectCtrl: new FormControl(
         '',
@@ -48,24 +49,24 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
         state ? this.filterStates(state) : this.dataModel?.slice() || []
       )
     );
+
+    console.log(this.dataModel);
+    console.log(this.dataModel?.length);
+    this.states = this.dataModel || [];
+    // setTimeout(() => {
+    this.showComponent = true;
+    // });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.form?.get('autoselectCtrl')?.setValue('');
-    this.showComponent = false;
-    this.states = this.dataModel || [];
-    setTimeout(() => {
-      this.showComponent = true;
-    });
-  }
+  ngOnInit(): void {}
 
   filterStates(item: EnumValueModel) {
     return this.dataModel
       ? this.dataModel.filter(
           (state) =>
             state.displayName
-              .toLowerCase()
-              .indexOf(item.displayName.toLowerCase()) === 0
+              ?.toLowerCase()
+              .indexOf(item.displayName?.toLowerCase()) === 0
         )
       : [];
   }

@@ -1,1 +1,100 @@
-<div class="container">filters</div>
+<div class="container">
+  <form [formGroup]="filterForm" *ngIf="filterForm" class="form">
+    <div class="sell-type-content filter-content">
+      <div class="filter-title">
+        {{ "sellTypes" | translate }}
+      </div>
+      <pets-select
+        [dataModel]="sellTypes"
+        [fullWidth]="true"
+        [label]="'sellTypes' | translate"
+      ></pets-select>
+    </div>
+    <div class="city-content filter-content">
+      <div class="filter-title">
+        {{ "city" | translate }}
+      </div>
+      <pets-autocomplete
+        [dataModel]="(cities | async) || undefined"
+        (changeEvent)="onCityChange($event)"
+        (clearEvent)="clearCityEvent()"
+        [label]="'selectYourPlace' | translate"
+      ></pets-autocomplete>
+    </div>
+    <div class="price-content filter-content">
+      <div class="filter-title">
+        {{ "price" | translate }}
+      </div>
+      <div class="inputs-container">
+        <div class="inputs">
+          <mat-form-field class="price-input-form-field">
+            <mat-label>{{ "from" }}</mat-label>
+            <input type="text" matInput formControlName="priceFrom" />
+            <pets-icons
+              (click)="clearValue('priceFrom')"
+              name="x"
+              class="close"
+              matSuffix
+            ></pets-icons>
+          </mat-form-field>
+          <mat-form-field class="price-input-form-field">
+            <mat-label>{{ "to" }}</mat-label>
+            <input type="text" matInput formControlName="priceTo" />
+            <pets-icons
+              (click)="clearValue('priceTo')"
+              name="x"
+              class="close"
+              matSuffix
+            ></pets-icons>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="ad-type-content filter-content">
+      <div class="filter-title">
+        {{ "adTypes" | translate }}
+      </div>
+      <pets-select
+        [dataModel]="adTypes"
+        [multipleSelect]="true"
+        [label]="'adTypes' | translate"
+        [fullWidth]="true"
+        [preSelectedValues]="selectedAdTypes"
+      ></pets-select>
+    </div>
+    <div class="categories-content filter-content">
+      <div class="filter-title">
+        {{ "categories" | translate }}
+      </div>
+      <pets-select
+        [dataModel]="categories"
+        [multipleSelect]="true"
+        [label]="'categories' | translate"
+        [fullWidth]="true"
+      ></pets-select>
+    </div>
+    <div class="subcategories-content filter-content">
+      <div class="filter-title">
+        {{ "subcategories" | translate }}
+      </div>
+      <pets-select
+        [dataModel]="subcategories"
+        [multipleSelect]="true"
+        [label]="'subcategories' | translate"
+        [fullWidth]="true"
+      ></pets-select>
+    </div>
+    <div class="filter-content">
+      <div class="priceIsFixed-content">
+        <mat-checkbox formControlName="priceIsFixed" [color]="'primary'">{{
+          "priceIsFixed" | translate
+        }}</mat-checkbox>
+      </div>
+      <div class="freeOfCharge-content">
+        <mat-checkbox formControlName="freeOfCharge" [color]="'primary'">{{
+          "freeOfCharge" | translate
+        }}</mat-checkbox>
+      </div>
+    </div>
+  </form>
+</div>

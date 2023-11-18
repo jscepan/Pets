@@ -13,12 +13,12 @@ import { UntypedFormControl } from '@angular/forms';
 import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
-  selector: 'pets-search-filter',
-  templateUrl: './pets-search-filter.component.html',
-  styleUrls: ['./pets-search-filter.component.scss'],
+  selector: 'pets-search-input',
+  templateUrl: './pets-search-input.component.html',
+  styleUrls: ['./pets-search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PetsSearchFilterComponent implements OnInit, OnDestroy, OnChanges {
+export class PetsSearchInputComponent implements OnInit, OnDestroy, OnChanges {
   @Input() keyword: string = '';
   @Input() placeholder: string = 'Search for...';
   @Input() debounceTime: number = 500;

@@ -1,6 +1,6 @@
 <div class="container" *ngIf="dataModel">
   <form [formGroup]="searchBarForm" *ngIf="searchBarForm">
-    <pets-search-filter></pets-search-filter>
+    <pets-search-input></pets-search-input>
     <mat-form-field class="page-size">
       <mat-label>{{ "num" | translate }}</mat-label>
       <mat-select
