@@ -120,7 +120,8 @@ export class AdsComponent implements OnInit, OnDestroy {
 
   filtersChanged(event: any): void {
     console.log(event);
-    this.filterService.setPriceFrom(+event.priceFrom);
+    if (event.priceFrom) this.filterService.setPriceFrom(+event.priceFrom);
+    if (event.priceTo) this.filterService.setPriceTo(+event.priceTo);
   }
 
   goToPage(page: number): void {

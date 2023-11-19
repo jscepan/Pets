@@ -45,4 +45,17 @@ export class FilterService {
       this.selectedFilters$.next({ ...filter });
     }
   }
+
+  setPriceTo(price: number): void {
+    const filter = this.selectedFilters$.getValue();
+    console.log('///////////////');
+    if (filter.adSearchCriteria) {
+      filter.adSearchCriteria.priceTo = price;
+      this.selectedFilters$.next({ ...filter });
+    } else {
+      filter.adSearchCriteria = new FilterModel();
+      filter.adSearchCriteria.priceTo = price;
+      this.selectedFilters$.next({ ...filter });
+    }
+  }
 }

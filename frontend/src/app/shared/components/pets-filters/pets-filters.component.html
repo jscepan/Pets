@@ -15,6 +15,7 @@
       <div class="filter-title">
         {{ "city" | translate }}
       </div>
+      <!-- <pets-autocomplete-multiselect></pets-autocomplete-multiselect> -->
       <pets-autocomplete
         [dataModel]="(cities | async) || undefined"
         (changeEvent)="onCityChange($event)"

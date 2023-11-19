@@ -10,4 +10,16 @@
       </button>
     </mat-chip-row>
   </mat-chip-listbox>
+  <pets-button
+    [text]="'resetFilter' | translate"
+    [color]="'link'"
+    (clickEvent)="resetFilter()"
+    [smallWidth]="true"
+  ></pets-button>
+  <pets-button
+    [iconName]="expanded ? 'chevron-up' : 'chevron-down'"
+    [color]="'link'"
+    (clickEvent)="toggleExpand()"
+    [smallWidth]="true"
+  ></pets-button>
 </div>

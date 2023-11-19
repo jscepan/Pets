@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { PetsSelectedFiltersComponent } from './pets-selected-filters.component';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 import { MatChipsModule } from '@angular/material/chips';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [PetsSelectedFiltersComponent],
@@ -22,6 +24,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatFormFieldModule,
     MatInputModule,
     MatChipsModule,
+    PetsButtonModule,
+    TranslateModule,
   ],
   exports: [PetsSelectedFiltersComponent],
 })
