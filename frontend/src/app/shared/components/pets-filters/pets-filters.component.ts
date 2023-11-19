@@ -61,8 +61,8 @@ export class PetsFiltersComponent implements OnInit {
       cities: new FormControl(this.dataModel?.adSearchCriteria?.cities),
       priceFrom: new FormControl(this.dataModel?.adSearchCriteria?.priceFrom),
       priceTo: new FormControl(this.dataModel?.adSearchCriteria?.priceTo),
-      sellTypes: new FormControl(this.dataModel?.adSearchCriteria?.sellTypes),
-      adTypes: new FormControl(this.dataModel?.adSearchCriteria?.adTypes),
+      sellTypes: new FormControl(this.sellTypes[0]),
+      adTypes: new FormControl(this.adTypes),
       categories: new FormControl(this.dataModel?.adSearchCriteria?.categories),
       subcategories: new FormControl(
         this.dataModel?.adSearchCriteria?.subcategories

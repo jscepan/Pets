@@ -8,6 +8,7 @@
         [dataModel]="sellTypes"
         [fullWidth]="true"
         [label]="'sellTypes' | translate"
+        formControlName="sellTypes"
       ></pets-select>
     </div>
     <div class="city-content filter-content">
@@ -56,10 +57,10 @@
       </div>
       <pets-select
         [dataModel]="adTypes"
-        [multipleSelect]="true"
-        [label]="'adTypes' | translate"
         [fullWidth]="true"
-        [preSelectedValues]="selectedAdTypes"
+        [label]="'adTypes' | translate"
+        [multipleSelect]="true"
+        formControlName="adTypes"
       ></pets-select>
     </div>
     <div class="categories-content filter-content">
@@ -68,9 +69,10 @@
       </div>
       <pets-select
         [dataModel]="categories"
-        [multipleSelect]="true"
-        [label]="'categories' | translate"
         [fullWidth]="true"
+        [label]="'categories' | translate"
+        [multipleSelect]="true"
+        formControlName="categories"
       ></pets-select>
     </div>
     <div class="subcategories-content filter-content">
@@ -79,9 +81,10 @@
       </div>
       <pets-select
         [dataModel]="subcategories"
-        [multipleSelect]="true"
-        [label]="'subcategories' | translate"
         [fullWidth]="true"
+        [label]="'subcategories' | translate"
+        [multipleSelect]="true"
+        formControlName="subcategories"
       ></pets-select>
     </div>
     <div class="filter-content">

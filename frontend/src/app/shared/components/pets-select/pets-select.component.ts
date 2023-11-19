@@ -6,8 +6,13 @@ import {
   OnChanges,
   OnInit,
   Output,
+  forwardRef,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { EnumValueModel } from '../../enums/enum.model';
 
 @Component({
@@ -15,28 +20,40 @@ import { EnumValueModel } from '../../enums/enum.model';
   templateUrl: './pets-select.component.html',
   styleUrls: ['./pets-select.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PetsSelectComponent),
+      multi: true,
+    },
+  ],
 })
-export class PetsSelectComponent implements OnInit {
+export class PetsSelectComponent implements ControlValueAccessor, OnInit {
   @Input() dataModel: EnumValueModel[] = [];
-  @Input() preSelectedValues?: EnumValueModel[] = [];
   @Input() label: string = '';
   @Input() multipleSelect?: boolean;
   @Input() fullWidth?: boolean;
 
+  @Input() name!: string;
+
+  public formControl: FormControl = new FormControl();
+
   @Output() selectedValuesChange?: EventEmitter<EnumValueModel[]> =
     new EventEmitter();
 
-  selectControl?: FormControl;
-  allOptions: EnumValueModel[] = [];
-  selectedOptions: EnumValueModel[] = [];
-
   constructor() {}
 
-  ngOnInit(): void {
-    this.selectControl = new FormControl(this.preSelectedValues);
+  ngOnInit(): void {}
+
+  writeValue(value: any): void {
+    this.formControl.patchValue(value);
   }
 
-  selectChange(): void {
-    // this.selectedValuesChange?.emit(this.se);
+  registerOnChange(fn: any): void {
+    this.formControl.valueChanges.subscribe((val) => fn(val));
+  }
+
+  registerOnTouched(fn: any): void {
+    this.formControl.valueChanges.subscribe((val) => fn(val));
   }
 }

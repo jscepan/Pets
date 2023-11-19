@@ -1,20 +1,11 @@
-<mat-form-field [ngClass]="{ 'full-width': fullWidth }" *ngIf="selectControl">
+<mat-form-field [ngClass]="{ 'full-width': fullWidth }">
   <mat-label>{{ label }}</mat-label>
-  <mat-select
-    [formControl]="selectControl"
-    *ngIf="!multipleSelect"
-    [value]="preSelectedValues"
-  >
+  <mat-select [formControl]="formControl" *ngIf="!multipleSelect">
     <mat-option *ngFor="let topping of dataModel" [value]="topping">
       {{ topping.displayName | translate }}
     </mat-option>
   </mat-select>
-  <mat-select
-    [formControl]="selectControl"
-    *ngIf="multipleSelect"
-    multiple
-    [value]="preSelectedValues"
-  >
+  <mat-select [formControl]="formControl" *ngIf="multipleSelect" multiple>
     <mat-option *ngFor="let topping of dataModel" [value]="topping">
       {{ topping.displayName | translate }}
     </mat-option>
