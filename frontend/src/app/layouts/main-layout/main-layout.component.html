@@ -1,6 +1,8 @@
-<div class="main-container" *ngIf="definitionsLoaded | async">
+<div class="main-layout-container" *ngIf="definitionsLoaded | async">
   <div class="main-bar">
     <pets-main-menu></pets-main-menu>
   </div>
-  <router-outlet></router-outlet>
+  <div class="main-container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -4,21 +4,28 @@
   --card-max-height: 4fr;
 
   .filters {
+    margin-right: 10px;
   }
 
   .content {
     .selected-filters {
+      margin-bottom: 10px;
     }
 
     .ads-wrapper-container {
+      .search-bar {
+        margin-bottom: 10px;
+      }
       .ads-container {
+        margin-bottom: 20px;
+
         .grid-container {
           display: flex;
           flex-direction: column;
           width: 100%;
           height: fit-content;
 
-          .ad-card-container {
+          .ad-card-line-container {
             margin: 5px 0;
           }
 
@@ -28,9 +35,11 @@
               auto-fill,
               minmax(260px, var(--card-max-width))
             );
-            grid-gap: 40px;
+            grid-gap: 15px;
           }
         }
+      }
+      .paginator {
       }
     }
   }

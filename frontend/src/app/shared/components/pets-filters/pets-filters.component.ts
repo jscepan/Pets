@@ -76,16 +76,10 @@ export class PetsFiltersComponent implements OnInit {
     });
 
     this.filterForm?.get('adTypes')?.valueChanges.subscribe((xxx) => {
-      console.log(xxx);
-      this.populateCategoriesAndSubcategories('adType');
+      this.populateCategoriesAndSubcategories();
     });
     this.filterForm?.get('categories')?.valueChanges.subscribe((xxx) => {
-      console.log(xxx);
-      this.populateCategoriesAndSubcategories('categories');
-    });
-    this.filterForm?.get('subcategories')?.valueChanges.subscribe((xxx) => {
-      console.log(xxx);
-      this.populateCategoriesAndSubcategories('subcategories');
+      this.populateSubcategories();
     });
 
     this.filterForm.valueChanges.pipe(debounceTime(1500)).subscribe(() => {
@@ -102,9 +96,11 @@ export class PetsFiltersComponent implements OnInit {
     // this.secondFormGroup?.get('city')?.setValue('');
   }
 
-  populateCategoriesAndSubcategories(
-    changeOf: 'adType' | 'categories' | 'subcategories'
-  ): void {
+  populateCategoriesAndSubcategories(): void {
+    //
+  }
+
+  populateSubcategories(): void {
     //
   }
 

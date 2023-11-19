@@ -11,6 +11,7 @@
   overflow: hidden;
   box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
   transition: transform 400ms ease;
+  background-color: var(--color-white);
 
   .image-container {
     cursor: pointer;

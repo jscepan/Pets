@@ -5,10 +5,20 @@
   align-items: center;
 }
 
-.main-container {
-  max-width: 1200px;
+.main-layout-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 
   .main-bar {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .main-container {
+    max-width: 1200px;
+    width: 100%;
   }
 }

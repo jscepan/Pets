@@ -16,6 +16,7 @@
         [dataModel]="searchBarModel"
         (changeEvent)="searchBarEventHandler($event)"
         *ngIf="searchBarModel"
+        class="search-bar"
       ></pets-search-bar>
       <div class="ads-container">
         <div
@@ -37,7 +38,7 @@
             <ng-container *ngIf="viewType === viewTypeEnum.list">
               <pets-ad-line
                 [dataModel]="ad"
-                class="ad-card-container"
+                class="ad-card-line-container"
                 (clickEvent)="goToAd(ad)"
               ></pets-ad-line>
             </ng-container>
@@ -58,6 +59,7 @@
         [totalPagesCount]="totalPageLength | async"
         [currentPageCount]="(currentPage | async) || 0"
         (goToPageEvent)="goToPage($event)"
+        class="paginator"
       ></pets-paginator>
     </div>
   </div>
