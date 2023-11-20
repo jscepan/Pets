@@ -50,8 +50,6 @@ export class PetsAutocompleteComponent implements OnInit, OnChanges {
       )
     );
 
-    console.log(this.dataModel);
-    console.log(this.dataModel?.length);
     this.states = this.dataModel || [];
     // setTimeout(() => {
     this.showComponent = true;

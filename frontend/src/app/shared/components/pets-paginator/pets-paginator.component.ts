@@ -98,7 +98,6 @@ export class PetsPaginatorComponent implements OnInit, OnChanges, OnDestroy {
       this.totalPagesCount &&
       value <= this.totalPagesCount - 1
     ) {
-      console.log('EMIT');
       this.goToPageEvent.emit(value);
     }
   }

@@ -162,7 +162,6 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
       user: this.authStoreService.user,
     };
     this.subs.sink = this.adWebService.createEntity(adData).subscribe((ad) => {
-      console.log('------------------');
       console.log(ad);
     });
   }
