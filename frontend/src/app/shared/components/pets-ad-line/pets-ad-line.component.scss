@@ -73,6 +73,8 @@
     width: 100%;
     padding: 10px;
     max-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
 
     .content {
       display: flex;
@@ -85,6 +87,7 @@
     .title-container {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start; /* Dodato */
 
       .title {
         font-weight: 600;
@@ -97,12 +100,16 @@
     }
 
     .description {
-      margin: 10px 0 20px 0;
+      text-align: justify;
+      margin: 10px 0 10px 0;
+      flex-grow: 1; /* Dodato */
+      overflow: hidden; /* Dodato */
     }
 
     .footer {
       display: flex;
       justify-content: space-between;
+      align-items: flex-end; /* Dodato */
 
       .time {
         display: flex;
