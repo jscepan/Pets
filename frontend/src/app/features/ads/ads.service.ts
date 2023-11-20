@@ -26,9 +26,7 @@ export class AdsService extends ListManager<
     this.setResponseFn(this.prepareResponse.bind(this));
   }
 
-  init(): void {
-    // this.setFilter(new SearchFilterModel());
-  }
+  init(): void {}
 
   public prepareResponse(data: AdModel[]): PetsAdCardI[] {
     return data.map((ad) => ({

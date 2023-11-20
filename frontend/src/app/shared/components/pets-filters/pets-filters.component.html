@@ -14,6 +14,12 @@
     <div class="city-content filter-content">
       <div class="filter-title">
         {{ "city" | translate }}
+        <pets-button
+          [iconName]="'plus'"
+          [color]="'link'"
+          [smallWidth]="true"
+          (clickEvent)="addNew('city')"
+        ></pets-button>
       </div>
       <!-- <pets-autocomplete-multiselect></pets-autocomplete-multiselect> -->
       <pets-autocomplete
@@ -26,6 +32,12 @@
     <div class="price-content filter-content">
       <div class="filter-title">
         {{ "price" | translate }}
+        <pets-button
+          [iconName]="'plus'"
+          [color]="'link'"
+          [smallWidth]="true"
+          (clickEvent)="addNew('price')"
+        ></pets-button>
       </div>
       <div class="inputs-container">
         <div class="inputs">
@@ -50,11 +62,25 @@
             ></pets-icons>
           </mat-form-field>
         </div>
+        <div class="currency">
+          <pets-select
+            [dataModel]="currencyOptions"
+            [fullWidth]="true"
+            [label]="'currency' | translate"
+            formControlName="priceCurrency"
+          ></pets-select>
+        </div>
       </div>
     </div>
     <div class="ad-type-content filter-content">
       <div class="filter-title">
         {{ "adTypes" | translate }}
+        <pets-button
+          [iconName]="'plus'"
+          [color]="'link'"
+          [smallWidth]="true"
+          (clickEvent)="addNew('adTypes')"
+        ></pets-button>
       </div>
       <pets-select
         [dataModel]="adTypes"
@@ -67,6 +93,12 @@
     <div class="categories-content filter-content">
       <div class="filter-title">
         {{ "categories" | translate }}
+        <pets-button
+          [iconName]="'plus'"
+          [color]="'link'"
+          [smallWidth]="true"
+          (clickEvent)="addNew('categories')"
+        ></pets-button>
       </div>
       <pets-select
         [dataModel]="categories"
@@ -79,6 +111,12 @@
     <div class="subcategories-content filter-content">
       <div class="filter-title">
         {{ "subcategories" | translate }}
+        <pets-button
+          [iconName]="'plus'"
+          [color]="'link'"
+          [smallWidth]="true"
+          (clickEvent)="addNew('subcategories')"
+        ></pets-button>
       </div>
       <pets-select
         [dataModel]="subcategories"

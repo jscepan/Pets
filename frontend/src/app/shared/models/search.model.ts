@@ -9,7 +9,7 @@ export class SearchFilterModel {
     sortBy: PetsSearchSortByTypes;
   } = {
     pageNumber: 0,
-    pageSize: PageSize.thirty,
+    pageSize: PageSize.thirtySix,
     sortDirection: PetsSearchDirectionTypes.ascending,
     sortBy: PetsSearchSortByTypes.title,
   };
@@ -17,9 +17,9 @@ export class SearchFilterModel {
 }
 
 export enum PageSize {
-  thirty = '30',
-  fifthy = '50',
-  hundred = '100',
+  thirtySix = '36',
+  sixty = '60',
+  ninetySix = '96',
 }
 
 export enum PetsSearchSortByTypes {

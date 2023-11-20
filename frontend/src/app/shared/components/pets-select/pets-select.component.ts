@@ -33,6 +33,7 @@ export class PetsSelectComponent implements ControlValueAccessor, OnInit {
   @Input() label: string = '';
   @Input() multipleSelect?: boolean;
   @Input() fullWidth?: boolean;
+  @Input() width?: string;
 
   @Input() name!: string;
 

@@ -1,4 +1,4 @@
-<mat-form-field [ngClass]="{ 'full-width': fullWidth }">
+<mat-form-field [ngClass]="{ 'full-width': fullWidth }" [style.width]="width">
   <mat-label>{{ label }}</mat-label>
   <mat-select [formControl]="formControl" *ngIf="!multipleSelect">
     <mat-option *ngFor="let topping of dataModel" [value]="topping">

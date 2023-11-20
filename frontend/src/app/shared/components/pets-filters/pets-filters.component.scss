@@ -10,17 +10,24 @@
 
   .form {
     .filter-content {
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .filter-title {
+      display: flex;
       font-weight: 600;
       font-size: 16px;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
+      justify-content: space-between;
+      align-items: center;
+
+      .add-new {
+        cursor: pointer;
+      }
     }
 
     .city-content {
-      width: calc(100% - 10px);
+      // width: calc(100% - 10px);
     }
 
     .price-content {
@@ -29,6 +36,8 @@
 
       .inputs-container {
         display: flex;
+        flex-direction: column;
+
         .inputs {
           .price-input-form-field {
             width: calc(100% / 2 - 20px);
@@ -38,6 +47,9 @@
               cursor: pointer;
             }
           }
+        }
+        .currency {
+          margin: 10px 10px 0 10px;
         }
       }
     }

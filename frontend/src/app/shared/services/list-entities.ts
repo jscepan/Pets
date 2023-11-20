@@ -23,7 +23,7 @@ export class ListEntities<T extends BaseModel> {
 
   private searchModel: SearchFilterModel = new SearchFilterModel();
 
-  private NUMBER_OF_ITEMS_ON_PAGE: number = 50;
+  private NUMBER_OF_ITEMS_ON_PAGE: number = 36;
 
   private webService?: EntityBaseWebService<T>;
 
@@ -37,7 +37,7 @@ export class ListEntities<T extends BaseModel> {
   }
 
   public resetNumberOfItemsOnPage(): void {
-    this.NUMBER_OF_ITEMS_ON_PAGE = 50;
+    this.NUMBER_OF_ITEMS_ON_PAGE = 36;
     this.requestFirstPage();
   }
 

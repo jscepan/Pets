@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { PetsAutocompleteModule } from '../pets-autocomplete/pets-autocomplete.module';
+import { PetsButtonModule } from '../pets-button/pets-button.module';
 
 @NgModule({
   declarations: [PetsFiltersComponent],
@@ -27,6 +28,7 @@ import { PetsAutocompleteModule } from '../pets-autocomplete/pets-autocomplete.m
     MatCheckboxModule,
     MatIconModule,
     PetsAutocompleteModule,
+    PetsButtonModule,
   ],
   exports: [PetsFiltersComponent],
 })

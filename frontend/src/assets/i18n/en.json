@@ -1,4 +1,7 @@
 {
+  "thirtySix": "36",
+  "sixty": "60",
+  "ninetySix": "96",
   "aboveBasicAds": "Above basic ads",
   "adDeleted": "Ad deleted",
   "adHaveBeenSuccessfullyDeleted": "Ad have been successfully deleted",
@@ -47,6 +50,7 @@
   "createAd": "Create ad",
   "createEntity": "Create entity",
   "createdOn": "Created on",
+  "currency": "Currency",
   "day": "Day",
   "days": "Days",
   "deactivateActivate": "(De)activate",

@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PetsAdCardI } from 'src/app/shared/components/pets-ad-card/pets-ad-card.interface';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import {
-  PageSize,
   PetsSearchDirectionTypes,
+  PetsSearchSortByTypes,
   SearchFilterModel,
   ViewType,
 } from 'src/app/shared/models/search.model';
@@ -15,8 +15,8 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { AdsService } from './ads.service';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
-import { FilterService } from 'src/app/shared/services/filter.service';
-import { enumToEnumValueModel } from 'src/app/shared/utils';
+import { SortModel } from 'src/app/shared/models/sort.model';
+import { FilterModel } from 'src/app/shared/models/filter.model';
 
 @Component({
   selector: 'pets-ads',
@@ -43,8 +43,8 @@ export class AdsComponent implements OnInit, OnDestroy {
   viewType: ViewType = ViewType.list;
   viewTypeEnum = ViewType;
 
-  selectedFilter: Observable<SearchFilterModel> =
-    this.filterService.selectedFilter;
+  selectedFilter$: BehaviorSubject<SearchFilterModel | null> =
+    new BehaviorSubject<SearchFilterModel | null>(null);
 
   constructor(
     private globalService: GlobalService,
@@ -52,35 +52,78 @@ export class AdsComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private sweetAlertService: PetsSweetAlertService,
     private router: Router,
-    private filterService: FilterService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.adsService.init();
 
-    this.filterService.selectedFilter.subscribe((selectedFilter) => {
-      this.adsService.setFilter(selectedFilter);
+    this.subs.sink = this.route.queryParams.subscribe((params) => {
+      const filter = new SearchFilterModel();
+      // quickSearch
+      filter.quickSearch = params['quickSearch'];
+      // adPage
+      filter.adPage.pageNumber = +params['page'];
+      filter.adPage.pageSize = params['pageSize'];
+      filter.adPage.sortDirection = params['sortDirection'];
+      filter.adPage.sortBy = params['sortBy'];
+      // adSearchCriteria: FilterModel
+      const filterModel: FilterModel = new FilterModel();
+      filterModel.cities = params['cities'];
+      filterModel.priceFrom = params['priceFrom'];
+      filterModel.priceTo = params['priceTo'];
+      filterModel.priceCurrency = params['priceCurrency'];
+      filterModel.sellTypes = params['sellTypes'];
+      filterModel.adTypes = params['adTypes'];
+      filterModel.categories = params['categories'];
+      filterModel.subcategories = params['subcategories'];
+      filterModel.adstatuses = params['adstatuses'];
+      filterModel.priceIsFixed = params['priceIsFixed'];
+      filterModel.freeOfCharge = params['freeOfCharge'];
+      filterModel.users = params['users'];
+      filter.adSearchCriteria = filterModel;
+
+      this.adsService.setFilter({ ...filter });
+      this.selectedFilter$.next(filter);
     });
   }
 
-  filtersChanged(event: any): void {
-    console.log(event);
-    if (event.priceFrom) this.filterService.setPriceFrom(+event.priceFrom);
-    if (event.priceTo) this.filterService.setPriceTo(+event.priceTo);
-    if (event.type === 'viewType') {
-      console.log('viewTypeviewTypeviewTypeviewType');
-      console.log(event.value);
-      console.log(ViewType.list);
-      this.viewType = event.value as ViewType;
+  filtersChanged(event: { type: string; value: any }): void {
+    switch (event.type) {
+      case 'viewType':
+        this.viewType = event.value as ViewType;
+        break;
+      case 'filterChange':
+        const filter = event.value as FilterModel;
+        console.log(filter);
+        const queryParams = { ...this.route.snapshot.queryParams };
+        queryParams['cities'] = filter.cities;
+        queryParams['priceFrom'] = filter.priceFrom;
+        queryParams['priceTo'] = filter.priceTo;
+        queryParams['priceCurrency'] = filter.priceCurrency;
+        queryParams['sellTypes'] = filter.sellTypes;
+        queryParams['adTypes'] = filter.adTypes;
+        queryParams['categories'] = filter.categories;
+        queryParams['subcategories'] = filter.subcategories;
+        queryParams['adstatuses'] = filter.adstatuses;
+        queryParams['priceIsFixed'] = filter.priceIsFixed;
+        queryParams['freeOfCharge'] = filter.freeOfCharge;
+        queryParams['users'] = filter.users;
+        this.router.navigate(['/ads'], { queryParams: queryParams });
+        break;
+      case 'pageSize':
+        this.changePageSize(+event.value);
+        break;
+      case 'sort':
+        this.changeSort(event.value as SortModel);
+        break;
     }
   }
 
-  goToPage(page: number): void {
-    this.adsService.requestPageNumber(page);
-  }
-
-  changePageSize(size: number): void {
-    this.adsService.setPageSize(size.toString() as PageSize);
+  goToPage(newPage: number): void {
+    const queryParams = { ...this.route.snapshot.queryParams };
+    queryParams['page'] = ++newPage;
+    this.router.navigate(['/ads'], { queryParams: queryParams });
   }
 
   trackByOid(_index: number, item: PetsAdCardI): string {
@@ -89,6 +132,19 @@ export class AdsComponent implements OnInit, OnDestroy {
 
   goToAd(ad: any): void {
     this.router.navigate(['ad-view/', ad.oid]);
+  }
+
+  private changePageSize(size: number): void {
+    const queryParams = { ...this.route.snapshot.queryParams };
+    queryParams['pageSize'] = size;
+    this.router.navigate(['/ads'], { queryParams: queryParams });
+  }
+
+  private changeSort(sort: SortModel): void {
+    const queryParams = { ...this.route.snapshot.queryParams };
+    queryParams['sortDirection'] = sort.sortDirection;
+    queryParams['sortBy'] = sort.sortBy;
+    this.router.navigate(['/ads'], { queryParams: queryParams });
   }
 
   ngOnDestroy(): void {

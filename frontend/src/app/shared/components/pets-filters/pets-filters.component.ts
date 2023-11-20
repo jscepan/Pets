@@ -18,6 +18,7 @@ import { enumToEnumValueModel } from '../../utils';
 import { SellType } from '../../enums/sell-type.model';
 import { StoreService } from '../../services/store.service';
 import { CityWebService } from 'src/app/web-services/city.web-service';
+import { Currency } from '../../enums/currency.model';
 
 @Component({
   selector: 'pets-filters',
@@ -31,11 +32,13 @@ export class PetsFiltersComponent implements OnInit {
 
   @Input() dataModel!: SearchFilterModel | null;
 
-  @Output() changeEvent: EventEmitter<FilterModel> = new EventEmitter();
+  @Output() changeEvent: EventEmitter<{ type: string; value: FilterModel }> =
+    new EventEmitter();
 
   adTypes: EnumValueModel[] = [];
   selectedAdTypes: EnumValueModel[] = [];
-  sellTypes: EnumValueModel[] = [];
+  sellTypes: EnumValueModel[] = enumToEnumValueModel(SellType);
+  currencyOptions: EnumValueModel[] = enumToEnumValueModel(Currency);
   cities?: Observable<EnumValueModel[]>;
   categories: EnumValueModel[] = [];
   subcategories: EnumValueModel[] = [];
@@ -49,7 +52,6 @@ export class PetsFiltersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sellTypes = enumToEnumValueModel(SellType);
     this.adTypes = this.definitionsStoreService.getAdsTypes(
       this.languageService.selectedLanguage
     );
@@ -61,6 +63,9 @@ export class PetsFiltersComponent implements OnInit {
       cities: new FormControl(this.dataModel?.adSearchCriteria?.cities),
       priceFrom: new FormControl(this.dataModel?.adSearchCriteria?.priceFrom),
       priceTo: new FormControl(this.dataModel?.adSearchCriteria?.priceTo),
+      priceCurrency: new FormControl(
+        this.dataModel?.adSearchCriteria?.priceCurrency
+      ),
       sellTypes: new FormControl(this.sellTypes[0]),
       adTypes: new FormControl(this.adTypes),
       categories: new FormControl(this.dataModel?.adSearchCriteria?.categories),
@@ -83,7 +88,10 @@ export class PetsFiltersComponent implements OnInit {
     });
 
     this.filterForm.valueChanges.pipe(debounceTime(1500)).subscribe(() => {
-      this.changeEvent.emit(this.filterForm?.value);
+      this.changeEvent.emit({
+        type: 'filterChange',
+        value: this.filterForm?.value,
+      });
     });
   }
 
@@ -106,5 +114,20 @@ export class PetsFiltersComponent implements OnInit {
 
   clearValue(control: 'priceFrom' | 'priceTo'): void {
     this.filterForm?.get(control)?.setValue(null);
+  }
+
+  addNew(
+    type:
+      | 'city'
+      | 'category'
+      | 'price'
+      | 'adTypes'
+      | 'categories'
+      | 'subcategories'
+  ): void {
+    switch (type) {
+      case 'city':
+        break;
+    }
   }
 }

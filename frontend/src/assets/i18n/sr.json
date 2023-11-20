@@ -1,4 +1,7 @@
 {
+  "thirtySix": "36",
+  "sixty": "60",
+  "ninetySix": "96",
   "aboveBasicAds": "Ispred osnovnih oglasa",
   "adDeleted": "Oglas obrisan",
   "adHaveBeenSuccessfullyDeleted": "Oglas je uspešno obrisan",
@@ -47,6 +50,7 @@
   "createAd": "Kreiraj oglas",
   "createEntity": "Kreiraj entitet",
   "createdOn": "Datum kreiranja",
+  "currency": "Valuta",
   "day": "Dan",
   "days": "Dana",
   "deactivateActivate": "(De)aktiviraj",

@@ -18,6 +18,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EnumValueModel } from '../../enums/enum.model';
 import { TranslateService } from '@ngx-translate/core';
 import { enumToEnumKeyModel, enumToEnumValueModel } from '../../utils';
+import { SortModel } from '../../models/sort.model';
 
 @Component({
   selector: 'pets-filters-and-search-header',
@@ -28,7 +29,7 @@ import { enumToEnumKeyModel, enumToEnumValueModel } from '../../utils';
 export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
   @Input() dataModel!: SearchFilterModel | null;
 
-  @Output() changeEvent: EventEmitter<{ type: string; value: string }> =
+  @Output() changeEvent: EventEmitter<{ type: string; value: any }> =
     new EventEmitter();
 
   searchBarForm?: FormGroup;
@@ -115,7 +116,7 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
   }
 
   changeSortBy(value: string): void {
-    this.changeEvent.emit({ type: 'sort', value });
+    this.changeEvent.emit({ type: 'sort', value: new SortModel() });
   }
 
   changeView(value: ViewType): void {
