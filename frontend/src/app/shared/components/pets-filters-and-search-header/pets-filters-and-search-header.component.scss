@@ -3,4 +3,25 @@
   border: 1px solid var(--color-main-light);
   border-radius: 4px;
   padding: 10px;
+
+  .search-bar {
+    .search-bar-form {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .page-size {
+        width: 100px;
+      }
+
+      .page-sort {
+        width: 150px;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }

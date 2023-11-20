@@ -209,3 +209,10 @@ export function enumToEnumValueModel(enumObj: any): EnumValueModel[] {
     displayName: enumObj[key],
   }));
 }
+
+export function enumToEnumKeyModel(enumObj: any): EnumValueModel[] {
+  return Object.keys(enumObj).map((key) => ({
+    value: enumObj[key],
+    displayName: key,
+  }));
+}

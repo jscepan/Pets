@@ -8,7 +8,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { enumToEnumValueModel } from '../../utils';
 import {
   PageSize,
   PetsSearchDirectionTypes,
@@ -18,6 +17,7 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EnumValueModel } from '../../enums/enum.model';
 import { TranslateService } from '@ngx-translate/core';
+import { enumToEnumKeyModel, enumToEnumValueModel } from '../../utils';
 
 @Component({
   selector: 'pets-filters-and-search-header',
@@ -33,8 +33,10 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
 
   searchBarForm?: FormGroup;
 
-  pageSizeOptions: EnumValueModel[] = [];
-  pageSortOptions: EnumValueModel[] = [];
+  pageSizeOptions: EnumValueModel[] = enumToEnumValueModel(PageSize);
+  pageSortOptions: EnumValueModel[] = enumToEnumKeyModel(
+    PetsSearchDirectionTypes
+  );
 
   expanded: boolean = true;
 
@@ -70,8 +72,12 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setSearchBar();
     this.searchBarForm = new FormGroup({
-      pageSize: new FormControl('', [Validators.required]),
-      pageSort: new FormControl('', [Validators.required]),
+      pageSize: new FormControl(this.dataModel?.adPage.pageSize, [
+        Validators.required,
+      ]),
+      pageSort: new FormControl(this.dataModel?.adPage.sortBy, [
+        Validators.required,
+      ]),
     });
   }
 
@@ -113,7 +119,7 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
   }
 
   changeView(value: ViewType): void {
-    // this.viewType = value;
+    this.viewType = value;
     this.changeEvent.emit({ type: 'viewType', value });
   }
 

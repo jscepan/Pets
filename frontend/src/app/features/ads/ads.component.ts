@@ -67,6 +67,12 @@ export class AdsComponent implements OnInit, OnDestroy {
     console.log(event);
     if (event.priceFrom) this.filterService.setPriceFrom(+event.priceFrom);
     if (event.priceTo) this.filterService.setPriceTo(+event.priceTo);
+    if (event.type === 'viewType') {
+      console.log('viewTypeviewTypeviewTypeviewType');
+      console.log(event.value);
+      console.log(ViewType.list);
+      this.viewType = event.value as ViewType;
+    }
   }
 
   goToPage(page: number): void {

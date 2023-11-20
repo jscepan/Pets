@@ -9,6 +9,7 @@
     <div class="selected-filters">
       <pets-filters-and-search-header
         [dataModel]="selectedFilter | async"
+        (changeEvent)="filtersChanged($event)"
       ></pets-filters-and-search-header>
     </div>
     <div class="ads-wrapper-container">
