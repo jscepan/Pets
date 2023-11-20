@@ -52,30 +52,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
   selectAdType(item?: DefinitionEntityModel): void {
     if (item) {
       this.selectedAdType = item;
-      this.categories = this.selectedAdType.childrens.map((t) => {
-        return {
-          value: t.value,
-          displayName: t.displayValue[this.selectedLanguage],
-        };
-      });
+      this.categories = this.definitionsStoreService.getCategoriesForAdTypes(
+        item,
+        this.languageService.selectedLanguage
+      );
       this.subCategories = [];
     }
   }
 
-  onAutocompleteChange(selectedObject: EnumValueModel) {
-    const adTypes = this.selectedAdType?.childrens.filter(
-      (x) => x.value === selectedObject.value
-    );
-    const type = adTypes ? adTypes[0] : undefined;
-    if (type && type.childrens) {
-      this.subCategories = type.childrens.map((t) => {
-        return {
-          value: t.value,
-          displayName: t.displayValue[this.selectedLanguage],
-        };
-      });
-    } else {
-      this.subCategories = [];
+  onAutocompleteChange(selectedObject: EnumValueModel): void {
+    if (this.selectedAdType) {
+      this.subCategories =
+        this.definitionsStoreService.getSubcategoriesForCategory(
+          this.selectedAdType,
+          selectedObject.value,
+          this.languageService.selectedLanguage
+        );
     }
   }
 

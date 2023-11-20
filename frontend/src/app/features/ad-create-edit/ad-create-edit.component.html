@@ -39,7 +39,7 @@
     <div class="button-group">
       <pets-button
         [text]="'next' | translate"
-        [disabled]="!firstFormGroup?.valid"
+        [disabled]="!(firstFormGroup && firstFormGroup.valid)"
         (clickEvent)="nextStep()"
         class="select-filter"
       ></pets-button>
@@ -138,7 +138,7 @@
       <pets-button
         [text]="'next' | translate"
         (clickEvent)="nextStep()"
-        [disabled]="!secondFormGroup?.valid"
+        [disabled]="!(secondFormGroup && secondFormGroup.valid)"
       ></pets-button>
     </div>
   </mat-step>
@@ -165,7 +165,7 @@
       <pets-button [text]="'back' | translate" matStepperPrevious></pets-button>
       <pets-button
         [text]="'submit' | translate"
-        [disabled]="!thirdFormGroup?.valid"
+        [disabled]="!(thirdFormGroup && thirdFormGroup.valid)"
         (clickEvent)="createAd()"
       ></pets-button>
     </div>

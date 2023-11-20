@@ -1,4 +1,3 @@
-import { Sort } from '../enums/sort.model';
 import { FilterModel } from './filter.model';
 
 export class SearchFilterModel {
@@ -6,21 +5,21 @@ export class SearchFilterModel {
   adPage: {
     pageNumber: number;
     pageSize: PageSize;
-    sortDirection: Sort;
-    sortBy: string;
+    sortDirection: PetsSearchDirectionTypes;
+    sortBy: PetsSearchSortByTypes;
   } = {
     pageNumber: 0,
-    pageSize: PageSize.ten,
-    sortDirection: Sort.ASC,
-    sortBy: 'title',
+    pageSize: PageSize.thirty,
+    sortDirection: PetsSearchDirectionTypes.ascending,
+    sortBy: PetsSearchSortByTypes.title,
   };
   adSearchCriteria?: FilterModel;
 }
 
 export enum PageSize {
-  ten = 10,
-  twenty = 20,
-  fifthy = 50,
+  thirty = '30',
+  fifthy = '50',
+  hundred = '100',
 }
 
 export enum PetsSearchSortByTypes {

@@ -35,8 +35,10 @@
       [text]="'create' | translate"
       [disabled]="
         isEdit
-          ? !(formGroup?.dirty || false) || formGroup?.invalid || false
-          : formGroup?.invalid || false
+          ? !((formGroup && formGroup.dirty) || false) ||
+            formGroup.invalid ||
+            false
+          : (formGroup && formGroup.invalid) || false
       "
       cdkFocusInitial
       (clickEvent)="handleSubmitButton()"

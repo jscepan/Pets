@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SearchFilterModel } from '../models/search.model';
-import { Sort } from '../enums/sort.model';
+import {
+  PageSize,
+  PetsSearchDirectionTypes,
+  SearchFilterModel,
+} from '../models/search.model';
 import { FilterModel } from '../models/filter.model';
 
 @Injectable({
@@ -13,7 +16,7 @@ export class FilterService {
   public readonly selectedFilter: Observable<SearchFilterModel> =
     this.selectedFilters$.asObservable();
 
-  setPageSize(size: number): void {
+  setPageSize(size: PageSize): void {
     const filter = this.selectedFilters$.getValue();
 
     filter.adPage.pageSize = size;
@@ -27,10 +30,10 @@ export class FilterService {
     this.selectedFilters$.next({ ...filter });
   }
 
-  setSort(orderType: Sort): void {
+  setSort(sort: PetsSearchDirectionTypes): void {
     const filter = this.selectedFilters$.getValue();
 
-    filter.adPage.sortBy = orderType;
+    filter.adPage.sortDirection = sort;
     this.selectedFilters$.next({ ...filter });
   }
 
@@ -48,7 +51,6 @@ export class FilterService {
 
   setPriceTo(price: number): void {
     const filter = this.selectedFilters$.getValue();
-    console.log('///////////////');
     if (filter.adSearchCriteria) {
       filter.adSearchCriteria.priceTo = price;
       this.selectedFilters$.next({ ...filter });

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
 import { Language } from 'src/app/shared/enums/language.model';
+import { DefinitionEntityModel } from 'src/app/shared/models/definition-entity.model';
 import { DefinitionModel } from 'src/app/shared/models/definitions.model';
 @Injectable({
   providedIn: 'root',
@@ -40,7 +41,58 @@ export class DefinitionsStoreService {
     return types ?? [];
   }
 
-  getCategoriesForAdTypes(adTypes: string[]): EnumValueModel[] {
-    return [];
+  getCategoriesForAdTypes(
+    adType: DefinitionEntityModel,
+    selectedLanguage: Language
+  ): EnumValueModel[] {
+    return adType.childrens.map((t) => {
+      return {
+        value: t.value,
+        displayName: t.displayValue[selectedLanguage],
+      };
+    });
+  }
+
+  getCategoriesForAdTypesFromEnum(
+    adType: string,
+    selectedLanguage: Language
+  ): EnumValueModel[] {
+    const adTypes = this._definitions.getValue()?.adsType;
+    const selectedType = adTypes?.filter((a) => a.value === adType)[0];
+    if (selectedType && selectedType.childrens) {
+      return selectedType.childrens
+        .map((t) => {
+          return {
+            value: t.value,
+            displayName: t.displayValue[selectedLanguage],
+          };
+        })
+        .sort((a, b) => a.displayName.localeCompare(b.displayName));
+    } else {
+      return [];
+    }
+  }
+
+  getSubcategoriesForCategory(
+    selectedAdType: DefinitionEntityModel,
+    selectedCategory: string,
+    selectedLanguage: Language
+  ): EnumValueModel[] {
+    const adTypes = selectedAdType?.childrens.filter(
+      (x) => x.value === selectedCategory
+    );
+    const type = adTypes ? adTypes[0] : undefined;
+    if (type && type.childrens) {
+      return type.childrens
+        .map((t) => {
+          return {
+            value: t.value,
+            displayName: t.displayValue[selectedLanguage],
+          };
+        })
+        .sort((a, b) => a.displayName.localeCompare(b.displayName));
+    } else {
+      return [];
+    }
   }
 }

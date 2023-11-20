@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { SubscriptionManager } from './subscription.manager';
 import { SelectionManager } from './selection.manager';
 import { ArrayResponseI } from 'src/app/core/interfaces/array-response.interface';
-import { SearchFilterModel } from '../models/search.model';
+import { PageSize, SearchFilterModel } from '../models/search.model';
 import { BaseModel } from '../models/base-model';
 
 type RequestFn<M extends { oid: string }, Filter extends SearchFilterModel> = (
@@ -77,7 +77,7 @@ export abstract class ListManager<
     return attachedSelection;
   }
 
-  setPageSize(size: number): void {
+  setPageSize(size: PageSize): void {
     if (this._filter) {
       this._filter.adPage.pageSize = size;
       this.requestFirstPage();

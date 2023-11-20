@@ -26,6 +26,10 @@ export class AdsService extends ListManager<
     this.setResponseFn(this.prepareResponse.bind(this));
   }
 
+  init(): void {
+    // this.setFilter(new SearchFilterModel());
+  }
+
   public prepareResponse(data: AdModel[]): PetsAdCardI[] {
     return data.map((ad) => ({
       oid: ad.oid,
@@ -51,9 +55,5 @@ export class AdsService extends ListManager<
       },
       favorite: ad.inactive || false,
     }));
-  }
-
-  init(): void {
-    this.setFilter(new SearchFilterModel());
   }
 }

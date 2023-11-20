@@ -7,17 +7,11 @@
   </div>
   <div class="content">
     <div class="selected-filters">
-      <pets-selected-filters
-        [dataModel]="(selectedFilter | async)?.adSearchCriteria || null"
-      ></pets-selected-filters>
+      <pets-filters-and-search-header
+        [dataModel]="selectedFilter | async"
+      ></pets-filters-and-search-header>
     </div>
     <div class="ads-wrapper-container">
-      <pets-search-bar
-        [dataModel]="searchBarModel"
-        (changeEvent)="searchBarEventHandler($event)"
-        *ngIf="searchBarModel"
-        class="search-bar"
-      ></pets-search-bar>
       <div class="ads-container">
         <div
           class="grid-container"

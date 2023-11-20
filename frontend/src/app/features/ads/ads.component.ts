@@ -6,6 +6,7 @@ import { PetsAdCardI } from 'src/app/shared/components/pets-ad-card/pets-ad-card
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import {
   PageSize,
+  PetsSearchDirectionTypes,
   SearchFilterModel,
   ViewType,
 } from 'src/app/shared/models/search.model';
@@ -13,9 +14,9 @@ import { GlobalService } from 'src/app/shared/services/global.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { AdsService } from './ads.service';
-import { PetsSearchBarI } from 'src/app/shared/components/pets-search-bar/pets-search-bar.interface';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
 import { FilterService } from 'src/app/shared/services/filter.service';
+import { enumToEnumValueModel } from 'src/app/shared/utils';
 
 @Component({
   selector: 'pets-ads',
@@ -39,8 +40,6 @@ export class AdsComponent implements OnInit, OnDestroy {
   public readonly selection: SelectionManager<PetsAdCardI> =
     this.adsService.selection;
 
-  searchBarModel?: PetsSearchBarI;
-
   viewType: ViewType = ViewType.list;
   viewTypeEnum = ViewType;
 
@@ -58,64 +57,10 @@ export class AdsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.adsService.init();
-    this.setSearchBar();
 
     this.filterService.selectedFilter.subscribe((selectedFilter) => {
       this.adsService.setFilter(selectedFilter);
     });
-  }
-
-  setSearchBar(): void {
-    this.searchBarModel = {
-      searchText: '',
-      view: ViewType.list,
-      sort: {
-        selected: 'yyy',
-        options: [
-          {
-            value: 'xxx',
-            displayName: 'Xxxxx',
-          },
-          {
-            value: 'yyy',
-            displayName: 'Yuyuyuy',
-          },
-        ],
-      },
-      pageSize: {
-        selected: PageSize.fifthy.toString(),
-        options: [
-          {
-            value: PageSize.ten.toString(),
-            displayName: PageSize.ten.toString(),
-          },
-          {
-            value: PageSize.twenty.toString(),
-            displayName: PageSize.twenty.toString(),
-          },
-          {
-            value: PageSize.fifthy.toString(),
-            displayName: PageSize.fifthy.toString(),
-          },
-        ],
-      },
-    };
-  }
-
-  searchBarEventHandler(event: { type: string; value: string }): void {
-    console.log('event');
-    console.log(event);
-    switch (event.type) {
-      case 'pageSize':
-        this.filterService.setPageSize(+event.value);
-        break;
-      case 'sort':
-        //
-        break;
-      case 'viewType':
-        this.viewType = event.value as ViewType;
-        break;
-    }
   }
 
   filtersChanged(event: any): void {
@@ -129,7 +74,7 @@ export class AdsComponent implements OnInit, OnDestroy {
   }
 
   changePageSize(size: number): void {
-    this.adsService.setPageSize(size);
+    this.adsService.setPageSize(size.toString() as PageSize);
   }
 
   trackByOid(_index: number, item: PetsAdCardI): string {

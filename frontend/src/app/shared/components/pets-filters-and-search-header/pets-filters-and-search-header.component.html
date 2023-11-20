@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="selected-filters">
+    <mat-chip-listbox aria-label="filters">
+      <mat-chip-row
+        (removed)="remove(filter.value)"
+        *ngFor="let filter of filters"
+      >
+        {{ filter.displayName }}
+        <button matChipRemove [attr.aria-label]="'remove ' + 'Dog'">
+          <pets-icons [name]="'x'"></pets-icons>
+        </button>
+      </mat-chip-row>
+    </mat-chip-listbox>
+    <!-- <pets-selected-filters
+      [dataModel]="dataModel?.adSearchCriteria"
+    ></pets-selected-filters> -->
+  </div>
+  <div class="search-bar">
+    <form [formGroup]="searchBarForm" *ngIf="searchBarForm && dataModel">
+      <mat-form-field class="page-size">
+        <mat-label>{{ "num" | translate }}</mat-label>
+        <mat-select
+          formControlName="pageSize"
+          (valueChange)="changePageSize($event)"
+        >
+          <mat-option *ngFor="let item of pageSizeOptions" [value]="item.value">
+            {{ item.displayName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="page-sort">
+        <mat-label>{{ "sortBy" | translate }}</mat-label>
+        <mat-select
+          formControlName="pageSort"
+          (valueChange)="changeSortBy($event)"
+        >
+          <mat-option *ngFor="let item of pageSortOptions" [value]="item.value">
+            {{ item.displayName | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="view-type">
+        <pets-button
+          [iconName]="'grid'"
+          [color]="'link'"
+          (clickEvent)="changeView(viewTypeEnum.grid)"
+          [disabled]="viewType === viewTypeEnum.grid"
+        ></pets-button>
+        <pets-button
+          [iconName]="'align-justify'"
+          [color]="'link'"
+          (clickEvent)="changeView(viewTypeEnum.list)"
+          [disabled]="viewType === viewTypeEnum.list"
+        ></pets-button>
+      </div>
+    </form>
+  </div>
+
+  <div class="buttons">
+    <pets-button
+      [text]="'resetFilter' | translate"
+      [color]="'link'"
+      (clickEvent)="resetFilter()"
+      [smallWidth]="true"
+    ></pets-button>
+    <pets-button
+      [iconName]="expanded ? 'chevron-up' : 'chevron-down'"
+      [color]="'link'"
+      (clickEvent)="toggleExpand()"
+      [smallWidth]="true"
+    ></pets-button>
+  </div>
+</div>

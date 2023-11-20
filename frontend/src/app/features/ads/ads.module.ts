@@ -9,11 +9,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { PetsSearchInputModule } from 'src/app/shared/components/pets-search-input/pets-search-input.module';
 import { PetsFiltersModule } from 'src/app/shared/components/pets-filters/pets-filters.module';
-import { PetsSearchBarModule } from 'src/app/shared/components/pets-search-bar/pets-search-bar.module';
 import { PetsAdCardModule } from 'src/app/shared/components/pets-ad-card/pets-ad-card.module';
 import { PetsPaginatorModule } from 'src/app/shared/components/pets-paginator/pets-paginator.module';
 import { PetsAdLineModule } from 'src/app/shared/components/pets-ad-line/pets-ad-line.module';
-import { PetsSelectedFiltersModule } from 'src/app/shared/components/pets-selected-filters/pets-selected-filters.module';
+import { PetsFiltersAndSearchHeaderModule } from 'src/app/shared/components/pets-filters-and-search-header/pets-filters-and-search-header.module';
 
 @NgModule({
   declarations: [AdsComponent],
@@ -28,11 +27,10 @@ import { PetsSelectedFiltersModule } from 'src/app/shared/components/pets-select
     MatSelectModule,
     PetsSearchInputModule,
     PetsFiltersModule,
-    PetsSearchBarModule,
     PetsAdCardModule,
     PetsAdLineModule,
     PetsPaginatorModule,
-    PetsSelectedFiltersModule,
+    PetsFiltersAndSearchHeaderModule,
   ],
 })
 export class AdsModule {}
