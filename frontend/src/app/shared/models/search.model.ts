@@ -1,13 +1,9 @@
+import { AdPageModel } from './ad-page.model';
 import { FilterModel } from './filter.model';
 
 export class SearchFilterModel {
   quickSearch: string = '';
-  adPage: {
-    pageNumber: number;
-    pageSize: PageSize;
-    sortDirection: PetsSearchDirectionTypes;
-    sortBy: PetsSearchSortByTypes;
-  } = {
+  adPage: AdPageModel = {
     pageNumber: 0,
     pageSize: PageSize.thirtySix,
     sortDirection: PetsSearchDirectionTypes.ascending,

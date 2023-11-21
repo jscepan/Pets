@@ -34,10 +34,9 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
 
   searchBarForm?: FormGroup;
 
-  pageSizeOptions: EnumValueModel[] = enumToEnumValueModel(PageSize);
-  pageSortOptions: EnumValueModel[] = enumToEnumKeyModel(
-    PetsSearchDirectionTypes
-  );
+  pageSizeOptions: EnumValueModel[] = enumToEnumValueModel(PageSize) || [];
+  pageSortOptions: EnumValueModel[] =
+    enumToEnumKeyModel(PetsSearchDirectionTypes) || [];
 
   expanded: boolean = true;
 

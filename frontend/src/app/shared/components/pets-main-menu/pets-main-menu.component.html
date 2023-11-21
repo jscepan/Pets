@@ -7,7 +7,10 @@
     </div>
     <div class="center-part">
       <div class="search-bar">
-        <pets-search-input></pets-search-input>
+        <pets-search-input
+          [keyword]="searchBarKeyword"
+          (changeEvent)="searchInputEvent($event)"
+        ></pets-search-input>
       </div>
     </div>
     <div class="right-part">

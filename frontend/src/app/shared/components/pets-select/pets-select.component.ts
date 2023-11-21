@@ -1,9 +1,7 @@
 import {
-  // ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output,
   forwardRef,
@@ -19,7 +17,6 @@ import { EnumValueModel } from '../../enums/enum.model';
   selector: 'pets-select',
   templateUrl: './pets-select.component.html',
   styleUrls: ['./pets-select.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,9 +35,6 @@ export class PetsSelectComponent implements ControlValueAccessor, OnInit {
   @Input() name!: string;
 
   public formControl: FormControl = new FormControl();
-
-  @Output() selectedValuesChange?: EventEmitter<EnumValueModel[]> =
-    new EventEmitter();
 
   constructor() {}
 

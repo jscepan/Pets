@@ -4,7 +4,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { UserModel } from '../../models/user.model';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
@@ -24,14 +24,20 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
   companyLogo: string = 'paw-icon';
   user: UserModel | null = null;
   userMenuAction?: PetsMenuItemI;
+  searchBarKeyword: string = '';
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private localStorageService: LocalStorageService,
     private authStoreService: AuthStoreService
   ) {}
 
   ngOnInit(): void {
+    this.subs.sink = this.route.queryParamMap.subscribe((params) => {
+      this.searchBarKeyword = params.get('quickSearch') || '';
+    });
+
     this.subs.sink = this.authStoreService.user$.subscribe((user) => {
       this.user = user;
       if (!this.user) {
@@ -96,6 +102,12 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
 
   redirectToHome(): void {
     this.router.navigate(['/']);
+  }
+
+  searchInputEvent(search: string): void {
+    const queryParams = { ...this.route.snapshot.queryParams };
+    queryParams['quickSearch'] = search;
+    this.router.navigate(['/ads'], { queryParams });
   }
 
   ngOnDestroy(): void {

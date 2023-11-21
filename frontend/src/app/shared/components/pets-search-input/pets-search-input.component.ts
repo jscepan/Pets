@@ -46,12 +46,10 @@ export class PetsSearchInputComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if (changes.keyword && changes.keyword.previousValue) {
-    //   if (changes.keyword.currentValue !== changes.keyword.previousValue) {
-    //     // if the change is comming from outside we are not emiting, just setting the value
-    //     this.searchInput.setValue(this.keyword, { emitEvent: false });
-    //   }
-    // }
+    if (changes['keyword'].currentValue !== changes['keyword'].previousValue) {
+      // if the change is comming from outside we are not emiting, just setting the value
+      this.searchInput.setValue(this.keyword, { emitEvent: false });
+    }
   }
 
   resetSearchInputValue(): void {

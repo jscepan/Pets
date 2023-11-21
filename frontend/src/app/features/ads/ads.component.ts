@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PetsAdCardI } from 'src/app/shared/components/pets-ad-card/pets-ad-card.interface';
 import { PetsSweetAlertService } from 'src/app/shared/components/pets-sweet-alert/pets-sweet-alert.service';
 import {
+  PageSize,
   PetsSearchDirectionTypes,
   PetsSearchSortByTypes,
   SearchFilterModel,
@@ -17,6 +18,16 @@ import { AdsService } from './ads.service';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
 import { SortModel } from 'src/app/shared/models/sort.model';
 import { FilterModel } from 'src/app/shared/models/filter.model';
+import {
+  enumKeysToString,
+  enumToEnumKeyModel,
+  stringToEnumModel,
+} from 'src/app/shared/utils';
+import { EnumValueModel } from 'src/app/shared/enums/enum.model';
+import { AdPageModel } from 'src/app/shared/models/ad-page.model';
+import { SellType } from 'src/app/shared/enums/sell-type.model';
+import { AdStatus } from 'src/app/shared/enums/ad-status.model';
+import { Currency } from 'src/app/shared/enums/currency.model';
 
 @Component({
   selector: 'pets-ads',
@@ -58,58 +69,132 @@ export class AdsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.adsService.init();
 
-    this.subs.sink = this.route.queryParams.subscribe((params) => {
+    this.subs.sink = this.route.queryParamMap.subscribe((params: ParamMap) => {
       const filter = new SearchFilterModel();
       // quickSearch
-      filter.quickSearch = params['quickSearch'];
+      filter.quickSearch = params.get('quickSearch') || '';
       // adPage
-      filter.adPage.pageNumber = +params['page'];
-      filter.adPage.pageSize = params['pageSize'];
-      filter.adPage.sortDirection = params['sortDirection'];
-      filter.adPage.sortBy = params['sortBy'];
+      filter.adPage = this.mapAdPageFromParams(params);
       // adSearchCriteria: FilterModel
-      const filterModel: FilterModel = new FilterModel();
-      filterModel.cities = params['cities'];
-      filterModel.priceFrom = params['priceFrom'];
-      filterModel.priceTo = params['priceTo'];
-      filterModel.priceCurrency = params['priceCurrency'];
-      filterModel.sellTypes = params['sellTypes'];
-      filterModel.adTypes = params['adTypes'];
-      filterModel.categories = params['categories'];
-      filterModel.subcategories = params['subcategories'];
-      filterModel.adstatuses = params['adstatuses'];
-      filterModel.priceIsFixed = params['priceIsFixed'];
-      filterModel.freeOfCharge = params['freeOfCharge'];
-      filterModel.users = params['users'];
-      filter.adSearchCriteria = filterModel;
+      filter.adSearchCriteria = this.mapFilterModelFromParams(params);
 
       this.adsService.setFilter({ ...filter });
       this.selectedFilter$.next(filter);
     });
   }
 
+  mapAdPageFromParams(params: ParamMap): AdPageModel {
+    const adPage: AdPageModel = new AdPageModel();
+
+    const pageNumber = params.get('page');
+    adPage.pageNumber = pageNumber ? +pageNumber : undefined;
+
+    const pageSize: string | null = params.get('pageSize');
+    if (pageSize) {
+      const pageSizeEnumList = stringToEnumModel([pageSize], PageSize);
+      adPage.pageSize = pageSizeEnumList
+        ? (pageSizeEnumList as PageSize[])[0]
+        : undefined;
+    } else {
+      adPage.pageSize = undefined;
+    }
+
+    const sortDirection: string | null = params.get('sortDirection');
+    if (sortDirection) {
+      const sortDirectionEnumList = stringToEnumModel(
+        [sortDirection],
+        PetsSearchDirectionTypes
+      );
+      adPage.sortDirection = sortDirectionEnumList
+        ? (sortDirectionEnumList as PetsSearchDirectionTypes[])[0]
+        : undefined;
+    } else {
+      adPage.sortDirection = undefined;
+    }
+
+    const sortBy: string | null = params.get('sortBy');
+    if (sortBy) {
+      const sortByEnumList = stringToEnumModel([sortBy], PetsSearchSortByTypes);
+      adPage.sortBy = sortByEnumList
+        ? (sortByEnumList as PetsSearchSortByTypes[])[0]
+        : undefined;
+    } else {
+      adPage.sortBy = undefined;
+    }
+    return adPage;
+  }
+
+  mapFilterModelFromParams(params: ParamMap): FilterModel {
+    const filterModel: FilterModel = new FilterModel();
+    // filterModel.cities = params.get('cities');
+
+    const priceFromNumber = params.get('priceFrom');
+    filterModel.priceFrom = priceFromNumber ? +priceFromNumber : undefined;
+
+    const priceToNumber = params.get('priceTo');
+    filterModel.priceTo = priceToNumber ? +priceToNumber : undefined;
+
+    const priceCurrency: string | null = params.get('priceCurrency');
+    if (priceCurrency) {
+      const priceCurrencyEnumList = stringToEnumModel(
+        [priceCurrency],
+        Currency
+      );
+      filterModel.priceCurrency = (priceCurrencyEnumList as Currency[])[0];
+    } else {
+      filterModel.priceCurrency = undefined;
+    }
+
+    const sellTypes: string[] = params.getAll('sellTypes');
+    const sellTypeEnumList = stringToEnumModel(sellTypes, SellType);
+    filterModel.sellTypes = sellTypeEnumList
+      ? (sellTypeEnumList as SellType[])
+      : undefined;
+
+    filterModel.adTypes = params.getAll('adTypes');
+    filterModel.categories = params.getAll('categories');
+    filterModel.subcategories = params.getAll('subcategories');
+
+    const adstatuses: string[] = params.getAll('adstatuses');
+    const adstatusesEnumList = stringToEnumModel(adstatuses, AdStatus);
+    filterModel.adstatuses = adstatusesEnumList
+      ? (adstatusesEnumList as AdStatus[])
+      : undefined;
+
+    filterModel.priceIsFixed =
+      params.get('priceIsFixed') === 'true' || undefined;
+    filterModel.freeOfCharge =
+      params.get('freeOfCharge') === 'true' || undefined;
+    // filterModel.users = params.get('users');
+    return filterModel;
+  }
+
   filtersChanged(event: { type: string; value: any }): void {
+    console.log(event);
     switch (event.type) {
       case 'viewType':
         this.viewType = event.value as ViewType;
         break;
       case 'filterChange':
-        const filter = event.value as FilterModel;
+        const filter = event.value;
         console.log(filter);
+        console.log(this.mapEnumsToStringsArray(filter.sellTypes));
         const queryParams = { ...this.route.snapshot.queryParams };
         queryParams['cities'] = filter.cities;
         queryParams['priceFrom'] = filter.priceFrom;
         queryParams['priceTo'] = filter.priceTo;
-        queryParams['priceCurrency'] = filter.priceCurrency;
-        queryParams['sellTypes'] = filter.sellTypes;
-        queryParams['adTypes'] = filter.adTypes;
+        queryParams['priceCurrency'] = enumKeysToString(filter.priceCurrency);
+        queryParams['sellTypes'] = this.mapEnumsToStringsArray(
+          filter.sellTypes
+        );
+        queryParams['adTypes'] = enumKeysToString(filter.adTypes);
         queryParams['categories'] = filter.categories;
         queryParams['subcategories'] = filter.subcategories;
         queryParams['adstatuses'] = filter.adstatuses;
         queryParams['priceIsFixed'] = filter.priceIsFixed;
         queryParams['freeOfCharge'] = filter.freeOfCharge;
         queryParams['users'] = filter.users;
-        this.router.navigate(['/ads'], { queryParams: queryParams });
+        this.router.navigate(['/ads'], { queryParams });
         break;
       case 'pageSize':
         this.changePageSize(+event.value);
@@ -120,10 +205,18 @@ export class AdsComponent implements OnInit, OnDestroy {
     }
   }
 
+  mapEnumsToStringsArray(arr: EnumValueModel[]): string[] {
+    const a: string[] = [];
+    arr.forEach((element) => {
+      a.push(element.value);
+    });
+    return a;
+  }
+
   goToPage(newPage: number): void {
     const queryParams = { ...this.route.snapshot.queryParams };
     queryParams['page'] = ++newPage;
-    this.router.navigate(['/ads'], { queryParams: queryParams });
+    this.router.navigate(['/ads'], { queryParams });
   }
 
   trackByOid(_index: number, item: PetsAdCardI): string {
@@ -137,7 +230,7 @@ export class AdsComponent implements OnInit, OnDestroy {
   private changePageSize(size: number): void {
     const queryParams = { ...this.route.snapshot.queryParams };
     queryParams['pageSize'] = size;
-    this.router.navigate(['/ads'], { queryParams: queryParams });
+    this.router.navigate(['/ads'], { queryParams });
   }
 
   private changeSort(sort: SortModel): void {

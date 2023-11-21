@@ -203,16 +203,55 @@ export function roundOnIntegerOrMaxTwoDigits(value: number): string {
   }
 }
 
-export function enumToEnumValueModel(enumObj: any): EnumValueModel[] {
+export function enumKeysToString(enumObj: any): string[] | null {
+  if (!enumObj) {
+    return null;
+  }
+  return Object.keys(enumObj).map((key) => enumObj[key]);
+}
+
+export function enumToEnumValueModel(enumObj: any): EnumValueModel[] | null {
+  if (!enumObj) {
+    return null;
+  }
   return Object.keys(enumObj).map((key) => ({
     value: enumObj[key],
     displayName: enumObj[key],
   }));
 }
 
-export function enumToEnumKeyModel(enumObj: any): EnumValueModel[] {
+export function enumToEnumKeyModel(enumObj: any): EnumValueModel[] | null {
+  if (!enumObj) {
+    return null;
+  }
   return Object.keys(enumObj).map((key) => ({
     value: enumObj[key],
     displayName: key,
   }));
+}
+
+type EnumType<T> = {
+  [K in keyof T]: T[K];
+};
+
+export function stringToEnumModel<T>(
+  values: string[],
+  enumObj: EnumType<T>
+): Object[] | undefined {
+  return values
+    .map((value) => getSellTypeEnum(value, enumObj))
+    .filter((enumValue) => enumValue !== undefined) as Object[];
+}
+
+export function getSellTypeEnum<T>(
+  value: string,
+  enumObj: EnumType<T>
+): T | undefined {
+  const enumValues = Object.values(enumObj) as string[];
+
+  if (enumValues.includes(value)) {
+    return value as T;
+  }
+
+  return undefined;
 }

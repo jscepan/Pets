@@ -118,7 +118,7 @@ export class AdCreateEditComponent implements OnInit, OnDestroy {
       this.authStoreService.user?.city?.oid
     );
     this.firstFormGroup = this._formBuilder.group({
-      sellType: [SellType.SELL, [Validators.required]],
+      sellType: [SellType.sell, [Validators.required]],
       adType: ['', Validators.required],
       category: ['', Validators.required],
       subcategory: ['', Validators.required],

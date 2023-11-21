@@ -1,4 +1,4 @@
 export enum Currency {
-  EUR = 'eur',
-  RSD = 'rsd',
+  eur = 'EUR',
+  rsd = 'RSD',
 }
