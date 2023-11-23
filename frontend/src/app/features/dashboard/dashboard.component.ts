@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Params, Router } from '@angular/router';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
@@ -72,7 +72,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   search(): void {
-    this.router.navigate(['ads']);
+    const queryParams: Params = {};
+    if (this.selectedAdType) {
+      queryParams['adTypes'] = this.selectedAdType.value;
+    }
+    this.router.navigate(['ads'], { queryParams: queryParams });
   }
 
   ngOnDestroy(): void {
