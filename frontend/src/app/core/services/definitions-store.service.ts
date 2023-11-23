@@ -53,6 +53,21 @@ export class DefinitionsStoreService {
     });
   }
 
+  getAdTypesFromKeys(
+    adTypes: string[],
+    selectedLanguage: Language
+  ): EnumValueModel[] | undefined {
+    const types = this._definitions.getValue()?.adsType;
+    return types
+      ?.filter((a) => adTypes.includes(a.value))
+      .map((t) => {
+        return {
+          value: t.value,
+          displayName: t.displayValue[selectedLanguage],
+        };
+      });
+  }
+
   getCategoriesForAdTypesFromEnum(
     adType: string,
     selectedLanguage: Language

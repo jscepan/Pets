@@ -1,7 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="definitionsLoaded$ | async">
   <div class="filters">
     <pets-filters
       [dataModel]="selectedFilter$ | async"
+      [selectedAdTypes]="selectedAdTypes"
+      [selectedCategories]="selectedCategories"
+      [selectedSubcategories]="selectedSubcategories"
       (changeEvent)="filtersChanged($event)"
     ></pets-filters>
   </div>

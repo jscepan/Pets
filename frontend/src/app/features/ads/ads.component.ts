@@ -18,16 +18,14 @@ import { AdsService } from './ads.service';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
 import { SortModel } from 'src/app/shared/models/sort.model';
 import { FilterModel } from 'src/app/shared/models/filter.model';
-import {
-  enumKeysToString,
-  enumToEnumKeyModel,
-  stringToEnumModel,
-} from 'src/app/shared/utils';
+import { enumKeysToString, stringToEnumModel } from 'src/app/shared/utils';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
 import { AdPageModel } from 'src/app/shared/models/ad-page.model';
 import { SellType } from 'src/app/shared/enums/sell-type.model';
 import { AdStatus } from 'src/app/shared/enums/ad-status.model';
 import { Currency } from 'src/app/shared/enums/currency.model';
+import { LanguageService } from 'src/app/language.service';
+import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 
 @Component({
   selector: 'pets-ads',
@@ -54,14 +52,21 @@ export class AdsComponent implements OnInit, OnDestroy {
   viewType: ViewType = ViewType.list;
   viewTypeEnum = ViewType;
 
+  definitionsLoaded$: Observable<boolean> =
+    this.definitionsStoreService.dataLoaded$;
   selectedFilter$: BehaviorSubject<SearchFilterModel | null> =
     new BehaviorSubject<SearchFilterModel | null>(null);
+  selectedAdTypes: EnumValueModel[] | undefined;
+  selectedCategories: EnumValueModel[] = [];
+  selectedSubcategories: EnumValueModel[] = [];
 
   constructor(
     private globalService: GlobalService,
     private adsService: AdsService,
     private translateService: TranslateService,
     private sweetAlertService: PetsSweetAlertService,
+    private languageService: LanguageService,
+    private definitionsStoreService: DefinitionsStoreService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -69,17 +74,32 @@ export class AdsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.adsService.init();
 
-    this.subs.sink = this.route.queryParamMap.subscribe((params: ParamMap) => {
-      const filter = new SearchFilterModel();
-      // quickSearch
-      filter.quickSearch = params.get('quickSearch') || '';
-      // adPage
-      filter.adPage = this.mapAdPageFromParams(params);
-      // adSearchCriteria: FilterModel
-      filter.adSearchCriteria = this.mapFilterModelFromParams(params);
+    this.definitionsLoaded$.subscribe((loaded) => {
+      if (loaded) {
+        this.subs.sink = this.route.queryParamMap.subscribe(
+          (params: ParamMap) => {
+            console.log('+++++++++++++++++++++++++');
+            const filter = new SearchFilterModel();
+            // quickSearch
+            filter.quickSearch = params.get('quickSearch') || '';
+            // adPage
+            filter.adPage = this.mapAdPageFromParams(params);
+            // adSearchCriteria: FilterModel
+            filter.adSearchCriteria = this.mapFilterModelFromParams(params);
 
-      this.adsService.setFilter({ ...filter });
-      this.selectedFilter$.next(filter);
+            const adTypes: string[] = params.getAll('adTypes');
+
+            this.selectedAdTypes =
+              this.definitionsStoreService.getAdTypesFromKeys(
+                adTypes,
+                this.languageService.selectedLanguage
+              );
+
+            this.adsService.setFilter({ ...filter });
+            this.selectedFilter$.next(filter);
+          }
+        );
+      }
     });
   }
 
@@ -187,9 +207,15 @@ export class AdsComponent implements OnInit, OnDestroy {
         queryParams['sellTypes'] = this.mapEnumsToStringsArray(
           filter.sellTypes
         );
-        queryParams['adTypes'] = enumKeysToString(filter.adTypes);
-        queryParams['categories'] = filter.categories;
-        queryParams['subcategories'] = filter.subcategories;
+        queryParams['adTypes'] = filter.adTypes.map(
+          (a: EnumValueModel) => a.value
+        );
+        queryParams['categories'] = filter.categories.map(
+          (a: EnumValueModel) => a.value
+        );
+        queryParams['subcategories'] = filter.subcategories.map(
+          (a: EnumValueModel) => a.value
+        );
         queryParams['adstatuses'] = filter.adstatuses;
         queryParams['priceIsFixed'] = filter.priceIsFixed;
         queryParams['freeOfCharge'] = filter.freeOfCharge;

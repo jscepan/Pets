@@ -5,7 +5,7 @@
         {{ "sellTypes" | translate }}
       </div>
       <pets-select
-        [dataModel]="sellTypes"
+        [dataModel]="allSellTypes"
         [fullWidth]="true"
         [label]="'sellTypes' | translate"
         formControlName="sellTypes"
@@ -24,7 +24,7 @@
       </div>
       <!-- <pets-autocomplete-multiselect></pets-autocomplete-multiselect> -->
       <pets-autocomplete
-        [dataModel]="(cities | async) || undefined"
+        [dataModel]="(allCities | async) || undefined"
         (changeEvent)="onCityChange($event)"
         (clearEvent)="clearCityEvent()"
         [label]="'selectYourPlace' | translate"
@@ -65,7 +65,7 @@
         </div>
         <div class="currency">
           <pets-select
-            [dataModel]="currencyOptions"
+            [dataModel]="allCurrencyOptions"
             [fullWidth]="true"
             [label]="'currency' | translate"
             formControlName="priceCurrency"
