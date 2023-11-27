@@ -24,9 +24,9 @@
       </div>
       <!-- <pets-autocomplete-multiselect></pets-autocomplete-multiselect> -->
       <pets-autocomplete
+        *ngFor="let city of filterForm?.get('cities')?.value; let i = index"
         [dataModel]="(allCities | async) || undefined"
-        (changeEvent)="onCityChange($event)"
-        (clearEvent)="clearCityEvent()"
+        (clearEvent)="clearCityEvent(i)"
         [label]="'selectYourPlace' | translate"
       ></pets-autocomplete>
     </div>

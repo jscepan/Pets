@@ -239,11 +239,11 @@ export function stringToEnumModel<T>(
   enumObj: EnumType<T>
 ): Object[] | undefined {
   return values
-    .map((value) => getSellTypeEnum(value, enumObj))
+    .map((value) => getEnumFromKey(value, enumObj))
     .filter((enumValue) => enumValue !== undefined) as Object[];
 }
 
-export function getSellTypeEnum<T>(
+export function getEnumFromKey<T>(
   value: string,
   enumObj: EnumType<T>
 ): T | undefined {

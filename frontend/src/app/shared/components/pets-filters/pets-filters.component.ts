@@ -8,7 +8,14 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { SearchFilterModel } from '../../models/search.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
+} from '@angular/forms';
 import { EnumValueModel } from '../../enums/enum.model';
 import { FilterModel } from '../../models/filter.model';
 import { Observable, debounceTime } from 'rxjs';
@@ -32,9 +39,6 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   @Input() dataModel!: SearchFilterModel | null;
-  @Input() selectedAdTypes: EnumValueModel[] | undefined = [];
-  @Input() selectedCategories: EnumValueModel[] | undefined = [];
-  @Input() selectedSubcategories: EnumValueModel[] | undefined = [];
 
   @Output() changeEvent: EventEmitter<{ type: string; value: FilterModel }> =
     new EventEmitter();
@@ -73,36 +77,44 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
       this.cityWebService
     );
 
-    // this.setForm();
-
     this.filterForm?.get('adTypes')?.valueChanges.subscribe((xxx) => {
-      this.populateCategoriesAndSubcategories();
+      console.log(xxx);
+      // this.populateCategoriesAndSubcategories();
+      // this.addNew('categories')
     });
     this.filterForm?.get('categories')?.valueChanges.subscribe((xxx) => {
-      this.populateSubcategories();
+      // this.populateSubcategories();
+      // this.addNew('subcategories')
     });
 
-    this.filterForm?.valueChanges.pipe(debounceTime(1500)).subscribe(() => {
-      this.changeEvent?.emit({
-        type: 'filterChange',
-        value: this.filterForm?.value,
+    this.filterForm?.valueChanges
+      .pipe(debounceTime(1500))
+      .subscribe((value) => {
+        console.log(value);
+        this.changeEvent?.emit({
+          type: 'filterChange',
+          value,
+        });
       });
-    });
   }
 
   setForm(): void {
     this.filterForm = new FormGroup({
-      cities: new FormControl(this.dataModel?.adSearchCriteria?.cities),
+      cities: new FormArray([]), //this.dataModel?.adSearchCriteria?.cities ||
       priceFrom: new FormControl(this.dataModel?.adSearchCriteria?.priceFrom),
       priceTo: new FormControl(this.dataModel?.adSearchCriteria?.priceTo),
       priceCurrency: new FormControl(
-        this.dataModel?.adSearchCriteria?.priceCurrency
+        this.dataModel?.adSearchCriteria?.priceCurrency || Currency.eur
       ),
-      sellTypes: new FormControl([]),
-      adTypes: new FormControl(this.selectedAdTypes),
-      categories: new FormControl(this.dataModel?.adSearchCriteria?.categories),
+      sellTypes: new FormControl(
+        this.dataModel?.adSearchCriteria?.sellTypes || []
+      ),
+      adTypes: new FormControl(this.dataModel?.adSearchCriteria?.adTypes || []),
+      categories: new FormControl(
+        this.dataModel?.adSearchCriteria?.categories || []
+      ),
       subcategories: new FormControl(
-        this.dataModel?.adSearchCriteria?.subcategories
+        this.dataModel?.adSearchCriteria?.subcategories || []
       ),
       priceIsFixed: new FormControl(
         this.dataModel?.adSearchCriteria?.priceIsFixed
@@ -111,22 +123,22 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
         this.dataModel?.adSearchCriteria?.freeOfCharge
       ),
     });
+    this.addNew('city');
   }
 
   onCityChange(item: EnumValueModel): void {
-    this.changeEvent.emit({
-      type: 'filterChange',
-      value: this.filterForm?.value,
-    });
+    // this.changeEvent.emit({
+    //   type: 'filterChange',
+    //   value: this.filterForm?.value,
+    // });
   }
 
-  clearCityEvent(): void {
+  clearCityEvent(i: number): void {
     // this.secondFormGroup?.get('city')?.setValue('');
   }
 
   populateCategoriesAndSubcategories(): void {
     //
-    console.log(this.selectedAdTypes);
   }
 
   populateSubcategories(): void {
@@ -148,6 +160,16 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
   ): void {
     switch (type) {
       case 'city':
+        // console.log(this.filterForm?.controls['cities'] as UntypedFormArray);
+        // (this.filterForm?.controls['cities'] as UntypedFormArray).;
+        const citiesArray = this.filterForm?.get('cities') as FormArray;
+        citiesArray.push(new FormControl('')); // Dodajte prazan FormControl
+        break;
+      case 'adTypes':
+        break;
+      case 'categories':
+        break;
+      case 'subcategories':
         break;
     }
   }

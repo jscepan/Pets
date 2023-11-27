@@ -18,7 +18,7 @@ import { AdsService } from './ads.service';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
 import { SortModel } from 'src/app/shared/models/sort.model';
 import { FilterModel } from 'src/app/shared/models/filter.model';
-import { enumKeysToString, stringToEnumModel } from 'src/app/shared/utils';
+import { getEnumFromKey, stringToEnumModel } from 'src/app/shared/utils';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
 import { AdPageModel } from 'src/app/shared/models/ad-page.model';
 import { SellType } from 'src/app/shared/enums/sell-type.model';
@@ -56,9 +56,9 @@ export class AdsComponent implements OnInit, OnDestroy {
     this.definitionsStoreService.dataLoaded$;
   selectedFilter$: BehaviorSubject<SearchFilterModel | null> =
     new BehaviorSubject<SearchFilterModel | null>(null);
-  selectedAdTypes: EnumValueModel[] | undefined;
-  selectedCategories: EnumValueModel[] = [];
-  selectedSubcategories: EnumValueModel[] = [];
+  // selectedAdTypes: EnumValueModel[] | undefined;
+  // selectedCategories: EnumValueModel[] = [];
+  // selectedSubcategories: EnumValueModel[] = [];
 
   constructor(
     private globalService: GlobalService,
@@ -87,16 +87,14 @@ export class AdsComponent implements OnInit, OnDestroy {
             // adSearchCriteria: FilterModel
             filter.adSearchCriteria = this.mapFilterModelFromParams(params);
 
-            const adTypes: string[] = params.getAll('adTypes');
-
-            this.selectedAdTypes =
-              this.definitionsStoreService.getAdTypesFromKeys(
-                adTypes,
-                this.languageService.selectedLanguage
-              );
+            // this.selectedAdTypes =
+            //   this.definitionsStoreService.getAdTypesFromKeys(
+            //     adTypes,
+            //     this.languageService.selectedLanguage
+            //   );
 
             this.adsService.setFilter({ ...filter });
-            this.selectedFilter$.next(filter);
+            // this.selectedFilter$.next(filter);
           }
         );
       }
@@ -197,13 +195,14 @@ export class AdsComponent implements OnInit, OnDestroy {
         break;
       case 'filterChange':
         const filter = event.value;
-        console.log(filter);
-        console.log(this.mapEnumsToStringsArray(filter.sellTypes));
         const queryParams = { ...this.route.snapshot.queryParams };
         queryParams['cities'] = filter.cities;
         queryParams['priceFrom'] = filter.priceFrom;
         queryParams['priceTo'] = filter.priceTo;
-        queryParams['priceCurrency'] = enumKeysToString(filter.priceCurrency);
+        queryParams['priceCurrency'] = getEnumFromKey(
+          filter.priceCurrency?.value,
+          Currency
+        );
         queryParams['sellTypes'] = this.mapEnumsToStringsArray(
           filter.sellTypes
         );
