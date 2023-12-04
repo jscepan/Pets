@@ -6,7 +6,7 @@ import {
 
 export class AdPageModel {
   pageNumber?: number;
-  pageSize?: PageSize;
-  sortDirection?: PetsSearchDirectionTypes;
-  sortBy?: PetsSearchSortByTypes;
+  pageSize: PageSize = PageSize.thirtySix;
+  sortDirection: PetsSearchDirectionTypes = PetsSearchDirectionTypes.ascending;
+  sortBy: PetsSearchSortByTypes = PetsSearchSortByTypes.created;
 }

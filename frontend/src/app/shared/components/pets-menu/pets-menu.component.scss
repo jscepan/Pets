@@ -15,4 +15,17 @@
     padding: 7px;
     color: var(--color-white);
   }
+
+  .down-icon {
+    margin-left: auto; /* Pomerite ikonu "chevron-down" na kraj */
+  }
+
+  button.mat-menu-item {
+    margin-left: 10px; /* Dodajte margine između pets-icons i button elemenata */
+  }
+}
+
+.menu-item-container {
+  display: flex; /* Postavite flex kontejner za ikonu i button */
+  align-items: center; /* Poravnajte vertikalno */
 }

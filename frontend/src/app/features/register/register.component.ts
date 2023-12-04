@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  UntypedFormBuilder,
+  UntypedFormControl,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
@@ -18,52 +18,27 @@ export class RegisterComponent implements OnInit, OnDestroy {
   public subs: SubscriptionManager = new SubscriptionManager();
 
   signUpForm?: UntypedFormGroup;
-  hasUpperCase: boolean = false;
-  hasLowerCase: boolean = false;
-  hasNumeric: boolean = false;
-  hasEightCharacters: boolean = false;
 
-  constructor(
-    private _formBuilder: UntypedFormBuilder,
-    private router: Router,
-    private authWebService: AuthWebService
-  ) {}
+  constructor(private router: Router, private authWebService: AuthWebService) {}
 
   ngOnInit(): void {
-    this.signUpForm = this._formBuilder.group(
-      {
-        username: ['', Validators.required, Validators.email],
-        password: ['', Validators.required],
-        passwordConfirm: ['', Validators.required],
-      },
-      {}
-    );
+    this.signUpForm = new UntypedFormGroup({
+      username: new UntypedFormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new UntypedFormControl('', [Validators.required]),
+      passwordConfirm: new UntypedFormControl('', []),
+    });
   }
 
   createAccount(): void {
     this.subs.sink = this.authWebService
-      .register({
-        ...this.signUpForm?.value,
-        email: this.signUpForm?.value.username,
-      })
+      .register(this.signUpForm?.value)
       .subscribe((res) => {
         console.log(res);
         // this.router.navigate(['ads']);
       });
-  }
-
-  isPasswordValid(): boolean {
-    this.hasUpperCase = /[A-Z]+/.test(this.signUpForm?.get('password')?.value);
-    this.hasLowerCase = /[a-z]+/.test(this.signUpForm?.get('password')?.value);
-    this.hasNumeric = /\d/g.test(this.signUpForm?.get('password')?.value);
-    this.hasEightCharacters =
-      this.signUpForm?.get('password')?.value?.length >= 8;
-    const passwordValid =
-      this.hasUpperCase &&
-      this.hasLowerCase &&
-      this.hasNumeric &&
-      this.hasEightCharacters;
-    return passwordValid;
   }
 
   switchToSignIn(): void {

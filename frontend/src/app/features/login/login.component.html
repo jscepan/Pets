@@ -1,5 +1,5 @@
 <div class="login-section">
-  <a href="/auth/register">{{ "register" | translate }}</a>
+  <a href="/auth/register">{{ "login" | translate }}</a>
   <form id="login-form" *ngIf="loginForm" [formGroup]="loginForm">
     <mat-form-field>
       <mat-label [class.mark-required]="true" [class.mark-opt-required]="true">
@@ -18,6 +18,7 @@
       class="submit-button"
       (clickEvent)="signIn()"
       [fullWidth]="true"
+      [disabled]="!(loginForm.dirty && loginForm.valid)"
     >
       {{ "signIn" | translate }}
     </pets-button>

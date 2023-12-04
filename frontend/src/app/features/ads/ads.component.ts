@@ -16,7 +16,6 @@ import { SubscriptionManager } from 'src/app/shared/services/subscription.manage
 import { AdWebService } from 'src/app/web-services/ad.web-service';
 import { AdsService } from './ads.service';
 import { SelectionManager } from 'src/app/shared/services/selection.manager';
-import { SortModel } from 'src/app/shared/models/sort.model';
 import { FilterModel } from 'src/app/shared/models/filter.model';
 import { getEnumFromKey, stringToEnumModel } from 'src/app/shared/utils';
 import { EnumValueModel } from 'src/app/shared/enums/enum.model';
@@ -72,18 +71,17 @@ export class AdsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.adsService.init();
-
     this.definitionsLoaded$.subscribe((loaded) => {
       if (loaded) {
         this.subs.sink = this.route.queryParamMap.subscribe(
           (params: ParamMap) => {
             console.log('+++++++++++++++++++++++++');
-            const filter = new SearchFilterModel();
+            let filter = new SearchFilterModel();
             // quickSearch
             filter.quickSearch = params.get('quickSearch') || '';
             // adPage
             filter.adPage = this.mapAdPageFromParams(params);
+            console.log({ ...filter.adPage });
             // adSearchCriteria: FilterModel
             filter.adSearchCriteria = this.mapFilterModelFromParams(params);
 
@@ -92,9 +90,8 @@ export class AdsComponent implements OnInit, OnDestroy {
             //     adTypes,
             //     this.languageService.selectedLanguage
             //   );
-
             this.adsService.setFilter({ ...filter });
-            // this.selectedFilter$.next(filter);
+            this.selectedFilter$.next(this.adsService.filter || null);
           }
         );
       }
@@ -105,16 +102,17 @@ export class AdsComponent implements OnInit, OnDestroy {
     const adPage: AdPageModel = new AdPageModel();
 
     const pageNumber = params.get('page');
-    adPage.pageNumber = pageNumber ? +pageNumber : undefined;
+    adPage.pageNumber = pageNumber ? +pageNumber - 1 : 0;
+    console.log(adPage.pageNumber);
 
     const pageSize: string | null = params.get('pageSize');
     if (pageSize) {
       const pageSizeEnumList = stringToEnumModel([pageSize], PageSize);
-      adPage.pageSize = pageSizeEnumList
-        ? (pageSizeEnumList as PageSize[])[0]
-        : undefined;
+      if (pageSizeEnumList) {
+        adPage.pageSize = (pageSizeEnumList as PageSize[])[0];
+      }
     } else {
-      adPage.pageSize = undefined;
+      adPage.pageSize = PageSize.thirtySix;
     }
 
     const sortDirection: string | null = params.get('sortDirection');
@@ -123,22 +121,22 @@ export class AdsComponent implements OnInit, OnDestroy {
         [sortDirection],
         PetsSearchDirectionTypes
       );
-      adPage.sortDirection = sortDirectionEnumList
-        ? (sortDirectionEnumList as PetsSearchDirectionTypes[])[0]
-        : undefined;
+      adPage.sortDirection = (
+        sortDirectionEnumList as PetsSearchDirectionTypes[]
+      )[0];
     } else {
-      adPage.sortDirection = undefined;
+      adPage.sortDirection = PetsSearchDirectionTypes.ascending;
     }
 
     const sortBy: string | null = params.get('sortBy');
     if (sortBy) {
       const sortByEnumList = stringToEnumModel([sortBy], PetsSearchSortByTypes);
-      adPage.sortBy = sortByEnumList
-        ? (sortByEnumList as PetsSearchSortByTypes[])[0]
-        : undefined;
+      adPage.sortBy = (sortByEnumList as PetsSearchSortByTypes[])[0];
     } else {
-      adPage.sortBy = undefined;
+      adPage.sortBy = PetsSearchSortByTypes.title;
     }
+    console.log('return adPage');
+    console.log({ ...adPage });
     return adPage;
   }
 
@@ -225,7 +223,10 @@ export class AdsComponent implements OnInit, OnDestroy {
         this.changePageSize(+event.value);
         break;
       case 'sort':
-        this.changeSort(event.value as SortModel);
+        this.changeSort(
+          event.value as PetsSearchDirectionTypes,
+          PetsSearchSortByTypes.title
+        );
         break;
     }
   }
@@ -258,11 +259,14 @@ export class AdsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/ads'], { queryParams });
   }
 
-  private changeSort(sort: SortModel): void {
+  private changeSort(
+    sortDirection: PetsSearchDirectionTypes,
+    sortBy: PetsSearchSortByTypes
+  ): void {
     const queryParams = { ...this.route.snapshot.queryParams };
-    queryParams['sortDirection'] = sort.sortDirection;
-    queryParams['sortBy'] = sort.sortBy;
-    this.router.navigate(['/ads'], { queryParams: queryParams });
+    queryParams['sortDirection'] = sortDirection;
+    queryParams['sortBy'] = sortBy;
+    this.router.navigate(['/ads'], { queryParams });
   }
 
   ngOnDestroy(): void {

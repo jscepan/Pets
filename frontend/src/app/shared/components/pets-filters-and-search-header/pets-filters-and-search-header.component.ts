@@ -115,7 +115,7 @@ export class PetsFiltersAndSearchHeaderComponent implements OnInit, OnDestroy {
   }
 
   changeSortBy(value: string): void {
-    this.changeEvent.emit({ type: 'sort', value: new SortModel() });
+    this.changeEvent.emit({ type: 'sort', value });
   }
 
   changeView(value: ViewType): void {

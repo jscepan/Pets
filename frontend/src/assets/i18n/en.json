@@ -1,4 +1,12 @@
 {
+  "myAds": "myAds",
+  "messages": "messages",
+  "favourites": "favourites",
+  "settings": "Settings",
+  "logout": "Logout",
+  "requiredField": "Required field",
+  "passwordsDontMatch": "Passwords don't match",
+  "confirmNewPassword": "Confirm new password",
   "thirtySix": "36",
   "sixty": "60",
   "ninetySix": "96",

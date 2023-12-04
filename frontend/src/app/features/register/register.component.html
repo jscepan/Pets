@@ -12,72 +12,16 @@
     novalidate
     *ngIf="signUpForm"
   >
-    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-form-field appearance="outline">
       <mat-label>{{ "email" | translate }}</mat-label>
-      <input matInput type="text" formControlName="username" required />
+      <input matInput type="text" formControlName="username" />
       <mat-error>
         {{ "requiredField" | translate }}
       </mat-error>
     </mat-form-field>
 
-    <div
-      class="auth-password-message-error auth-mb-36"
-      *ngIf="!signUpForm?.get('password')?.pristine && !isPasswordValid()"
-    >
-      <div class="auth-password-message-error-false">
-        <span> New password must have at least </span>
-      </div>
-
-      <div class="auth-password-message-error-true" *ngIf="hasEightCharacters">
-        <pets-icons [name]="'check-circle'"></pets-icons>
-        <span> 8 characters </span>
-      </div>
-
-      <div
-        class="auth-password-message-error-false"
-        *ngIf="!hasEightCharacters"
-      >
-        <pets-icons [name]="'minus-circle'"></pets-icons>
-        <span> 8 characters </span>
-      </div>
-
-      <div class="auth-password-message-error-true" *ngIf="hasUpperCase">
-        <pets-icons [name]="'check-circle'"></pets-icons>
-        <span> One uppercase </span>
-      </div>
-
-      <div class="auth-password-message-error-false" *ngIf="!hasUpperCase">
-        <pets-icons [name]="'minus-circle'"></pets-icons>
-        <span> One uppercase </span>
-      </div>
-
-      <div class="auth-password-message-error-true" *ngIf="hasLowerCase">
-        <pets-icons [name]="'check-circle'"></pets-icons>
-        <span> One lowercase </span>
-      </div>
-
-      <div class="auth-password-message-error-false" *ngIf="!hasLowerCase">
-        <pets-icons [name]="'minus-circle'"></pets-icons>
-        <span> One lowercase </span>
-      </div>
-
-      <div class="auth-password-message-error-true" *ngIf="hasNumeric">
-        <pets-icons [name]="'check-circle'"></pets-icons>
-        <span> One number </span>
-      </div>
-
-      <div class="auth-password-message-error-false" *ngIf="!hasNumeric">
-        <pets-icons [name]="'minus-circle'"></pets-icons>
-        <span> One number </span>
-      </div>
-    </div>
-
-    <mat-form-field
-      appearance="outline"
-      [hideRequiredMarker]="true"
-      class="auth-input-field"
-    >
-      <mat-label>New password</mat-label>
+    <mat-form-field appearance="outline" class="auth-input-field">
+      <mat-label>{{ "newPassword" | translate }}</mat-label>
       <input
         name="password"
         type="password"
@@ -112,12 +56,8 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field
-      appearance="outline"
-      [hideRequiredMarker]="true"
-      class="auth-input-field"
-    >
-      <mat-label>Confirm new password</mat-label>
+    <mat-form-field appearance="outline" class="auth-input-field">
+      <mat-label>{{ "confirmNewPassword" | translate }}</mat-label>
       <input
         name="passwordConfirm"
         type="password"
@@ -147,7 +87,7 @@
           class="auth-password-visibility"
         ></pets-icons>
       </button>
-      <mat-error>
+      <mat-error *ngIf="passwordField.value != confirmPasswordField.value">
         {{ "passwordsDontMatch" | translate }}
       </mat-error>
     </mat-form-field>
@@ -171,12 +111,12 @@
       aria-label="LOG IN"
       [disabled]="
         signUpForm.get('passwordConfirm')?.value === '' ||
-        signUpForm.get('passwordConfirm')?.value === null ||
-        !isPasswordValid()
+        signUpForm.get('passwordConfirm')?.value === null
       "
       (click)="createAccount()"
+      [fullWidth]="true"
     >
-      Submit
+      {{ "submit" | translate }}
     </pets-button>
   </form>
 </div>

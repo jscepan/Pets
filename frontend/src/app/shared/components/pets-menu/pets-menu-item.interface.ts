@@ -5,4 +5,6 @@ export interface PetsMenuItemI {
   subMenuItems?: PetsMenuItemI[];
   icon?: string;
   avatarUrl?: string;
+  initials?: string;
+  showIconAndText?: boolean;
 }

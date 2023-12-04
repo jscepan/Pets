@@ -3,18 +3,21 @@
     <img class="avatar" [src]="dataModel?.avatarUrl" />
   </ng-container>
   <ng-template #iconOrName>
-    <ng-container *ngIf="dataModel?.icon; else displayName">
+    <ng-container *ngIf="dataModel?.initials; else icon">
+      <pets-user-initials
+        [size]="'small'"
+        [shape]="'circled'"
+        [initials]="dataModel?.initials || ''"
+        [colorIsPrimary]="true"
+      ></pets-user-initials>
+    </ng-container>
+    <ng-template #icon>
       <pets-icons
         class="user-icon"
         matSuffix
         [name]="dataModel?.icon || ''"
         [size]="'30px'"
       ></pets-icons>
-    </ng-container>
-    <ng-template #displayName>
-      <button mat-button>
-        {{ dataModel?.displayName }}
-      </button>
     </ng-template>
   </ng-template>
   <pets-icons class="down-icon" matSuffix [name]="'chevron-down'"></pets-icons>
@@ -22,20 +25,26 @@
 
 <mat-menu #menu="matMenu">
   <ng-container *ngFor="let menuItem of dataModel?.subMenuItems">
-    <button
-      mat-menu-item
-      *ngIf="!menuItem.subMenuItems"
-      (click)="menuItemClicked(menuItem)"
-    >
-      {{ menuItem.displayName || "" | translate }}
-    </button>
-    <button
-      mat-menu-item
-      *ngIf="menuItem.subMenuItems"
-      [matMenuTriggerFor]="subMenu"
-    >
-      {{ menuItem.displayName || "" | translate }}
-    </button>
+    <div class="menu-item-container">
+      <pets-icons
+        *ngIf="menuItem?.showIconAndText && menuItem?.icon"
+        [name]="menuItem?.icon || ''"
+      ></pets-icons>
+      <button
+        mat-menu-item
+        *ngIf="!menuItem.subMenuItems"
+        (click)="menuItemClicked(menuItem)"
+      >
+        {{ menuItem.displayName || "" | translate }}
+      </button>
+      <button
+        mat-menu-item
+        *ngIf="menuItem.subMenuItems"
+        [matMenuTriggerFor]="subMenu"
+      >
+        {{ menuItem.displayName || "" | translate }}
+      </button>
+    </div>
     <mat-menu #subMenu="matMenu">
       <ng-container *ngFor="let subMenuItem of menuItem.subMenuItems">
         <button mat-menu-item (click)="menuItemClicked(subMenuItem)">

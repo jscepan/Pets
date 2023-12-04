@@ -12,12 +12,15 @@
   box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
   transition: transform 400ms ease;
   background-color: var(--color-white);
+  justify-content: space-between;
 
   .image-container {
     cursor: pointer;
+    height: 50%;
 
     .thumbnail {
       position: relative;
+      height: 100%;
 
       .media-counters {
         position: absolute;
@@ -45,10 +48,11 @@
       }
 
       img {
-        object-fit: cover;
+        object-fit: fill;
         object-position: center;
         width: 100%;
         border-radius: 6px 6px 0 0;
+        height: 100%;
         max-height: 200px;
       }
     }
@@ -56,9 +60,14 @@
 
   .info-container {
     padding: 10px;
+    display: flex;
+    height: 50%;
 
     .ad-container {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .title-content {
         display: flex;
@@ -68,6 +77,12 @@
         .title {
           font-weight: 600;
           font-size: 18px;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
 
         .favorite {
@@ -83,6 +98,11 @@
       .description {
         margin: 10px 0 20px 0;
         text-align: justify;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
       }
 
       .footer {

@@ -10,6 +10,8 @@ import { UserModel } from '../../models/user.model';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { SubscriptionManager } from '../../services/subscription.manager';
 import { PetsMenuItemI } from '../pets-menu/pets-menu-item.interface';
+import { getUserInitials } from '../../utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'pets-main-menu',
@@ -30,6 +32,7 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private localStorageService: LocalStorageService,
+    private translateServis: TranslateService,
     private authStoreService: AuthStoreService
   ) {}
 
@@ -61,15 +64,40 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
           key: 'userUnfo',
           avatarUrl: this.user?.avatar?.name || '',
           icon: 'user',
+          initials: user?.fullName
+            ? getUserInitials(user?.fullName)
+            : undefined,
           displayName: 'user',
           subMenuItems: [
             {
-              key: 'login',
-              displayName: 'login',
+              key: 'myAds',
+              displayName: this.translateServis.instant('myAds'),
+              icon: 'book',
+              showIconAndText: true,
             },
             {
-              key: 'register',
-              displayName: 'register',
+              key: 'messages',
+              displayName: this.translateServis.instant('messages'),
+              icon: 'message-square',
+              showIconAndText: true,
+            },
+            {
+              key: 'favourites',
+              displayName: this.translateServis.instant('favourites'),
+              icon: 'star',
+              showIconAndText: true,
+            },
+            {
+              key: 'settings',
+              displayName: this.translateServis.instant('settings'),
+              icon: 'settings',
+              showIconAndText: true,
+            },
+            {
+              key: 'logout',
+              displayName: this.translateServis.instant('logout'),
+              icon: 'log-out',
+              showIconAndText: true,
             },
           ],
         };
@@ -96,6 +124,22 @@ export class PetsMainMenuComponent implements OnInit, OnDestroy {
         break;
       case 'register':
         this.router.navigate(['auth', 'register']);
+        break;
+
+      case 'myAds':
+        this.router.navigate(['user', 'my-ads']);
+        break;
+      case 'messages':
+        this.router.navigate(['user', 'messages']);
+        break;
+      case 'favourites':
+        this.router.navigate(['user', 'favorites']);
+        break;
+      case 'settings':
+        this.router.navigate(['user', 'settings']);
+        break;
+      case 'logout':
+        this.logout();
         break;
     }
   }

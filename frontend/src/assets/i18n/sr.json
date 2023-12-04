@@ -1,4 +1,12 @@
 {
+  "myAds": "Moji oglasi",
+  "messages": "Poruke",
+  "favourites": "Omiljeni",
+  "settings": "Podešavanja",
+  "logout": "Izloguj se",
+  "requiredField": "Obavezno polje",
+  "passwordsDontMatch": "Lozinke se ne podudaraju",
+  "confirmNewPassword": "Ponovite novu šifru",
   "thirtySix": "36",
   "sixty": "60",
   "ninetySix": "96",

@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { PetsIconsProviderModule } from '../../modules/pets-icons.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PetsUserInitialsModule } from '../pets-user-initials/pets-user-initials.module';
 
 @NgModule({
   declarations: [PetsMenuComponent],
@@ -14,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatMenuModule,
     PetsIconsProviderModule,
     TranslateModule,
+    PetsUserInitialsModule,
   ],
   exports: [PetsMenuComponent],
 })

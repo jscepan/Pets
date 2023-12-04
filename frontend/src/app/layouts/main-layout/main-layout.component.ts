@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SubscriptionManager } from 'src/app/shared/services/subscription.manager';
 import { DefinitionsWebService } from 'src/app/web-services/definitions.web-service';
 
@@ -28,7 +29,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     private definitionsStoreService: DefinitionsStoreService,
     private definitionsWebService: DefinitionsWebService,
     private authWebService: AuthWebService,
-    private authStoreService: AuthStoreService
+    private authStoreService: AuthStoreService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -39,11 +41,15 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
         this.definitionsStoreService.dataLoaded = true;
       });
 
-    // this.subs.sink = this.authWebService.getCurrentUser().subscribe((user) => {
-    //   if (user) {
-    //     this.authStoreService.user = user;
-    //   }
-    // });
+    if (this.localStorageService.get('PetsJwt')) {
+      this.subs.sink = this.authWebService
+        .getCurrentUser()
+        .subscribe((user) => {
+          if (user) {
+            this.authStoreService.user = user;
+          }
+        });
+    }
   }
 
   changeLanguage(language: string): void {

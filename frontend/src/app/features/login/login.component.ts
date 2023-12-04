@@ -52,9 +52,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showAlert = false;
 */
     // Sign in
-    this.subs.sink = this.authWebService
-      .login(this.loginForm?.value)
-      .subscribe((response) => {
+    this.subs.sink = this.authWebService.login(this.loginForm?.value).subscribe(
+      (response) => {
         this.localStorageService.set(
           'PetsJwt',
           `Bearer ${response.accessToken}`
@@ -71,10 +70,14 @@ export class LoginComponent implements OnInit, OnDestroy {
             //   ]);
             //   this.authStoreService.canceledURL = null;
             // } else {
-            this.router.navigate(['login']);
+            // this.router.navigate(['login']);
             // }
           });
-      });
+      },
+      (error) => {
+        this.loginForm?.enable();
+      }
+    );
   }
 
   ngOnDestroy(): void {

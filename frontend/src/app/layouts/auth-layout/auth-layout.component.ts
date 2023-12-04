@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { AuthStoreService } from 'src/app/core/services/auth-store.service';
 import { DefinitionsStoreService } from 'src/app/core/services/definitions-store.service';
 import { LanguageService } from 'src/app/language.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
@@ -28,6 +29,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private definitionsStoreService: DefinitionsStoreService,
     private definitionsWebService: DefinitionsWebService,
+    private authStoreService: AuthStoreService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -44,11 +46,11 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   }
 
   logout(): void {
-    this.router.navigate(['auth/login']);
-    // this.authStoreService.canceledURL = null;
-    // this.authStoreService.user = null;
-    // this.authStoreService.canceledURL = null;
-    this.localStorageService.remove('jwt');
+    this.router.navigate(['/']);
+    this.authStoreService.canceledURL = null;
+    this.authStoreService.user = null;
+    this.authStoreService.canceledURL = null;
+    this.localStorageService.remove('PetsJwt');
   }
 
   redirectToHome(): void {

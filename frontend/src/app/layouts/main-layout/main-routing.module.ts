@@ -22,6 +22,11 @@ const routes: Routes = [
       import('@features/ads/ads.module').then((m) => m.AdsModule),
   },
   {
+    path: 'user',
+    loadChildren: () =>
+      import('@features/user/user.module').then((m) => m.UserModule),
+  },
+  {
     path: 'ad-view/:oid',
     loadChildren: () =>
       import('@features/ad-view/ad-view.module').then((m) => m.AdViewModule),

@@ -94,11 +94,62 @@ export abstract class ListManager<
 
   setFilter(filter: Filter): void {
     this._filter = filter;
-    this.requestFirstPage();
+    this.requestPageNumber(this._filter.adPage.pageNumber || 0);
   }
 
   public subscribeToData(): Observable<M[]> {
     return this._entities.asObservable();
+  }
+  sortByEventType(sortByValue: string): void {
+    // switch (sortByValue) {
+    //   case 'azAlphabetically':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.name],
+    //       direction: [MeSearchDirectionTypes.ascending]
+    //     });
+    //     break;
+    //   case 'zaAlphabetically':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.name],
+    //       direction: [MeSearchDirectionTypes.descending]
+    //     });
+    //     break;
+    //   case 'azAlphabeticallyTitle':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.title],
+    //       direction: [MeSearchDirectionTypes.ascending]
+    //     });
+    //     break;
+    //   case 'zaAlphabeticallyTitle':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.title],
+    //       direction: [MeSearchDirectionTypes.descending]
+    //     });
+    //     break;
+    //   case 'newest':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.modified],
+    //       direction: [MeSearchDirectionTypes.descending]
+    //     });
+    //     break;
+    //   case 'oldest':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.modified],
+    //       direction: [MeSearchDirectionTypes.ascending]
+    //     });
+    //     break;
+    //   case 'custom':
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.orderID, MeSearchSortByTypes.modified],
+    //       direction: [MeSearchDirectionTypes.ascending, MeSearchDirectionTypes.descending]
+    //     });
+    //     break;
+    //   default:
+    //     this.setSort({
+    //       attribute: [MeSearchSortByTypes.modified],
+    //       direction: [MeSearchDirectionTypes.descending]
+    //     });
+    // }
   }
 
   public requestFirstPage(initialLoad: boolean = false): void {
