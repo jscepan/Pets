@@ -201,12 +201,11 @@ export class AdsComponent implements OnInit, OnDestroy {
           filter.priceCurrency?.value,
           Currency
         );
+
         queryParams['sellTypes'] = this.mapEnumsToStringsArray(
           filter.sellTypes
         );
-        queryParams['adTypes'] = filter.adTypes.map(
-          (a: EnumValueModel) => a.value
-        );
+        queryParams['adTypes'] = this.mapEnumsToStringsArray(filter.adTypes);
         queryParams['categories'] = filter.categories.map(
           (a: EnumValueModel) => a.value
         );

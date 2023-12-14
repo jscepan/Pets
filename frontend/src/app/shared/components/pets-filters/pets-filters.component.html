@@ -33,12 +33,6 @@
     <div class="price-content filter-content">
       <div class="filter-title">
         {{ "price" | translate }}
-        <pets-button
-          [iconName]="'plus'"
-          [color]="'link'"
-          [smallWidth]="true"
-          (clickEvent)="addNew('price')"
-        ></pets-button>
       </div>
       <div class="inputs-container">
         <div class="inputs">
@@ -90,7 +84,10 @@
         formControlName="adTypes"
       ></pets-select>
     </div>
-    <div class="categories-content filter-content">
+    <div
+      class="categories-content filter-content"
+      [ngClass]="{ hideControl: !filterForm.controls['adTypes']?.value }"
+    >
       <div class="filter-title">
         {{ "categories" | translate }}
         <pets-button
@@ -108,7 +105,10 @@
         formControlName="categories"
       ></pets-select>
     </div>
-    <div class="subcategories-content filter-content">
+    <div
+      class="subcategories-content filter-content"
+      [ngClass]="{ hideControl: !filterForm.controls['categories']?.value }"
+    >
       <div class="filter-title">
         {{ "subcategories" | translate }}
         <pets-button
@@ -118,13 +118,28 @@
           (clickEvent)="addNew('subcategories')"
         ></pets-button>
       </div>
-      <pets-select
-        [dataModel]="subcategories"
-        [fullWidth]="true"
-        [label]="'subcategories' | translate"
-        [multipleSelect]="true"
-        formControlName="subcategories"
-      ></pets-select>
+      <div
+        class="subcategory-control"
+        *ngIf="subcategoriesFormArr.controls"
+        formArrayName="subcategories"
+      >
+        <div
+          class="row"
+          [formGroupName]="i"
+          *ngFor="
+            let subcategory of subcategoriesFormArr.controls;
+            let i = index
+          "
+        >
+          <pets-select
+            [dataModel]="subcategories"
+            [fullWidth]="true"
+            [label]="'subcategories' | translate"
+            [multipleSelect]="true"
+            formControlName="subcategory"
+          ></pets-select>
+        </div>
+      </div>
     </div>
     <div class="filter-content">
       <div class="priceIsFixed-content">

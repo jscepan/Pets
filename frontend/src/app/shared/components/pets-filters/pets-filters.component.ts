@@ -53,6 +53,10 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
 
   filterForm?: FormGroup;
 
+  get subcategoriesFormArr(): UntypedFormArray {
+    return this.filterForm?.get('subcategories') as UntypedFormArray;
+  }
+
   constructor(
     private storeService: StoreService,
     private definitionsStoreService: DefinitionsStoreService,
@@ -106,16 +110,18 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
       priceCurrency: new FormControl(
         this.dataModel?.adSearchCriteria?.priceCurrency || Currency.eur
       ),
-      sellTypes: new FormControl(
-        this.dataModel?.adSearchCriteria?.sellTypes || []
-      ),
+      sellTypes: new FormArray([]),
+      //  new FormControl(
+      //   this.dataModel?.adSearchCriteria?.sellTypes || []
+      // ),
       adTypes: new FormControl(this.dataModel?.adSearchCriteria?.adTypes || []),
       categories: new FormControl(
         this.dataModel?.adSearchCriteria?.categories || []
       ),
-      subcategories: new FormControl(
-        this.dataModel?.adSearchCriteria?.subcategories || []
-      ),
+      subcategories: new FormArray([]),
+      //  new FormControl(
+      //   this.dataModel?.adSearchCriteria?.subcategories || []
+      // ),
       priceIsFixed: new FormControl(
         this.dataModel?.adSearchCriteria?.priceIsFixed
       ),
@@ -166,11 +172,25 @@ export class PetsFiltersComponent implements OnChanges, OnInit {
         citiesArray.push(new FormControl('')); // Dodajte prazan FormControl
         break;
       case 'adTypes':
+        // this.addAdType(new EnumValueModel());
         break;
       case 'categories':
         break;
       case 'subcategories':
         break;
     }
+  }
+
+  addSubcategoryType(subcategory?: EnumValueModel): void {
+    this.subcategoriesFormArr.push(
+      new UntypedFormGroup({
+        value: new UntypedFormControl(subcategory?.value || '', []),
+        displayName: new UntypedFormControl(subcategory?.displayName || '', []),
+      })
+    );
+  }
+
+  removeSubcategory(index: number): void {
+    this.subcategoriesFormArr.removeAt(index);
   }
 }
