@@ -55,6 +55,16 @@ export class AuthWebService {
     );
   }
 
+  updateCurrentUser(
+    oid: string,
+    newUserData: UserModel
+  ): Observable<UserModel> {
+    return this.baseWebService.postRequest<UserModel, UserModel>(
+      `${BASE_API_URL}/users/${oid}`,
+      newUserData
+    );
+  }
+
   // requestPasswordReset(data: {
   //   username: string;
   //   oldPassword: string;

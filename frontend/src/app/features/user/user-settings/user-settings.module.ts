@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.module';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [UserSettingsComponent],
@@ -29,6 +30,7 @@ import { PetsIconsProviderModule } from 'src/app/shared/modules/pets-icons.modul
     FormsModule,
     MatInputModule,
     PetsIconsProviderModule,
+    MatTabsModule,
   ],
   exports: [UserSettingsComponent],
 })

@@ -91,13 +91,16 @@ public class UsersController {
 
     @PutMapping("/users/{oid}")
     public ResponseEntity<User> updateUser(@PathVariable("oid") String oid, @RequestBody User user) {
-        Optional<User> tutorialData = userRepository.findById(BaseModel.getIdFromOid(oid));
+        Optional<User> oldUserData = userRepository.findById(BaseModel.getIdFromOid(oid));
 
-        if (tutorialData.isPresent()) {
-            // TODO
-            User _tutorial = tutorialData.get();
-            _tutorial.setDisplayName(user.getDisplayName());
-            return new ResponseEntity<>(userRepository.save(_tutorial), HttpStatus.OK);
+        if (oldUserData.isPresent()) {
+            User newUserData = oldUserData.get();
+            newUserData.setDisplayName(user.getDisplayName());
+            newUserData.setCity(user.getCity());
+            newUserData.setPhoneNumber(user.getPhoneNumber());
+            newUserData.setFullName(user.getFullName());
+            newUserData.setLanguage(user.getLanguage());
+            return new ResponseEntity<>(userRepository.save(newUserData), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
